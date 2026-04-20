@@ -444,6 +444,7 @@
     .activity-link { grid-column: 1 / -1; }
     .activity-link a { width: 100%; text-align: center; }
   }
+#activitiesToggle:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(15,37,87,0.35); }
 </style>
 </head>
 <body>
@@ -547,6 +548,32 @@
   </div>
 </div>
 <!-- MOBILE FILTER TOGGLE -->
+<!-- ═══ Activities Accordion ═══ -->
+<div style="max-width: 1100px; margin: 2rem auto; padding: 0 20px;">
+  <button id="activitiesToggle" onclick="toggleActivities()" style="
+    width: 100%;
+    padding: 18px 24px;
+    background: linear-gradient(135deg, #0F2557 0%, #1B3C8F 100%);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 4px 20px rgba(15,37,87,0.25);
+    transition: all 0.3s;
+  ">
+    <span id="activitiesToggleIcon">▼</span>
+    <span id="activitiesToggleText">Show All Activities & Filters</span>
+    <span style="background: #FF6B35; padding: 3px 12px; border-radius: 20px; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600;">86</span>
+  </button>
+</div>
+<div id="activitiesSection" style="display: none; overflow: hidden;">
 <button class="filter-toggle" onclick="toggleFilters()" aria-label="Toggle filters">⚙️</button>
 <div class="filter-overlay" id="filterOverlay" onclick="toggleFilters()"></div>
 
@@ -2139,6 +2166,30 @@
 </div><!-- end container -->
 </div><!-- end main-content -->
 </div><!-- end page-layout -->
+</div><!-- end activitiesSection -->
+<script>
+function toggleActivities() {
+  var section = document.getElementById('activitiesSection');
+  var icon = document.getElementById('activitiesToggleIcon');
+  var text = document.getElementById('activitiesToggleText');
+  var btn = document.getElementById('activitiesToggle');
+  if (section.style.display === 'none') {
+    section.style.display = 'block';
+    icon.textContent = '\u25B2';
+    text.textContent = 'Hide Activities & Filters';
+    btn.style.background = 'linear-gradient(135deg, #1B3C8F 0%, #2a4fa3 100%)';
+    setTimeout(function(){ section.scrollIntoView({behavior: 'smooth', block: 'start'}); }, 100);
+    if (window.activityMap) setTimeout(function(){ window.activityMap.invalidateSize(); }, 300);
+  } else {
+    section.style.display = 'none';
+    icon.textContent = '\u25BC';
+    text.textContent = 'Show All Activities & Filters';
+    btn.style.background = 'linear-gradient(135deg, #0F2557 0%, #1B3C8F 100%)';
+    btn.scrollIntoView({behavior: 'smooth', block: 'center'});
+  }
+}
+
+</script>
 
 <div class="footer">
   <p>Created for the Sheldrake family holiday planning · Summer 2026</p>
