@@ -1,0 +1,2137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Costa Rica: Arenal Single-Base — 70 Family Activities</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+  :root {
+    --verdon: #1B3C8F;
+    --verdon-light: #e8edf7;
+    --azur: #0F2557;
+    --azur-light: #f0f0f0;
+    --accent: #1B3C8F;
+    --gold: #1B3C8F;
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #0F2557;
+    --muted: #4a6bb5555;
+    --border: #e0e0e0;
+    --sidebar-width: 280px;
+    --accent-orange: #FF6B35;
+  }
+
+  /* Country Navbar */
+.country-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(15, 37, 87, 0.97);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  height: 44px;
+}
+.country-nav__inner {
+  max-width: 1400px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 1.2rem; height: 44px;
+}
+.country-nav__home {
+  display: flex; align-items: center; gap: 6px;
+  color: #FF6B35; font-size: 0.82rem; font-weight: 600;
+  text-decoration: none; white-space: nowrap;
+}
+.country-nav__home .nav-icon { width: 16px; height: 16px; }
+.country-nav__home:hover { color: #fff; }
+.country-nav__current { display: none; }
+.country-nav__dropdown-wrap { position: relative; }
+.country-nav__toggle {
+  display: flex; align-items: center; gap: 6px;
+  background: #FF6B35; border: none; box-shadow: 0 2px 12px rgba(255,107,53,0.35); letter-spacing: 0.02em;
+  color: #fff; padding: 8px 18px; border-radius: 8px;
+  font-size: 0.85rem; font-weight: 600; cursor: pointer;
+  font-family: 'Inter', sans-serif; transition: all 0.2s;
+}
+.country-nav__toggle:hover { background: #e85d2a; box-shadow: 0 4px 18px rgba(255,107,53,0.5); transform: translateY(-1px); }
+.country-nav__toggle svg { width: 14px; height: 14px; transition: transform 0.2s; }
+.country-nav__toggle.open svg { transform: rotate(180deg); }
+.country-nav__menu {
+  display: none; position: absolute; right: 0; top: calc(100% + 8px);
+  background: #0F2557; border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px; padding: 6px 0; min-width: 220px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  animation: navDropIn 0.15s ease-out;
+}
+@keyframes navDropIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+.country-nav__menu.open { display: block; }
+.country-nav__menu a {
+  display: flex; align-items: center; gap: 8px;
+  padding: 9px 16px; color: rgba(255,255,255,0.8);
+  font-size: 0.82rem; font-weight: 500; text-decoration: none;
+  transition: all 0.15s;
+}
+.country-nav__menu a:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.country-nav__menu a.active { color: #FF6B35; font-weight: 600; }
+.country-nav__menu a .nav-icon { width: 16px; height: 16px; opacity: 0.7; flex-shrink: 0; }
+.country-nav__menu a:hover .nav-icon { opacity: 1; }
+.country-nav__menu-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 4px 0; }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Montserrat', 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding-top: 44px;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #0F2557 0%, #1B3C8F 100%);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    margin-bottom: 10px;
+  }
+  .hero .subtitle { font-size: 1.1rem; opacity: 0.9; margin-bottom: 8px; }
+  .hero .count {
+    display: inline-block;
+    background: #FF6B35;
+    padding: 8px 24px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-top: 12px;
+  }
+  .hero .family {
+    margin-top: 16px;
+    font-size: 0.95rem;
+    opacity: 0.85;
+  }
+
+  .page-layout {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .filter-sidebar {
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: #0F2557;
+    color: #fff;
+    padding: 20px 16px;
+    z-index: 100;
+    scrollbar-width: thin;
+    scrollbar-color: #4a6bb5 #0F2557;
+  }
+  .filter-sidebar::-webkit-scrollbar { width: 6px; }
+  .filter-sidebar::-webkit-scrollbar-track { background: #0F2557; }
+  .filter-sidebar::-webkit-scrollbar-thumb { background: #4a6bb5; border-radius: 3px; }
+
+  .filter-sidebar h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: #1B3C8F;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .filter-sidebar h3::before { content: '\2699\FE0F'; }
+
+  .filter-count {
+    background: #1B3C8F;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+  .filter-count span { font-size: 1.3rem; }
+
+  .filter-group {
+    margin-bottom: 18px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 14px;
+  }
+  .filter-group:last-child { border-bottom: none; }
+  .filter-group-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #aaa;
+    margin-bottom: 8px;
+  }
+  .filter-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: color 0.15s;
+    font-family: 'Inter', sans-serif;
+  }
+  .filter-group label:hover { color: #1B3C8F; }
+
+  .filter-group input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #4a6bb5;
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .filter-group input[type="checkbox"]:checked {
+    background: #1B3C8F;
+    border-color: #1B3C8F;
+  }
+  .filter-group input[type="checkbox"]:checked::after {
+    content: '\2713';
+    position: absolute;
+    top: -1px;
+    left: 2px;
+    font-size: 13px;
+    color: white;
+    font-weight: bold;
+  }
+
+  .clear-filters {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    color: #1B3C8F;
+    border: 2px solid #1B3C8F;
+    border-radius: 8px;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+  }
+  .clear-filters:hover {
+    background: #1B3C8F;
+    color: white;
+  }
+
+  .filter-toggle {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 200;
+    background: #1B3C8F;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  .main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 0 20px;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .top10 {
+    background: linear-gradient(135deg, #e8edf7, #e0e8f5);
+    border: 2px solid var(--gold);
+    border-radius: 16px;
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 800px;
+  }
+  .top10 h2 { font-family: 'Playfair Display', serif; color: #1B3C8F; margin-bottom: 16px; font-size: 1.5rem; }
+  .top10 ol { padding-left: 24px; }
+  .top10 li { margin-bottom: 8px; font-size: 0.95rem; }
+  .top10 li strong { color: #0F2557; }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 30px 0;
+  }
+  .summary-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+  .summary-card .big-num { font-size: 2.5rem; font-weight: 700; color: #1B3C8F; }
+  .summary-card .label { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+
+  .section-header {
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 16px;
+    margin: 40px 0 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .section-header.verdon { background: linear-gradient(135deg, #1B3C8F, #142f6e); color: white; }
+  .section-header.azur { background: linear-gradient(135deg, #0F2557, #1B3C8F); color: white; }
+  .section-header .icon { font-size: 3rem; margin-bottom: 8px; }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+  }
+  .section-header p { opacity: 0.9; margin-top: 6px; font-size: 0.95rem; }
+  .section-header.hidden-by-filter { display: none; }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 32px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--border);
+  }
+  .category-header .cat-icon { font-size: 1.6rem; }
+  .category-header h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; }
+  .category-header .cat-count {
+    background: var(--verdon-light);
+    color: var(--verdon);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .category-header.hidden-by-filter { display: none; }
+
+  .activity-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    gap: 12px;
+    align-items: start;
+    transition: box-shadow 0.2s, opacity 0.2s;
+  }
+  .activity-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .activity-card.highlight { border-left: 4px solid var(--accent-orange); }
+  .activity-card.hidden-by-filter { display: none; }
+
+  .activity-num {
+    background: var(--verdon);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .activity-content h4 { font-size: 1rem; margin-bottom: 4px; }
+  .activity-content h4 a { color: inherit; text-decoration: none; }
+  .activity-content h4 a:hover { color: var(--accent); text-decoration: underline; }
+  .activity-desc { font-size: 0.88rem; color: var(--muted); margin-bottom: 8px; }
+
+  .activity-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .tag.tom-yes { background: #d1fae5; color: #065f46; }
+  .tag.tom-no { background: #fee2e2; color: #991b1b; }
+  .tag.tom-check { background: #fef3c7; color: #92400e; }
+  .tag.teen-love { background: #ede9fe; color: #5b21b6; }
+  .tag.teen-ok { background: #f3f4f6; color: #4b5563; }
+  .tag.cost { background: #e0f2fe; color: #075985; }
+  .tag.free { background: #d1fae5; color: #065f46; }
+
+  .tag.cost-free { background: #d1fae5; color: #065f46; font-weight: 600; }
+  .tag.cost-budget { background: #dbeafe; color: #1e40af; font-weight: 600; }
+  .tag.cost-mid { background: #bfdbfe; color: #1e3a8a; font-weight: 600; }
+  .tag.cost-premium { background: #c4b5fd; color: #3b0764; font-weight: 600; }
+
+  .tag.week-area { background: #e8edf7; color: #1B3C8F; font-weight: 600; }
+
+  .activity-link {
+    flex-shrink: 0;
+    align-self: center;
+  }
+  .activity-link a {
+    display: inline-block;
+    background: var(--verdon);
+    color: white;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+  .activity-link a:hover { background: #0a1b3f; }
+
+  .footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 900px) {
+    .filter-sidebar {
+      position: fixed;
+      left: -300px;
+      top: 0;
+      height: 100vh;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+    .filter-sidebar.open { left: 0; }
+    .filter-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+    }
+    .filter-overlay.open { display: block; }
+    .filter-toggle { display: flex; align-items: center; justify-content: center; }
+    .main-content { padding: 0 12px; }
+    .page-layout { display: block; }
+  }
+
+  @media (max-width: 640px) {
+    .activity-card { grid-template-columns: 32px 1fr; }
+    .activity-link { grid-column: 1 / -1; }
+    .activity-link a { width: 100%; text-align: center; }
+  }
+  #activitiesToggle:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(15,37,87,0.35); }
+</style>
+</head>
+<body>
+
+<nav class="country-nav" id="countryNav">
+  <div class="country-nav__inner">
+    <a href="showcase/index.html" class="country-nav__home">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg> Home
+    </a>
+    <a href="blog/index.html" class="country-nav__home" style="color:rgba(255,255,255,0.8);">&#x1F4DD; Blog</a>
+    <div class="country-nav__dropdown-wrap">
+      <button class="country-nav__toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+        &#127758; Destinations <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
+      </button>
+      <div class="country-nav__menu" id="navMenu">
+        <a href="France_Verdon_CotedAzur_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h6v18H3V3zm12 0h6v18h-6V3zM9 3h6v18H9V3z" opacity="0.8"/></svg> France</a>
+        <a href="Germany_Bavaria_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L8.5 8.5 2 9.5l5 4.5L5.5 21 12 17.5 18.5 21 17 14l5-4.5-6.5-1L12 2z"/></svg> Germany</a>
+        <a href="Croatia_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20v4H2zm0 6h4v4H6v-2H4v4h4v-2h2v4H8v-2H4v4h20V10H2zm6 0h4v2h-2v2H8v-4zm6 0h4v2h-2v2h-2v-4z"/></svg> Croatia</a>
+        <a href="Sicily_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c3.31 0 6-2.69 6-6 0-4.96-4.49-9-10-9z"/></svg> Sicily</a>
+        <a href="Egypt_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 21h18L12 3 3 21zm9-3l-4.5-9h9L12 18z"/></svg> Egypt</a>
+        <a href="Austria_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z"/></svg> Austria</a>
+        <a href="Bulgaria_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 2.84L18 11v7h-2v-6H8v6H6v-7l6-5.16z"/></svg> Bulgaria</a>
+        <a href="Japan_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg> Japan</a>
+        <a href="Spain_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg> Spain</a>
+        <a href="CostaRica_Activities_2026.html" class="active"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.71c.76.34 1.59.54 2.46.59L9 20c.5-4 4.17-8 9-8V8z"/></svg> Costa Rica</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" style="position:relative; overflow:hidden;">
+  <div class="hero__bg" style="position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1518259102261-b713b4ca63a1?w=1920&q=80') center/cover no-repeat;"></div>
+  <div class="hero__overlay" style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,37,87,.75) 0%, rgba(15,37,87,.9) 100%);"></div>
+  <div style="position:relative; z-index:2;">
+  <h1>&#127464;&#127479; Costa Rica: Arenal Single-Base</h1>
+  <div class="subtitle">14 nights at Arenal / La Fortuna &#8212; everything is a day trip</div>
+  <div class="count">&#127919; 70 Activities Found</div>
+  <div class="family">&#128104;&#8205;&#128105;&#8205;&#128103;&#8205;&#128102; Researched for 2 adults + Katie (17) + George (15) + Tom (8)</div>
+  <div style="margin-top:14px;font-size:0.88rem;opacity:0.85;">&#9992;&#65039; Best route: KLM via Amsterdam from LBA or MAN &#8212; 1 stop, ~12hrs. ~&#163;685-750pp return (&#163;3,425-3,750 family of 5). Fly to San Jos&#233;, 3hr transfer to La Fortuna.</div>
+  <div style="margin-top:6px;font-size:0.82rem;opacity:0.75;">&#128176; Prices in USD ($). $1 &#8776; &#163;0.79</div>
+  </div>
+</div>
+
+<!-- Holiday Synopsis -->
+<div style="background: #fff; padding: 2.5rem 0; border-bottom: 1px solid #e8edf7;">
+  <div style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
+    <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; font-size: 1.4rem; margin-bottom: 12px;">&#127464;&#127479; The Holiday at a Glance</h3>
+    <p style="font-size: 0.95rem; color: #444; line-height: 1.8; margin-bottom: 12px;">Forget hotel-hopping &#8212; this is the single-base version. Plant yourselves at an eco-lodge with volcanic hot springs and a pool, and let Arenal / La Fortuna be your launchpad for 14 days of pure adventure. Within 30 minutes you&#8217;ve got a volcano to hike, a 70-metre waterfall to swim under, white-water rapids to raft, cloud-forest canopy to zip-line through, and more sloths than you can count. Day trips to R&#237;o Celeste (the bluest waterfall on Earth), Monteverde&#8217;s cloud forest, and Ca&#241;o Negro&#8217;s wildlife wetlands mean you never run out of things to do.</p>
+    <p style="font-size: 0.95rem; color: #444; line-height: 1.8; margin-bottom: 12px;">George will want to raft every river and rappel every waterfall. Tom will be obsessed with the sloths at Proyecto Asis and the frogs at the Ranario. Katie will photograph the turquoise R&#237;o Celeste and the hot springs at sunset. And on your rest days? Soak in volcanic hot springs with a cocktail while the kids bomb the water slides. This is adventure-on-tap with zero packing stress.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px;">
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#127755; Active Volcano</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#9832;&#65039; Hot Springs</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#127754; White Water Rafting</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#129445; Sloths Everywhere</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#127807; Cloud Forest</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#128167; R&#237;o Celeste</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#127946; Waterfall Swimming</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#127753; Hanging Bridges</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#127851; Chocolate Tours</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#11088; Night Wildlife Walks</span>
+    </div>
+  </div>
+</div>
+
+<!-- Weather Summary -->
+<div class="weather-section" style="background: linear-gradient(135deg, #f0f4ff 0%, #e8edf7 100%); padding: 2rem 0;">
+  <div style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
+    <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 16px; font-size: 1.2rem;">
+      &#9728;&#65039; August Weather &#8212; What to Expect
+    </h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 12px;">
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">&#127777;&#65039;</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">27-32&#176;C</div>
+        <div style="font-size: 0.75rem; color: #666;">Avg. High</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">&#127769;</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">20-25&#176;C</div>
+        <div style="font-size: 0.75rem; color: #666;">Avg. Low</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">&#9728;&#65039;</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">5-7</div>
+        <div style="font-size: 0.75rem; color: #666;">Sun hrs/day</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">&#127783;&#65039;</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">15-20 days</div>
+        <div style="font-size: 0.75rem; color: #666;">Rainy Days</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">&#127793;</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">Green Season</div>
+        <div style="font-size: 0.75rem; color: #666;">Lush &amp; Alive</div>
+      </div>
+    </div>
+    <p style="font-size: 0.82rem; color: #555; line-height: 1.6; margin: 0;">
+      &#127807; <strong>Green Season (rainy season).</strong> Mornings are usually sunny and clear &#8212; rain typically arrives in afternoon/evening downpours lasting 1-2 hours, then clears. Everything is lush, green, and spectacular. Waterfalls are at their most powerful. Fewer tourists = lower prices and no crowds. Pack a light rain jacket and quick-dry clothes. UV is still high &#8212; factor 50 essential. Hot springs feel even more magical in the rain!
+    </p>
+  </div>
+</div>
+
+<!-- Activities Accordion -->
+<div style="max-width: 1100px; margin: 2rem auto; padding: 0 20px;">
+  <button id="activitiesToggle" onclick="toggleActivities()" style="
+    width: 100%;
+    padding: 18px 24px;
+    background: linear-gradient(135deg, #0F2557 0%, #1B3C8F 100%);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 4px 20px rgba(15,37,87,0.25);
+    transition: all 0.3s;
+  ">
+    <span id="activitiesToggleIcon">&#9660;</span>
+    <span id="activitiesToggleText">Show All Activities &amp; Filters</span>
+    <span style="background: #FF6B35; padding: 3px 12px; border-radius: 20px; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600;">70</span>
+  </button>
+</div>
+<div id="activitiesSection" style="display: none; overflow: hidden;">
+<button class="filter-toggle" onclick="toggleFilters()" aria-label="Toggle filters">&#9881;&#65039;</button>
+<div class="filter-overlay" id="filterOverlay" onclick="toggleFilters()"></div>
+
+<div class="page-layout">
+
+<!-- FILTER SIDEBAR -->
+<aside class="filter-sidebar" id="filterSidebar">
+  <h3>Filters</h3>
+  <div class="filter-count">Showing <span id="visibleCount">70</span> of 70 activities</div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Area</div>
+    <label><input type="checkbox" data-filter="area" value="town"> &#127961;&#65039; La Fortuna Town</label>
+    <label><input type="checkbox" data-filter="area" value="volcano"> &#127755; Arenal Volcano</label>
+    <label><input type="checkbox" data-filter="area" value="lake"> &#127754; Lake Arenal</label>
+    <label><input type="checkbox" data-filter="area" value="jungle"> &#127795; Jungle &amp; Rivers</label>
+    <label><input type="checkbox" data-filter="area" value="daytrip"> &#128663; Day Trips</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Activity Type</div>
+    <label><input type="checkbox" data-filter="type" value="adventure"> &#128640; Adventure &amp; Outdoors</label>
+    <label><input type="checkbox" data-filter="type" value="nature"> &#127807; Nature &amp; Wildlife</label>
+    <label><input type="checkbox" data-filter="type" value="hotsprings"> &#9832;&#65039; Hot Springs &amp; Relaxation</label>
+    <label><input type="checkbox" data-filter="type" value="water"> &#127958;&#65039; Water Activities</label>
+    <label><input type="checkbox" data-filter="type" value="culture"> &#127963;&#65039; Culture &amp; Tours</label>
+    <label><input type="checkbox" data-filter="type" value="food"> &#127829; Food &amp; Drink</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Suitable for</div>
+    <label><input type="checkbox" data-filter="tom" value="yes"> &#9989; Tom (8)</label>
+    <label><input type="checkbox" data-filter="teens" value="love"> &#11088; Teens love it</label>
+    <label><input type="checkbox" data-filter="family" value="yes"> &#128104;&#8205;&#128105;&#8205;&#128103;&#8205;&#128102; Whole family</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Cost</div>
+    <label><input type="checkbox" data-filter="cost" value="free"> Free</label>
+    <label><input type="checkbox" data-filter="cost" value="budget"> Budget (under $25pp)</label>
+    <label><input type="checkbox" data-filter="cost" value="mid"> Mid-range ($25-60pp)</label>
+    <label><input type="checkbox" data-filter="cost" value="premium"> Premium ($60+pp)</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Special</div>
+    <label><input type="checkbox" data-filter="mustdo" value="true"> &#11088; Must-do highlights only</label>
+  </div>
+
+  <button class="clear-filters" onclick="clearFilters()">Clear all filters</button>
+</aside>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+<div class="container">
+
+<!-- TOP 10 -->
+<div class="top10">
+  <h2>&#11088; The Unmissable 10</h2>
+  <ol>
+    <li>&#127755; <strong>Arenal Volcano National Park Hike</strong> &#8212; walk on 1968 lava flows with the cone looming above</li>
+    <li>&#128167; <strong>La Fortuna Waterfall</strong> &#8212; 70m cascade, swim in the ice-cold pool, 500 epic steps</li>
+    <li>&#127754; <strong>White Water Rafting (Balsa River)</strong> &#8212; Class II-III rapids through jungle canyon</li>
+    <li>&#9832;&#65039; <strong>Tabac&#243;n Hot Springs</strong> &#8212; luxury volcanic pools, waterslides, swim-up bar</li>
+    <li>&#127753; <strong>Mistico Hanging Bridges</strong> &#8212; 15 suspension bridges through the rainforest canopy</li>
+    <li>&#128640; <strong>Sky Adventures Arenal</strong> &#8212; zip lines + sky tram gondola combo</li>
+    <li>&#129445; <strong>Safari Float (Pe&#241;as Blancas River)</strong> &#8212; spot sloths, monkeys and crocs from a raft</li>
+    <li>&#128167; <strong>R&#237;o Celeste Waterfall</strong> &#8212; the bluest waterfall on Earth, bucket-list day trip</li>
+    <li>&#127807; <strong>Monteverde Cloud Forest</strong> &#8212; misty canopy hikes in a world-famous reserve</li>
+    <li>&#127754; <strong>Canyoneering / Waterfall Rappelling</strong> &#8212; rappel down 4 waterfalls in the jungle</li>
+  </ol>
+</div>
+
+<!-- SUMMARY STATS -->
+<div class="summary-grid">
+  <div class="summary-card"><div class="big-num">70</div><div class="label">Total Activities</div></div>
+  <div class="summary-card"><div class="big-num">20</div><div class="label">Jungle &amp; Rivers</div></div>
+  <div class="summary-card"><div class="big-num">15</div><div class="label">Arenal Volcano</div></div>
+  <div class="summary-card"><div class="big-num">15</div><div class="label">Day Trips</div></div>
+  <div class="summary-card"><div class="big-num">10</div><div class="label">Lake Arenal</div></div>
+  <div class="summary-card"><div class="big-num">10</div><div class="label">La Fortuna Town</div></div>
+  <div class="summary-card"><div class="big-num">19</div><div class="label">Must-Do Highlights</div></div>
+</div>
+
+<!-- Activity Map -->
+<div style="margin: 2rem auto; max-width: 1100px; padding: 0 20px;">
+  <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 4px; font-size: 1.3rem;">&#128205; Activity Map</h3>
+  <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">
+    <span id="map-count">70 activities shown</span> &#8212;
+    <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#FF6B35;vertical-align:middle;"></span> Must-do
+    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#1B3C8F;vertical-align:middle;margin-left:8px;"></span> Other activities.
+    Use the filters to narrow down.
+    <label style="display:inline-flex;align-items:center;gap:4px;margin-left:12px;font-size:0.85rem;color:#2d9a2d;cursor:pointer;">
+      <input type="checkbox" id="accom-toggle" checked onchange="toggleAccom(this.checked)" style="accent-color:#2d9a2d;"> &#127965; Accommodation
+    </label>
+  </p>
+  <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.12); border: 2px solid #1B3C8F;">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <div id="mustdo-map" style="width:100%; height:500px;"></div>
+    <div style="padding: 12px 16px; background: #f8f9fa; max-height: 350px; overflow-y: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: 'Inter', sans-serif;">
+        <thead>
+          <tr style="border-bottom: 2px solid #1B3C8F; color: #0F2557; position: sticky; top: 0; background: #f8f9fa;">
+            <th style="text-align: left; padding: 5px 8px; width: 40px;">#</th>
+            <th style="text-align: left; padding: 5px 8px;">Activity</th>
+            <th style="text-align: right; padding: 5px 8px; width: 140px;">Links</th>
+          </tr>
+        </thead>
+        <tbody id="map-table-body">
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- ═══ LA FORTUNA TOWN ═══ -->
+<div class="section-header verdon" data-section="town">
+  <div class="icon">&#127961;&#65039;</div>
+  <h2>La Fortuna Town</h2>
+  <p>Town centre, restaurants, markets &amp; local experiences</p>
+</div>
+
+<div data-section-wrap="town">
+
+<div class="category-header" data-cat-type="culture" data-cat-area="town">
+  <span class="cat-icon">&#127961;&#65039;</span>
+  <h3>La Fortuna Town</h3>
+  <span class="cat-count">10 activities</span>
+</div>
+
+<div class="activity-card" data-area="town" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="1" data-lat="10.4678" data-lng="-84.6438">
+  <div class="activity-num">1</div>
+  <div class="activity-content">
+    <h4>La Fortuna Town Walk</h4>
+    <div class="activity-desc">Explore the colourful town, local shops, souvenir market. A great orientation on arrival day.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127961;&#65039; La Fortuna Town</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="town" data-type="food" data-tom="yes" data-teens="ok" data-cost="free" data-num="2" data-lat="10.4690" data-lng="-84.6450">
+  <div class="activity-num">2</div>
+  <div class="activity-content">
+    <h4>La Fortuna Farmers Market</h4>
+    <div class="activity-desc">Saturday morning, fresh tropical fruit, local food, crafts. Taste exotic fruits you've never seen before.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Free entry</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127961;&#65039; La Fortuna Town</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="town" data-type="food" data-tom="yes" data-teens="ok" data-cost="budget" data-num="3" data-lat="10.4680" data-lng="-84.6440">
+  <div class="activity-num">3</div>
+  <div class="activity-content">
+    <h4>Lava Lounge Bar &amp; Restaurant</h4>
+    <div class="activity-desc">Great food with volcano views, family-friendly terrace. Perfect sunset dinner spot.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">~$15-25pp</span>
+      <span class="tag cost-budget">&lt; $25pp</span>
+      <span class="tag week-area">&#127961;&#65039; La Fortuna Town</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="town" data-type="food" data-tom="yes" data-teens="ok" data-cost="budget" data-num="4" data-lat="10.4675" data-lng="-84.6435">
+  <div class="activity-num">4</div>
+  <div class="activity-content">
+    <h4>Soda Viquez</h4>
+    <div class="activity-desc">Authentic local "soda" (Costa Rican caf&#233;), casado plates for $5-8. The real deal &#8212; budget-friendly and delicious.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$5-8pp</span>
+      <span class="tag cost-budget">&lt; $25pp</span>
+      <span class="tag week-area">&#127961;&#65039; La Fortuna Town</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="town" data-type="food" data-tom="no" data-teens="ok" data-cost="mid" data-num="5" data-lat="10.4685" data-lng="-84.6445">
+  <div class="activity-num">5</div>
+  <div class="activity-content">
+    <h4>Don Rufino Restaurant</h4>
+    <div class="activity-desc">Fine dining, Costa Rican-international fusion. Treat-night destination for the family.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (fine dining)</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">~$25-40pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127961;&#65039; La Fortuna Town</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="town" data-type="culture" data-tom="yes" data-teens="love" data-cost="mid" data-num="6" data-mustdo="true" data-lat="10.4700" data-lng="-84.6500">
+  <div class="activity-num">6</div>
+  <div class="activity-content">
+    <h4>Chocolate Tour (Rainforest Chocolate Tour)</h4>
+    <div class="activity-desc">Bean-to-bar experience, make your own chocolate. Hands-on, delicious, and educational. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$30-45pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127961;&#65039; La Fortuna Town</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="town" data-type="culture" data-tom="no" data-teens="ok" data-cost="mid" data-num="7" data-lat="10.4350" data-lng="-84.6200">
+  <div class="activity-num">7</div>
+  <div class="activity-content">
+    <h4>Coffee Plantation Tour</h4>
+    <div class="activity-desc">Learn coffee growing, roasting, tasting. A quintessential Costa Rican experience.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (boring for 8)</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$35-50pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127961;&#65039; La Fortuna Town</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="town" data-type="food" data-tom="yes" data-teens="ok" data-cost="free" data-num="8" data-lat="10.4682" data-lng="-84.6442">
+  <div class="activity-num">8</div>
+  <div class="activity-content">
+    <h4>La Fortuna Organic Market</h4>
+    <div class="activity-desc">Local organic produce, artisan goods. Great for stocking up on snacks and souvenirs.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Free entry</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127961;&#65039; La Fortuna Town</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="town" data-type="nature" data-tom="yes" data-teens="love" data-cost="mid" data-num="9" data-mustdo="true" data-lat="10.4680" data-lng="-84.6400">
+  <div class="activity-num">9</div>
+  <div class="activity-content">
+    <h4>Proyecto Asis Wildlife Rescue</h4>
+    <div class="activity-desc">Rescued sloths, monkeys, toucans. Hands-on volunteering option. Tom will NOT want to leave. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$30-45pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127961;&#65039; La Fortuna Town</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="town" data-type="adventure" data-tom="yes" data-teens="ok" data-cost="budget" data-num="10" data-lat="10.4678" data-lng="-84.6440">
+  <div class="activity-num">10</div>
+  <div class="activity-content">
+    <h4>Bike Rental &amp; Town Cycle</h4>
+    <div class="activity-desc">Rent bikes, ride around town and to nearby attractions. Great way to explore independently.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$10-15/day</span>
+      <span class="tag cost-budget">&lt; $25pp</span>
+      <span class="tag week-area">&#127961;&#65039; La Fortuna Town</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+</div><!-- end town section -->
+
+<!-- ═══ ARENAL VOLCANO ═══ -->
+<div class="section-header azur" data-section="volcano">
+  <div class="icon">&#127755;</div>
+  <h2>Arenal Volcano</h2>
+  <p>Volcano trails, observatory, hot springs &amp; canopy adventures</p>
+</div>
+
+<div data-section-wrap="volcano">
+
+<div class="category-header" data-cat-type="adventure" data-cat-area="volcano">
+  <span class="cat-icon">&#127755;</span>
+  <h3>Arenal Volcano</h3>
+  <span class="cat-count">15 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="volcano" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="11" data-mustdo="true" data-lat="10.4626" data-lng="-84.7032">
+  <div class="activity-num">11</div>
+  <div class="activity-content">
+    <h4>Arenal Volcano National Park Hike</h4>
+    <div class="activity-desc">Guided hike on 1968 Lava Flow Trail, incredible volcano views. THE iconic Arenal experience. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">Park $17 + guide $25-40</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127755; Arenal Volcano</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="volcano" data-type="nature" data-tom="yes" data-teens="ok" data-cost="budget" data-num="12" data-lat="10.4383" data-lng="-84.6867">
+  <div class="activity-num">12</div>
+  <div class="activity-content">
+    <h4>Arenal Observatory Lodge Trails</h4>
+    <div class="activity-desc">Private reserve, closest legal access to volcano, best views. Multiple trails through rainforest.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$8-15</span>
+      <span class="tag cost-budget">&lt; $25pp</span>
+      <span class="tag week-area">&#127755; Arenal Volcano</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="volcano" data-type="hotsprings" data-tom="yes" data-teens="love" data-cost="premium" data-num="13" data-mustdo="true" data-lat="10.4750" data-lng="-84.7350">
+  <div class="activity-num">13</div>
+  <div class="activity-content">
+    <h4>Tabac&#243;n Hot Springs</h4>
+    <div class="activity-desc">Luxury natural hot springs, waterslides, swim-up bar, tropical gardens. The ultimate relaxation experience. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens (Katie &#10084;)</span>
+      <span class="tag cost">$50-85 adult, $25-45 child</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#127755; Arenal Volcano</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="volcano" data-type="hotsprings" data-tom="yes" data-teens="love" data-cost="mid" data-num="14" data-lat="10.4780" data-lng="-84.7200">
+  <div class="activity-num">14</div>
+  <div class="activity-content">
+    <h4>Baldi Hot Springs</h4>
+    <div class="activity-desc">25 pools, waterslides, 3 swim-up bars, jungle setting. More affordable alternative to Tabac&#243;n.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$40-65 adult, $20-35 child</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127755; Arenal Volcano</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="volcano" data-type="hotsprings" data-tom="no" data-teens="ok" data-cost="mid" data-num="15" data-lat="10.4700" data-lng="-84.7280">
+  <div class="activity-num">15</div>
+  <div class="activity-content">
+    <h4>EcoTermales Hot Springs</h4>
+    <div class="activity-desc">Intimate, limited to 100 visitors, most natural feel. The peaceful adult-friendly option.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (adults/teens)</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$44 adult, $25 child</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127755; Arenal Volcano</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="volcano" data-type="hotsprings" data-tom="yes" data-teens="love" data-cost="free" data-num="16" data-mustdo="true" data-lat="10.4800" data-lng="-84.7400">
+  <div class="activity-num">16</div>
+  <div class="activity-content">
+    <h4>Free Hot River (R&#237;o Chollin)</h4>
+    <div class="activity-desc">Natural free hot river, locals' secret spot. Volcanic-heated water in a jungle river. FREE! MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag free">FREE!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127755; Arenal Volcano</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="volcano" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="17" data-mustdo="true" data-lat="10.4580" data-lng="-84.7150">
+  <div class="activity-num">17</div>
+  <div class="activity-content">
+    <h4>Hanging Bridges (Mistico Park)</h4>
+    <div class="activity-desc">3km trail with 15 suspension bridges through canopy. Incredible views, wildlife spotting. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$26-52pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127755; Arenal Volcano</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="volcano" data-type="adventure" data-tom="yes" data-teens="love" data-cost="premium" data-num="18" data-mustdo="true" data-lat="10.4600" data-lng="-84.7100">
+  <div class="activity-num">18</div>
+  <div class="activity-content">
+    <h4>Sky Adventures Arenal</h4>
+    <div class="activity-desc">Zip lines + sky tram gondola + hanging bridges combo. George will love this. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens (George &#10084;)</span>
+      <span class="tag cost">$85-110pp</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#127755; Arenal Volcano</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="volcano" data-type="nature" data-tom="yes" data-teens="love" data-cost="mid" data-num="19" data-mustdo="true" data-lat="10.4620" data-lng="-84.7020">
+  <div class="activity-num">19</div>
+  <div class="activity-content">
+    <h4>Night Wildlife Walk</h4>
+    <div class="activity-desc">Guided nocturnal hike, spot frogs, sloths, insects, snakes by torchlight. Unforgettable. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$35-45pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127755; Arenal Volcano</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="volcano" data-type="nature" data-tom="yes" data-teens="ok" data-cost="budget" data-num="20" data-lat="10.4660" data-lng="-84.6420">
+  <div class="activity-num">20</div>
+  <div class="activity-content">
+    <h4>Butterfly Garden (Butterfly Conservatory)</h4>
+    <div class="activity-desc">Walk-through tropical butterfly house. Hundreds of colourful species landing on you.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$15-20pp</span>
+      <span class="tag cost-budget">&lt; $25pp</span>
+      <span class="tag week-area">&#127755; Arenal Volcano</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="volcano" data-type="nature" data-tom="yes" data-teens="ok" data-cost="budget" data-num="21" data-lat="10.4665" data-lng="-84.6425">
+  <div class="activity-num">21</div>
+  <div class="activity-content">
+    <h4>Ranario (Frog Pond)</h4>
+    <div class="activity-desc">See 28+ species of frogs, day or night visits. Red-eyed tree frogs, poison dart frogs, and more.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$15pp</span>
+      <span class="tag cost-budget">&lt; $25pp</span>
+      <span class="tag week-area">&#127755; Arenal Volcano</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="volcano" data-type="nature" data-tom="yes" data-teens="ok" data-cost="mid" data-num="22" data-lat="10.4670" data-lng="-84.6430">
+  <div class="activity-num">22</div>
+  <div class="activity-content">
+    <h4>Arenal Natura Ecological Park</h4>
+    <div class="activity-desc">Frogs, snakes, butterflies, crocodiles all in one park. A one-stop wildlife experience.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$30pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127755; Arenal Volcano</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="volcano" data-type="adventure" data-tom="yes" data-teens="ok" data-cost="mid" data-num="23" data-lat="10.4550" data-lng="-84.6700">
+  <div class="activity-num">23</div>
+  <div class="activity-content">
+    <h4>Horseback Riding to La Fortuna Waterfall</h4>
+    <div class="activity-desc">Ride through farmland, finish at the waterfall. A beautiful way to arrive.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$45-65pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127755; Arenal Volcano</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="volcano" data-type="adventure" data-tom="no" data-teens="love" data-cost="mid" data-num="24" data-lat="10.4630" data-lng="-84.7040">
+  <div class="activity-num">24</div>
+  <div class="activity-content">
+    <h4>Arenal Volcano Sunset Hike</h4>
+    <div class="activity-desc">Evening guided hike, watch sunset behind the volcano. Stunning photography opportunity (Katie!).</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (late evening)</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens (Katie &#10084;)</span>
+      <span class="tag cost">$40-55pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127755; Arenal Volcano</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="volcano" data-type="hotsprings" data-tom="yes" data-teens="ok" data-cost="premium" data-num="25" data-lat="10.4760" data-lng="-84.7300">
+  <div class="activity-num">25</div>
+  <div class="activity-content">
+    <h4>Hot Springs Combo (Springs + Dinner)</h4>
+    <div class="activity-desc">Evening hot springs with buffet dinner included. Great value combo for a special evening.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$65-95pp</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#127755; Arenal Volcano</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+</div><!-- end volcano section -->
+<!-- ═══ LAKE ARENAL ═══ -->
+<div class="section-header verdon" data-section="lake">
+  <div class="icon">&#127754;</div>
+  <h2>Lake Arenal</h2>
+  <p>Water sports, fishing, scenic views on Costa Rica's largest lake</p>
+</div>
+
+<div data-section-wrap="lake">
+
+<div class="category-header" data-cat-type="water" data-cat-area="lake">
+  <span class="cat-icon">&#127754;</span>
+  <h3>Lake Arenal</h3>
+  <span class="cat-count">10 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="lake" data-type="water" data-tom="yes" data-teens="love" data-cost="mid" data-num="26" data-mustdo="true" data-lat="10.5100" data-lng="-84.8500">
+  <div class="activity-num">26</div>
+  <div class="activity-content">
+    <h4>Kayaking on Lake Arenal</h4>
+    <div class="activity-desc">Paddle Costa Rica's largest lake with volcano backdrop. Tom in tandem with parent. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom (tandem)</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$45-60pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127754; Lake Arenal</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="lake" data-type="water" data-tom="no" data-teens="love" data-cost="mid" data-num="27" data-lat="10.5050" data-lng="-84.8400">
+  <div class="activity-num">27</div>
+  <div class="activity-content">
+    <h4>Stand-Up Paddleboarding</h4>
+    <div class="activity-desc">SUP at sunset with volcano views. Perfect for Katie's Instagram.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (balance)</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens (Katie &#10084;)</span>
+      <span class="tag cost">$45-55pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127754; Lake Arenal</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="lake" data-type="water" data-tom="no" data-teens="ok" data-cost="premium" data-num="28" data-lat="10.5200" data-lng="-84.8700">
+  <div class="activity-num">28</div>
+  <div class="activity-content">
+    <h4>Fishing on Lake Arenal</h4>
+    <div class="activity-desc">Rainbow bass (guapote) fishing trip. Half-day on the lake with a guide.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$200-300/boat half day</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#127754; Lake Arenal</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="lake" data-type="adventure" data-tom="yes" data-teens="ok" data-cost="free" data-num="29" data-lat="10.5000" data-lng="-84.9000">
+  <div class="activity-num">29</div>
+  <div class="activity-content">
+    <h4>Lake Arenal Scenic Drive</h4>
+    <div class="activity-desc">Drive around the lake, stop at viewpoints, Arenal Dam. Stunning scenery all the way.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Free (own car)</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127754; Lake Arenal</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="lake" data-type="nature" data-tom="yes" data-teens="ok" data-cost="mid" data-num="30" data-lat="10.4900" data-lng="-84.8200">
+  <div class="activity-num">30</div>
+  <div class="activity-content">
+    <h4>Arenal Hanging Bridges (Lake Side)</h4>
+    <div class="activity-desc">Alternative bridge walk on the quieter west side. Fewer crowds, same magic.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$26pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127754; Lake Arenal</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="lake" data-type="nature" data-tom="yes" data-teens="ok" data-cost="budget" data-num="31" data-lat="10.4250" data-lng="-84.8000">
+  <div class="activity-num">31</div>
+  <div class="activity-content">
+    <h4>El Castillo Butterfly Garden</h4>
+    <div class="activity-desc">Butterfly conservatory + frog garden + botanical gardens. Peaceful and beautiful.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$15pp</span>
+      <span class="tag cost-budget">&lt; $25pp</span>
+      <span class="tag week-area">&#127754; Lake Arenal</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="lake" data-type="water" data-tom="no" data-teens="love" data-cost="premium" data-num="32" data-lat="10.5300" data-lng="-84.9200">
+  <div class="activity-num">32</div>
+  <div class="activity-content">
+    <h4>Windsurfing / Kitesurfing</h4>
+    <div class="activity-desc">Lake Arenal is one of the world's top wind spots. Lesson included. George will love it.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens (George &#10084;)</span>
+      <span class="tag cost">$60-80 lesson</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#127754; Lake Arenal</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="lake" data-type="nature" data-tom="yes" data-teens="ok" data-cost="budget" data-num="33" data-lat="10.4670" data-lng="-84.6450">
+  <div class="activity-num">33</div>
+  <div class="activity-content">
+    <h4>Arenal Eco Zoo</h4>
+    <div class="activity-desc">Small eco-zoo with snakes, frogs, turtles, butterflies. Good for a quieter morning.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$22pp</span>
+      <span class="tag cost-budget">&lt; $25pp</span>
+      <span class="tag week-area">&#127754; Lake Arenal</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="lake" data-type="water" data-tom="yes" data-teens="ok" data-cost="mid" data-num="34" data-lat="10.5150" data-lng="-84.8600">
+  <div class="activity-num">34</div>
+  <div class="activity-content">
+    <h4>Lake Arenal Boat Tour</h4>
+    <div class="activity-desc">Guided boat tour with wildlife spotting. See the volcano from the water.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$40-55pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127754; Lake Arenal</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="lake" data-type="hotsprings" data-tom="yes" data-teens="ok" data-cost="mid" data-num="35" data-lat="10.4850" data-lng="-84.8100">
+  <div class="activity-num">35</div>
+  <div class="activity-content">
+    <h4>Mystico Hot Springs (Perdido)</h4>
+    <div class="activity-desc">Less-known hot springs near the lake, peaceful. An off-the-beaten-path soak.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$30-45pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127754; Lake Arenal</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+</div><!-- end lake section -->
+
+<!-- ═══ JUNGLE & RIVERS ═══ -->
+<div class="section-header azur" data-section="jungle">
+  <div class="icon">&#127795;</div>
+  <h2>Jungle &amp; Rivers</h2>
+  <p>Rafting, canyoneering, caves, wildlife &amp; pure adrenaline</p>
+</div>
+
+<div data-section-wrap="jungle">
+
+<div class="category-header" data-cat-type="adventure" data-cat-area="jungle">
+  <span class="cat-icon">&#127795;</span>
+  <h3>Jungle &amp; Rivers</h3>
+  <span class="cat-count">20 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="jungle" data-type="adventure" data-tom="yes" data-teens="love" data-cost="budget" data-num="36" data-mustdo="true" data-lat="10.4417" data-lng="-84.6650">
+  <div class="activity-num">36</div>
+  <div class="activity-content">
+    <h4>La Fortuna Waterfall</h4>
+    <div class="activity-desc">70m cascade, swim in the pool at the base, 500 steps down (and back up!). Absolutely stunning. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens (Katie &#10084;)</span>
+      <span class="tag cost">$18pp</span>
+      <span class="tag cost-budget">&lt; $25pp</span>
+      <span class="tag week-area">&#127795; Jungle &amp; Rivers</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="jungle" data-type="water" data-tom="yes" data-teens="love" data-cost="premium" data-num="37" data-mustdo="true" data-lat="10.4200" data-lng="-84.5500">
+  <div class="activity-num">37</div>
+  <div class="activity-content">
+    <h4>White Water Rafting &#8212; Balsa River</h4>
+    <div class="activity-desc">Class II-III, safe for families (age 8+). Through jungle canyon. George will be in heaven. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom (8+)</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens (George &#10084;)</span>
+      <span class="tag cost">$65-100pp</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#127795; Jungle &amp; Rivers</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="jungle" data-type="water" data-tom="no" data-teens="love" data-cost="premium" data-num="38" data-lat="10.0500" data-lng="-83.6000">
+  <div class="activity-num">38</div>
+  <div class="activity-content">
+    <h4>White Water Rafting &#8212; Pacuare River</h4>
+    <div class="activity-desc">Class III-IV, full day through jungle canyon. One of the world's top 5 rafting rivers. Premium experience.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (12+)</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens (George &#10084;)</span>
+      <span class="tag cost">$100-150pp</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#127795; Jungle &amp; Rivers</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="jungle" data-type="water" data-tom="no" data-teens="love" data-cost="premium" data-num="39" data-lat="10.4500" data-lng="-84.0800">
+  <div class="activity-num">39</div>
+  <div class="activity-content">
+    <h4>White Water Rafting &#8212; Sarapiqu&#237; River</h4>
+    <div class="activity-desc">Class III, through tropical rainforest. A great middle-ground rafting option.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (12+)</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$80-110pp</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#127795; Jungle &amp; Rivers</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="jungle" data-type="adventure" data-tom="no" data-teens="love" data-cost="premium" data-num="40" data-mustdo="true" data-lat="10.4500" data-lng="-84.6800">
+  <div class="activity-num">40</div>
+  <div class="activity-content">
+    <h4>Canyoneering / Waterfall Rappelling</h4>
+    <div class="activity-desc">Rappel down 4 waterfalls in the jungle. Pure adrenaline. George's dream activity. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (10+)</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens (George &#10084;)</span>
+      <span class="tag cost">$95-120pp</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#127795; Jungle &amp; Rivers</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="jungle" data-type="water" data-tom="yes" data-teens="ok" data-cost="mid" data-num="41" data-lat="10.4400" data-lng="-84.6300">
+  <div class="activity-num">41</div>
+  <div class="activity-content">
+    <h4>River Tubing</h4>
+    <div class="activity-desc">Float down a jungle river on an inflatable tube. Relaxed and fun for all ages.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$35-45pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127795; Jungle &amp; Rivers</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="jungle" data-type="nature" data-tom="yes" data-teens="love" data-cost="mid" data-num="42" data-mustdo="true" data-lat="10.4300" data-lng="-84.7200">
+  <div class="activity-num">42</div>
+  <div class="activity-content">
+    <h4>Safari Float (Pe&#241;as Blancas River)</h4>
+    <div class="activity-desc">Calm river float, spot sloths, monkeys, crocodiles, birds. The ultimate wildlife experience. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$40-70pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127795; Jungle &amp; Rivers</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="jungle" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="43" data-lat="10.5900" data-lng="-84.7800">
+  <div class="activity-num">43</div>
+  <div class="activity-content">
+    <h4>Venado Caves</h4>
+    <div class="activity-desc">Explore underground limestone caves, wade through rivers, see bats. Indiana Jones vibes.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$25-35pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127795; Jungle &amp; Rivers</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="jungle" data-type="adventure" data-tom="no" data-teens="love" data-cost="premium" data-num="44" data-lat="10.4650" data-lng="-84.6900">
+  <div class="activity-num">44</div>
+  <div class="activity-content">
+    <h4>ATV / Quad Tour</h4>
+    <div class="activity-desc">Off-road through farms, rivers, jungle trails. Muddy, loud, and brilliant fun.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (min 16 to drive)</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens (George &#10084;)</span>
+      <span class="tag cost">$75-95pp</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#127795; Jungle &amp; Rivers</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="jungle" data-type="adventure" data-tom="no" data-teens="love" data-cost="premium" data-num="45" data-lat="10.2300" data-lng="-83.9000">
+  <div class="activity-num">45</div>
+  <div class="activity-content">
+    <h4>Bungee Jumping (Colorado River Bridge)</h4>
+    <div class="activity-desc">80m jump over rushing river gorge. For the truly brave (George, we're looking at you).</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (12+)</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens (George &#10084;)</span>
+      <span class="tag cost">$80-100pp</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#127795; Jungle &amp; Rivers</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="jungle" data-type="adventure" data-tom="no" data-teens="ok" data-cost="mid" data-num="46" data-lat="10.4550" data-lng="-84.6750">
+  <div class="activity-num">46</div>
+  <div class="activity-content">
+    <h4>Horseback Riding through Jungle</h4>
+    <div class="activity-desc">Trail ride through rainforest and farmland. Peaceful and scenic.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (experienced riders)</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$45-65pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127795; Jungle &amp; Rivers</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="jungle" data-type="nature" data-tom="yes" data-teens="love" data-cost="mid" data-num="47" data-mustdo="true" data-lat="10.4620" data-lng="-84.7000">
+  <div class="activity-num">47</div>
+  <div class="activity-content">
+    <h4>Sloth Watching Tour</h4>
+    <div class="activity-desc">Guided walk specifically for sloth spotting. Guaranteed sightings with expert guides. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$35-50pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127795; Jungle &amp; Rivers</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="jungle" data-type="nature" data-tom="no" data-teens="ok" data-cost="mid" data-num="48" data-lat="10.4610" data-lng="-84.7010">
+  <div class="activity-num">48</div>
+  <div class="activity-content">
+    <h4>Birdwatching Dawn Walk</h4>
+    <div class="activity-desc">Early morning guided birding (toucans, motmots, hummingbirds). For the early risers.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (too early)</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$35-45pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127795; Jungle &amp; Rivers</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="jungle" data-type="nature" data-tom="yes" data-teens="ok" data-cost="mid" data-num="49" data-lat="10.5800" data-lng="-84.7500">
+  <div class="activity-num">49</div>
+  <div class="activity-content">
+    <h4>Crocodile Spotting on R&#237;o Fr&#237;o</h4>
+    <div class="activity-desc">Boat tour to spot crocs and wildlife. Thrilling for the whole family.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$45-60pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127795; Jungle &amp; Rivers</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="jungle" data-type="adventure" data-tom="no" data-teens="love" data-cost="mid" data-num="50" data-lat="10.4700" data-lng="-84.6600">
+  <div class="activity-num">50</div>
+  <div class="activity-content">
+    <h4>Paintball in the Jungle</h4>
+    <div class="activity-desc">Outdoor paintball course in the rainforest. George vs Katie &#8212; who wins?</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (12+)</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens (George &#10084;)</span>
+      <span class="tag cost">$30-45pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127795; Jungle &amp; Rivers</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="jungle" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="51" data-lat="10.4630" data-lng="-84.7050">
+  <div class="activity-num">51</div>
+  <div class="activity-content">
+    <h4>Tree Climbing</h4>
+    <div class="activity-desc">Climb massive fig trees using harnesses and ropes. Unique jungle adventure.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$45-65pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127795; Jungle &amp; Rivers</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="jungle" data-type="adventure" data-tom="no" data-teens="love" data-cost="premium" data-num="52" data-lat="10.4610" data-lng="-84.7080">
+  <div class="activity-num">52</div>
+  <div class="activity-content">
+    <h4>Canopy Night Tour</h4>
+    <div class="activity-desc">Zip line through the jungle at night. Darkness + speed + jungle sounds = unforgettable.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (min 12)</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens (George &#10084;)</span>
+      <span class="tag cost">$65-85pp</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#127795; Jungle &amp; Rivers</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="jungle" data-type="adventure" data-tom="no" data-teens="love" data-cost="premium" data-num="53" data-lat="10.4450" data-lng="-84.6600">
+  <div class="activity-num">53</div>
+  <div class="activity-content">
+    <h4>Waterfall Trail Hike (5 Waterfalls)</h4>
+    <div class="activity-desc">Full day hike visiting 5 hidden waterfalls deep in the jungle. Serious adventure.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (full day)</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$55-75pp</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#127795; Jungle &amp; Rivers</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="jungle" data-type="water" data-tom="yes" data-teens="ok" data-cost="free" data-num="54" data-lat="10.4500" data-lng="-84.6500">
+  <div class="activity-num">54</div>
+  <div class="activity-content">
+    <h4>Swimming in R&#237;o Fortuna</h4>
+    <div class="activity-desc">Natural river swimming holes, locals' favourite. Refreshing and free!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127795; Jungle &amp; Rivers</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="jungle" data-type="hotsprings" data-tom="no" data-teens="love" data-cost="budget" data-num="55" data-lat="10.4700" data-lng="-84.7100">
+  <div class="activity-num">55</div>
+  <div class="activity-content">
+    <h4>Yoga &amp; Wellness Retreat</h4>
+    <div class="activity-desc">Morning yoga class in rainforest setting. Katie's zen moment.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088; Teens (Katie &#10084;)</span>
+      <span class="tag cost">$15-25pp</span>
+      <span class="tag cost-budget">&lt; $25pp</span>
+      <span class="tag week-area">&#127795; Jungle &amp; Rivers</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+</div><!-- end jungle section -->
+<!-- ═══ DAY TRIPS ═══ -->
+<div class="section-header verdon" data-section="daytrip">
+  <div class="icon">&#128663;</div>
+  <h2>Day Trips</h2>
+  <p>R&#237;o Celeste, Monteverde, Ca&#241;o Negro, Sarapiqu&#237; &amp; beyond</p>
+</div>
+
+<div data-section-wrap="daytrip">
+
+<div class="category-header" data-cat-type="adventure" data-cat-area="daytrip">
+  <span class="cat-icon">&#128663;</span>
+  <h3>Day Trips</h3>
+  <span class="cat-count">15 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="daytrip" data-type="nature" data-tom="yes" data-teens="love" data-cost="premium" data-num="56" data-mustdo="true" data-lat="10.7060" data-lng="-85.0270">
+  <div class="activity-num">56</div>
+  <div class="activity-content">
+    <h4>R&#237;o Celeste Waterfall</h4>
+    <div class="activity-desc">Stunningly blue waterfall in Tenorio Volcano NP. The bluest water you'll ever see. Bucket list. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens (Katie &#10084;)</span>
+      <span class="tag cost">$12 park + $75-95 tour</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="daytrip" data-type="nature" data-tom="yes" data-teens="love" data-cost="premium" data-num="57" data-mustdo="true" data-lat="10.3030" data-lng="-84.7960">
+  <div class="activity-num">57</div>
+  <div class="activity-content">
+    <h4>Monteverde Cloud Forest (Day Trip)</h4>
+    <div class="activity-desc">Guided hike through misty cloud forest, hanging bridges. World-famous reserve. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$95-140pp full day</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="adventure" data-tom="no" data-teens="love" data-cost="premium" data-num="58" data-lat="10.3200" data-lng="-84.8200">
+  <div class="activity-num">58</div>
+  <div class="activity-content">
+    <h4>Monteverde Zip Lines (Selvatura)</h4>
+    <div class="activity-desc">13 cables including 1km line, Tarzan swing. One of the longest zip line courses in Costa Rica.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (min weight)</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens (George &#10084;)</span>
+      <span class="tag cost">$55-75pp</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="daytrip" data-type="nature" data-tom="yes" data-teens="love" data-cost="premium" data-num="59" data-mustdo="true" data-lat="10.8900" data-lng="-84.7800">
+  <div class="activity-num">59</div>
+  <div class="activity-content">
+    <h4>Ca&#241;o Negro Wildlife Refuge</h4>
+    <div class="activity-desc">Boat safari through wetlands, incredible birdwatching, caimans. Costa Rica's Everglades. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$80-110pp</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="culture" data-tom="yes" data-teens="ok" data-cost="premium" data-num="60" data-lat="10.4500" data-lng="-84.0500">
+  <div class="activity-num">60</div>
+  <div class="activity-content">
+    <h4>Sarapiqu&#237; Chocolate &amp; Wildlife</h4>
+    <div class="activity-desc">Chocolate tour + river float + wildlife walk combo. A perfect day out.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$80-110pp</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="nature" data-tom="no" data-teens="ok" data-cost="budget" data-num="61" data-lat="10.1967" data-lng="-84.2317">
+  <div class="activity-num">61</div>
+  <div class="activity-content">
+    <h4>Po&#225;s Volcano Day Trip</h4>
+    <div class="activity-desc">Drive-up crater volcano, stunning acid lake. One of the world's most accessible active volcanoes.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (long drive)</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$17 entry + transport</span>
+      <span class="tag cost-budget">&lt; $25pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="daytrip" data-type="nature" data-tom="yes" data-teens="love" data-cost="mid" data-num="62" data-mustdo="true" data-lat="10.2000" data-lng="-84.1800">
+  <div class="activity-num">62</div>
+  <div class="activity-content">
+    <h4>La Paz Waterfall Gardens</h4>
+    <div class="activity-desc">5 waterfalls, animal sanctuary, hummingbirds, big cats. Like a theme park meets nature reserve. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$48 adult, $30 child</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="culture" data-tom="no" data-teens="ok" data-cost="mid" data-num="63" data-lat="9.9333" data-lng="-84.0833">
+  <div class="activity-num">63</div>
+  <div class="activity-content">
+    <h4>San Jos&#233; Day Trip</h4>
+    <div class="activity-desc">National Museum, Central Market, Jade Museum. See the capital city on a rainy day.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (long day)</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$50-80 transport</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="daytrip" data-type="adventure" data-tom="yes" data-teens="love" data-cost="premium" data-num="64" data-mustdo="true" data-lat="10.4626" data-lng="-84.7032">
+  <div class="activity-num">64</div>
+  <div class="activity-content">
+    <h4>Arenal 4-in-1 Combo Tour</h4>
+    <div class="activity-desc">Safari float + waterfall + volcano hike + hot springs. Everything in one epic day. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$170-200pp</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="adventure" data-tom="yes" data-teens="love" data-cost="premium" data-num="65" data-lat="10.4550" data-lng="-84.7000">
+  <div class="activity-num">65</div>
+  <div class="activity-content">
+    <h4>Arenal Mundo Aventura</h4>
+    <div class="activity-desc">Adventure park with zip lines, Tarzan swing, waterfall rappelling. Action-packed day.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$85-110pp</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="nature" data-tom="yes" data-teens="ok" data-cost="mid" data-num="66" data-lat="10.4580" data-lng="-84.7150">
+  <div class="activity-num">66</div>
+  <div class="activity-content">
+    <h4>Mistico Night Tour</h4>
+    <div class="activity-desc">Guided night walk through the hanging bridges reserve. Different wildlife after dark.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$32-45pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="nature" data-tom="no" data-teens="ok" data-cost="budget" data-num="67" data-lat="10.2200" data-lng="-84.3500">
+  <div class="activity-num">67</div>
+  <div class="activity-content">
+    <h4>Juan Castro Blanco National Park</h4>
+    <div class="activity-desc">Off-the-beaten-path cloud forest, waterfalls, no crowds. For proper explorers.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (challenging hike)</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$15pp</span>
+      <span class="tag cost-budget">&lt; $25pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="food" data-tom="yes" data-teens="love" data-cost="premium" data-num="68" data-lat="10.4685" data-lng="-84.6445">
+  <div class="activity-num">68</div>
+  <div class="activity-content">
+    <h4>Cooking Class</h4>
+    <div class="activity-desc">Learn to make gallo pinto, casado, ceviche, tortillas. Eat everything you make!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$60-85pp</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="culture" data-tom="yes" data-teens="ok" data-cost="mid" data-num="69" data-lat="10.4700" data-lng="-84.6480">
+  <div class="activity-num">69</div>
+  <div class="activity-content">
+    <h4>Coffee &amp; Sugar Cane &amp; Chocolate Combo Tour</h4>
+    <div class="activity-desc">Three-in-one farm experience. Taste your way through Costa Rica's favourite crops.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$45-60pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="water" data-tom="yes" data-teens="love" data-cost="premium" data-num="70" data-lat="10.5100" data-lng="-84.8500">
+  <div class="activity-num">70</div>
+  <div class="activity-content">
+    <h4>Sunset Catamaran on Lake Arenal</h4>
+    <div class="activity-desc">Evening cruise with drinks and snacks. Perfect final-night celebration.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens (Katie &#10084;)</span>
+      <span class="tag cost">$55-75pp</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+</div><!-- end daytrip section -->
+
+
+</div><!-- end container -->
+</div><!-- end main-content -->
+</div><!-- end page-layout -->
+</div><!-- end activitiesSection -->
+<script>
+function toggleActivities() {
+  var section = document.getElementById('activitiesSection');
+  var icon = document.getElementById('activitiesToggleIcon');
+  var text = document.getElementById('activitiesToggleText');
+  var btn = document.getElementById('activitiesToggle');
+  if (section.style.display === 'none') {
+    section.style.display = 'block';
+    icon.textContent = '\u25B2';
+    text.textContent = 'Hide Activities & Filters';
+    btn.style.background = 'linear-gradient(135deg, #1B3C8F 0%, #2a4fa3 100%)';
+    setTimeout(function(){ section.scrollIntoView({behavior: 'smooth', block: 'start'}); }, 100);
+    if (window.activityMap) setTimeout(function(){ window.activityMap.invalidateSize(); }, 300);
+  } else {
+    section.style.display = 'none';
+    icon.textContent = '\u25BC';
+    text.textContent = 'Show All Activities & Filters';
+    btn.style.background = 'linear-gradient(135deg, #0F2557 0%, #1B3C8F 100%)';
+    btn.scrollIntoView({behavior: 'smooth', block: 'center'});
+  }
+}
+</script>
+
+<div class="footer">
+  <p>Created for the Sheldrake family holiday planning &#183; Summer 2026</p>
+  <p>Costa Rica: Arenal Single-Base &#183; 14 nights at La Fortuna &#183; KLM via Amsterdam</p>
+</div>
+
+<script>
+(function() {
+  var cards = document.querySelectorAll('.activity-card');
+  var checkboxes = document.querySelectorAll('.filter-sidebar input[type="checkbox"]');
+  var countEl = document.getElementById('visibleCount');
+  var TOTAL = 70;
+
+  function getCheckedValues(filterName) {
+    var vals = [];
+    checkboxes.forEach(function(cb) {
+      if (cb.dataset.filter === filterName && cb.checked) vals.push(cb.value);
+    });
+    return vals;
+  }
+
+  function applyFilters() {
+    var areaFilters = getCheckedValues('area');
+    var typeFilters = getCheckedValues('type');
+    var tomFilters = getCheckedValues('tom');
+    var teenFilters = getCheckedValues('teens');
+    var familyFilters = getCheckedValues('family');
+    var costFilters = getCheckedValues('cost');
+    var mustdoFilters = getCheckedValues('mustdo');
+
+    var visible = 0;
+
+    cards.forEach(function(card) {
+      var show = true;
+
+      if (areaFilters.length > 0 && !areaFilters.includes(card.dataset.area)) show = false;
+      if (typeFilters.length > 0 && !typeFilters.includes(card.dataset.type)) show = false;
+      if (tomFilters.length > 0 && card.dataset.tom !== 'yes') show = false;
+      if (teenFilters.length > 0 && card.dataset.teens !== 'love') show = false;
+      if (familyFilters.length > 0 && card.dataset.tom !== 'yes') show = false;
+      if (costFilters.length > 0 && !costFilters.includes(card.dataset.cost)) show = false;
+      if (mustdoFilters.length > 0 && card.dataset.mustdo !== 'true') show = false;
+
+      if (show) {
+        card.classList.remove('hidden-by-filter');
+        visible++;
+      } else {
+        card.classList.add('hidden-by-filter');
+      }
+    });
+
+    countEl.textContent = visible;
+
+    document.querySelectorAll('.section-header[data-section]').forEach(function(header) {
+      var sectionId = header.dataset.section;
+      var wrap = document.querySelector('[data-section-wrap="' + sectionId + '"]');
+      if (wrap) {
+        var visibleCards = wrap.querySelectorAll('.activity-card:not(.hidden-by-filter)');
+        header.classList.toggle('hidden-by-filter', visibleCards.length === 0);
+        wrap.style.display = visibleCards.length === 0 ? 'none' : '';
+      }
+    });
+
+    document.querySelectorAll('.category-header[data-cat-type]').forEach(function(catHeader) {
+      var sibling = catHeader.nextElementSibling;
+      var hasVisible = false;
+      while (sibling && !sibling.classList.contains('category-header') && !sibling.classList.contains('section-header')) {
+        if (sibling.classList.contains('activity-card') && !sibling.classList.contains('hidden-by-filter')) {
+          hasVisible = true;
+          break;
+        }
+        sibling = sibling.nextElementSibling;
+      }
+      catHeader.classList.toggle('hidden-by-filter', !hasVisible);
+    });
+    if (typeof updateMap === 'function') updateMap();
+  }
+
+  checkboxes.forEach(function(cb) { cb.addEventListener('change', applyFilters); });
+
+  window.clearFilters = function() {
+    checkboxes.forEach(function(cb) { cb.checked = false; });
+    applyFilters();
+  };
+
+  window.toggleFilters = function() {
+    var sidebar = document.getElementById('filterSidebar');
+    var overlay = document.getElementById('filterOverlay');
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('open');
+  };
+})();
+
+function toggleAccom(show) {
+  if (!window.accomMarkers) return;
+  window.accomMarkers.forEach(function(m) {
+    if (show) m.addTo(window.activityMap);
+    else window.activityMap.removeLayer(m);
+  });
+}
+
+function updateMap() {
+  if (!window.activityMarkers) return;
+  var bounds = [];
+  var tableBody = document.getElementById('map-table-body');
+  if (tableBody) tableBody.innerHTML = '';
+  var visibleCount = 0;
+  
+  document.querySelectorAll('.activity-card').forEach(function(card, i) {
+    var marker = window.activityMarkers[i];
+    if (!marker) return;
+    var lat = parseFloat(card.dataset.lat);
+    var lng = parseFloat(card.dataset.lng);
+    if (!lat || !lng) return;
+    
+    var isVisible = !card.classList.contains('hidden-by-filter');
+    if (isVisible) {
+      marker.addTo(window.activityMap);
+      bounds.push([lat, lng]);
+      visibleCount++;
+      if (tableBody) {
+        var num = card.dataset.num;
+        var title = card.querySelector('h4').textContent.trim();
+        var link = card.querySelector('h4 a');
+        var href = link ? link.href : '';
+        var isMustDo = card.dataset.mustdo === 'true';
+        var tr = document.createElement('tr');
+        tr.style.borderBottom = '1px solid #e0e0e0';
+        if (visibleCount % 2 === 0) tr.style.background = '#f0f3f9';
+        tr.innerHTML = '<td style="padding:5px 8px;color:#1B3C8F;font-weight:700;">' + num + '</td>' +
+          '<td style="padding:5px 8px;">' + (isMustDo ? '\u2B50 ' : '') + title + '</td>' +
+          '<td style="padding:5px 8px;text-align:right;">' + 
+          (href ? '<a href="'+href+'" target="_blank" style="color:#1B3C8F;margin-right:10px;">More Info</a>' : '') +
+          '<a href="https://www.google.com/maps?q='+lat+','+lng+'" target="_blank" style="color:#888;">\uD83D\uDCCD Map</a></td>';
+        tableBody.appendChild(tr);
+      }
+    } else {
+      window.activityMap.removeLayer(marker);
+    }
+  });
+  
+  var countEl = document.getElementById('map-count');
+  if (countEl) countEl.textContent = visibleCount + ' activities shown';
+  
+  if (bounds.length > 0) {
+    window.activityMap.fitBounds(bounds, {padding: [30, 30], maxZoom: 12});
+  }
+}
+
+(function(){
+  window.activityMap = L.map('mustdo-map', {scrollWheelZoom: false}).setView([10.47, -84.72], 11);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; CARTO &copy; OSM', maxZoom: 18
+  }).addTo(window.activityMap);
+  
+  window.activityMarkers = [];
+  
+  document.querySelectorAll('.activity-card').forEach(function(card) {
+    var lat = parseFloat(card.dataset.lat);
+    var lng = parseFloat(card.dataset.lng);
+    if (!lat || !lng) { window.activityMarkers.push(null); return; }
+    
+    var num = card.dataset.num;
+    var isMustDo = card.dataset.mustdo === 'true';
+    var title = card.querySelector('h4').textContent.trim();
+    var desc = card.querySelector('.activity-desc');
+    var descText = desc ? desc.textContent.trim().substring(0, 100) + '...' : '';
+    
+    var size = isMustDo ? 28 : 22;
+    var bg = isMustDo ? '#FF6B35' : '#1B3C8F';
+    var fontSize = isMustDo ? '12px' : '10px';
+    
+    var icon = L.divIcon({
+      className: '',
+      html: '<div style="background:'+bg+';color:#fff;width:'+size+'px;height:'+size+'px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:'+fontSize+';font-family:Montserrat,sans-serif;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;cursor:pointer;">'+num+'</div>',
+      iconSize: [size, size],
+      iconAnchor: [size/2, size/2]
+    });
+    
+    var marker = L.marker([lat, lng], {icon: icon})
+      .bindPopup('<div style="min-width:200px;"><b style="color:#0F2557;font-size:0.95rem;">' + (isMustDo ? '\u2B50 ' : '') + title + '</b><br><span style="color:#555;font-size:0.85rem;">' + descText + '</span></div>');
+    
+    marker.addTo(window.activityMap);
+    window.activityMarkers.push(marker);
+  });
+  
+  updateMap();
+
+  // Accommodation overlay
+  window.accomMarkers = [];
+  var accomData = [
+    [10.4750, -84.7350, "Tabac\u00f3n Thermal Resort", "Resort", "https://www.tabacon.com/", "Luxury hot springs resort, waterslides, spa, rainforest. From $250/night."],
+    [10.4800, -84.7100, "The Springs Resort & Spa", "Resort", "https://www.thespringscostarica.com/", "Hot springs, animal sanctuary, Club Rio adventure centre, volcano views. From $300/night."],
+    [10.4383, -84.6867, "Arenal Observatory Lodge", "Eco-Lodge", "https://www.arenalobservatorylodge.com/", "Closest to volcano, wildlife trails, pool, kids under 9 free. From $95/night."],
+    [10.4720, -84.7180, "Los Lagos Hotel & Spa", "Resort", "https://www.hotelloslagos.com/", "Hot springs, waterslides, wildlife habitats, affordable. From $120/night."],
+    [10.4690, -84.7250, "Volcano Lodge & Thermal Experience", "Lodge", "https://www.volcanolodge.com/", "Family-owned, natural springs, playground, volcano views. From $110/night."],
+    [10.4670, -84.7200, "Arenal Manoa Resort", "Resort", "https://www.arenalmanoa.com/", "Thermal pools, volcano views, excellent restaurant. From $130/night."],
+    [10.4500, -84.7500, "Finca Luna Nueva", "Eco-Lodge", "https://www.fincalunanuevalodge.com/", "Organic farm, farm-to-table meals, nature activities. From $150/night."],
+    [10.4400, -84.7600, "Rancho Margot", "Eco-Ranch", "https://ranchomargot.com/", "All meals included, ranch activities, yoga, sustainable. From $90/night."]
+  ];
+  var accomIcon = function(){ return L.divIcon({
+    className:'',
+    html:'<div style="background:#2d9a2d;color:#fff;width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;cursor:pointer;">&#127965;</div>',
+    iconSize:[30,30], iconAnchor:[15,15]
+  }); };
+  accomData.forEach(function(a){
+    var marker = L.marker([a[0],a[1]], {icon: accomIcon()})
+      .bindPopup('<div style="min-width:220px;"><b style="color:#2d9a2d;font-size:0.95rem;">&#127965; '+a[2]+'</b><br><span style="color:#888;font-size:0.8rem;">'+a[3]+'</span><br><span style="color:#555;font-size:0.85rem;">'+a[5]+'</span><br><a href="'+a[4]+'" target="_blank" style="color:#2d9a2d;font-size:0.85rem;">View on '+a[3]+' \u2192</a></div>');
+    marker.addTo(window.activityMap);
+    window.accomMarkers.push(marker);
+  });
+})();
+
+document.addEventListener('click', function(e) {
+  var wrap = document.querySelector('.country-nav__dropdown-wrap');
+  if (wrap && !wrap.contains(e.target)) {
+    var btn = wrap.querySelector('.country-nav__toggle');
+    var menu = wrap.querySelector('.country-nav__menu');
+    if (btn) btn.classList.remove('open');
+    if (menu) menu.classList.remove('open');
+  }
+});
+</script>
+
+</body>
+</html>

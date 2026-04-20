@@ -1,0 +1,2217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Costa Rica: Guanacaste Single-Base — 75 Family Activities</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+  :root {
+    --verdon: #1B3C8F;
+    --verdon-light: #e8edf7;
+    --azur: #0F2557;
+    --azur-light: #f0f0f0;
+    --accent: #1B3C8F;
+    --gold: #1B3C8F;
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #0F2557;
+    --muted: #4a6bb5555;
+    --border: #e0e0e0;
+    --sidebar-width: 280px;
+    --accent-orange: #FF6B35;
+  }
+
+  /* Country Navbar */
+.country-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(15, 37, 87, 0.97);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  height: 44px;
+}
+.country-nav__inner {
+  max-width: 1400px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 1.2rem; height: 44px;
+}
+.country-nav__home {
+  display: flex; align-items: center; gap: 6px;
+  color: #FF6B35; font-size: 0.82rem; font-weight: 600;
+  text-decoration: none; white-space: nowrap;
+}
+.country-nav__home .nav-icon { width: 16px; height: 16px; }
+.country-nav__home:hover { color: #fff; }
+.country-nav__current { display: none; }
+.country-nav__dropdown-wrap { position: relative; }
+.country-nav__toggle {
+  display: flex; align-items: center; gap: 6px;
+  background: #FF6B35; border: none; box-shadow: 0 2px 12px rgba(255,107,53,0.35); letter-spacing: 0.02em;
+  color: #fff; padding: 8px 18px; border-radius: 8px;
+  font-size: 0.85rem; font-weight: 600; cursor: pointer;
+  font-family: 'Inter', sans-serif; transition: all 0.2s;
+}
+.country-nav__toggle:hover { background: #e85d2a; box-shadow: 0 4px 18px rgba(255,107,53,0.5); transform: translateY(-1px); }
+.country-nav__toggle svg { width: 14px; height: 14px; transition: transform 0.2s; }
+.country-nav__toggle.open svg { transform: rotate(180deg); }
+.country-nav__menu {
+  display: none; position: absolute; right: 0; top: calc(100% + 8px);
+  background: #0F2557; border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px; padding: 6px 0; min-width: 220px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  animation: navDropIn 0.15s ease-out;
+}
+@keyframes navDropIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+.country-nav__menu.open { display: block; }
+.country-nav__menu a {
+  display: flex; align-items: center; gap: 8px;
+  padding: 9px 16px; color: rgba(255,255,255,0.8);
+  font-size: 0.82rem; font-weight: 500; text-decoration: none;
+  transition: all 0.15s;
+}
+.country-nav__menu a:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.country-nav__menu a.active { color: #FF6B35; font-weight: 600; }
+.country-nav__menu a .nav-icon { width: 16px; height: 16px; opacity: 0.7; flex-shrink: 0; }
+.country-nav__menu a:hover .nav-icon { opacity: 1; }
+.country-nav__menu-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 4px 0; }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Montserrat', 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding-top: 44px;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #0F2557 0%, #1B3C8F 100%);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    margin-bottom: 10px;
+  }
+  .hero .subtitle { font-size: 1.1rem; opacity: 0.9; margin-bottom: 8px; }
+  .hero .count {
+    display: inline-block;
+    background: #FF6B35;
+    padding: 8px 24px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-top: 12px;
+  }
+  .hero .family {
+    margin-top: 16px;
+    font-size: 0.95rem;
+    opacity: 0.85;
+  }
+
+  .page-layout {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .filter-sidebar {
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: #0F2557;
+    color: #fff;
+    padding: 20px 16px;
+    z-index: 100;
+    scrollbar-width: thin;
+    scrollbar-color: #4a6bb5 #0F2557;
+  }
+  .filter-sidebar::-webkit-scrollbar { width: 6px; }
+  .filter-sidebar::-webkit-scrollbar-track { background: #0F2557; }
+  .filter-sidebar::-webkit-scrollbar-thumb { background: #4a6bb5; border-radius: 3px; }
+
+  .filter-sidebar h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: #1B3C8F;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .filter-sidebar h3::before { content: '\2699\FE0F'; }
+
+  .filter-count {
+    background: #1B3C8F;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+  .filter-count span { font-size: 1.3rem; }
+
+  .filter-group {
+    margin-bottom: 18px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 14px;
+  }
+  .filter-group:last-child { border-bottom: none; }
+  .filter-group-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #aaa;
+    margin-bottom: 8px;
+  }
+  .filter-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: color 0.15s;
+    font-family: 'Inter', sans-serif;
+  }
+  .filter-group label:hover { color: #1B3C8F; }
+
+  .filter-group input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #4a6bb5;
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .filter-group input[type="checkbox"]:checked {
+    background: #1B3C8F;
+    border-color: #1B3C8F;
+  }
+  .filter-group input[type="checkbox"]:checked::after {
+    content: '\2713';
+    position: absolute;
+    top: -1px;
+    left: 2px;
+    font-size: 13px;
+    color: white;
+    font-weight: bold;
+  }
+
+  .clear-filters {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    color: #1B3C8F;
+    border: 2px solid #1B3C8F;
+    border-radius: 8px;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+  }
+  .clear-filters:hover {
+    background: #1B3C8F;
+    color: white;
+  }
+
+  .filter-toggle {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 200;
+    background: #1B3C8F;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  .main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 0 20px;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .top10 {
+    background: linear-gradient(135deg, #e8edf7, #e0e8f5);
+    border: 2px solid var(--gold);
+    border-radius: 16px;
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 800px;
+  }
+  .top10 h2 { font-family: 'Playfair Display', serif; color: #1B3C8F; margin-bottom: 16px; font-size: 1.5rem; }
+  .top10 ol { padding-left: 24px; }
+  .top10 li { margin-bottom: 8px; font-size: 0.95rem; }
+  .top10 li strong { color: #0F2557; }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 30px 0;
+  }
+  .summary-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+  .summary-card .big-num { font-size: 2.5rem; font-weight: 700; color: #1B3C8F; }
+  .summary-card .label { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+
+  .section-header {
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 16px;
+    margin: 40px 0 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .section-header.verdon { background: linear-gradient(135deg, #1B3C8F, #142f6e); color: white; }
+  .section-header.azur { background: linear-gradient(135deg, #0F2557, #1B3C8F); color: white; }
+  .section-header .icon { font-size: 3rem; margin-bottom: 8px; }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+  }
+  .section-header p { opacity: 0.9; margin-top: 6px; font-size: 0.95rem; }
+  .section-header.hidden-by-filter { display: none; }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 32px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--border);
+  }
+  .category-header .cat-icon { font-size: 1.6rem; }
+  .category-header h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; }
+  .category-header .cat-count {
+    background: var(--verdon-light);
+    color: var(--verdon);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .category-header.hidden-by-filter { display: none; }
+
+  .activity-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    gap: 12px;
+    align-items: start;
+    transition: box-shadow 0.2s, opacity 0.2s;
+  }
+  .activity-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .activity-card.highlight { border-left: 4px solid var(--accent-orange); }
+  .activity-card.hidden-by-filter { display: none; }
+
+  .activity-num {
+    background: var(--verdon);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .activity-content h4 { font-size: 1rem; margin-bottom: 4px; }
+  .activity-content h4 a { color: inherit; text-decoration: none; }
+  .activity-content h4 a:hover { color: var(--accent); text-decoration: underline; }
+  .activity-desc { font-size: 0.88rem; color: var(--muted); margin-bottom: 8px; }
+
+  .activity-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .tag.tom-yes { background: #d1fae5; color: #065f46; }
+  .tag.tom-no { background: #fee2e2; color: #991b1b; }
+  .tag.tom-check { background: #fef3c7; color: #92400e; }
+  .tag.teen-love { background: #ede9fe; color: #5b21b6; }
+  .tag.teen-ok { background: #f3f4f6; color: #4b5563; }
+  .tag.cost { background: #e0f2fe; color: #075985; }
+  .tag.free { background: #d1fae5; color: #065f46; }
+
+  .tag.cost-free { background: #d1fae5; color: #065f46; font-weight: 600; }
+  .tag.cost-budget { background: #dbeafe; color: #1e40af; font-weight: 600; }
+  .tag.cost-mid { background: #bfdbfe; color: #1e3a8a; font-weight: 600; }
+  .tag.cost-premium { background: #c4b5fd; color: #3b0764; font-weight: 600; }
+
+  .tag.week-area { background: #e8edf7; color: #1B3C8F; font-weight: 600; }
+
+  .activity-link {
+    flex-shrink: 0;
+    align-self: center;
+  }
+  .activity-link a {
+    display: inline-block;
+    background: var(--verdon);
+    color: white;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+  .activity-link a:hover { background: #0a1b3f; }
+
+  .footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 900px) {
+    .filter-sidebar {
+      position: fixed;
+      left: -300px;
+      top: 0;
+      height: 100vh;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+    .filter-sidebar.open { left: 0; }
+    .filter-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+    }
+    .filter-overlay.open { display: block; }
+    .filter-toggle { display: flex; align-items: center; justify-content: center; }
+    .main-content { padding: 0 12px; }
+    .page-layout { display: block; }
+  }
+
+  @media (max-width: 640px) {
+    .activity-card { grid-template-columns: 32px 1fr; }
+    .activity-link { grid-column: 1 / -1; }
+    .activity-link a { width: 100%; text-align: center; }
+  }
+  #activitiesToggle:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(15,37,87,0.35); }
+</style>
+</head>
+<body>
+
+<nav class="country-nav" id="countryNav">
+  <div class="country-nav__inner">
+    <a href="showcase/index.html" class="country-nav__home">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg> Home
+    </a>
+    <a href="blog/index.html" class="country-nav__home" style="color:rgba(255,255,255,0.8);">&#x1F4DD; Blog</a>
+    <div class="country-nav__dropdown-wrap">
+      <button class="country-nav__toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+        &#127758; Destinations <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
+      </button>
+      <div class="country-nav__menu" id="navMenu">
+        <a href="France_Verdon_CotedAzur_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h6v18H3V3zm12 0h6v18h-6V3zM9 3h6v18H9V3z" opacity="0.8"/></svg> France</a>
+        <a href="Germany_Bavaria_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L8.5 8.5 2 9.5l5 4.5L5.5 21 12 17.5 18.5 21 17 14l5-4.5-6.5-1L12 2z"/></svg> Germany</a>
+        <a href="Croatia_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20v4H2zm0 6h4v4H6v-2H4v4h4v-2h2v4H8v-2H4v4h20V10H2zm6 0h4v2h-2v2H8v-4zm6 0h4v2h-2v2h-2v-4z"/></svg> Croatia</a>
+        <a href="Sicily_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c3.31 0 6-2.69 6-6 0-4.96-4.49-9-10-9z"/></svg> Sicily</a>
+        <a href="Egypt_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 21h18L12 3 3 21zm9-3l-4.5-9h9L12 18z"/></svg> Egypt</a>
+        <a href="Austria_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z"/></svg> Austria</a>
+        <a href="Bulgaria_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 2.84L18 11v7h-2v-6H8v6H6v-7l6-5.16z"/></svg> Bulgaria</a>
+        <a href="Japan_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg> Japan</a>
+        <a href="Spain_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg> Spain</a>
+        <a href="CostaRica_Activities_2026.html" class="active"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.71c.76.34 1.59.54 2.46.59L9 20c.5-4 4.17-8 9-8V8z"/></svg> Costa Rica</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" style="position:relative; overflow:hidden;">
+  <div class="hero__bg" style="position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1596395819057-e37db8458252?w=1920&q=80') center/cover no-repeat;"></div>
+  <div class="hero__overlay" style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,37,87,.75) 0%, rgba(15,37,87,.9) 100%);"></div>
+  <div style="position:relative; z-index:2;">
+  <h1>&#127464;&#127479; Costa Rica: Guanacaste Single-Base</h1>
+  <div class="subtitle">14 nights on the Pacific coast &#8212; the driest region in August</div>
+  <div class="count">&#127919; 75 Activities Found</div>
+  <div class="family">&#128104;&#8205;&#128105;&#8205;&#128103;&#8205;&#128102; Researched for 2 adults + Katie (17) + George (15) + Tom (8)</div>
+  <div style="margin-top:14px;font-size:0.88rem;opacity:0.85;">&#9992;&#65039; KLM via Amsterdam from LBA or MAN &#8212; 1 stop, ~13hrs to Liberia (LIR). ~&#163;700-800pp. &#128663; Airport &#8594; Resort: Just 30-45min from Liberia!</div>
+  <div style="margin-top:6px;font-size:0.82rem;opacity:0.75;">&#128176; Prices in USD ($). $1 &#8776; &#163;0.79</div>
+  </div>
+</div>
+
+<!-- Holiday Synopsis -->
+<div style="background: #fff; padding: 2.5rem 0; border-bottom: 1px solid #e8edf7;">
+  <div style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
+    <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; font-size: 1.4rem; margin-bottom: 12px;">&#127464;&#127479; The Holiday at a Glance</h3>
+    <p style="font-size: 0.95rem; color: #444; line-height: 1.8; margin-bottom: 12px;">The smart choice for August &#8212; Guanacaste is Costa Rica&#8217;s driest region, even in rainy season. Base yourselves at an all-inclusive resort on the Papagayo coast, and you&#8217;ve got golden beaches, world-class surfing, volcanic mud baths, zip-line canopy tours, and snorkelling trips all within an hour. Day trips to Rinc&#243;n de la Vieja volcano bring hot springs, waterfall hikes, and river tubing. And you&#8217;re just 30 minutes from Liberia airport &#8212; no 3-hour cross-country transfers.</p>
+    <p style="font-size: 0.95rem; color: #444; line-height: 1.8; margin-bottom: 12px;">George will be first in line for the Guachipel&#237;n adventure park. Tom will go wild on the resort water slides and the estuary crocodile boat tour. Katie will photograph Playa Conchal&#8217;s white shell beach and the sunset from a catamaran. On rest days, you&#8217;re at an all-inclusive with pools, beach, and unlimited food.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px;">
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#127958;&#65039; Golden Beaches</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#127940; Surf Lessons</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#127755; Rinc&#243;n de la Vieja</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#9832;&#65039; Volcanic Mud Baths</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#129343; Snorkelling</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#9973; Catamaran Cruises</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#127943; Beach Horse Riding</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#129422; Wildlife Tours</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#127749; Pacific Sunsets</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#9728;&#65039; Driest Region</span>
+    </div>
+  </div>
+</div>
+
+<!-- Weather Summary -->
+<div class="weather-section" style="background: linear-gradient(135deg, #f0f4ff 0%, #e8edf7 100%); padding: 2rem 0;">
+  <div style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
+    <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 16px; font-size: 1.2rem;">
+      &#9728;&#65039; August Weather &#8212; What to Expect (Guanacaste &#8212; Driest Region!)
+    </h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 12px;">
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">&#127777;&#65039;</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">30-33&#176;C</div>
+        <div style="font-size: 0.75rem; color: #666;">Avg. High</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">&#127769;</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">23-25&#176;C</div>
+        <div style="font-size: 0.75rem; color: #666;">Avg. Low</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">&#9728;&#65039;</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">5-7</div>
+        <div style="font-size: 0.75rem; color: #666;">Sun hrs/day</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">&#127783;&#65039;</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">15-16 days</div>
+        <div style="font-size: 0.75rem; color: #666;">Rainy Days</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">&#127754;</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">Sea 28-29&#176;C</div>
+        <div style="font-size: 0.75rem; color: #666;">Warm Pacific</div>
+      </div>
+    </div>
+    <p style="font-size: 0.82rem; color: #555; line-height: 1.6; margin: 0;">
+      &#9728;&#65039; <strong>Guanacaste is Costa Rica&#8217;s DRIEST region.</strong> While the rest of the country gets heavy afternoon rain in August, Guanacaste sees significantly less rainfall. Mornings are hot and sunny, with brief afternoon showers that clear quickly. Sea temperature is perfect for swimming. UV is extreme &#8212; factor 50 essential. The all-inclusive resort model works brilliantly here: beach in the morning, pool when it rains, sunset cocktails when it clears.
+    </p>
+  </div>
+</div>
+
+<!-- Activities Accordion -->
+<div style="max-width: 1100px; margin: 2rem auto; padding: 0 20px;">
+  <button id="activitiesToggle" onclick="toggleActivities()" style="
+    width: 100%;
+    padding: 18px 24px;
+    background: linear-gradient(135deg, #0F2557 0%, #1B3C8F 100%);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 4px 20px rgba(15,37,87,0.25);
+    transition: all 0.3s;
+  ">
+    <span id="activitiesToggleIcon">&#9660;</span>
+    <span id="activitiesToggleText">Show All Activities &amp; Filters</span>
+    <span style="background: #FF6B35; padding: 3px 12px; border-radius: 20px; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600;">75</span>
+  </button>
+</div>
+<div id="activitiesSection" style="display: none; overflow: hidden;">
+<button class="filter-toggle" onclick="toggleFilters()" aria-label="Toggle filters">&#9881;&#65039;</button>
+<div class="filter-overlay" id="filterOverlay" onclick="toggleFilters()"></div>
+
+<div class="page-layout">
+
+<!-- FILTER SIDEBAR -->
+<aside class="filter-sidebar" id="filterSidebar">
+  <h3>Filters</h3>
+  <div class="filter-count">Showing <span id="visibleCount">75</span> of 75 activities</div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Area</div>
+    <label><input type="checkbox" data-filter="area" value="resort"> &#127965; Papagayo &amp; Resort</label>
+    <label><input type="checkbox" data-filter="area" value="beach"> &#127958;&#65039; Beaches &amp; Coast</label>
+    <label><input type="checkbox" data-filter="area" value="volcano"> &#127755; Rinc&#243;n de la Vieja</label>
+    <label><input type="checkbox" data-filter="area" value="ocean"> &#127754; Ocean Adventures</label>
+    <label><input type="checkbox" data-filter="area" value="daytrip"> &#128663; Day Trips &amp; Culture</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Activity Type</div>
+    <label><input type="checkbox" data-filter="type" value="adventure"> &#128640; Adventure &amp; Outdoors</label>
+    <label><input type="checkbox" data-filter="type" value="nature"> &#127807; Nature &amp; Wildlife</label>
+    <label><input type="checkbox" data-filter="type" value="beach"> &#127958;&#65039; Beach &amp; Relaxation</label>
+    <label><input type="checkbox" data-filter="type" value="water"> &#127754; Water Activities</label>
+    <label><input type="checkbox" data-filter="type" value="culture"> &#127963;&#65039; Culture &amp; Tours</label>
+    <label><input type="checkbox" data-filter="type" value="food"> &#127829; Food &amp; Drink</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Suitable for</div>
+    <label><input type="checkbox" data-filter="tom" value="yes"> &#9989; Tom (8)</label>
+    <label><input type="checkbox" data-filter="teens" value="love"> &#11088; Teens love it</label>
+    <label><input type="checkbox" data-filter="family" value="yes"> &#128104;&#8205;&#128105;&#8205;&#128103;&#8205;&#128102; Whole family</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Cost</div>
+    <label><input type="checkbox" data-filter="cost" value="free"> Free</label>
+    <label><input type="checkbox" data-filter="cost" value="budget"> Budget (under $25pp)</label>
+    <label><input type="checkbox" data-filter="cost" value="mid"> Mid-range ($25-60pp)</label>
+    <label><input type="checkbox" data-filter="cost" value="premium"> Premium ($60+pp)</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Special</div>
+    <label><input type="checkbox" data-filter="mustdo" value="true"> &#11088; Must-do highlights only</label>
+  </div>
+
+  <button class="clear-filters" onclick="clearFilters()">Clear all filters</button>
+</aside>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+<div class="container">
+
+<!-- TOP 10 -->
+<div class="top10">
+  <h2>&#11088; The Unmissable 10</h2>
+  <ol>
+    <li>&#127755; <strong>Rinc&#243;n de la Vieja Volcano Hike</strong> &#8212; bubbling mud pots, volcanic craters, jungle trails</li>
+    <li>&#128640; <strong>Guachipel&#237;n Adventure Combo</strong> &#8212; zip lines + river tubing + hot springs + horseback in one epic day</li>
+    <li>&#127958;&#65039; <strong>Playa Conchal</strong> &#8212; white crushed-shell beach with crystal-clear turquoise water</li>
+    <li>&#9973; <strong>Sunset Catamaran Cruise</strong> &#8212; sail the Papagayo coast with snorkelling, dolphins &amp; open bar</li>
+    <li>&#127940; <strong>Surf Lessons at Tamarindo</strong> &#8212; learn to ride the waves at Costa Rica&#8217;s most famous surf beach</li>
+    <li>&#9832;&#65039; <strong>Volcanic Mud Baths &amp; Hot Springs</strong> &#8212; slather on volcanic mud, soak in thermal pools</li>
+    <li>&#127754; <strong>Llanos de Cortez Waterfall</strong> &#8212; stunning free waterfall with natural swimming pool</li>
+    <li>&#128010; <strong>Palo Verde Boat Safari</strong> &#8212; crocodiles, monkeys, exotic birds on the Tempisque River</li>
+    <li>&#129343; <strong>Catalina Islands Snorkelling</strong> &#8212; rays, turtles &amp; tropical fish at volcanic offshore islands</li>
+    <li>&#127749; <strong>Playa Grande Turtle Nesting</strong> &#8212; watch leatherback turtles nest on this protected beach</li>
+  </ol>
+</div>
+
+<!-- SUMMARY STATS -->
+<div class="summary-grid">
+  <div class="summary-card"><div class="big-num">75</div><div class="label">Total Activities</div></div>
+  <div class="summary-card"><div class="big-num">15</div><div class="label">Papagayo &amp; Resort</div></div>
+  <div class="summary-card"><div class="big-num">15</div><div class="label">Beaches &amp; Coast</div></div>
+  <div class="summary-card"><div class="big-num">15</div><div class="label">Rinc&#243;n de la Vieja</div></div>
+  <div class="summary-card"><div class="big-num">15</div><div class="label">Ocean Adventures</div></div>
+  <div class="summary-card"><div class="big-num">15</div><div class="label">Day Trips &amp; Culture</div></div>
+  <div class="summary-card"><div class="big-num">18</div><div class="label">Must-Do Highlights</div></div>
+</div>
+
+<!-- Activity Map -->
+<div style="margin: 2rem auto; max-width: 1100px; padding: 0 20px;">
+  <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 4px; font-size: 1.3rem;">&#128205; Activity Map</h3>
+  <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">
+    <span id="map-count">75 activities shown</span> &#8212;
+    <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#FF6B35;vertical-align:middle;"></span> Must-do
+    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#1B3C8F;vertical-align:middle;margin-left:8px;"></span> Other activities.
+    Use the filters to narrow down.
+    <label style="display:inline-flex;align-items:center;gap:4px;margin-left:12px;font-size:0.85rem;color:#2d9a2d;cursor:pointer;">
+      <input type="checkbox" id="accom-toggle" checked onchange="toggleAccom(this.checked)" style="accent-color:#2d9a2d;"> &#127965; Accommodation
+    </label>
+  </p>
+  <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.12); border: 2px solid #1B3C8F;">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <div id="mustdo-map" style="width:100%; height:500px;"></div>
+    <div style="padding: 12px 16px; background: #f8f9fa; max-height: 350px; overflow-y: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: 'Inter', sans-serif;">
+        <thead>
+          <tr style="border-bottom: 2px solid #1B3C8F; color: #0F2557; position: sticky; top: 0; background: #f8f9fa;">
+            <th style="text-align: left; padding: 5px 8px; width: 40px;">#</th>
+            <th style="text-align: left; padding: 5px 8px;">Activity</th>
+            <th style="text-align: right; padding: 5px 8px; width: 140px;">Links</th>
+          </tr>
+        </thead>
+        <tbody id="map-table-body">
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- ═══ PAPAGAYO & RESORT ═══ -->
+<div class="section-header verdon" data-section="resort">
+  <div class="icon">&#127965;</div>
+  <h2>Papagayo &amp; Resort</h2>
+  <p>All-inclusive resort life, pools, beach club &amp; local experiences</p>
+</div>
+
+<div data-section-wrap="resort">
+
+<div class="category-header" data-cat-type="beach" data-cat-area="resort">
+  <span class="cat-icon">&#127965;</span>
+  <h3>Papagayo &amp; Resort</h3>
+  <span class="cat-count">15 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="resort" data-type="beach" data-tom="yes" data-teens="love" data-cost="free" data-num="1" data-mustdo="true" data-lat="10.6200" data-lng="-85.6900">
+  <div class="activity-num">1</div>
+  <div class="activity-content">
+    <h4>Resort Pool Complex &amp; Water Slides</h4>
+    <div class="activity-desc">Multiple pools, lazy river, water slides, swim-up bar. Tom will live here on rest days. All-inclusive = unlimited fun. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag free">Included!</span>
+      <span class="tag cost-free">Free (AI)</span>
+      <span class="tag week-area">&#127965; Papagayo &amp; Resort</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="beach" data-tom="yes" data-teens="ok" data-cost="free" data-num="2" data-lat="10.6180" data-lng="-85.6920">
+  <div class="activity-num">2</div>
+  <div class="activity-content">
+    <h4>Resort Beach &amp; Sunbathing</h4>
+    <div class="activity-desc">Golden sand beach right at the resort. Calm sheltered water in the Papagayo Bay, perfect for Tom.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Included!</span>
+      <span class="tag cost-free">Free (AI)</span>
+      <span class="tag week-area">&#127965; Papagayo &amp; Resort</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="water" data-tom="yes" data-teens="ok" data-cost="free" data-num="3" data-lat="10.6190" data-lng="-85.6910">
+  <div class="activity-num">3</div>
+  <div class="activity-content">
+    <h4>Kayaking &amp; Paddleboarding (Resort)</h4>
+    <div class="activity-desc">Non-motorised water sports included at most all-inclusive resorts. Calm bay = perfect conditions.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Included!</span>
+      <span class="tag cost-free">Free (AI)</span>
+      <span class="tag week-area">&#127965; Papagayo &amp; Resort</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="beach" data-tom="yes" data-teens="ok" data-cost="free" data-num="4" data-lat="10.6170" data-lng="-85.6940">
+  <div class="activity-num">4</div>
+  <div class="activity-content">
+    <h4>Beach Volleyball &amp; Resort Sports</h4>
+    <div class="activity-desc">Beach volleyball, football, table tennis, archery at the resort. George will dominate.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Included!</span>
+      <span class="tag cost-free">Free (AI)</span>
+      <span class="tag week-area">&#127965; Papagayo &amp; Resort</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="food" data-tom="yes" data-teens="ok" data-cost="free" data-num="5" data-lat="10.6195" data-lng="-85.6905">
+  <div class="activity-num">5</div>
+  <div class="activity-content">
+    <h4>All-Inclusive Dining (Multiple Restaurants)</h4>
+    <div class="activity-desc">Buffet and &#224; la carte restaurants &#8212; Italian, Japanese, Mexican, seafood. Tom eats unlimited pizza.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Included!</span>
+      <span class="tag cost-free">Free (AI)</span>
+      <span class="tag week-area">&#127965; Papagayo &amp; Resort</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="6" data-lat="10.6185" data-lng="-85.6930">
+  <div class="activity-num">6</div>
+  <div class="activity-content">
+    <h4>Evening Entertainment &amp; Shows</h4>
+    <div class="activity-desc">Nightly shows, live music, kids&#8217; disco, fire dancers. Different theme every night.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Included!</span>
+      <span class="tag cost-free">Free (AI)</span>
+      <span class="tag week-area">&#127965; Papagayo &amp; Resort</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="nature" data-tom="yes" data-teens="ok" data-cost="free" data-num="7" data-lat="10.6210" data-lng="-85.6880">
+  <div class="activity-num">7</div>
+  <div class="activity-content">
+    <h4>Resort Nature Trail &amp; Wildlife Spotting</h4>
+    <div class="activity-desc">Howler monkeys, iguanas, and tropical birds right on the resort grounds. Free morning walk.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127965; Papagayo &amp; Resort</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="resort" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="8" data-mustdo="true" data-lat="10.6150" data-lng="-85.6950">
+  <div class="activity-num">8</div>
+  <div class="activity-content">
+    <h4>Papagayo Bay Snorkelling</h4>
+    <div class="activity-desc">Snorkel right off the resort beach in calm bay waters. Tropical fish, rays, and sometimes turtles. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$15-25pp</span>
+      <span class="tag cost-budget">&lt; $25pp</span>
+      <span class="tag week-area">&#127965; Papagayo &amp; Resort</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="9" data-lat="10.6160" data-lng="-85.6870">
+  <div class="activity-num">9</div>
+  <div class="activity-content">
+    <h4>Jet Ski Rental (Papagayo)</h4>
+    <div class="activity-desc">Blast around the Papagayo coast on a jet ski. George and Katie will fight over who goes first.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom (with adult)</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$50-80/30min</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127965; Papagayo &amp; Resort</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="beach" data-tom="yes" data-teens="ok" data-cost="free" data-num="10" data-lat="10.6140" data-lng="-85.6960">
+  <div class="activity-num">10</div>
+  <div class="activity-content">
+    <h4>Sunset Beach Walk</h4>
+    <div class="activity-desc">Pacific sunsets are legendary. Walk the beach as the sky turns gold and pink. Katie&#8217;s photography hour.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127965; Papagayo &amp; Resort</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="beach" data-tom="no" data-teens="ok" data-cost="mid" data-num="11" data-lat="10.6175" data-lng="-85.6915">
+  <div class="activity-num">11</div>
+  <div class="activity-content">
+    <h4>Resort Spa &amp; Wellness</h4>
+    <div class="activity-desc">Treat yourselves to a massage or facial. Teens welcome for some treatments. Parent rest day luxury.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (boring)</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$50-120pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127965; Papagayo &amp; Resort</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="water" data-tom="yes" data-teens="ok" data-cost="budget" data-num="12" data-lat="10.6205" data-lng="-85.6895">
+  <div class="activity-num">12</div>
+  <div class="activity-content">
+    <h4>Glass-Bottom Boat Tour</h4>
+    <div class="activity-desc">See the underwater world without getting wet. Perfect for Tom to spot fish and sea turtles.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$20-35pp</span>
+      <span class="tag cost-budget">&lt; $25pp</span>
+      <span class="tag week-area">&#127965; Papagayo &amp; Resort</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="resort" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="13" data-mustdo="true" data-lat="10.6230" data-lng="-85.6850">
+  <div class="activity-num">13</div>
+  <div class="activity-content">
+    <h4>Beach Bonfire &amp; Stargazing</h4>
+    <div class="activity-desc">Book a private beach bonfire with s&#8217;mores. Incredible stargazing away from city lights. MUST-DO family memory.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$30-50pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127965; Papagayo &amp; Resort</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="food" data-tom="yes" data-teens="ok" data-cost="budget" data-num="14" data-lat="10.6165" data-lng="-85.6935">
+  <div class="activity-num">14</div>
+  <div class="activity-content">
+    <h4>Local Village Visit (Coco or Playas del Coco)</h4>
+    <div class="activity-desc">Walk the fishing village of Playas del Coco. Local sodas, souvenir shops, real Costa Rica.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$5-15pp</span>
+      <span class="tag cost-budget">&lt; $25pp</span>
+      <span class="tag week-area">&#127965; Papagayo &amp; Resort</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="water" data-tom="yes" data-teens="love" data-cost="mid" data-num="15" data-lat="10.6145" data-lng="-85.6945">
+  <div class="activity-num">15</div>
+  <div class="activity-content">
+    <h4>Banana Boat &amp; Tube Rides</h4>
+    <div class="activity-desc">Inflatable banana boat and tube rides pulled by speedboat. Tom will scream with joy.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$25-40pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127965; Papagayo &amp; Resort</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+</div><!-- end resort section -->
+
+<!-- ═══ BEACHES & COAST ═══ -->
+<div class="section-header azur" data-section="beach">
+  <div class="icon">&#127958;&#65039;</div>
+  <h2>Beaches &amp; Coast</h2>
+  <p>Golden sand, surf towns, turtle nesting &amp; coastal adventures</p>
+</div>
+
+<div data-section-wrap="beach">
+
+<div class="category-header" data-cat-type="beach" data-cat-area="beach">
+  <span class="cat-icon">&#127958;&#65039;</span>
+  <h3>Beaches &amp; Coast</h3>
+  <span class="cat-count">15 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="beach" data-type="beach" data-tom="yes" data-teens="love" data-cost="free" data-num="16" data-mustdo="true" data-lat="10.4080" data-lng="-85.8370">
+  <div class="activity-num">16</div>
+  <div class="activity-content">
+    <h4>Playa Conchal</h4>
+    <div class="activity-desc">Stunning white crushed-shell beach with turquoise water. One of Costa Rica&#8217;s most beautiful beaches. Katie will photograph everything. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens (Katie &#10084;)</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127958;&#65039; Beaches &amp; Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="beach" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="17" data-mustdo="true" data-lat="10.2990" data-lng="-85.8400">
+  <div class="activity-num">17</div>
+  <div class="activity-content">
+    <h4>Surf Lessons at Tamarindo</h4>
+    <div class="activity-desc">Learn to surf at Costa Rica&#8217;s most famous surf town. Gentle beginner waves, professional instructors. George will be standing by lesson 2. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom (8+ OK)</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$50-70pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127958;&#65039; Beaches &amp; Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="beach" data-type="nature" data-tom="yes" data-teens="love" data-cost="mid" data-num="18" data-mustdo="true" data-lat="10.3280" data-lng="-85.8530">
+  <div class="activity-num">18</div>
+  <div class="activity-content">
+    <h4>Playa Grande &#8212; Turtle Nesting (Las Baulas NP)</h4>
+    <div class="activity-desc">Protected beach where leatherback turtles nest. Guided night tours Oct-Mar, but green turtles possible Aug. Bucket-list wildlife. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$25-35pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127958;&#65039; Beaches &amp; Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="beach" data-type="beach" data-tom="yes" data-teens="ok" data-cost="free" data-num="19" data-lat="10.4550" data-lng="-85.7680">
+  <div class="activity-num">19</div>
+  <div class="activity-content">
+    <h4>Playa Hermosa</h4>
+    <div class="activity-desc">Beautiful calm beach perfect for families. Great snorkelling at the rocky ends. Less crowded than Tamarindo.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127958;&#65039; Beaches &amp; Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="beach" data-type="beach" data-tom="yes" data-teens="ok" data-cost="free" data-num="20" data-lat="10.4700" data-lng="-85.7500">
+  <div class="activity-num">20</div>
+  <div class="activity-content">
+    <h4>Playa Panam&#225;</h4>
+    <div class="activity-desc">Quiet, shallow beach ideal for Tom. Very calm water, local vendors, no crowds.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127958;&#65039; Beaches &amp; Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="beach" data-type="beach" data-tom="yes" data-teens="ok" data-cost="free" data-num="21" data-lat="10.5470" data-lng="-85.7000">
+  <div class="activity-num">21</div>
+  <div class="activity-content">
+    <h4>Playa del Coco</h4>
+    <div class="activity-desc">Bustling beach town with restaurants, shops, and fishing boats. Great for a half-day trip from the resort.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127958;&#65039; Beaches &amp; Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="beach" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="22" data-lat="10.3950" data-lng="-85.8340">
+  <div class="activity-num">22</div>
+  <div class="activity-content">
+    <h4>Playa Flamingo &#8212; Beach &amp; Water Sports</h4>
+    <div class="activity-desc">White sand beach with jet skis, parasailing, and stand-up paddleboarding. Upscale but fun.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$30-50pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127958;&#65039; Beaches &amp; Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="beach" data-type="nature" data-tom="yes" data-teens="ok" data-cost="budget" data-num="23" data-lat="10.3300" data-lng="-85.8200">
+  <div class="activity-num">23</div>
+  <div class="activity-content">
+    <h4>Tamarindo Estuary Boat Tour</h4>
+    <div class="activity-desc">Guided boat tour through the mangrove estuary. Crocodiles, monkeys, iguanas. Tom&#8217;s crocodile obsession satisfied.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$25-35pp</span>
+      <span class="tag cost-budget">&lt; $25pp</span>
+      <span class="tag week-area">&#127958;&#65039; Beaches &amp; Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="beach" data-type="adventure" data-tom="no" data-teens="love" data-cost="mid" data-num="24" data-mustdo="true" data-lat="10.2850" data-lng="-85.8450">
+  <div class="activity-num">24</div>
+  <div class="activity-content">
+    <h4>Surf Session &#8212; Playa Langosta</h4>
+    <div class="activity-desc">More challenging waves just south of Tamarindo. For George and Katie to level up after their lesson. MUST-DO for teens.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (strong waves)</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$40-60pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127958;&#65039; Beaches &amp; Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="beach" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="25" data-lat="10.4600" data-lng="-85.7650">
+  <div class="activity-num">25</div>
+  <div class="activity-content">
+    <h4>Beach Horseback Riding (Playa Hermosa)</h4>
+    <div class="activity-desc">Ride along the beach at sunset. Gentle horses suitable for all abilities. Magical experience.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom (guided)</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$45-65pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127958;&#65039; Beaches &amp; Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="beach" data-type="nature" data-tom="yes" data-teens="ok" data-cost="mid" data-num="26" data-lat="10.3050" data-lng="-85.8300">
+  <div class="activity-num">26</div>
+  <div class="activity-content">
+    <h4>Tamarindo Wildlife Refuge Walk</h4>
+    <div class="activity-desc">Guided walk through the mangrove reserve. Spot howler monkeys, crocodiles, and scarlet macaws.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$25-40pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127958;&#65039; Beaches &amp; Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="beach" data-type="beach" data-tom="yes" data-teens="ok" data-cost="free" data-num="27" data-lat="10.4400" data-lng="-85.7950">
+  <div class="activity-num">27</div>
+  <div class="activity-content">
+    <h4>Playa Brasilito Village</h4>
+    <div class="activity-desc">Authentic fishing village near Conchal. Cheap local food, friendly atmosphere, real Costa Rica.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Free (food extra)</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127958;&#65039; Beaches &amp; Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="beach" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="28" data-lat="10.3200" data-lng="-85.8350">
+  <div class="activity-num">28</div>
+  <div class="activity-content">
+    <h4>ATV Beach &amp; Jungle Tour (Tamarindo)</h4>
+    <div class="activity-desc">ATV ride along the beach and through jungle trails. Mud, rivers, and amazing views.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom (passenger)</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$55-85pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127958;&#65039; Beaches &amp; Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="beach" data-type="nature" data-tom="yes" data-teens="ok" data-cost="mid" data-num="29" data-mustdo="true" data-lat="10.3100" data-lng="-85.8380">
+  <div class="activity-num">29</div>
+  <div class="activity-content">
+    <h4>Mangrove Night Kayaking (Tamarindo)</h4>
+    <div class="activity-desc">Paddle through bioluminescent waters in the mangroves after dark. Magical glowing plankton. Unforgettable. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$45-65pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127958;&#65039; Beaches &amp; Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="beach" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="30" data-lat="10.2950" data-lng="-85.8420">
+  <div class="activity-num">30</div>
+  <div class="activity-content">
+    <h4>Tamarindo Zip Line &amp; Canopy Tour</h4>
+    <div class="activity-desc">Zip through the jungle canopy with views down to the Pacific. Multiple lines, monkey bridges, rappelling.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom (min age 5)</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$55-75pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127958;&#65039; Beaches &amp; Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+</div><!-- end beach section -->
+<!-- ═══ RINCÓN DE LA VIEJA ═══ -->
+<div class="section-header verdon" data-section="volcano">
+  <div class="icon">&#127755;</div>
+  <h2>Rinc&#243;n de la Vieja</h2>
+  <p>Volcano trails, hot springs, mud baths &amp; adventure combos</p>
+</div>
+
+<div data-section-wrap="volcano">
+
+<div class="category-header" data-cat-type="adventure" data-cat-area="volcano">
+  <span class="cat-icon">&#127755;</span>
+  <h3>Rinc&#243;n de la Vieja</h3>
+  <span class="cat-count">15 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="volcano" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="31" data-mustdo="true" data-lat="10.7650" data-lng="-85.3480">
+  <div class="activity-num">31</div>
+  <div class="activity-content">
+    <h4>Rinc&#243;n de la Vieja Volcano Hike</h4>
+    <div class="activity-desc">Hike through volcanic landscape &#8212; bubbling mud pots, steam vents, volcanic craters, jungle trails. THE iconic Guanacaste adventure. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">Park $17 + guide $30-45</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127755; Rinc&#243;n de la Vieja</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="volcano" data-type="adventure" data-tom="yes" data-teens="love" data-cost="premium" data-num="32" data-mustdo="true" data-lat="10.7400" data-lng="-85.3600">
+  <div class="activity-num">32</div>
+  <div class="activity-content">
+    <h4>Guachipel&#237;n Adventure Combo (1-Day Pass)</h4>
+    <div class="activity-desc">THE best value in Costa Rica: zip lines + river tubing + horseback riding + volcanic mud baths + hot springs. All in one epic day. $145-203pp. George will peak. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$145-203pp (combo)</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#127755; Rinc&#243;n de la Vieja</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="volcano" data-type="beach" data-tom="yes" data-teens="love" data-cost="mid" data-num="33" data-mustdo="true" data-lat="10.7380" data-lng="-85.3550">
+  <div class="activity-num">33</div>
+  <div class="activity-content">
+    <h4>Volcanic Mud Baths &amp; Hot Springs</h4>
+    <div class="activity-desc">Slather yourself in warm volcanic mud, let it dry, rinse off in natural hot springs. Skin feels amazing. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$40-55pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127755; Rinc&#243;n de la Vieja</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="volcano" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="34" data-lat="10.7420" data-lng="-85.3580">
+  <div class="activity-num">34</div>
+  <div class="activity-content">
+    <h4>Zip Line Canopy Tour (Guachipel&#237;n)</h4>
+    <div class="activity-desc">10+ zip lines through the volcanic jungle canopy. One line is 400m long over a river canyon. Incredible.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom (min 4yrs)</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$45-65pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127755; Rinc&#243;n de la Vieja</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="volcano" data-type="water" data-tom="yes" data-teens="love" data-cost="mid" data-num="35" data-lat="10.7350" data-lng="-85.3650">
+  <div class="activity-num">35</div>
+  <div class="activity-content">
+    <h4>River Tubing (R&#237;o Negro)</h4>
+    <div class="activity-desc">Float down the river in an inflatable tube through jungle. Gentle rapids, wildlife spotting, cooling off.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$35-50pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127755; Rinc&#243;n de la Vieja</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="volcano" data-type="adventure" data-tom="yes" data-teens="ok" data-cost="mid" data-num="36" data-lat="10.7450" data-lng="-85.3520">
+  <div class="activity-num">36</div>
+  <div class="activity-content">
+    <h4>Horseback Riding to Hot Springs</h4>
+    <div class="activity-desc">Ride through dry tropical forest to hidden hot springs. Gentle horses, beautiful scenery.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom (guided)</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$45-60pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127755; Rinc&#243;n de la Vieja</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="volcano" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="37" data-mustdo="true" data-lat="10.7600" data-lng="-85.3500">
+  <div class="activity-num">37</div>
+  <div class="activity-content">
+    <h4>Waterfall Hike &#8212; La Cangreja &amp; Escondidas</h4>
+    <div class="activity-desc">Hike to the stunning blue La Cangreja waterfall inside the national park. Swimming allowed at the base. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom (moderate hike)</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$17 park + guide $25-40</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127755; Rinc&#243;n de la Vieja</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="volcano" data-type="nature" data-tom="yes" data-teens="ok" data-cost="mid" data-num="38" data-lat="10.7500" data-lng="-85.3450">
+  <div class="activity-num">38</div>
+  <div class="activity-content">
+    <h4>Volcanic Hot Springs (Hacienda Guachipel&#237;n)</h4>
+    <div class="activity-desc">Natural thermal pools heated by the volcano. Multiple temperature pools, jungle setting, very relaxing.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$30-45pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127755; Rinc&#243;n de la Vieja</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="volcano" data-type="adventure" data-tom="no" data-teens="love" data-cost="premium" data-num="39" data-lat="10.7480" data-lng="-85.3540">
+  <div class="activity-num">39</div>
+  <div class="activity-content">
+    <h4>Canyoneering &amp; Waterfall Rappelling</h4>
+    <div class="activity-desc">Rappel down volcanic waterfalls. Three descents through narrow jungle canyons. For thrill-seekers only.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (min age 12)</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$65-95pp</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#127755; Rinc&#243;n de la Vieja</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="volcano" data-type="nature" data-tom="yes" data-teens="ok" data-cost="budget" data-num="40" data-lat="10.7550" data-lng="-85.3420">
+  <div class="activity-num">40</div>
+  <div class="activity-content">
+    <h4>Bubbling Mud Pots Trail (Las Pailas)</h4>
+    <div class="activity-desc">Easy loop trail past boiling mud pots, fumaroles, and mini geysers. Tom will think it&#8217;s a volcano about to blow.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$17pp (park entry)</span>
+      <span class="tag cost-budget">&lt; $25pp</span>
+      <span class="tag week-area">&#127755; Rinc&#243;n de la Vieja</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="volcano" data-type="nature" data-tom="yes" data-teens="ok" data-cost="mid" data-num="41" data-lat="10.7300" data-lng="-85.3700">
+  <div class="activity-num">41</div>
+  <div class="activity-content">
+    <h4>Night Walk &#8212; Volcanic Wildlife</h4>
+    <div class="activity-desc">Guided night hike looking for frogs, snakes, spiders, kinkajous, and sleeping birds. Torch-lit jungle.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$35-50pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127755; Rinc&#243;n de la Vieja</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="volcano" data-type="adventure" data-tom="yes" data-teens="ok" data-cost="mid" data-num="42" data-lat="10.7430" data-lng="-85.3560">
+  <div class="activity-num">42</div>
+  <div class="activity-content">
+    <h4>Hanging Bridges Trail (Guachipel&#237;n)</h4>
+    <div class="activity-desc">Walk through the treetop canopy on suspension bridges. Spot monkeys, toucans, and sloths from above.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$30-45pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127755; Rinc&#243;n de la Vieja</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="volcano" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="43" data-lat="10.7370" data-lng="-85.3630">
+  <div class="activity-num">43</div>
+  <div class="activity-content">
+    <h4>Rock Climbing Wall (Guachipel&#237;n)</h4>
+    <div class="activity-desc">Outdoor climbing wall on volcanic rock. Multiple difficulty levels. George will race to the top.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom (easy routes)</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$25-40pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127755; Rinc&#243;n de la Vieja</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="volcano" data-type="culture" data-tom="yes" data-teens="ok" data-cost="mid" data-num="44" data-lat="10.6300" data-lng="-85.4400">
+  <div class="activity-num">44</div>
+  <div class="activity-content">
+    <h4>Liberia City &#8212; White City Walking Tour</h4>
+    <div class="activity-desc">Explore Costa Rica&#8217;s &#8220;White City&#8221; &#8212; colonial architecture, local markets, authentic food, Guanacaste museum.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$10-20pp (food extra)</span>
+      <span class="tag cost-budget">&lt; $25pp</span>
+      <span class="tag week-area">&#127755; Rinc&#243;n de la Vieja</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="volcano" data-type="nature" data-tom="yes" data-teens="ok" data-cost="mid" data-num="45" data-lat="10.7250" data-lng="-85.3750">
+  <div class="activity-num">45</div>
+  <div class="activity-content">
+    <h4>Butterfly Garden &amp; Insect Museum</h4>
+    <div class="activity-desc">Walk-through butterfly enclosure with hundreds of species. Insect museum with giant beetles. Tom fascinated.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$15-25pp</span>
+      <span class="tag cost-budget">&lt; $25pp</span>
+      <span class="tag week-area">&#127755; Rinc&#243;n de la Vieja</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+</div><!-- end volcano section -->
+
+<!-- ═══ OCEAN ADVENTURES ═══ -->
+<div class="section-header azur" data-section="ocean">
+  <div class="icon">&#127754;</div>
+  <h2>Ocean Adventures</h2>
+  <p>Catamaran cruises, snorkelling, fishing &amp; marine wildlife</p>
+</div>
+
+<div data-section-wrap="ocean">
+
+<div class="category-header" data-cat-type="water" data-cat-area="ocean">
+  <span class="cat-icon">&#127754;</span>
+  <h3>Ocean Adventures</h3>
+  <span class="cat-count">15 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="ocean" data-type="water" data-tom="yes" data-teens="love" data-cost="premium" data-num="46" data-mustdo="true" data-lat="10.5800" data-lng="-85.7400">
+  <div class="activity-num">46</div>
+  <div class="activity-content">
+    <h4>Sunset Catamaran Cruise</h4>
+    <div class="activity-desc">Sail the Papagayo coast at sunset. Open bar, snorkelling stop, dolphins, incredible views. Katie&#8217;s camera won&#8217;t stop. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens (Katie &#10084;)</span>
+      <span class="tag cost">$85-120pp</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#127754; Ocean Adventures</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="ocean" data-type="water" data-tom="yes" data-teens="love" data-cost="premium" data-num="47" data-mustdo="true" data-lat="10.4700" data-lng="-85.8200">
+  <div class="activity-num">47</div>
+  <div class="activity-content">
+    <h4>Catalina Islands Snorkelling Trip</h4>
+    <div class="activity-desc">Boat trip to the volcanic Catalina Islands. Rays, sea turtles, tropical fish, sometimes dolphins. World-class snorkelling. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$75-110pp</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#127754; Ocean Adventures</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="ocean" data-type="water" data-tom="yes" data-teens="love" data-cost="premium" data-num="48" data-mustdo="true" data-lat="10.5600" data-lng="-85.7100">
+  <div class="activity-num">48</div>
+  <div class="activity-content">
+    <h4>Palo Verde Boat Safari (Tempisque River)</h4>
+    <div class="activity-desc">Cruise down the Tempisque River &#8212; massive crocodiles, howler monkeys, exotic birds, iguanas. Tom&#8217;s crocodile dream come true. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$65-90pp</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#127754; Ocean Adventures</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="ocean" data-type="water" data-tom="yes" data-teens="ok" data-cost="premium" data-num="49" data-lat="10.5500" data-lng="-85.7200">
+  <div class="activity-num">49</div>
+  <div class="activity-content">
+    <h4>Sport Fishing (Half Day)</h4>
+    <div class="activity-desc">Deep-sea fishing for mahi-mahi, roosterfish, and sailfish. Papagayo is world-famous for fishing.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$400-600/boat (split)</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#127754; Ocean Adventures</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="ocean" data-type="water" data-tom="yes" data-teens="love" data-cost="premium" data-num="50" data-lat="10.5700" data-lng="-85.7350">
+  <div class="activity-num">50</div>
+  <div class="activity-content">
+    <h4>Morning Catamaran &#8212; Snorkelling &amp; Beach BBQ</h4>
+    <div class="activity-desc">Morning cruise with 2 snorkelling stops, secluded beach lunch, paddleboarding. Full day on the water.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$95-140pp</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#127754; Ocean Adventures</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="ocean" data-type="water" data-tom="no" data-teens="love" data-cost="premium" data-num="51" data-lat="10.4800" data-lng="-85.8100">
+  <div class="activity-num">51</div>
+  <div class="activity-content">
+    <h4>Scuba Diving (Catalina Islands)</h4>
+    <div class="activity-desc">PADI discover scuba or certified dives. Giant manta rays, bull sharks (seasonal), incredible visibility.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (min 10-12)</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$95-160pp</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#127754; Ocean Adventures</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="ocean" data-type="water" data-tom="yes" data-teens="ok" data-cost="mid" data-num="52" data-lat="10.5300" data-lng="-85.7000">
+  <div class="activity-num">52</div>
+  <div class="activity-content">
+    <h4>Whale &amp; Dolphin Watching Tour</h4>
+    <div class="activity-desc">Humpback whales pass through July-November. Dolphins year-round. Incredible Pacific marine life.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$55-80pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127754; Ocean Adventures</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="ocean" data-type="water" data-tom="yes" data-teens="ok" data-cost="mid" data-num="53" data-lat="10.5400" data-lng="-85.7050">
+  <div class="activity-num">53</div>
+  <div class="activity-content">
+    <h4>Stand-Up Paddleboarding Tour</h4>
+    <div class="activity-desc">Guided SUP tour along the coast. Calm morning waters, spot turtles and rays from above.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom (tandem board)</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$40-60pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127754; Ocean Adventures</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="ocean" data-type="water" data-tom="yes" data-teens="love" data-cost="premium" data-num="54" data-lat="10.5900" data-lng="-85.7300">
+  <div class="activity-num">54</div>
+  <div class="activity-content">
+    <h4>Parasailing (Playa Flamingo)</h4>
+    <div class="activity-desc">Fly 200ft above the Pacific. Incredible views of the Guanacaste coast. George first, then Katie.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom (tandem with adult)</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$70-100pp</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#127754; Ocean Adventures</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="ocean" data-type="water" data-tom="yes" data-teens="ok" data-cost="mid" data-num="55" data-lat="10.5200" data-lng="-85.7150">
+  <div class="activity-num">55</div>
+  <div class="activity-content">
+    <h4>Kayak &amp; Snorkel Combo Tour</h4>
+    <div class="activity-desc">Kayak along the coast to secluded coves, then snorkel in clear water. Small group, excellent guides.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$50-75pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127754; Ocean Adventures</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="ocean" data-type="water" data-tom="yes" data-teens="love" data-cost="mid" data-num="56" data-lat="10.5100" data-lng="-85.7250">
+  <div class="activity-num">56</div>
+  <div class="activity-content">
+    <h4>Boogie Boarding &amp; Body Surfing</h4>
+    <div class="activity-desc">Rent boogie boards at any of the beaches. Great fun for the whole family in the waves.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$5-15/day rental</span>
+      <span class="tag cost-budget">&lt; $25pp</span>
+      <span class="tag week-area">&#127754; Ocean Adventures</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="ocean" data-type="nature" data-tom="yes" data-teens="ok" data-cost="mid" data-num="57" data-lat="10.4900" data-lng="-85.8050">
+  <div class="activity-num">57</div>
+  <div class="activity-content">
+    <h4>Bat Island Boat Trip (Isla Murci&#233;lagos)</h4>
+    <div class="activity-desc">Boat trip to the remote Bat Islands. Amazing snorkelling, bird colonies, and dramatic volcanic rock formations.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$60-90pp</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#127754; Ocean Adventures</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="ocean" data-type="water" data-tom="yes" data-teens="ok" data-cost="budget" data-num="58" data-lat="10.5000" data-lng="-85.7300">
+  <div class="activity-num">58</div>
+  <div class="activity-content">
+    <h4>Inshore Fishing (Manglar Estuary)</h4>
+    <div class="activity-desc">Family-friendly fishing in the calm estuary waters. Catch-and-release snook and snapper. Tom&#8217;s fishing debut.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$20-40pp</span>
+      <span class="tag cost-budget">&lt; $25pp</span>
+      <span class="tag week-area">&#127754; Ocean Adventures</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="ocean" data-type="water" data-tom="yes" data-teens="ok" data-cost="mid" data-num="59" data-lat="10.5650" data-lng="-85.7150">
+  <div class="activity-num">59</div>
+  <div class="activity-content">
+    <h4>Panga Boat Coastal Tour</h4>
+    <div class="activity-desc">Small traditional fishing boat tour along the coast. Visit hidden beaches, sea caves, and cliff jumping spots.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$45-70pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#127754; Ocean Adventures</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="ocean" data-type="water" data-tom="yes" data-teens="love" data-cost="mid" data-num="60" data-lat="10.5550" data-lng="-85.7250">
+  <div class="activity-num">60</div>
+  <div class="activity-content">
+    <h4>Sunset Sailing &#8212; Private Boat</h4>
+    <div class="activity-desc">Private sunset sail for the family. Drinks, snacks, swimming stop. Perfect last-night celebration.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$350-500/boat</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#127754; Ocean Adventures</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+</div><!-- end ocean section -->
+<!-- ═══ DAY TRIPS & CULTURE ═══ -->
+<div class="section-header verdon" data-section="daytrip">
+  <div class="icon">&#128663;</div>
+  <h2>Day Trips &amp; Culture</h2>
+  <p>Waterfalls, wildlife safaris, chocolate tours &amp; cooking classes</p>
+</div>
+
+<div data-section-wrap="daytrip">
+
+<div class="category-header" data-cat-type="culture" data-cat-area="daytrip">
+  <span class="cat-icon">&#128663;</span>
+  <h3>Day Trips &amp; Culture</h3>
+  <span class="cat-count">15 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="daytrip" data-type="nature" data-tom="yes" data-teens="love" data-cost="free" data-num="61" data-mustdo="true" data-lat="10.6480" data-lng="-85.3650">
+  <div class="activity-num">61</div>
+  <div class="activity-content">
+    <h4>Llanos de Cortez Waterfall</h4>
+    <div class="activity-desc">Stunning wide waterfall with natural swimming pool. Completely FREE! Easy 10-min walk from the road. One of Costa Rica&#8217;s hidden gems. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="daytrip" data-type="nature" data-tom="yes" data-teens="ok" data-cost="mid" data-num="62" data-mustdo="true" data-lat="10.3450" data-lng="-85.3500">
+  <div class="activity-num">62</div>
+  <div class="activity-content">
+    <h4>Palo Verde National Park Safari</h4>
+    <div class="activity-desc">Wetland reserve teeming with crocodiles, monkeys, iguanas, and 300+ bird species. Boat tour through mangroves. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$45-70pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="daytrip" data-type="culture" data-tom="yes" data-teens="love" data-cost="mid" data-num="63" data-mustdo="true" data-lat="10.5850" data-lng="-85.5500">
+  <div class="activity-num">63</div>
+  <div class="activity-content">
+    <h4>Chocolate Tour &amp; Tasting</h4>
+    <div class="activity-desc">Bean-to-bar chocolate making. Plant cacao, roast beans, make your own chocolate. Eat everything. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$35-50pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="food" data-tom="yes" data-teens="love" data-cost="premium" data-num="64" data-lat="10.5900" data-lng="-85.5600">
+  <div class="activity-num">64</div>
+  <div class="activity-content">
+    <h4>Costa Rican Cooking Class</h4>
+    <div class="activity-desc">Learn to make gallo pinto, casado, ceviche, and tres leches cake. Eat everything you make!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$60-85pp</span>
+      <span class="tag cost-premium">$60+pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="nature" data-tom="yes" data-teens="ok" data-cost="mid" data-num="65" data-lat="10.5700" data-lng="-85.5400">
+  <div class="activity-num">65</div>
+  <div class="activity-content">
+    <h4>Monkey Tour (Congo Trail)</h4>
+    <div class="activity-desc">Private reserve with howler monkeys, capuchins, coatis. Hand-feed monkeys (safely). Tom&#8217;s new best friends.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$25-40pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="culture" data-tom="no" data-teens="ok" data-cost="mid" data-num="66" data-lat="10.5950" data-lng="-85.5350">
+  <div class="activity-num">66</div>
+  <div class="activity-content">
+    <h4>Coffee Plantation Tour</h4>
+    <div class="activity-desc">Visit a working coffee farm. Learn about growing, processing, roasting. Taste different roasts. Quintessential Costa Rica.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (boring for 8)</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$35-50pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="nature" data-tom="yes" data-teens="ok" data-cost="mid" data-num="67" data-lat="10.6100" data-lng="-85.5200">
+  <div class="activity-num">67</div>
+  <div class="activity-content">
+    <h4>Sloth Sanctuary Visit</h4>
+    <div class="activity-desc">See rescued sloths up close. Learn about conservation. Guided tour with adorable photo opportunities.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$30-45pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="68" data-lat="10.5750" data-lng="-85.5700">
+  <div class="activity-num">68</div>
+  <div class="activity-content">
+    <h4>White Water Rafting (R&#237;o Tenorio)</h4>
+    <div class="activity-desc">Class II-III rapids through jungle gorge. 2-hour adrenaline rush with professional guides. George&#8217;s highlight.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom (Class II OK for 8+)</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$55-80pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="culture" data-tom="yes" data-teens="ok" data-cost="mid" data-num="69" data-lat="10.5600" data-lng="-85.5800">
+  <div class="activity-num">69</div>
+  <div class="activity-content">
+    <h4>Guaitil Pottery Village</h4>
+    <div class="activity-desc">Visit the indigenous Chorotega pottery village. Watch artisans work, try making your own pot. Cultural gem.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$20-35pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="nature" data-tom="yes" data-teens="ok" data-cost="budget" data-num="70" data-lat="10.6200" data-lng="-85.5100">
+  <div class="activity-num">70</div>
+  <div class="activity-content">
+    <h4>Africa Safari Adventure Park</h4>
+    <div class="activity-desc">Drive-through safari park near Liberia with zebras, ostriches, giraffes, and native animals. Tom&#8217;s safari dream.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$20-30pp</span>
+      <span class="tag cost-budget">&lt; $25pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="nature" data-tom="yes" data-teens="ok" data-cost="mid" data-num="71" data-lat="10.5500" data-lng="-85.5650">
+  <div class="activity-num">71</div>
+  <div class="activity-content">
+    <h4>R&#237;o Celeste Day Trip (Tenorio Volcano NP)</h4>
+    <div class="activity-desc">Long day trip to the bluest waterfall on Earth. 2hr drive each way but absolutely worth it.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom (moderate hike)</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$17 park + $40-60 tour</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="food" data-tom="yes" data-teens="ok" data-cost="budget" data-num="72" data-lat="10.6350" data-lng="-85.4350">
+  <div class="activity-num">72</div>
+  <div class="activity-content">
+    <h4>Liberia Central Market &amp; Local Food Tour</h4>
+    <div class="activity-desc">Explore the authentic local market. Try tamales, empanadas, tropical fruits. Cheap, colourful, real.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$5-15pp</span>
+      <span class="tag cost-budget">&lt; $25pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="73" data-lat="10.5800" data-lng="-85.5450">
+  <div class="activity-num">73</div>
+  <div class="activity-content">
+    <h4>Zip Line &amp; Monkey Bridge Combo</h4>
+    <div class="activity-desc">Another canopy adventure option with monkey bridges, Tarzan swings, and rappelling. Can&#8217;t get enough adrenaline.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088;&#11088;&#11088;&#11088; Teens</span>
+      <span class="tag cost">$50-70pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="nature" data-tom="yes" data-teens="ok" data-cost="mid" data-num="74" data-lat="10.6400" data-lng="-85.4800">
+  <div class="activity-num">74</div>
+  <div class="activity-content">
+    <h4>Sensoria Rainforest &#8212; Blue River Walk</h4>
+    <div class="activity-desc">Privately managed trails through pristine rainforest with blue-tinted streams, hot springs, and waterfalls. Magical.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$40-55pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="culture" data-tom="yes" data-teens="ok" data-cost="mid" data-num="75" data-lat="10.5650" data-lng="-85.5550">
+  <div class="activity-num">75</div>
+  <div class="activity-content">
+    <h4>Sugar Cane &amp; Tropical Fruit Farm Tour</h4>
+    <div class="activity-desc">Visit a working farm. Taste fresh sugar cane juice, tropical fruits you&#8217;ve never seen. Make your own dulce de leche.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$30-45pp</span>
+      <span class="tag cost-mid">$25-60pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+</div><!-- end daytrip section -->
+
+
+</div><!-- end container -->
+</div><!-- end main-content -->
+</div><!-- end page-layout -->
+</div><!-- end activitiesSection -->
+<script>
+function toggleActivities() {
+  var section = document.getElementById('activitiesSection');
+  var icon = document.getElementById('activitiesToggleIcon');
+  var text = document.getElementById('activitiesToggleText');
+  var btn = document.getElementById('activitiesToggle');
+  if (section.style.display === 'none') {
+    section.style.display = 'block';
+    icon.textContent = '\u25B2';
+    text.textContent = 'Hide Activities & Filters';
+    btn.style.background = 'linear-gradient(135deg, #1B3C8F 0%, #2a4fa3 100%)';
+    setTimeout(function(){ section.scrollIntoView({behavior: 'smooth', block: 'start'}); }, 100);
+    if (window.activityMap) setTimeout(function(){ window.activityMap.invalidateSize(); }, 300);
+  } else {
+    section.style.display = 'none';
+    icon.textContent = '\u25BC';
+    text.textContent = 'Show All Activities & Filters';
+    btn.style.background = 'linear-gradient(135deg, #0F2557 0%, #1B3C8F 100%)';
+    btn.scrollIntoView({behavior: 'smooth', block: 'center'});
+  }
+}
+</script>
+
+<div class="footer">
+  <p>Created for the Sheldrake family holiday planning &#183; Summer 2026</p>
+  <p>Costa Rica: Guanacaste Single-Base &#183; 14 nights on the Pacific coast &#183; KLM via Amsterdam to Liberia</p>
+</div>
+
+<script>
+(function() {
+  var cards = document.querySelectorAll('.activity-card');
+  var checkboxes = document.querySelectorAll('.filter-sidebar input[type="checkbox"]');
+  var countEl = document.getElementById('visibleCount');
+  var TOTAL = 75;
+
+  function getCheckedValues(filterName) {
+    var vals = [];
+    checkboxes.forEach(function(cb) {
+      if (cb.dataset.filter === filterName && cb.checked) vals.push(cb.value);
+    });
+    return vals;
+  }
+
+  function applyFilters() {
+    var areaFilters = getCheckedValues('area');
+    var typeFilters = getCheckedValues('type');
+    var tomFilters = getCheckedValues('tom');
+    var teenFilters = getCheckedValues('teens');
+    var familyFilters = getCheckedValues('family');
+    var costFilters = getCheckedValues('cost');
+    var mustdoFilters = getCheckedValues('mustdo');
+
+    var visible = 0;
+
+    cards.forEach(function(card) {
+      var show = true;
+
+      if (areaFilters.length > 0 && !areaFilters.includes(card.dataset.area)) show = false;
+      if (typeFilters.length > 0 && !typeFilters.includes(card.dataset.type)) show = false;
+      if (tomFilters.length > 0 && card.dataset.tom !== 'yes') show = false;
+      if (teenFilters.length > 0 && card.dataset.teens !== 'love') show = false;
+      if (familyFilters.length > 0 && card.dataset.tom !== 'yes') show = false;
+      if (costFilters.length > 0 && !costFilters.includes(card.dataset.cost)) show = false;
+      if (mustdoFilters.length > 0 && card.dataset.mustdo !== 'true') show = false;
+
+      if (show) {
+        card.classList.remove('hidden-by-filter');
+        visible++;
+      } else {
+        card.classList.add('hidden-by-filter');
+      }
+    });
+
+    countEl.textContent = visible;
+
+    document.querySelectorAll('.section-header[data-section]').forEach(function(header) {
+      var sectionId = header.dataset.section;
+      var wrap = document.querySelector('[data-section-wrap="' + sectionId + '"]');
+      if (wrap) {
+        var visibleCards = wrap.querySelectorAll('.activity-card:not(.hidden-by-filter)');
+        header.classList.toggle('hidden-by-filter', visibleCards.length === 0);
+        wrap.style.display = visibleCards.length === 0 ? 'none' : '';
+      }
+    });
+
+    document.querySelectorAll('.category-header[data-cat-type]').forEach(function(catHeader) {
+      var sibling = catHeader.nextElementSibling;
+      var hasVisible = false;
+      while (sibling && !sibling.classList.contains('category-header') && !sibling.classList.contains('section-header')) {
+        if (sibling.classList.contains('activity-card') && !sibling.classList.contains('hidden-by-filter')) {
+          hasVisible = true;
+          break;
+        }
+        sibling = sibling.nextElementSibling;
+      }
+      catHeader.classList.toggle('hidden-by-filter', !hasVisible);
+    });
+    if (typeof updateMap === 'function') updateMap();
+  }
+
+  checkboxes.forEach(function(cb) { cb.addEventListener('change', applyFilters); });
+
+  window.clearFilters = function() {
+    checkboxes.forEach(function(cb) { cb.checked = false; });
+    applyFilters();
+  };
+
+  window.toggleFilters = function() {
+    var sidebar = document.getElementById('filterSidebar');
+    var overlay = document.getElementById('filterOverlay');
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('open');
+  };
+})();
+
+function toggleAccom(show) {
+  if (!window.accomMarkers) return;
+  window.accomMarkers.forEach(function(m) {
+    if (show) m.addTo(window.activityMap);
+    else window.activityMap.removeLayer(m);
+  });
+}
+
+function updateMap() {
+  if (!window.activityMarkers) return;
+  var bounds = [];
+  var tableBody = document.getElementById('map-table-body');
+  if (tableBody) tableBody.innerHTML = '';
+  var visibleCount = 0;
+  
+  document.querySelectorAll('.activity-card').forEach(function(card, i) {
+    var marker = window.activityMarkers[i];
+    if (!marker) return;
+    var lat = parseFloat(card.dataset.lat);
+    var lng = parseFloat(card.dataset.lng);
+    if (!lat || !lng) return;
+    
+    var isVisible = !card.classList.contains('hidden-by-filter');
+    if (isVisible) {
+      marker.addTo(window.activityMap);
+      bounds.push([lat, lng]);
+      visibleCount++;
+      if (tableBody) {
+        var num = card.dataset.num;
+        var title = card.querySelector('h4').textContent.trim();
+        var link = card.querySelector('h4 a');
+        var href = link ? link.href : '';
+        var isMustDo = card.dataset.mustdo === 'true';
+        var tr = document.createElement('tr');
+        tr.style.borderBottom = '1px solid #e0e0e0';
+        if (visibleCount % 2 === 0) tr.style.background = '#f0f3f9';
+        tr.innerHTML = '<td style="padding:5px 8px;color:#1B3C8F;font-weight:700;">' + num + '</td>' +
+          '<td style="padding:5px 8px;">' + (isMustDo ? '\u2B50 ' : '') + title + '</td>' +
+          '<td style="padding:5px 8px;text-align:right;">' + 
+          (href ? '<a href="'+href+'" target="_blank" style="color:#1B3C8F;margin-right:10px;">More Info</a>' : '') +
+          '<a href="https://www.google.com/maps?q='+lat+','+lng+'" target="_blank" style="color:#888;">\uD83D\uDCCD Map</a></td>';
+        tableBody.appendChild(tr);
+      }
+    } else {
+      window.activityMap.removeLayer(marker);
+    }
+  });
+  
+  var countEl = document.getElementById('map-count');
+  if (countEl) countEl.textContent = visibleCount + ' activities shown';
+  
+  if (bounds.length > 0) {
+    window.activityMap.fitBounds(bounds, {padding: [30, 30], maxZoom: 12});
+  }
+}
+
+(function(){
+  window.activityMap = L.map('mustdo-map', {scrollWheelZoom: false}).setView([10.45, -85.65], 9);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; CARTO &copy; OSM', maxZoom: 18
+  }).addTo(window.activityMap);
+  
+  window.activityMarkers = [];
+  
+  document.querySelectorAll('.activity-card').forEach(function(card) {
+    var lat = parseFloat(card.dataset.lat);
+    var lng = parseFloat(card.dataset.lng);
+    if (!lat || !lng) { window.activityMarkers.push(null); return; }
+    
+    var num = card.dataset.num;
+    var isMustDo = card.dataset.mustdo === 'true';
+    var title = card.querySelector('h4').textContent.trim();
+    var desc = card.querySelector('.activity-desc');
+    var descText = desc ? desc.textContent.trim().substring(0, 100) + '...' : '';
+    
+    var size = isMustDo ? 28 : 22;
+    var bg = isMustDo ? '#FF6B35' : '#1B3C8F';
+    var fontSize = isMustDo ? '12px' : '10px';
+    
+    var icon = L.divIcon({
+      className: '',
+      html: '<div style="background:'+bg+';color:#fff;width:'+size+'px;height:'+size+'px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:'+fontSize+';font-family:Montserrat,sans-serif;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;cursor:pointer;">'+num+'</div>',
+      iconSize: [size, size],
+      iconAnchor: [size/2, size/2]
+    });
+    
+    var marker = L.marker([lat, lng], {icon: icon})
+      .bindPopup('<div style="min-width:200px;"><b style="color:#0F2557;font-size:0.95rem;">' + (isMustDo ? '\u2B50 ' : '') + title + '</b><br><span style="color:#555;font-size:0.85rem;">' + descText + '</span></div>');
+    
+    marker.addTo(window.activityMap);
+    window.activityMarkers.push(marker);
+  });
+  
+  updateMap();
+
+  // Accommodation overlay
+  window.accomMarkers = [];
+  var accomData = [
+    [10.6200, -85.6900, "RIU Guanacaste", "All-Inclusive Resort", "https://www.riu.com/en/hotel/costa-rica/guanacaste/", "5-star AI, water park, multiple restaurants, beach. From $180/night."],
+    [10.6250, -85.6850, "RIU Palace Costa Rica", "All-Inclusive Resort", "https://www.riu.com/en/hotel/costa-rica/guanacaste/", "Adults-friendly luxury AI, swim-up bar, spa, 24hr room service. From $220/night."],
+    [10.6300, -85.6800, "Planet Hollywood Costa Rica", "All-Inclusive Resort", "https://www.planethollywoodhotels.com/costa-rica", "Star-Class AI, movie memorabilia, multiple pools, lazy river. From $250/night."],
+    [10.6400, -85.6950, "Andaz Costa Rica Resort at Peninsula Papagayo", "Luxury Resort", "https://www.hyatt.com/en-US/hotel/costa-rica/andaz-costa-rica-resort-at-peninsula-papagayo/", "Hyatt luxury, infinity pool, private beaches, spa. From $350/night."],
+    [10.4100, -85.8350, "The Westin Reserva Conchal", "All-Inclusive Resort", "https://www.marriott.com/hotels/travel/sjowi-the-westin-reserva-conchal/", "On Playa Conchal, massive pool, golf, luxury AI. From $300/night."],
+    [10.3000, -85.8400, "Tamarindo Diria Beach Resort", "Resort", "https://www.tamarindodiria.com/", "Beachfront Tamarindo, pools, surf access. From $150/night."],
+    [10.7400, -85.3600, "Hacienda Guachipelin", "Adventure Lodge", "https://www.guachipelin.com/", "At Rincon de la Vieja, adventure combos, hot springs, horseback. From $95/night."],
+    [10.4500, -85.7700, "Hotel Bosque del Mar", "Boutique Hotel", "https://www.bosquedelmar.com/", "Playa Hermosa beachfront, intimate, pool, excellent restaurant. From $180/night."]
+  ];
+  var accomIcon = function(){ return L.divIcon({
+    className:'',
+    html:'<div style="background:#2d9a2d;color:#fff;width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;cursor:pointer;">&#127965;</div>',
+    iconSize:[30,30], iconAnchor:[15,15]
+  }); };
+  accomData.forEach(function(a){
+    var marker = L.marker([a[0],a[1]], {icon: accomIcon()})
+      .bindPopup('<div style="min-width:220px;"><b style="color:#2d9a2d;font-size:0.95rem;">&#127965; '+a[2]+'</b><br><span style="color:#888;font-size:0.8rem;">'+a[3]+'</span><br><span style="color:#555;font-size:0.85rem;">'+a[5]+'</span><br><a href="'+a[4]+'" target="_blank" style="color:#2d9a2d;font-size:0.85rem;">View on '+a[3]+' \u2192</a></div>');
+    marker.addTo(window.activityMap);
+    window.accomMarkers.push(marker);
+  });
+})();
+
+document.addEventListener('click', function(e) {
+  var wrap = document.querySelector('.country-nav__dropdown-wrap');
+  if (wrap && !wrap.contains(e.target)) {
+    var btn = wrap.querySelector('.country-nav__toggle');
+    var menu = wrap.querySelector('.country-nav__menu');
+    if (btn) btn.classList.remove('open');
+    if (menu) menu.classList.remove('open');
+  }
+});
+</script>
+
+</body>
+</html>
