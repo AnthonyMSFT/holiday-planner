@@ -1,0 +1,2299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spain: Barcelona to the Costa del Sol — 92 Family Activities</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+  :root {
+    --primary: #1B3C8F;
+    --dark: #0F2557;
+    --primary-light: #e8edf7;
+    --dark-light: #f0f0f0;
+    --accent: #e67e22;
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #0F2557;
+    --muted: #4a6bb5;
+    --border: #e0e0e0;
+    --sidebar-width: 280px;
+    --accent-orange: #FF6B35;
+  }
+
+  /* ── Country Navbar ─────────────────────────────────── */
+  .country-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(15, 37, 87, 0.95);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    transform: translateY(-100%); transition: transform 0.3s ease;
+  }
+  .country-nav.visible { transform: translateY(0); }
+  .country-nav__inner {
+    max-width: 1400px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 1rem; height: 48px;
+  }
+  .country-nav__label {
+    font-family: 'Playfair Display', serif; font-size: 0.8rem;
+    color: rgba(255,255,255,0.7); white-space: nowrap; margin-right: 0.5rem;
+  }
+  .country-nav__links {
+    display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .country-nav__link {
+    display: flex; align-items: center; gap: 5px;
+    padding: 12px 12px; color: rgba(255,255,255,0.8);
+    font-size: 0.78rem; font-weight: 500; white-space: nowrap;
+    transition: all 0.2s; border-bottom: 2px solid transparent; text-decoration: none;
+  }
+  .country-nav__link:hover { color: #fff; background: rgba(255,255,255,0.08); border-bottom-color: #FF6B35; }
+  .country-nav__link .nav-icon { width: 16px; height: 16px; flex-shrink: 0; opacity: 0.85; }
+  .country-nav__link:hover .nav-icon { opacity: 1; }
+  .country-nav__link--accent { color: #FF6B35; }
+  .country-nav__link--accent:hover { color: #fff; border-bottom-color: #FF6B35; }
+  @media (max-width: 768px) {
+    .country-nav__label { display: none; }
+    .country-nav__link { padding: 12px 8px; font-size: 0.72rem; }
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Montserrat', 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #0F2557 0%, #1B3C8F 100%);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    margin-bottom: 10px;
+  }
+  .hero .subtitle { font-size: 1.1rem; opacity: 0.9; margin-bottom: 8px; }
+  .hero .flights { font-size: 0.9rem; opacity: 0.8; margin-bottom: 8px; }
+  .hero .count {
+    display: inline-block;
+    background: #FF6B35;
+    padding: 8px 24px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-top: 12px;
+  }
+  .hero .family {
+    margin-top: 16px;
+    font-size: 0.95rem;
+    opacity: 0.85;
+  }
+
+  /* ========= LAYOUT: sidebar + main ========= */
+  .page-layout {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* ========= FILTER SIDEBAR ========= */
+  .filter-sidebar {
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: #0F2557;
+    color: #fff;
+    padding: 20px 16px;
+    z-index: 100;
+    scrollbar-width: thin;
+    scrollbar-color: #4a6bb5 #0F2557;
+  }
+  .filter-sidebar::-webkit-scrollbar { width: 6px; }
+  .filter-sidebar::-webkit-scrollbar-track { background: #0F2557; }
+  .filter-sidebar::-webkit-scrollbar-thumb { background: #4a6bb5; border-radius: 3px; }
+
+  .filter-sidebar h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: #1B3C8F;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .filter-sidebar h3::before {
+    content: '⚙️';
+  }
+
+  .filter-count {
+    background: #1B3C8F;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+  .filter-count span { font-size: 1.3rem; }
+
+  .filter-group {
+    margin-bottom: 18px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 14px;
+  }
+  .filter-group:last-child { border-bottom: none; }
+  .filter-group-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #aaa;
+    margin-bottom: 8px;
+  }
+  .filter-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: color 0.15s;
+    font-family: 'Inter', sans-serif;
+  }
+  .filter-group label:hover { color: #1B3C8F; }
+
+  .filter-group input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #4a6bb5;
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .filter-group input[type="checkbox"]:checked {
+    background: #1B3C8F;
+    border-color: #1B3C8F;
+  }
+  .filter-group input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: -1px;
+    left: 2px;
+    font-size: 13px;
+    color: white;
+    font-weight: bold;
+  }
+
+  .clear-filters {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    color: #1B3C8F;
+    border: 2px solid #1B3C8F;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+  }
+  .clear-filters:hover {
+    background: #1B3C8F;
+    color: white;
+  }
+
+  /* Mobile filter toggle */
+  .filter-toggle {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 200;
+    background: #1B3C8F;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  /* ========= MAIN CONTENT ========= */
+  .main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 0 20px;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .top10 {
+    background: linear-gradient(135deg, #e8edf7, #e0e8f5);
+    border: 2px solid #1B3C8F;
+    border-radius: 16px;
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 800px;
+  }
+  .top10 h2 { font-family: 'Montserrat', sans-serif; color: #1B3C8F; margin-bottom: 16px; font-size: 1.5rem; }
+  .top10 ol { padding-left: 24px; }
+  .top10 li { margin-bottom: 8px; font-size: 0.95rem; }
+  .top10 li strong { color: #0F2557; }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 30px 0;
+  }
+  .summary-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+  .summary-card .big-num { font-size: 2.5rem; font-weight: 700; color: #1B3C8F; }
+  .summary-card .label { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+
+  .section-header {
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 16px;
+    margin: 40px 0 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .section-header.area-primary { background: linear-gradient(135deg, #1B3C8F, #142f6e); color: white; }
+  .section-header.area-dark { background: linear-gradient(135deg, #0F2557, #1B3C8F); color: white; }
+  .section-header .icon { font-size: 3rem; margin-bottom: 8px; }
+  .section-header h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+  }
+  .section-header p { opacity: 0.9; margin-top: 6px; font-size: 0.95rem; }
+  .section-header.hidden-by-filter { display: none; }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 32px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--border);
+  }
+  .category-header .cat-icon { font-size: 1.6rem; }
+  .category-header h3 { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; }
+  .category-header .cat-count {
+    background: var(--primary-light);
+    color: var(--primary);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .category-header.hidden-by-filter { display: none; }
+
+  .activity-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    gap: 12px;
+    align-items: start;
+    transition: box-shadow 0.2s, opacity 0.2s;
+  }
+  .activity-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .activity-card.highlight { border-left: 4px solid var(--accent); }
+  .activity-card.hidden-by-filter { display: none; }
+
+  .activity-num {
+    background: var(--primary);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .activity-content h4 { font-size: 1rem; margin-bottom: 4px; }
+  .activity-desc { font-size: 0.88rem; color: var(--muted); margin-bottom: 8px; }
+
+  .activity-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .tag.tom-yes { background: #d1fae5; color: #065f46; }
+  .tag.tom-no { background: #fee2e2; color: #991b1b; }
+  .tag.tom-check { background: #fef3c7; color: #92400e; }
+  .tag.teen-love { background: #ede9fe; color: #5b21b6; }
+  .tag.teen-ok { background: #f3f4f6; color: #4b5563; }
+
+  /* Cost badges */
+  .tag.cost-free { background: #d1fae5; color: #065f46; font-weight: 600; }
+  .tag.cost-budget { background: #dbeafe; color: #1e40af; font-weight: 600; }
+  .tag.cost-mid { background: #bfdbfe; color: #1e3a8a; font-weight: 600; }
+  .tag.cost-premium { background: #c4b5fd; color: #3b0764; font-weight: 600; }
+
+  /* Area badges */
+  .tag.area-badge { background: #e8edf7; color: #1B3C8F; font-weight: 600; }
+
+  .footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  /* ========= RESPONSIVE ========= */
+  @media (max-width: 900px) {
+    .filter-sidebar {
+      position: fixed;
+      left: -300px;
+      top: 0;
+      height: 100vh;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+    .filter-sidebar.open { left: 0; }
+    .filter-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+    }
+    .filter-overlay.open { display: block; }
+    .filter-toggle { display: flex; align-items: center; justify-content: center; }
+    .main-content { padding: 0 12px; }
+    .page-layout { display: block; }
+  }
+
+  @media (max-width: 640px) {
+    .activity-card { grid-template-columns: 32px 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="country-nav" id="countryNav">
+  <div class="country-nav__inner">
+    <span class="country-nav__label">Explore:</span>
+    <div class="country-nav__links">
+      <a href="showcase/index.html" class="country-nav__link country-nav__link--accent"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg> Home</a>
+      <a href="France_Verdon_CotedAzur_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h6v18H3V3zm12 0h6v18h-6V3zM9 3h6v18H9V3z" opacity="0.8"/></svg> France</a>
+      <a href="Germany_Bavaria_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L8.5 8.5 2 9.5l5 4.5L5.5 21 12 17.5 18.5 21 17 14l5-4.5-6.5-1L12 2z"/></svg> Germany</a>
+      <a href="Croatia_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20v4H2zm0 6h4v4H6v-2H4v4h4v-2h2v4H8v-2H4v4h20V10H2zm6 0h4v2h-2v2H8v-4zm6 0h4v2h-2v2h-2v-4z"/></svg> Croatia</a>
+      <a href="Sicily_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c3.31 0 6-2.69 6-6 0-4.96-4.49-9-10-9z"/></svg> Sicily</a>
+      <a href="Egypt_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 21h18L12 3 3 21zm9-3l-4.5-9h9L12 18z"/></svg> Egypt</a>
+      <a href="Austria_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z"/></svg> Austria</a>
+      <a href="Bulgaria_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 2.84L18 11v7h-2v-6H8v6H6v-7l6-5.16z"/></svg> Bulgaria</a>
+      <a href="Japan_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg> Japan</a>
+      <a href="Spain_Activities_2026.html" class="country-nav__link" style="border-bottom-color:#FF6B35;color:#fff;"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg> Spain</a>
+      <a href="CostaRica_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.71c.76.34 1.59.54 2.46.59L9 20c.5-4 4.17-8 9-8V8z"/></svg> Costa Rica</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" style="position:relative; overflow:hidden; min-height: 340px;">
+  <div style="position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1920&q=80') center/cover no-repeat;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,37,87,.72) 0%, rgba(15,37,87,.88) 100%);"></div>
+  <div style="position:relative; z-index:2;">
+    <h1>🇪🇸 Spain: Barcelona to the Costa del Sol</h1>
+    <div class="subtitle">Costa Brava • Costa Dorada • Costa Blanca • Costa del Sol • Andalusia</div>
+    <div class="flights">✈️ LBA direct to Barcelona, Malaga, Alicante &amp; Girona (Jet2/Ryanair/easyJet). MAN adds even more options. ~2.5-3hrs.</div>
+    <div class="count">🎯 92 Activities Found</div>
+    <div class="family">👨‍👩‍👧‍👦 Researched for 2 adults + Katie (17) + George (15) + Tom (8)</div>
+  </div>
+</div>
+
+<!-- ═══ Weather Summary ═══ -->
+<div class="weather-section" style="background: linear-gradient(135deg, #f0f4ff 0%, #e8edf7 100%); padding: 2rem 0;">
+  <div style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
+    <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 16px; font-size: 1.2rem;">
+      ☀️ August Weather — What to Expect
+    </h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 12px;">
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">🌡️</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">28-32°C</div>
+        <div style="font-size: 0.75rem; color: #666;">Avg. High</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">🌙</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">21-23°C</div>
+        <div style="font-size: 0.75rem; color: #666;">Avg. Low</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">☀️</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">9-11</div>
+        <div style="font-size: 0.75rem; color: #666;">Sun hrs/day</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">🌧️</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">1-3 days</div>
+        <div style="font-size: 0.75rem; color: #666;">Rainy Days</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">🏊</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">24-26°C</div>
+        <div style="font-size: 0.75rem; color: #666;">Sea Temp</div>
+      </div>
+    </div>
+    <p style="font-size: 0.82rem; color: #555; line-height: 1.6; margin: 0;">
+      ☀️ <strong>Hot, sunny, and reliably dry.</strong> Spain in August is classic summer — long sunny days, warm seas, minimal rain. Barcelona and Costa Brava are slightly cooler (28-30°C) than the Costa del Sol and inland Andalusia (32-38°C). The Alhambra and Seville will be scorching — visit early morning. Beach conditions are perfect. All coastal areas have warm, swimmable seas. Peak tourist season — book everything in advance.
+    </p>
+  </div>
+</div>
+<!-- MOBILE FILTER TOGGLE -->
+<button class="filter-toggle" onclick="toggleFilters()" aria-label="Toggle filters">⚙️</button>
+<div class="filter-overlay" id="filterOverlay" onclick="toggleFilters()"></div>
+
+<div class="page-layout">
+
+<!-- FILTER SIDEBAR -->
+<aside class="filter-sidebar" id="filterSidebar">
+  <h3>Filters</h3>
+  <div class="filter-count">Showing <span id="visibleCount">92</span> of 92 activities</div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Area</div>
+    <label><input type="checkbox" data-filter="area" value="barcelona"> 🏙️ Barcelona &amp; Costa Brava</label>
+    <label><input type="checkbox" data-filter="area" value="dorada"> 🎢 Costa Dorada (Salou)</label>
+    <label><input type="checkbox" data-filter="area" value="blanca"> 🏖️ Costa Blanca (Benidorm)</label>
+    <label><input type="checkbox" data-filter="area" value="sol"> ☀️ Costa del Sol (Malaga)</label>
+    <label><input type="checkbox" data-filter="area" value="inland"> 🏛️ Inland / Day Trips</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Activity Type</div>
+    <label><input type="checkbox" data-filter="type" value="themepark"> 🎢 Theme Parks &amp; Fun</label>
+    <label><input type="checkbox" data-filter="type" value="beach"> 🏖️ Beach &amp; Water</label>
+    <label><input type="checkbox" data-filter="type" value="adventure"> 🚀 Adventure &amp; Outdoors</label>
+    <label><input type="checkbox" data-filter="type" value="culture"> 🏛️ Culture &amp; History</label>
+    <label><input type="checkbox" data-filter="type" value="food"> 🍕 Food &amp; Drink</label>
+    <label><input type="checkbox" data-filter="type" value="shopping"> 🛍️ Shopping &amp; Leisure</label>
+    <label><input type="checkbox" data-filter="type" value="nature"> 🌿 Nature &amp; Wildlife</label>
+    <label><input type="checkbox" data-filter="type" value="entertainment"> 🎭 Entertainment</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Tom-Friendly</div>
+    <label><input type="checkbox" data-filter="tom" value="yes"> ✅ Tom-friendly (age 8)</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Teen-Friendly</div>
+    <label><input type="checkbox" data-filter="teens" value="yes"> ⭐ Teen-approved</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Cost</div>
+    <label><input type="checkbox" data-filter="cost" value="free"> Free</label>
+    <label><input type="checkbox" data-filter="cost" value="budget"> £ Budget (under £25pp)</label>
+    <label><input type="checkbox" data-filter="cost" value="mid"> ££ Mid-range (£25-50pp)</label>
+    <label><input type="checkbox" data-filter="cost" value="premium"> £££ Premium (£50+pp)</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Must-Do</div>
+    <label><input type="checkbox" data-filter="mustdo" value="true"> ⭐ Must-do highlights only</label>
+  </div>
+
+  <button class="clear-filters" onclick="clearFilters()">Clear all filters</button>
+</aside>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+<div class="container">
+
+<!-- TOP 10 -->
+<div class="top10">
+  <h2>⭐ The Unmissable 10</h2>
+  <ol>
+    <li>⛪ <strong>La Sagrada Familia</strong> — Gaudí's jaw-dropping unfinished basilica, under 16 free!</li>
+    <li>🎢 <strong>PortAventura + Ferrari Land</strong> — Spain's biggest theme park, George's dream coaster</li>
+    <li>🌊 <strong>Aqualandia Benidorm</strong> — one of Europe's top water parks, Tom's paradise</li>
+    <li>🏰 <strong>Alhambra Palace</strong> — the most beautiful building in Spain, book months ahead</li>
+    <li>🌉 <strong>Ronda</strong> — dramatic gorge town, Katie's Instagram goldmine</li>
+    <li>💃 <strong>Flamenco Show</strong> — authentic cave performance in Granada</li>
+    <li>🥾 <strong>Caminito del Rey</strong> — vertigo-inducing cliff walkway, Tom just qualifies (age 8!)</li>
+    <li>🏔️ <strong>Montserrat</strong> — mountain-top monastery with cable car and boys' choir</li>
+    <li>🍤 <strong>Tapas Crawl</strong> — patatas bravas, jamón, croquetas... the lot</li>
+    <li>🏖️ <strong>Water World Lloret de Mar</strong> — Costa Brava's biggest water park with Speed Furious</li>
+  </ol>
+</div>
+
+<!-- SUMMARY STATS -->
+<div class="summary-grid">
+  <div class="summary-card"><div class="big-num">92</div><div class="label">Total Activities</div></div>
+  <div class="summary-card"><div class="big-num">21</div><div class="label">Must-Do Highlights</div></div>
+  <div class="summary-card"><div class="big-num">23</div><div class="label">Barcelona &amp; Costa Brava</div></div>
+  <div class="summary-card"><div class="big-num">10</div><div class="label">Costa Dorada</div></div>
+  <div class="summary-card"><div class="big-num">15</div><div class="label">Costa Blanca</div></div>
+  <div class="summary-card"><div class="big-num">18</div><div class="label">Costa del Sol</div></div>
+  <div class="summary-card"><div class="big-num">12</div><div class="label">Inland / Day Trips</div></div>
+  <div class="summary-card"><div class="big-num">14</div><div class="label">Food, Shopping &amp; Fun</div></div>
+</div>
+
+<!-- ═══ Must-Do Map ═══ -->
+<div style="margin: 2rem auto; max-width: 1100px; padding: 0 20px;">
+  <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 4px; font-size: 1.3rem;">📍 Activity Map</h3>
+  <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">
+    <span id="map-count">92 activities shown</span> — 
+    <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#FF6B35;vertical-align:middle;"></span> Must-do
+    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#1B3C8F;vertical-align:middle;margin-left:8px;"></span> Other activities.
+    Use the filters to narrow down.
+    <label style="display:inline-flex;align-items:center;gap:4px;margin-left:12px;font-size:0.85rem;color:#2d9a2d;cursor:pointer;">
+      <input type="checkbox" id="accom-toggle" checked onchange="toggleAccom(this.checked)" style="accent-color:#2d9a2d;"> &#127965; Accommodation
+    </label>
+  </p>
+  <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.12); border: 2px solid #1B3C8F;">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <div id="mustdo-map" style="width:100%; height:500px;"></div>
+    <div style="padding: 12px 16px; background: #f8f9fa; max-height: 350px; overflow-y: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: 'Inter', sans-serif;">
+        <thead>
+          <tr style="border-bottom: 2px solid #1B3C8F; color: #0F2557; position: sticky; top: 0; background: #f8f9fa;">
+            <th style="text-align: left; padding: 5px 8px; width: 40px;">#</th>
+            <th style="text-align: left; padding: 5px 8px;">Activity</th>
+            <th style="text-align: right; padding: 5px 8px; width: 140px;">Links</th>
+          </tr>
+        </thead>
+        <tbody id="map-table-body">
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================== -->
+<!-- SECTION: BARCELONA & COSTA BRAVA -->
+<!-- ============================================== -->
+<div class="section-header area-primary" data-section="barcelona">
+  <div class="icon">🏙️</div>
+  <h2>Barcelona &amp; Costa Brava</h2>
+  <p>Gaudí, city beaches, water parks &amp; medieval coast — direct flights from LBA</p>
+</div>
+
+<div data-section-wrap="barcelona">
+
+<!-- Activity 1 -->
+<div class="activity-card highlight" data-area="barcelona" data-type="culture" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="true" data-lat="41.4036" data-lng="2.1744">
+  <div class="activity-num">1</div>
+  <div class="activity-content">
+    <h4>La Sagrada Familia</h4>
+    <div class="activity-desc">Gaudí's iconic unfinished basilica, breathtaking inside. Light pours through stained glass like nowhere else on Earth. Adults ~€26 (£22), under 16 free with adult.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🏙️ Barcelona</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 2 -->
+<div class="activity-card highlight" data-area="barcelona" data-type="culture" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="true" data-lat="41.4145" data-lng="2.1527">
+  <div class="activity-num">2</div>
+  <div class="activity-content">
+    <h4>Park Güell</h4>
+    <div class="activity-desc">Gaudí's mosaic wonderland with city views and quirky architecture. Katie's Instagram dream. ~€10 (£9).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🏙️ Barcelona</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 3 -->
+<div class="activity-card" data-area="barcelona" data-type="shopping" data-tom="yes" data-teens="yes" data-cost="free" data-lat="41.3818" data-lng="2.1700">
+  <div class="activity-num">3</div>
+  <div class="activity-content">
+    <h4>La Rambla</h4>
+    <div class="activity-desc">Famous tree-lined boulevard with street performers, market stalls, and La Boqueria market. Free to stroll.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-badge">🏙️ Barcelona</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 4 -->
+<div class="activity-card highlight" data-area="barcelona" data-type="food" data-tom="yes" data-teens="yes" data-cost="free" data-mustdo="true" data-lat="41.3816" data-lng="2.1719">
+  <div class="activity-num">4</div>
+  <div class="activity-content">
+    <h4>La Boqueria Market</h4>
+    <div class="activity-desc">Spectacular food market — fresh juices, jamón, seafood, chocolate. Free entry, food prices variable. A feast for the senses.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-badge">🏙️ Barcelona</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 5 -->
+<div class="activity-card" data-area="barcelona" data-type="themepark" data-tom="yes" data-teens="yes" data-cost="mid" data-lat="41.4217" data-lng="2.1186">
+  <div class="activity-num">5</div>
+  <div class="activity-content">
+    <h4>Tibidabo Amusement Park</h4>
+    <div class="activity-desc">Hilltop theme park with vintage rides and incredible city views. Adults ~€35 (£30), Kids under 1.2m ~€14 (£12).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">🏙️ Barcelona</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 6 -->
+<div class="activity-card" data-area="barcelona" data-type="nature" data-tom="yes" data-teens="yes" data-cost="mid" data-lat="41.3760" data-lng="2.1837">
+  <div class="activity-num">6</div>
+  <div class="activity-content">
+    <h4>Barcelona Aquarium</h4>
+    <div class="activity-desc">Walk-through shark tunnel, over 11,000 animals. Adults ~€25-30 (£21-26), Child 5-10 ~€18 (£15).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">🏙️ Barcelona</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 7 -->
+<div class="activity-card highlight" data-area="barcelona" data-type="entertainment" data-tom="no" data-teens="yes" data-cost="mid" data-mustdo="true" data-lat="41.3809" data-lng="2.1228">
+  <div class="activity-num">7</div>
+  <div class="activity-content">
+    <h4>Camp Nou (FC Barcelona)</h4>
+    <div class="activity-desc">Stadium tour and museum — one of the world's largest stadiums. George will love this. ~€28 (£24).</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">🏙️ Barcelona</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 8 -->
+<div class="activity-card" data-area="barcelona" data-type="beach" data-tom="yes" data-teens="yes" data-cost="mid" data-lat="41.4800" data-lng="2.3500">
+  <div class="activity-num">8</div>
+  <div class="activity-content">
+    <h4>Illa Fantasia Water Park</h4>
+    <div class="activity-desc">22+ slides, wave pools, play areas — 30 min from Barcelona. ~€30-35 (£26-30).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">🏙️ Barcelona</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 9 -->
+<div class="activity-card" data-area="barcelona" data-type="culture" data-tom="yes" data-teens="yes" data-cost="budget" data-lat="41.4130" data-lng="2.1310">
+  <div class="activity-num">9</div>
+  <div class="activity-content">
+    <h4>CosmoCaixa Science Museum</h4>
+    <div class="activity-desc">Hands-on science, flooded Amazon forest replica, planetarium. Adults ~€6 (£5), under 16 free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🏙️ Barcelona</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 10 -->
+<div class="activity-card" data-area="barcelona" data-type="culture" data-tom="no" data-teens="yes" data-cost="free" data-lat="41.3833" data-lng="2.1769">
+  <div class="activity-num">10</div>
+  <div class="activity-content">
+    <h4>Gothic Quarter (Barri Gòtic)</h4>
+    <div class="activity-desc">Medieval streets, hidden squares, street art, cafés. Katie will love the vibes. Free to explore.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-badge">🏙️ Barcelona</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 11 -->
+<div class="activity-card" data-area="barcelona" data-type="beach" data-tom="yes" data-teens="yes" data-cost="free" data-lat="41.3807" data-lng="2.1892">
+  <div class="activity-num">11</div>
+  <div class="activity-content">
+    <h4>Barcelona Beach (Barceloneta)</h4>
+    <div class="activity-desc">City beach, volleyball, paddleboard rental, chiringuitos (beach bars). Free (rentals ~€15-20/hr).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-badge">🏙️ Barcelona</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 12 -->
+<div class="activity-card" data-area="barcelona" data-type="culture" data-tom="yes" data-teens="yes" data-cost="budget" data-lat="41.3634" data-lng="2.1659">
+  <div class="activity-num">12</div>
+  <div class="activity-content">
+    <h4>Montjuïc Castle &amp; Cable Car</h4>
+    <div class="activity-desc">Fortress with panoramic views, cable car ride over harbour. Castle €9 (£8), cable car ~€13 (£11).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🏙️ Barcelona</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 13 -->
+<div class="activity-card" data-area="barcelona" data-type="culture" data-tom="no" data-teens="yes" data-cost="mid" data-lat="41.3916" data-lng="2.1650">
+  <div class="activity-num">13</div>
+  <div class="activity-content">
+    <h4>Casa Batlló</h4>
+    <div class="activity-desc">Gaudí's dragon-themed house with immersive audiovisual tour. Katie's kind of thing. ~€35 (£30).</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">🏙️ Barcelona</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 14 -->
+<div class="activity-card" data-area="barcelona" data-type="adventure" data-tom="yes" data-teens="yes" data-cost="budget" data-lat="41.4100" data-lng="2.1900">
+  <div class="activity-num">14</div>
+  <div class="activity-content">
+    <h4>Bosc Urbà</h4>
+    <div class="activity-desc">Urban adventure park with zip lines and rope courses right in Barcelona. ~€15-25 (£13-21).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🏙️ Barcelona</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 15 -->
+<div class="activity-card highlight" data-area="barcelona" data-type="beach" data-tom="yes" data-teens="yes" data-cost="mid" data-mustdo="true" data-lat="41.6950" data-lng="2.8450">
+  <div class="activity-num">15</div>
+  <div class="activity-content">
+    <h4>Water World (Lloret de Mar)</h4>
+    <div class="activity-desc">Costa Brava's biggest water park — massive slides including "Speed Furious". Tom's dream day out. ~€30-35 (£26-30).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">🏙️ Costa Brava</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 16 -->
+<div class="activity-card" data-area="barcelona" data-type="beach" data-tom="yes" data-teens="yes" data-cost="mid" data-lat="41.8150" data-lng="3.0700">
+  <div class="activity-num">16</div>
+  <div class="activity-content">
+    <h4>Aquadiver (Platja d'Aro)</h4>
+    <div class="activity-desc">Water park with family and thrill slides on the Costa Brava. ~€25-30 (£21-26).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">🏙️ Costa Brava</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 17 -->
+<div class="activity-card highlight" data-area="barcelona" data-type="culture" data-tom="no" data-teens="yes" data-cost="free" data-mustdo="true" data-lat="41.7209" data-lng="2.9339">
+  <div class="activity-num">17</div>
+  <div class="activity-content">
+    <h4>Tossa de Mar</h4>
+    <div class="activity-desc">Medieval walled town on the coast, gorgeous beach, castle ruins. Katie Instagram heaven. Free to explore.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-badge">🏙️ Costa Brava</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 18 -->
+<div class="activity-card" data-area="barcelona" data-type="adventure" data-tom="no" data-teens="yes" data-cost="mid" data-lat="41.7100" data-lng="2.9200">
+  <div class="activity-num">18</div>
+  <div class="activity-content">
+    <h4>Kayaking Costa Brava</h4>
+    <div class="activity-desc">Guided sea kayak trips along dramatic coastline, hidden coves. ~€30-45 (£26-39).</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">🏙️ Costa Brava</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 19 -->
+<div class="activity-card" data-area="barcelona" data-type="adventure" data-tom="no" data-teens="yes" data-cost="mid" data-lat="42.2575" data-lng="3.1211">
+  <div class="activity-num">19</div>
+  <div class="activity-content">
+    <h4>Windoor Empuriabrava</h4>
+    <div class="activity-desc">Indoor skydiving in a vertical wind tunnel. George will go mad for this. ~€40-60 (£34-52).</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">🏙️ Costa Brava</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 20 -->
+<div class="activity-card" data-area="barcelona" data-type="adventure" data-tom="yes" data-teens="yes" data-cost="budget" data-lat="41.7000" data-lng="2.8300">
+  <div class="activity-num">20</div>
+  <div class="activity-content">
+    <h4>Gnomo Park</h4>
+    <div class="activity-desc">Adventure park near Lloret: rope courses, mini-golf, themed play areas. ~€15-20 (£13-17).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🏙️ Costa Brava</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 21 -->
+<div class="activity-card" data-area="barcelona" data-type="culture" data-tom="no" data-teens="yes" data-cost="free" data-lat="41.9794" data-lng="2.8214">
+  <div class="activity-num">21</div>
+  <div class="activity-content">
+    <h4>Girona Old Town</h4>
+    <div class="activity-desc">Game of Thrones filming location, colourful houses over the river, stunning cathedral. Free to explore.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-badge">🏙️ Costa Brava</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 22 -->
+<div class="activity-card highlight" data-area="barcelona" data-type="adventure" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="true" data-lat="41.5933" data-lng="1.8376">
+  <div class="activity-num">22</div>
+  <div class="activity-content">
+    <h4>Montserrat Day Trip</h4>
+    <div class="activity-desc">Mountain monastery, cable car/rack railway, hiking, boys' choir. Cable car ~€13 (£11), monastery free. Unforgettable.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🏙️ Near Barcelona</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 23 -->
+<div class="activity-card" data-area="barcelona" data-type="beach" data-tom="no" data-teens="yes" data-cost="budget" data-lat="41.7300" data-lng="3.0000">
+  <div class="activity-num">23</div>
+  <div class="activity-content">
+    <h4>Snorkelling Costa Brava</h4>
+    <div class="activity-desc">Crystal clear coves, underwater marine reserves. Equipment rental ~€10-15 (£9-13).</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🏙️ Costa Brava</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- end barcelona section -->
+
+
+<!-- ============================================== -->
+<!-- SECTION: COSTA DORADA -->
+<!-- ============================================== -->
+<div class="section-header area-dark" data-section="dorada">
+  <div class="icon">🎢</div>
+  <h2>Costa Dorada (Salou / Tarragona)</h2>
+  <p>PortAventura, Ferrari Land &amp; golden beaches — the theme park capital of Spain</p>
+</div>
+
+<div data-section-wrap="dorada">
+
+<!-- Activity 24 -->
+<div class="activity-card highlight" data-area="dorada" data-type="themepark" data-tom="yes" data-teens="yes" data-cost="premium" data-mustdo="true" data-lat="41.0864" data-lng="1.1556">
+  <div class="activity-num">24</div>
+  <div class="activity-content">
+    <h4>PortAventura World</h4>
+    <div class="activity-desc">Spain's biggest theme park — 6 themed zones, roller coasters, shows. Adults ~€56-70 (£48-60), Child ~€49-61 (£42-52). Multi-day tickets available.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-premium">£££ Premium</span>
+      <span class="tag area-badge">🎢 Costa Dorada</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 25 -->
+<div class="activity-card highlight" data-area="dorada" data-type="themepark" data-tom="no" data-teens="yes" data-cost="budget" data-mustdo="true" data-lat="41.0864" data-lng="1.1570">
+  <div class="activity-num">25</div>
+  <div class="activity-content">
+    <h4>Ferrari Land</h4>
+    <div class="activity-desc">Europe's tallest and fastest vertical accelerator coaster (112m!). George's absolute dream. Adults ~€20-24 (£17-21) add-on to PortAventura.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🎢 Costa Dorada</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 26 -->
+<div class="activity-card highlight" data-area="dorada" data-type="beach" data-tom="yes" data-teens="yes" data-cost="mid" data-mustdo="true" data-lat="41.0870" data-lng="1.1540">
+  <div class="activity-num">26</div>
+  <div class="activity-content">
+    <h4>Caribe Aquatic Park</h4>
+    <div class="activity-desc">PortAventura's water park — lazy river, wave pool, mega slides. Included in multi-day combo tickets.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">🎢 Costa Dorada</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 27 -->
+<div class="activity-card" data-area="dorada" data-type="beach" data-tom="yes" data-teens="yes" data-cost="free" data-lat="41.0766" data-lng="1.1391">
+  <div class="activity-num">27</div>
+  <div class="activity-content">
+    <h4>Salou Beach</h4>
+    <div class="activity-desc">Long golden sandy beach, calm shallow waters, promenade with restaurants. Perfect for Tom. Free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-badge">🎢 Costa Dorada</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 28 -->
+<div class="activity-card" data-area="dorada" data-type="culture" data-tom="no" data-teens="yes" data-cost="budget" data-lat="41.1189" data-lng="1.2445">
+  <div class="activity-num">28</div>
+  <div class="activity-content">
+    <h4>Tarragona Roman Ruins</h4>
+    <div class="activity-desc">UNESCO World Heritage site — 2,000-year-old amphitheatre overlooking the sea. ~€4 (£3).</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🎢 Costa Dorada</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 29 -->
+<div class="activity-card" data-area="dorada" data-type="beach" data-tom="yes" data-teens="yes" data-cost="mid" data-lat="41.0900" data-lng="1.1100">
+  <div class="activity-num">29</div>
+  <div class="activity-content">
+    <h4>Aquopolis (La Pineda)</h4>
+    <div class="activity-desc">Water park near Salou with slides and pools. ~€25-30 (£21-26).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">🎢 Costa Dorada</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 30 -->
+<div class="activity-card" data-area="dorada" data-type="adventure" data-tom="yes" data-teens="yes" data-cost="budget" data-lat="41.0800" data-lng="1.1400">
+  <div class="activity-num">30</div>
+  <div class="activity-content">
+    <h4>Jungle Trek (Salou)</h4>
+    <div class="activity-desc">Treetop adventure park — zip lines, monkey bridges, rope courses. ~€15-25 (£13-21).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🎢 Costa Dorada</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 31 -->
+<div class="activity-card" data-area="dorada" data-type="adventure" data-tom="no" data-teens="yes" data-cost="premium" data-lat="41.0750" data-lng="1.1300">
+  <div class="activity-num">31</div>
+  <div class="activity-content">
+    <h4>Jet Ski Rental (Salou)</h4>
+    <div class="activity-desc">Speed along the Costa Dorada coastline. ~€60-80 (£52-69)/30min. 16+ or with adult.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-premium">£££ Premium</span>
+      <span class="tag area-badge">🎢 Costa Dorada</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 32 -->
+<div class="activity-card" data-area="dorada" data-type="beach" data-tom="yes" data-teens="yes" data-cost="mid" data-lat="41.0760" data-lng="1.1350">
+  <div class="activity-num">32</div>
+  <div class="activity-content">
+    <h4>Banana Boat &amp; Parasailing (Salou)</h4>
+    <div class="activity-desc">Classic beach water sports. Banana ~€12 (£10), Parasailing ~€40-50 (£34-43). Tom can do the banana boat!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">🎢 Costa Dorada</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 33 -->
+<div class="activity-card" data-area="dorada" data-type="shopping" data-tom="yes" data-teens="yes" data-cost="free" data-lat="41.0770" data-lng="1.1380">
+  <div class="activity-num">33</div>
+  <div class="activity-content">
+    <h4>Salou Night Market</h4>
+    <div class="activity-desc">Evening market with souvenirs, crafts, street food. Free entry, great evening activity for all.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-badge">🎢 Costa Dorada</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- end dorada section -->
+
+
+<!-- ============================================== -->
+<!-- SECTION: COSTA BLANCA -->
+<!-- ============================================== -->
+<div class="section-header area-primary" data-section="blanca">
+  <div class="icon">🏖️</div>
+  <h2>Costa Blanca (Benidorm / Alicante)</h2>
+  <p>Water parks, adventure parks &amp; hidden mountain villages — direct flights from LBA</p>
+</div>
+
+<div data-section-wrap="blanca">
+
+<!-- Activity 34 -->
+<div class="activity-card highlight" data-area="blanca" data-type="beach" data-tom="yes" data-teens="yes" data-cost="mid" data-mustdo="true" data-lat="38.5350" data-lng="-0.0950">
+  <div class="activity-num">34</div>
+  <div class="activity-content">
+    <h4>Aqualandia (Benidorm)</h4>
+    <div class="activity-desc">One of Europe's top water parks — 20+ rides including mega slides. Tom's paradise. Adults ~€35 (£30), Junior ~€28 (£24).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">🏖️ Benidorm</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 35 -->
+<div class="activity-card" data-area="blanca" data-type="themepark" data-tom="yes" data-teens="yes" data-cost="mid" data-lat="38.5450" data-lng="-0.1050">
+  <div class="activity-num">35</div>
+  <div class="activity-content">
+    <h4>Terra Mítica (Benidorm)</h4>
+    <div class="activity-desc">Ancient civilizations theme park — rides for all ages. Adults ~€45 (£39) online, Junior ~€39 (£34).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">🏖️ Benidorm</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 36 -->
+<div class="activity-card" data-area="blanca" data-type="nature" data-tom="yes" data-teens="yes" data-cost="budget" data-lat="38.5340" data-lng="-0.0940">
+  <div class="activity-num">36</div>
+  <div class="activity-content">
+    <h4>Mundomar (Benidorm)</h4>
+    <div class="activity-desc">Animal marine park — dolphins, sea lions, parrots, lemurs. Adults ~€26 (£22), Junior ~€21 (£18).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🏖️ Benidorm</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 37 -->
+<div class="activity-card" data-area="blanca" data-type="nature" data-tom="yes" data-teens="yes" data-cost="mid" data-lat="38.5345" data-lng="-0.0945">
+  <div class="activity-num">37</div>
+  <div class="activity-content">
+    <h4>Combo Ticket (Aqualandia + Mundomar)</h4>
+    <div class="activity-desc">1-day combo for both parks: Adults ~€39 (£34), Junior ~€31 (£27). Great value.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">🏖️ Benidorm</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 38 -->
+<div class="activity-card" data-area="blanca" data-type="culture" data-tom="no" data-teens="yes" data-cost="free" data-lat="38.5388" data-lng="-0.1306">
+  <div class="activity-num">38</div>
+  <div class="activity-content">
+    <h4>Benidorm Old Town</h4>
+    <div class="activity-desc">Charming hilltop old quarter, tapas bars, Balcón del Mediterráneo viewpoint. Katie will love the vibe. Free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-badge">🏖️ Benidorm</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 39 -->
+<div class="activity-card" data-area="blanca" data-type="adventure" data-tom="yes" data-teens="yes" data-cost="budget" data-lat="38.5000" data-lng="-0.1300">
+  <div class="activity-num">39</div>
+  <div class="activity-content">
+    <h4>Benidorm Island Boat Trip</h4>
+    <div class="activity-desc">Glass-bottom boat or kayak to the island nature reserve. ~€15-25 (£13-21).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🏖️ Benidorm</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 40 -->
+<div class="activity-card" data-area="blanca" data-type="adventure" data-tom="yes" data-teens="yes" data-cost="budget" data-lat="38.5500" data-lng="-0.1200">
+  <div class="activity-num">40</div>
+  <div class="activity-content">
+    <h4>Go-Karting Benidorm</h4>
+    <div class="activity-desc">Several circuits including junior tracks. George will love this. ~€15-25 (£13-21). Tom can do junior karts.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🏖️ Benidorm</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 41 -->
+<div class="activity-card" data-area="blanca" data-type="culture" data-tom="no" data-teens="yes" data-cost="budget" data-lat="38.6800" data-lng="-0.1900">
+  <div class="activity-num">41</div>
+  <div class="activity-content">
+    <h4>Guadalest Village</h4>
+    <div class="activity-desc">Mountain fortress village with micro-museums, spectacular valley views. Katie will love it. ~€3-5 (£3-4) per museum.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🏖️ Costa Blanca</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 42 -->
+<div class="activity-card highlight" data-area="blanca" data-type="nature" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="true" data-lat="38.6700" data-lng="-0.1500">
+  <div class="activity-num">42</div>
+  <div class="activity-content">
+    <h4>Fonts de l'Algar Waterfalls</h4>
+    <div class="activity-desc">Natural waterfalls and rock pools you can swim in, set in mountains. Stunning and refreshing. ~€5 (£4).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🏖️ Costa Blanca</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 43 -->
+<div class="activity-card" data-area="blanca" data-type="culture" data-tom="yes" data-teens="yes" data-cost="free" data-lat="38.3486" data-lng="-0.4812">
+  <div class="activity-num">43</div>
+  <div class="activity-content">
+    <h4>Santa Barbara Castle (Alicante)</h4>
+    <div class="activity-desc">Hilltop fortress with panoramic views over city and coast. Free entry (lift €2.70).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-badge">🏖️ Alicante</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 44 -->
+<div class="activity-card" data-area="blanca" data-type="beach" data-tom="no" data-teens="yes" data-cost="budget" data-lat="38.1650" data-lng="-0.4750">
+  <div class="activity-num">44</div>
+  <div class="activity-content">
+    <h4>Tabarca Island</h4>
+    <div class="activity-desc">Boat trip to tiny island — crystal waters, snorkelling paradise. Boat ~€15-20 (£13-17) return.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🏖️ Alicante</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 45 -->
+<div class="activity-card" data-area="blanca" data-type="culture" data-tom="no" data-teens="yes" data-cost="free" data-lat="38.5989" data-lng="-0.0506">
+  <div class="activity-num">45</div>
+  <div class="activity-content">
+    <h4>Altea Old Town</h4>
+    <div class="activity-desc">White-washed hilltop village, blue-domed church, artist galleries. Katie Instagram gold. Free to explore.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-badge">🏖️ Costa Blanca</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 46 -->
+<div class="activity-card" data-area="blanca" data-type="nature" data-tom="yes" data-teens="yes" data-cost="budget" data-lat="38.2700" data-lng="-0.7000">
+  <div class="activity-num">46</div>
+  <div class="activity-content">
+    <h4>Rio Safari Elche</h4>
+    <div class="activity-desc">Safari park with animal shows, pool and waterslides. Adults ~€24 (£21), Child ~€18 (£15).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🏖️ Costa Blanca</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 47 -->
+<div class="activity-card" data-area="blanca" data-type="entertainment" data-tom="no" data-teens="yes" data-cost="budget" data-lat="38.5400" data-lng="-0.1250">
+  <div class="activity-num">47</div>
+  <div class="activity-content">
+    <h4>Escape Room Benidorm</h4>
+    <div class="activity-desc">Multiple themed rooms for families. ~€15-20 (£13-17) pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🏖️ Benidorm</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 48 -->
+<div class="activity-card" data-area="blanca" data-type="adventure" data-tom="no" data-teens="yes" data-cost="mid" data-lat="38.5600" data-lng="-0.1100">
+  <div class="activity-num">48</div>
+  <div class="activity-content">
+    <h4>Paintball Benidorm</h4>
+    <div class="activity-desc">Outdoor course for adrenaline seekers. George's kind of thing. ~€20-30 (£17-26). 12+.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">🏖️ Benidorm</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- end blanca section -->
+
+
+<!-- ============================================== -->
+<!-- SECTION: COSTA DEL SOL -->
+<!-- ============================================== -->
+<div class="section-header area-dark" data-section="sol">
+  <div class="icon">☀️</div>
+  <h2>Costa del Sol (Malaga)</h2>
+  <p>Water parks, safari parks, cliff walks &amp; caves — daily direct flights from LBA</p>
+</div>
+
+<div data-section-wrap="sol">
+
+<!-- Activity 49 -->
+<div class="activity-card highlight" data-area="sol" data-type="beach" data-tom="yes" data-teens="yes" data-cost="mid" data-mustdo="true" data-lat="36.6200" data-lng="-4.5000">
+  <div class="activity-num">49</div>
+  <div class="activity-content">
+    <h4>Aqualand Torremolinos</h4>
+    <div class="activity-desc">Costa del Sol's biggest water park. Tom will never want to leave. Adults ~€38 (£33), Child ~€30-32 (£26-28).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">☀️ Costa del Sol</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 50 -->
+<div class="activity-card highlight" data-area="sol" data-type="nature" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="true" data-lat="36.5450" data-lng="-4.6200">
+  <div class="activity-num">50</div>
+  <div class="activity-content">
+    <h4>Bioparc Fuengirola</h4>
+    <div class="activity-desc">Next-gen zoo with no visible barriers, immersive habitats. Amazing for all ages. Adults ~€22 (£19), Child ~€16 (£14).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">☀️ Costa del Sol</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 51 -->
+<div class="activity-card" data-area="sol" data-type="nature" data-tom="yes" data-teens="yes" data-cost="budget" data-lat="36.4200" data-lng="-5.1500">
+  <div class="activity-num">51</div>
+  <div class="activity-content">
+    <h4>Selwo Aventura (Estepona)</h4>
+    <div class="activity-desc">Safari-style wildlife park — truck tours through animal enclosures. Adults ~€25 (£21), Child ~€20 (£17).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">☀️ Costa del Sol</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 52 -->
+<div class="activity-card" data-area="sol" data-type="nature" data-tom="yes" data-teens="yes" data-cost="budget" data-lat="36.5950" data-lng="-4.5600">
+  <div class="activity-num">52</div>
+  <div class="activity-content">
+    <h4>Selwo Marina (Benalmádena)</h4>
+    <div class="activity-desc">Dolphins, sea lions, penguins, interactive shows. Adults ~€16-18 (£14-15), Child ~€14-16 (£12-14).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">☀️ Costa del Sol</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 53 -->
+<div class="activity-card" data-area="sol" data-type="adventure" data-tom="yes" data-teens="yes" data-cost="budget" data-lat="36.5930" data-lng="-4.5580">
+  <div class="activity-num">53</div>
+  <div class="activity-content">
+    <h4>Benalmádena Cable Car</h4>
+    <div class="activity-desc">Scenic ride up to Mount Calamorro — eagle shows, hiking trails at summit. ~€10-15 (£9-13).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">☀️ Costa del Sol</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 54 -->
+<div class="activity-card" data-area="sol" data-type="themepark" data-tom="yes" data-teens="yes" data-cost="budget" data-lat="36.5940" data-lng="-4.5590">
+  <div class="activity-num">54</div>
+  <div class="activity-content">
+    <h4>Tivoli World (Benalmádena)</h4>
+    <div class="activity-desc">Classic amusement park with rides, shows, restaurants. ~€15-20 (£13-17) entry + rides.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">☀️ Costa del Sol</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 55 -->
+<div class="activity-card" data-area="sol" data-type="adventure" data-tom="yes" data-teens="yes" data-cost="mid" data-lat="36.5100" data-lng="-4.8700">
+  <div class="activity-num">55</div>
+  <div class="activity-content">
+    <h4>Aventura Amazonia (Marbella)</h4>
+    <div class="activity-desc">Treetop zip line and ropes adventure park in the forest. ~€20-30 (£17-26).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">☀️ Costa del Sol</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 56 -->
+<div class="activity-card" data-area="sol" data-type="nature" data-tom="yes" data-teens="yes" data-cost="budget" data-lat="36.6100" data-lng="-4.4900">
+  <div class="activity-num">56</div>
+  <div class="activity-content">
+    <h4>Crocodile Park (Torremolinos)</h4>
+    <div class="activity-desc">300+ crocodiles and alligators, guided tours. Tom will be fascinated. ~€18 (£15).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">☀️ Costa del Sol</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 57 -->
+<div class="activity-card highlight" data-area="sol" data-type="adventure" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="true" data-lat="36.9290" data-lng="-4.7760">
+  <div class="activity-num">57</div>
+  <div class="activity-content">
+    <h4>Caminito del Rey</h4>
+    <div class="activity-desc">Dramatic walkway pinned to cliff face above a gorge. Min age 8 — Tom just qualifies! Katie Instagram moment. ~€10 (£9).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly (just!)</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">☀️ Costa del Sol</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 58 -->
+<div class="activity-card highlight" data-area="sol" data-type="nature" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="true" data-lat="36.7617" data-lng="-3.8442">
+  <div class="activity-num">58</div>
+  <div class="activity-content">
+    <h4>Nerja Caves</h4>
+    <div class="activity-desc">Stunning stalactite/stalagmite caves with the world's largest natural column. ~€14 (£12).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">☀️ Costa del Sol</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 59 -->
+<div class="activity-card" data-area="sol" data-type="beach" data-tom="no" data-teens="yes" data-cost="mid" data-lat="36.7500" data-lng="-3.8700">
+  <div class="activity-num">59</div>
+  <div class="activity-content">
+    <h4>Maro Beach &amp; Kayaking</h4>
+    <div class="activity-desc">Secluded beach below cliffs — kayak past waterfalls. Beach free, kayak ~€20-30 (£17-26). Katie will love it.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">☀️ Costa del Sol</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 60 -->
+<div class="activity-card" data-area="sol" data-type="culture" data-tom="no" data-teens="yes" data-cost="budget" data-lat="36.7213" data-lng="-4.4197">
+  <div class="activity-num">60</div>
+  <div class="activity-content">
+    <h4>Malaga Picasso Museum</h4>
+    <div class="activity-desc">Birthplace of Picasso with an art collection. ~€12 (£10), under 16 free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">☀️ Malaga</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 61 -->
+<div class="activity-card" data-area="sol" data-type="culture" data-tom="no" data-teens="yes" data-cost="budget" data-lat="36.7213" data-lng="-4.4136">
+  <div class="activity-num">61</div>
+  <div class="activity-content">
+    <h4>Malaga Alcazaba &amp; Gibralfaro Castle</h4>
+    <div class="activity-desc">Moorish fortress with gardens and harbour views. ~€3.50 (£3).</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">☀️ Malaga</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 62 -->
+<div class="activity-card" data-area="sol" data-type="shopping" data-tom="no" data-teens="yes" data-cost="free" data-lat="36.4850" data-lng="-4.9500">
+  <div class="activity-num">62</div>
+  <div class="activity-content">
+    <h4>Puerto Banús (Marbella)</h4>
+    <div class="activity-desc">Luxury marina — superyachts, designer shopping, people watching. Katie's happy place. Free to browse.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-badge">☀️ Marbella</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 63 -->
+<div class="activity-card" data-area="sol" data-type="beach" data-tom="yes" data-teens="yes" data-cost="budget" data-lat="36.7200" data-lng="-4.4200">
+  <div class="activity-num">63</div>
+  <div class="activity-content">
+    <h4>Beach Volleyball &amp; Water Sports (Malagueta)</h4>
+    <div class="activity-desc">Banana boats, jet skis, pedalos on Malaga's main beach. Various prices.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">☀️ Malaga</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 64 -->
+<div class="activity-card" data-area="sol" data-type="culture" data-tom="no" data-teens="yes" data-cost="free" data-lat="36.5960" data-lng="-4.6370">
+  <div class="activity-num">64</div>
+  <div class="activity-content">
+    <h4>Mijas Pueblo</h4>
+    <div class="activity-desc">White-washed mountain village, donkey taxi, views over coast. Katie will love this. Free to explore.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-badge">☀️ Costa del Sol</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 65 -->
+<div class="activity-card" data-area="sol" data-type="beach" data-tom="yes" data-teens="yes" data-cost="budget" data-lat="36.5400" data-lng="-4.6250">
+  <div class="activity-num">65</div>
+  <div class="activity-content">
+    <h4>Costa Water Park (Fuengirola)</h4>
+    <div class="activity-desc">Floating inflatable obstacle course on the sea. ~€10-15 (£9-13)/hr. Tom will go nuts.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">☀️ Fuengirola</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 66 -->
+<div class="activity-card" data-area="sol" data-type="entertainment" data-tom="no" data-teens="yes" data-cost="mid" data-lat="36.7200" data-lng="-4.4250">
+  <div class="activity-num">66</div>
+  <div class="activity-content">
+    <h4>Sunset Catamaran Cruise (Malaga)</h4>
+    <div class="activity-desc">Sail along coast with drinks, sunset views, swimming stops. ~€35-50 (£30-43).</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">☀️ Malaga</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- end sol section -->
+
+
+<!-- ============================================== -->
+<!-- SECTION: INLAND / DAY TRIPS -->
+<!-- ============================================== -->
+<div class="section-header area-primary" data-section="inland">
+  <div class="icon">🏛️</div>
+  <h2>Inland / Day Trips</h2>
+  <p>Granada, Seville, Ronda, Córdoba &amp; Montserrat — the real Spain</p>
+</div>
+
+<div data-section-wrap="inland">
+
+<!-- Activity 67 -->
+<div class="activity-card highlight" data-area="inland" data-type="culture" data-tom="no" data-teens="yes" data-cost="budget" data-mustdo="true" data-lat="37.1761" data-lng="-3.5881">
+  <div class="activity-num">67</div>
+  <div class="activity-content">
+    <h4>Alhambra Palace (Granada)</h4>
+    <div class="activity-desc">Stunning Moorish palace complex — gardens, Nasrid Palaces. Book months ahead! Adults ~€14 (£12), under 12 free. Katie Instagram heaven.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🏛️ Granada</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 68 -->
+<div class="activity-card" data-area="inland" data-type="culture" data-tom="no" data-teens="yes" data-cost="premium" data-lat="37.1770" data-lng="-3.5890">
+  <div class="activity-num">68</div>
+  <div class="activity-content">
+    <h4>Granada Day Trip</h4>
+    <div class="activity-desc">Guided tour from coast including Alhambra + free time in Albaicín. ~€88 (£76) adult, €66 (£57) child.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-premium">£££ Premium</span>
+      <span class="tag area-badge">🏛️ Granada</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 69 -->
+<div class="activity-card highlight" data-area="inland" data-type="entertainment" data-tom="no" data-teens="yes" data-cost="mid" data-mustdo="true" data-lat="37.1800" data-lng="-3.5920">
+  <div class="activity-num">69</div>
+  <div class="activity-content">
+    <h4>Flamenco Show (Granada/Seville)</h4>
+    <div class="activity-desc">Authentic cave flamenco in Sacromonte — raw passion, incredible atmosphere. ~€20-45 (£17-39).</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">🏛️ Granada/Seville</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 70 -->
+<div class="activity-card highlight" data-area="inland" data-type="culture" data-tom="no" data-teens="yes" data-cost="premium" data-mustdo="true" data-lat="37.3891" data-lng="-5.9845">
+  <div class="activity-num">70</div>
+  <div class="activity-content">
+    <h4>Seville Day Trip</h4>
+    <div class="activity-desc">Cathedral, Alcázar Palace, Plaza de España, tapas. An absolute wonder. Guide ~€100-130 (£86-112) pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-premium">£££ Premium</span>
+      <span class="tag area-badge">🏛️ Seville</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 71 -->
+<div class="activity-card" data-area="inland" data-type="culture" data-tom="no" data-teens="yes" data-cost="free" data-lat="37.3771" data-lng="-5.9870">
+  <div class="activity-num">71</div>
+  <div class="activity-content">
+    <h4>Plaza de España (Seville)</h4>
+    <div class="activity-desc">Stunning semi-circular building with tiled alcoves and moat — Star Wars filming location. Katie Instagram gold. Free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-badge">🏛️ Seville</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 72 -->
+<div class="activity-card" data-area="inland" data-type="culture" data-tom="no" data-teens="yes" data-cost="budget" data-lat="37.8794" data-lng="-4.7805">
+  <div class="activity-num">72</div>
+  <div class="activity-content">
+    <h4>Córdoba Mezquita</h4>
+    <div class="activity-desc">Mosque-Cathedral — forest of red and white arches, truly unique. ~€13 (£11), under 10 free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🏛️ Córdoba</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 73 -->
+<div class="activity-card highlight" data-area="inland" data-type="culture" data-tom="no" data-teens="yes" data-cost="free" data-mustdo="true" data-lat="36.7462" data-lng="-5.1616">
+  <div class="activity-num">73</div>
+  <div class="activity-content">
+    <h4>Ronda</h4>
+    <div class="activity-desc">Dramatic gorge town — Puente Nuevo bridge, bullring, white villages. Katie Instagram dream. Free to explore.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-badge">🏛️ Andalusia</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 74 -->
+<div class="activity-card" data-area="inland" data-type="nature" data-tom="yes" data-teens="yes" data-cost="free" data-lat="36.9600" data-lng="-4.5300">
+  <div class="activity-num">74</div>
+  <div class="activity-content">
+    <h4>El Torcal de Antequera</h4>
+    <div class="activity-desc">Bizarre limestone rock formations, easy hiking trails. Otherworldly landscape. Free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-badge">🏛️ Andalusia</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 75 -->
+<div class="activity-card" data-area="inland" data-type="food" data-tom="no" data-teens="yes" data-cost="mid" data-lat="37.2000" data-lng="-3.6000">
+  <div class="activity-num">75</div>
+  <div class="activity-content">
+    <h4>Olive Oil Tasting Tour</h4>
+    <div class="activity-desc">Visit a working olive oil farm, taste varieties, learn production. ~€20-30 (£17-26).</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">🏛️ Andalusia</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 76 -->
+<div class="activity-card" data-area="inland" data-type="culture" data-tom="yes" data-teens="yes" data-cost="budget" data-lat="41.5933" data-lng="1.8376">
+  <div class="activity-num">76</div>
+  <div class="activity-content">
+    <h4>Montserrat Monastery</h4>
+    <div class="activity-desc">Mountain-top monastery — Black Madonna, boys' choir, hiking. Cable car ~€13 (£11), monastery free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🏛️ Near Barcelona</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 77 -->
+<div class="activity-card" data-area="inland" data-type="culture" data-tom="no" data-teens="yes" data-cost="budget" data-lat="42.2667" data-lng="2.9611">
+  <div class="activity-num">77</div>
+  <div class="activity-content">
+    <h4>Figueres (Dalí Museum)</h4>
+    <div class="activity-desc">Surrealist museum built by Salvador Dalí himself. Truly bonkers. ~€14 (£12). Katie will love it.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🏛️ Costa Brava</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 78 -->
+<div class="activity-card" data-area="inland" data-type="adventure" data-tom="yes" data-teens="yes" data-cost="budget" data-lat="36.1408" data-lng="-5.3536">
+  <div class="activity-num">78</div>
+  <div class="activity-content">
+    <h4>Gibraltar Day Trip</h4>
+    <div class="activity-desc">British territory — Rock of Gibraltar, Barbary macaques, caves. Cable car ~€16 (£14).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🏛️ Gibraltar</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- end inland section -->
+
+
+<!-- ============================================== -->
+<!-- SECTION: FOOD, SHOPPING & ENTERTAINMENT -->
+<!-- ============================================== -->
+<div class="section-header area-dark" data-section="extras">
+  <div class="icon">🍕</div>
+  <h2>Food, Shopping &amp; Entertainment</h2>
+  <p>Tapas, churros, flamenco, shopping &amp; evening fun — everywhere in Spain</p>
+</div>
+
+<div data-section-wrap="extras">
+
+<!-- Activity 79 -->
+<div class="activity-card highlight" data-area="inland" data-type="food" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="true" data-lat="36.7200" data-lng="-4.4180">
+  <div class="activity-num">79</div>
+  <div class="activity-content">
+    <h4>Tapas Crawl</h4>
+    <div class="activity-desc">Hop between tapas bars — try patatas bravas, jamón, croquetas. ~€15-25 (£13-21) pp. An essential Spanish experience.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🍕 Everywhere</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 80 -->
+<div class="activity-card" data-area="inland" data-type="food" data-tom="yes" data-teens="yes" data-cost="mid" data-lat="41.3830" data-lng="2.1750">
+  <div class="activity-num">80</div>
+  <div class="activity-content">
+    <h4>Paella Cooking Class</h4>
+    <div class="activity-desc">Learn to cook Spain's iconic rice dish. Tom will love stirring. ~€40-60 (£34-52) pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">🍕 Everywhere</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 81 -->
+<div class="activity-card" data-area="inland" data-type="food" data-tom="yes" data-teens="yes" data-cost="budget" data-lat="41.3820" data-lng="2.1720">
+  <div class="activity-num">81</div>
+  <div class="activity-content">
+    <h4>Churros con Chocolate</h4>
+    <div class="activity-desc">Traditional Spanish treat at churrerías everywhere. Tom's new favourite food. ~€3-5 (£3-4).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🍕 Everywhere</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 82 -->
+<div class="activity-card" data-area="barcelona" data-type="food" data-tom="no" data-teens="yes" data-cost="mid" data-lat="41.3816" data-lng="2.1719">
+  <div class="activity-num">82</div>
+  <div class="activity-content">
+    <h4>La Boqueria Market Tour</h4>
+    <div class="activity-desc">Guided food tour of Barcelona's famous market. ~€30-50 (£26-43).</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">🏙️ Barcelona</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 83 -->
+<div class="activity-card" data-area="inland" data-type="shopping" data-tom="no" data-teens="yes" data-cost="free" data-lat="41.3870" data-lng="2.1700">
+  <div class="activity-num">83</div>
+  <div class="activity-content">
+    <h4>El Corte Inglés Shopping</h4>
+    <div class="activity-desc">Spain's biggest department store, in every major city. Katie's happy place. Free to browse.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-badge">🛍️ Everywhere</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 84 -->
+<div class="activity-card" data-area="inland" data-type="entertainment" data-tom="yes" data-teens="yes" data-cost="free" data-lat="36.7200" data-lng="-4.4190">
+  <div class="activity-num">84</div>
+  <div class="activity-content">
+    <h4>Evening Paseo (Evening Stroll)</h4>
+    <div class="activity-desc">Join locals for the traditional evening walk, ice cream, people watching. A Spanish tradition. Free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-badge">🎭 Everywhere</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 85 -->
+<div class="activity-card" data-area="inland" data-type="entertainment" data-tom="yes" data-teens="yes" data-cost="budget" data-lat="41.0770" data-lng="1.1400">
+  <div class="activity-num">85</div>
+  <div class="activity-content">
+    <h4>Beach Cinema</h4>
+    <div class="activity-desc">Outdoor movie screenings on beaches in summer. ~€5-10 (£4-9). Magic under the stars.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🎭 Various</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 86 -->
+<div class="activity-card" data-area="inland" data-type="food" data-tom="no" data-teens="yes" data-cost="mid" data-lat="36.7200" data-lng="-4.4170">
+  <div class="activity-num">86</div>
+  <div class="activity-content">
+    <h4>Sangría Making Workshop</h4>
+    <div class="activity-desc">Learn to make authentic sangría (mocktails for kids). ~€20-30 (£17-26). Adults/Teens.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">🍕 Various</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 87 -->
+<div class="activity-card" data-area="inland" data-type="entertainment" data-tom="no" data-teens="yes" data-cost="mid" data-lat="41.3809" data-lng="2.1228">
+  <div class="activity-num">87</div>
+  <div class="activity-content">
+    <h4>Spanish Football Match</h4>
+    <div class="activity-desc">Watch La Liga or lower division — incredible atmosphere. George will be buzzing. ~€30-80 (£26-69).</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">🎭 Various</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 88 -->
+<div class="activity-card" data-area="inland" data-type="adventure" data-tom="yes" data-teens="yes" data-cost="mid" data-lat="36.5500" data-lng="-4.6500">
+  <div class="activity-num">88</div>
+  <div class="activity-content">
+    <h4>Horse Riding on the Beach</h4>
+    <div class="activity-desc">Guided sunset rides on Costa del Sol beaches. Tom can ride a pony. ~€30-50 (£26-43).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">🚀 Various</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 89 -->
+<div class="activity-card" data-area="inland" data-type="entertainment" data-tom="no" data-teens="yes" data-cost="budget" data-lat="41.3900" data-lng="2.1650">
+  <div class="activity-num">89</div>
+  <div class="activity-content">
+    <h4>Escape Room (Barcelona/Malaga)</h4>
+    <div class="activity-desc">Themed puzzle rooms for families. ~€15-25 (£13-21) pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🎭 Various</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 90 -->
+<div class="activity-card" data-area="inland" data-type="entertainment" data-tom="no" data-teens="yes" data-cost="mid" data-lat="37.3900" data-lng="-5.9850">
+  <div class="activity-num">90</div>
+  <div class="activity-content">
+    <h4>Flamenco Workshop</h4>
+    <div class="activity-desc">Learn basic flamenco steps and rhythms. Katie will love this. ~€25-40 (£21-34).</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Not for Tom</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Mid-range</span>
+      <span class="tag area-badge">🎭 Various</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 91 -->
+<div class="activity-card" data-area="inland" data-type="entertainment" data-tom="yes" data-teens="yes" data-cost="budget" data-lat="41.0780" data-lng="1.1350">
+  <div class="activity-num">91</div>
+  <div class="activity-content">
+    <h4>Mini Golf</h4>
+    <div class="activity-desc">Multiple courses across all resort areas. ~€8-12 (£7-10). Everyone loves mini golf.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🎭 Various</span>
+    </div>
+  </div>
+</div>
+
+<!-- Activity 92 -->
+<div class="activity-card" data-area="inland" data-type="entertainment" data-tom="yes" data-teens="yes" data-cost="budget" data-lat="38.5380" data-lng="-0.1280">
+  <div class="activity-num">92</div>
+  <div class="activity-content">
+    <h4>Bowling</h4>
+    <div class="activity-desc">Modern bowling centres in major resorts. ~€8-15 (£7-13). Rainy day backup — not that it rains in Spain.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget</span>
+      <span class="tag area-badge">🎭 Various</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- end extras section -->
+
+
+</div><!-- end container -->
+</div><!-- end main-content -->
+</div><!-- end page-layout -->
+
+<div class="footer">
+  <p>Created for the Sheldrake family holiday planning · Summer 2026</p>
+  <p>Spain: Barcelona to the Costa del Sol · LBA direct to Barcelona, Malaga, Alicante &amp; Girona</p>
+</div>
+
+<script>
+(function() {
+  const cards = document.querySelectorAll('.activity-card');
+  const checkboxes = document.querySelectorAll('.filter-sidebar input[type="checkbox"]');
+  const countEl = document.getElementById('visibleCount');
+  const TOTAL = 92;
+
+  function getCheckedValues(filterName) {
+    const vals = [];
+    checkboxes.forEach(cb => {
+      if (cb.dataset.filter === filterName && cb.checked) vals.push(cb.value);
+    });
+    return vals;
+  }
+
+  function applyFilters() {
+    const areaFilters = getCheckedValues('area');
+    const typeFilters = getCheckedValues('type');
+    const tomFilters = getCheckedValues('tom');
+    const teenFilters = getCheckedValues('teens');
+    const costFilters = getCheckedValues('cost');
+    const mustdoFilters = getCheckedValues('mustdo');
+
+    let visible = 0;
+
+    cards.forEach(card => {
+      let show = true;
+
+      // Area filter (OR within group)
+      if (areaFilters.length > 0 && !areaFilters.includes(card.dataset.area)) show = false;
+
+      // Type filter (OR within group)
+      if (typeFilters.length > 0 && !typeFilters.includes(card.dataset.type)) show = false;
+
+      // Tom filter
+      if (tomFilters.length > 0 && card.dataset.tom !== 'yes') show = false;
+
+      // Teens filter
+      if (teenFilters.length > 0 && card.dataset.teens !== 'yes') show = false;
+
+      // Cost filter (OR within group)
+      if (costFilters.length > 0 && !costFilters.includes(card.dataset.cost)) show = false;
+
+      // Must-do filter
+      if (mustdoFilters.length > 0 && card.dataset.mustdo !== 'true') show = false;
+
+      if (show) {
+        card.classList.remove('hidden-by-filter');
+        visible++;
+      } else {
+        card.classList.add('hidden-by-filter');
+      }
+    });
+
+    countEl.textContent = visible;
+
+    // Hide section headers if all their activities are hidden
+    document.querySelectorAll('.section-header[data-section]').forEach(header => {
+      const sectionId = header.dataset.section;
+      const wrap = document.querySelector('[data-section-wrap="' + sectionId + '"]');
+      if (wrap) {
+        const visibleCards = wrap.querySelectorAll('.activity-card:not(.hidden-by-filter)');
+        header.classList.toggle('hidden-by-filter', visibleCards.length === 0);
+        wrap.style.display = visibleCards.length === 0 ? 'none' : '';
+      }
+    });
+  if (typeof updateMap === 'function') updateMap();
+  }
+
+  checkboxes.forEach(cb => cb.addEventListener('change', applyFilters));
+
+  window.clearFilters = function() {
+    checkboxes.forEach(cb => cb.checked = false);
+    applyFilters();
+  };
+
+  window.toggleFilters = function() {
+    const sidebar = document.getElementById('filterSidebar');
+    const overlay = document.getElementById('filterOverlay');
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('open');
+  };
+})();
+</script>
+
+<script>
+
+function toggleAccom(show) {
+  if (!window.accomMarkers) return;
+  window.accomMarkers.forEach(function(m) {
+    if (show) m.addTo(window.activityMap);
+    else window.activityMap.removeLayer(m);
+  });
+}
+
+// Dynamic activity map
+function updateMap() {
+  if (!window.activityMarkers) return;
+  var bounds = [];
+  var tableBody = document.getElementById('map-table-body');
+  if (tableBody) tableBody.innerHTML = '';
+  var visibleCount = 0;
+  
+  document.querySelectorAll('.activity-card').forEach(function(card, i) {
+    var marker = window.activityMarkers[i];
+    if (!marker) return;
+    var lat = parseFloat(card.dataset.lat);
+    var lng = parseFloat(card.dataset.lng);
+    if (!lat || !lng) return;
+    
+    var isVisible = !card.classList.contains('hidden-by-filter');
+    if (isVisible) {
+      marker.addTo(window.activityMap);
+      bounds.push([lat, lng]);
+      visibleCount++;
+      if (tableBody) {
+        var numEl = card.querySelector('.activity-num');
+        var num = numEl ? numEl.textContent.trim() : '';
+        var title = card.querySelector('h4').textContent.trim();
+        var link = card.querySelector('h4 a');
+        var href = link ? link.href : '';
+        var isMustDo = card.dataset.mustdo === 'true';
+        var tr = document.createElement('tr');
+        tr.style.borderBottom = '1px solid #e0e0e0';
+        if (visibleCount % 2 === 0) tr.style.background = '#f0f3f9';
+        tr.innerHTML = '<td style="padding:5px 8px;color:#1B3C8F;font-weight:700;">' + num + '</td>' +
+          '<td style="padding:5px 8px;">' + (isMustDo ? '\u2B50 ' : '') + title + '</td>' +
+          '<td style="padding:5px 8px;text-align:right;">' + 
+          (href ? '<a href="'+href+'" target="_blank" style="color:#1B3C8F;margin-right:10px;">More Info</a>' : '') +
+          '<a href="https://www.google.com/maps?q='+lat+','+lng+'" target="_blank" style="color:#888;">\uD83D\uDCCD Map</a></td>';
+        tableBody.appendChild(tr);
+      }
+    } else {
+      window.activityMap.removeLayer(marker);
+    }
+  });
+  
+  var countEl = document.getElementById('map-count');
+  if (countEl) countEl.textContent = visibleCount + ' activities shown';
+  
+  if (bounds.length > 0) {
+    window.activityMap.fitBounds(bounds, {padding: [30, 30], maxZoom: 12});
+  }
+}
+
+(function(){
+  window.activityMap = L.map('mustdo-map', {scrollWheelZoom: false}).setView([39.0, -2.0], 6);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; CARTO &copy; OSM', maxZoom: 18
+  }).addTo(window.activityMap);
+  
+  window.activityMarkers = [];
+  
+  document.querySelectorAll('.activity-card').forEach(function(card) {
+    var lat = parseFloat(card.dataset.lat);
+    var lng = parseFloat(card.dataset.lng);
+    if (!lat || !lng) { window.activityMarkers.push(null); return; }
+    
+    var numEl = card.querySelector('.activity-num');
+    var num = numEl ? numEl.textContent.trim() : '';
+    var isMustDo = card.dataset.mustdo === 'true';
+    var title = card.querySelector('h4').textContent.trim();
+    var desc = card.querySelector('.activity-desc');
+    var descText = desc ? desc.textContent.trim().substring(0, 100) + '...' : '';
+    
+    var size = isMustDo ? 28 : 22;
+    var bg = isMustDo ? '#FF6B35' : '#1B3C8F';
+    var fontSize = isMustDo ? '12px' : '10px';
+    
+    var icon = L.divIcon({
+      className: '',
+      html: '<div style="background:'+bg+';color:#fff;width:'+size+'px;height:'+size+'px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:'+fontSize+';font-family:Montserrat,sans-serif;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;cursor:pointer;">'+num+'</div>',
+      iconSize: [size, size],
+      iconAnchor: [size/2, size/2]
+    });
+    
+    var marker = L.marker([lat, lng], {icon: icon})
+      .bindPopup('<div style="min-width:200px;"><b style="color:#0F2557;font-size:0.95rem;">' + (isMustDo ? '\u2B50 ' : '') + title + '</b><br><span style="color:#555;font-size:0.85rem;">' + descText + '</span></div>');
+    
+    marker.addTo(window.activityMap);
+    window.activityMarkers.push(marker);
+  });
+  
+  updateMap();
+
+// Accommodation overlay
+window.accomMarkers = [];
+var accomData = [
+  [41.6200, 2.7900, "Camping Enmar", "Eurocamp", "https://www.eurocamp.co.uk/campsites/spain/costa-brava/enmar-campsite", "Pools, slides, kids\u2019 clubs, steps from Blue Flag beach. Pineda de Mar."],
+  [41.6100, 2.6500, "Roca Grossa", "Eurocamp", "https://www.eurocamp.co.uk/campsites/spain/costa-brava/roca-grossa-campsite", "Pools, inflatables, shuttle to golden beaches. 40km from Barcelona."],
+  [41.8600, 3.0800, "Cala Gogo", "Eurocamp", "https://www.eurocamp.co.uk/campsites/spain/costa-brava/cala-gogo-campsite", "Direct beach access, aquatic area, hillside views. Calonge."],
+  [41.2100, 1.7300, "Vilanova Park", "Eurocamp", "https://www.eurocamp.co.uk/campsites/spain/costa-dorada/vilanova-park-campsite", "Near Barcelona, superb pools, waterslides. Costa Dorada."],
+  [41.0700, 1.1400, "Sanguli Salou", "Eurocamp", "https://www.eurocamp.co.uk/campsites/spain/costa-dorada/camping-resort-sanguli-salou", "Huge pool complex, near PortAventura, beach access. Salou."],
+  [41.0800, 1.1300, "Playa Montroig", "Eurocamp", "https://www.eurocamp.co.uk/campsites/spain/costa-dorada/playa-montroig-campsite", "Direct beach, top-rated for families, large pools. Costa Dorada."]
+];
+var accomIcon = function(){ return L.divIcon({
+  className:'',
+  html:'<div style="background:#2d9a2d;color:#fff;width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;cursor:pointer;">&#127965;</div>',
+  iconSize:[30,30], iconAnchor:[15,15]
+}); };
+accomData.forEach(function(a){
+  var marker = L.marker([a[0],a[1]], {icon: accomIcon()})
+    .bindPopup('<div style="min-width:220px;"><b style="color:#2d9a2d;font-size:0.95rem;">&#127965; '+a[2]+'</b><br><span style="color:#888;font-size:0.8rem;">'+a[3]+'</span><br><span style="color:#555;font-size:0.85rem;">'+a[5]+'</span><br><a href="'+a[4]+'" target="_blank" style="color:#2d9a2d;font-size:0.85rem;">View on '+a[3]+' \u2192</a></div>');
+  marker.addTo(window.activityMap);
+  window.accomMarkers.push(marker);
+});
+})();
+</script>
+
+<script>
+// Country navbar show on scroll
+(function(){
+  var nav = document.getElementById('countryNav');
+  if (!nav) return;
+  var hero = document.querySelector('.hero');
+  if (!hero) { nav.classList.add('visible'); return; }
+  var observer = new IntersectionObserver(function(entries){
+    nav.classList.toggle('visible', !entries[0].isIntersecting);
+  }, {threshold: 0});
+  observer.observe(hero);
+})();
+</script>
+
+</body>
+</html>

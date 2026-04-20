@@ -1,0 +1,1956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Austria: Zell am See + Lake Como — Family Activities Guide 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+  :root {
+    --primary: #1B3C8F;
+    --dark: #0F2557;
+    --primary-light: #e8edf7;
+    --dark-light: #f0f0f0;
+    --accent: #1B3C8F;
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #0F2557;
+    --muted: #4a6bb5;
+    --border: #e0e0e0;
+    --sidebar-width: 280px;
+    --accent-orange: #FF6B35;
+  }
+
+  /* ── Country Navbar ─────────────────────────────────── */
+  .country-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(15, 37, 87, 0.95);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    transform: translateY(-100%); transition: transform 0.3s ease;
+  }
+  .country-nav.visible { transform: translateY(0); }
+  .country-nav__inner {
+    max-width: 1400px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 1rem; height: 48px;
+  }
+  .country-nav__label {
+    font-family: 'Playfair Display', serif; font-size: 0.8rem;
+    color: rgba(255,255,255,0.7); white-space: nowrap; margin-right: 0.5rem;
+  }
+  .country-nav__links {
+    display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .country-nav__link {
+    display: flex; align-items: center; gap: 5px;
+    padding: 12px 12px; color: rgba(255,255,255,0.8);
+    font-size: 0.78rem; font-weight: 500; white-space: nowrap;
+    transition: all 0.2s; border-bottom: 2px solid transparent; text-decoration: none;
+  }
+  .country-nav__link:hover { color: #fff; background: rgba(255,255,255,0.08); border-bottom-color: #FF6B35; }
+  .country-nav__link .nav-icon { width: 16px; height: 16px; flex-shrink: 0; opacity: 0.85; }
+  .country-nav__link:hover .nav-icon { opacity: 1; }
+  .country-nav__link--accent { color: #FF6B35; }
+  .country-nav__link--accent:hover { color: #fff; border-bottom-color: #FF6B35; }
+  @media (max-width: 768px) {
+    .country-nav__label { display: none; }
+    .country-nav__link { padding: 12px 8px; font-size: 0.72rem; }
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Montserrat', 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #0F2557 0%, #1B3C8F 100%);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    margin-bottom: 10px;
+  }
+  .hero .subtitle { font-size: 1.1rem; opacity: 0.9; margin-bottom: 8px; }
+  .hero .count {
+    display: inline-block;
+    background: #FF6B35;
+    padding: 8px 24px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-top: 12px;
+  }
+  .hero .family {
+    margin-top: 16px;
+    font-size: 0.95rem;
+    opacity: 0.85;
+  }
+
+  /* ========= LAYOUT ========= */
+  .page-layout {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* ========= FILTER SIDEBAR ========= */
+  .filter-sidebar {
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: #0F2557;
+    color: #fff;
+    padding: 20px 16px;
+    z-index: 100;
+    scrollbar-width: thin;
+    scrollbar-color: #4a6bb5 #0F2557;
+  }
+  .filter-sidebar::-webkit-scrollbar { width: 6px; }
+  .filter-sidebar::-webkit-scrollbar-track { background: #0F2557; }
+  .filter-sidebar::-webkit-scrollbar-thumb { background: #4a6bb5; border-radius: 3px; }
+
+  .filter-sidebar h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: #1B3C8F;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .filter-sidebar h3::before { content: '⚙️'; }
+
+  .filter-count {
+    background: #1B3C8F;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+  .filter-count span { font-size: 1.3rem; }
+
+  .filter-group {
+    margin-bottom: 18px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 14px;
+  }
+  .filter-group:last-child { border-bottom: none; }
+  .filter-group-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #aaa;
+    margin-bottom: 8px;
+  }
+  .filter-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: color 0.15s;
+    font-family: 'Inter', sans-serif;
+  }
+  .filter-group label:hover { color: #1B3C8F; }
+
+  .filter-group input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #4a6bb5;
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .filter-group input[type="checkbox"]:checked {
+    background: #1B3C8F;
+    border-color: #1B3C8F;
+  }
+  .filter-group input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: -1px;
+    left: 2px;
+    font-size: 13px;
+    color: white;
+    font-weight: bold;
+  }
+
+  .clear-filters {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    color: #1B3C8F;
+    border: 2px solid #1B3C8F;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+  }
+  .clear-filters:hover {
+    background: #1B3C8F;
+    color: white;
+  }
+
+  .filter-toggle {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 200;
+    background: #1B3C8F;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  /* ========= MAIN CONTENT ========= */
+  .main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 0 20px;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .top10 {
+    background: linear-gradient(135deg, #e8edf7, #e0e8f5);
+    border: 2px solid var(--accent);
+    border-radius: 16px;
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 800px;
+  }
+  .top10 h2 { font-family: 'Montserrat', sans-serif; color: #1B3C8F; margin-bottom: 16px; font-size: 1.5rem; }
+  .top10 ol { padding-left: 24px; }
+  .top10 li { margin-bottom: 8px; font-size: 0.95rem; }
+  .top10 li strong { color: #0F2557; }
+
+  /* Card info box */
+  .card-info {
+    background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+    border: 2px solid #065f46;
+    border-radius: 16px;
+    padding: 24px 30px;
+    margin: 30px auto;
+    max-width: 800px;
+  }
+  .card-info h2 { font-family: 'Montserrat', sans-serif; color: #065f46; margin-bottom: 12px; font-size: 1.3rem; }
+  .card-info ul { padding-left: 20px; }
+  .card-info li { margin-bottom: 6px; font-size: 0.9rem; color: #065f46; }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 30px 0;
+  }
+  .summary-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+  .summary-card .big-num { font-size: 2.5rem; font-weight: 700; color: #1B3C8F; }
+  .summary-card .label { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+
+  .section-header {
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 16px;
+    margin: 40px 0 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .section-header.austria { background: linear-gradient(135deg, #1B3C8F, #142f6e); color: white; }
+  .section-header.como { background: linear-gradient(135deg, #0F2557, #1B3C8F); color: white; }
+  .section-header.railway { background: linear-gradient(135deg, #374151, #1f2937); color: white; }
+  .section-header .icon { font-size: 3rem; margin-bottom: 8px; }
+  .section-header h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+  }
+  .section-header p { opacity: 0.9; margin-top: 6px; font-size: 0.95rem; }
+  .section-header.hidden-by-filter { display: none; }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 32px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--border);
+  }
+  .category-header .cat-icon { font-size: 1.6rem; }
+  .category-header h3 { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; }
+  .category-header .cat-count {
+    background: var(--primary-light);
+    color: var(--primary);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .category-header.hidden-by-filter { display: none; }
+
+  .activity-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    gap: 12px;
+    align-items: start;
+    transition: box-shadow 0.2s, opacity 0.2s;
+  }
+  .activity-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .activity-card.highlight { border-left: 4px solid var(--accent); }
+  .activity-card.hidden-by-filter { display: none; }
+
+  .activity-num {
+    background: var(--primary);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .como-section .activity-num { background: #0F2557; }
+  .railway-section .activity-num { background: #374151; }
+
+  .activity-content h4 { font-size: 1rem; margin-bottom: 4px; }
+  .activity-content h4 a { color: inherit; text-decoration: none; }
+  .activity-content h4 a:hover { color: var(--accent); text-decoration: underline; }
+  .activity-desc { font-size: 0.88rem; color: var(--muted); margin-bottom: 8px; }
+
+  .activity-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .tag.tom-yes { background: #d1fae5; color: #065f46; }
+  .tag.tom-no { background: #fee2e2; color: #991b1b; }
+  .tag.tom-check { background: #fef3c7; color: #92400e; }
+  .tag.teen-love { background: #ede9fe; color: #5b21b6; }
+  .tag.teen-ok { background: #f3f4f6; color: #4b5563; }
+  .tag.cost { background: #e0f2fe; color: #075985; }
+  .tag.free { background: #d1fae5; color: #065f46; }
+
+  .tag.cost-free { background: #d1fae5; color: #065f46; font-weight: 600; }
+  .tag.cost-budget { background: #dbeafe; color: #1e40af; font-weight: 600; }
+  .tag.cost-mid { background: #bfdbfe; color: #1e3a8a; font-weight: 600; }
+  .tag.cost-premium { background: #c4b5fd; color: #3b0764; font-weight: 600; }
+
+  .tag.area-zell { background: #e8edf7; color: #1B3C8F; font-weight: 600; }
+  .tag.area-kaprun { background: #dbeafe; color: #1e40af; font-weight: 600; }
+  .tag.area-como { background: #fef3c7; color: #92400e; font-weight: 600; }
+  .tag.area-railway { background: #f3f4f6; color: #374151; font-weight: 600; }
+  .tag.area-daytrip { background: #ede9fe; color: #5b21b6; font-weight: 600; }
+
+  .activity-link {
+    flex-shrink: 0;
+    align-self: center;
+  }
+  .activity-link a {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+  .activity-link a:hover { background: #0a1b3f; }
+  .como-section .activity-link a { background: #0F2557; }
+  .como-section .activity-link a:hover { background: #1B3C8F; }
+  .railway-section .activity-link a { background: #374151; }
+  .railway-section .activity-link a:hover { background: #1B3C8F; }
+
+  .footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  /* ========= RESPONSIVE ========= */
+  @media (max-width: 900px) {
+    .filter-sidebar {
+      position: fixed;
+      left: -300px;
+      top: 0;
+      height: 100vh;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+    .filter-sidebar.open { left: 0; }
+    .filter-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+    }
+    .filter-overlay.open { display: block; }
+    .filter-toggle { display: flex; align-items: center; justify-content: center; }
+    .main-content { padding: 0 12px; }
+    .page-layout { display: block; }
+  }
+
+  @media (max-width: 640px) {
+    .activity-card { grid-template-columns: 32px 1fr; }
+    .activity-link { grid-column: 1 / -1; }
+    .activity-link a { width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="country-nav" id="countryNav">
+  <div class="country-nav__inner">
+    <span class="country-nav__label">Explore:</span>
+    <div class="country-nav__links">
+      <a href="showcase/index.html" class="country-nav__link country-nav__link--accent"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg> Home</a>
+      <a href="France_Verdon_CotedAzur_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h6v18H3V3zm12 0h6v18h-6V3zM9 3h6v18H9V3z" opacity="0.8"/></svg> France</a>
+      <a href="Germany_Bavaria_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L8.5 8.5 2 9.5l5 4.5L5.5 21 12 17.5 18.5 21 17 14l5-4.5-6.5-1L12 2z"/></svg> Germany</a>
+      <a href="Croatia_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20v4H2zm0 6h4v4H6v-2H4v4h4v-2h2v4H8v-2H4v4h20V10H2zm6 0h4v2h-2v2H8v-4zm6 0h4v2h-2v2h-2v-4z"/></svg> Croatia</a>
+      <a href="Sicily_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c3.31 0 6-2.69 6-6 0-4.96-4.49-9-10-9z"/></svg> Sicily</a>
+      <a href="Egypt_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 21h18L12 3 3 21zm9-3l-4.5-9h9L12 18z"/></svg> Egypt</a>
+      <a href="Austria_Activities_2026.html" class="country-nav__link" style="border-bottom-color:#FF6B35;color:#fff;"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z"/></svg> Austria</a>
+      <a href="Bulgaria_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 2.84L18 11v7h-2v-6H8v6H6v-7l6-5.16z"/></svg> Bulgaria</a>
+      <a href="Japan_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg> Japan</a>
+      <a href="Spain_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg> Spain</a>
+      <a href="CostaRica_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.71c.76.34 1.59.54 2.46.59L9 20c.5-4 4.17-8 9-8V8z"/></svg> Costa Rica</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" style="position:relative; overflow:hidden; min-height: 340px;">
+  <div style="position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1920&q=80') center/cover no-repeat;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,37,87,.72) 0%, rgba(15,37,87,.88) 100%);"></div>
+  <div style="position:relative; z-index:2;">
+    <h1>🇦🇹 Zell am See + Lake Como — Family Activities Guide</h1>
+    <div class="subtitle">Austrian Alps · Bernina Express · Italian Lakes — Summer 2026</div>
+    <div class="count">🎯 62 Activities Found</div>
+    <div class="family">👨‍👩‍👧‍👦 2 Adults · Katie (17) · George (15) · Tom (8)</div>
+  </div>
+</div>
+
+<!-- ═══ Weather Summary ═══ -->
+<div class="weather-section" style="background: linear-gradient(135deg, #f0f4ff 0%, #e8edf7 100%); padding: 2rem 0;">
+  <div style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
+    <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 16px; font-size: 1.2rem;">
+      ☀️ August Weather — What to Expect
+    </h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 12px;">
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">🌡️</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">20-25°C</div>
+        <div style="font-size: 0.75rem; color: #666;">Avg. High</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">🌙</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">10-14°C</div>
+        <div style="font-size: 0.75rem; color: #666;">Avg. Low</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">☀️</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">6-7</div>
+        <div style="font-size: 0.75rem; color: #666;">Sun hrs/day</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">🌧️</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">12-15 days</div>
+        <div style="font-size: 0.75rem; color: #666;">Rainy Days</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">⛰️</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">20-22°C</div>
+        <div style="font-size: 0.75rem; color: #666;">Lake Temp</div>
+      </div>
+    </div>
+    <p style="font-size: 0.82rem; color: #555; line-height: 1.6; margin: 0;">
+      🌦️ <strong>Warm but expect Alpine storms.</strong> August in the Alps means warm, pleasant mornings but frequent afternoon thunderstorms — they're dramatic but usually short. The Kitzsteinhorn glacier (3,029m) will be cold — bring warm layers. Lake Zell is swimmable at 20-22°C. Mountain weather changes fast — always carry a waterproof. Bernina Express and Lake Como will be warmer and sunnier.
+    </p>
+  </div>
+</div>
+<!-- MOBILE FILTER TOGGLE -->
+<button class="filter-toggle" onclick="toggleFilters()" aria-label="Toggle filters">⚙️</button>
+<div class="filter-overlay" id="filterOverlay" onclick="toggleFilters()"></div>
+
+<div class="page-layout">
+
+<!-- FILTER SIDEBAR -->
+<aside class="filter-sidebar" id="filterSidebar">
+  <h3>Filters</h3>
+  <div class="filter-count">Showing <span id="visibleCount">62</span> of 62 activities</div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Area</div>
+    <label><input type="checkbox" data-filter="area" value="zell-am-see"> 🏔️ Zell am See</label>
+    <label><input type="checkbox" data-filter="area" value="kaprun"> ⛰️ Kaprun</label>
+    <label><input type="checkbox" data-filter="area" value="day-trip"> 🚂 Day Trips</label>
+    <label><input type="checkbox" data-filter="area" value="scenic-railway"> 🚃 Scenic Railways</label>
+    <label><input type="checkbox" data-filter="area" value="lake-como"> 🌊 Lake Como</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Activity Type</div>
+    <label><input type="checkbox" data-filter="type" value="water"> 🌊 Water</label>
+    <label><input type="checkbox" data-filter="type" value="mountain"> 🏔️ Mountain & Cable Cars</label>
+    <label><input type="checkbox" data-filter="type" value="adventure"> ⚡ Adventure & Adrenaline</label>
+    <label><input type="checkbox" data-filter="type" value="nature"> 🌿 Nature & Gorges</label>
+    <label><input type="checkbox" data-filter="type" value="culture"> 🏛️ Culture & Towns</label>
+    <label><input type="checkbox" data-filter="type" value="railway"> 🚂 Scenic Railways</label>
+    <label><input type="checkbox" data-filter="type" value="food"> 🍽️ Food & Drink</label>
+    <label><input type="checkbox" data-filter="type" value="family"> 🎪 Family Fun</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Suitable for</div>
+    <label><input type="checkbox" data-filter="tom" value="yes"> ✅ Tom (8)</label>
+    <label><input type="checkbox" data-filter="teens" value="love"> ⭐ Teens love it (15-17)</label>
+    <label><input type="checkbox" data-filter="family" value="yes"> 👨‍👩‍👧‍👦 Whole family</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Cost</div>
+    <label><input type="checkbox" data-filter="cost" value="free"> Free / Kaprun Card</label>
+    <label><input type="checkbox" data-filter="cost" value="budget"> Budget (under €25pp)</label>
+    <label><input type="checkbox" data-filter="cost" value="mid"> Mid-range (€25-60pp)</label>
+    <label><input type="checkbox" data-filter="cost" value="premium"> Premium (€60+pp)</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Special</div>
+    <label><input type="checkbox" data-filter="mustdo" value="true"> ⭐ Must-do highlights only</label>
+  </div>
+
+  <button class="clear-filters" onclick="clearFilters()">Clear all filters</button>
+</aside>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+<div class="container">
+
+<!-- TOP 10 -->
+<div class="top10">
+  <h2>⭐ The Unmissable 10</h2>
+  <ol>
+    <li>🏔️ <strong>Kitzsteinhorn Glacier (3,029m)</strong> — touch snow in summer, ice tunnel, jaw-dropping panorama</li>
+    <li>🚂 <strong>Bernina Express</strong> — UNESCO World Heritage railway through the Swiss Alps to Italy</li>
+    <li>🌊 <strong>Lake Zell swimming & SUP</strong> — crystal-clear Alpine lake surrounded by mountains</li>
+    <li>🏰 <strong>Salzburg day trip</strong> — Mozart's city, hilltop fortress, Sound of Music</li>
+    <li>💧 <strong>Krimml Waterfalls + Pinzgauer Lokalbahn</strong> — Austria's highest falls via narrow-gauge train</li>
+    <li>🚡 <strong>Schmittenhöhe cable car</strong> — panoramic hiking with views of 30+ peaks</li>
+    <li>⛴️ <strong>Lake Como ferry hopping</strong> — Varenna, Bellagio, Menaggio by boat</li>
+    <li>🏔️ <strong>Kaprun High Mountain Reservoirs</strong> — bus through tunnels to stunning dam lakes</li>
+    <li>🎢 <strong>Maisi Flitzer alpine coaster</strong> — toboggan run down Maiskogel mountain</li>
+    <li>🏞️ <strong>Sigmund-Thun Gorge</strong> — dramatic walkway through a narrow rock canyon</li>
+  </ol>
+</div>
+
+<!-- KAPRUN CARD INFO -->
+<div class="card-info">
+  <h2>🎫 Zell am See-Kaprun Card — FREE with most accommodation!</h2>
+  <ul>
+    <li>✅ Cable cars: Schmittenhöhe, Maiskogel, Kitzsteinhorn</li>
+    <li>✅ Pinzgauer Lokalbahn narrow-gauge railway</li>
+    <li>✅ Local buses throughout the region</li>
+    <li>✅ Swimming pool (Freizeitanlage) & boat trips on Lake Zell</li>
+    <li>✅ Many attractions and museums</li>
+    <li>⚠️ Check your accommodation includes it before booking!</li>
+  </ul>
+</div>
+
+<!-- SUMMARY STATS -->
+<div class="summary-grid">
+  <div class="summary-card"><div class="big-num">62</div><div class="label">Total Activities</div></div>
+  <div class="summary-card"><div class="big-num">10</div><div class="label">Water Activities</div></div>
+  <div class="summary-card"><div class="big-num">7</div><div class="label">Mountain & Cable Cars</div></div>
+  <div class="summary-card"><div class="big-num">8</div><div class="label">Adventure & Adrenaline</div></div>
+  <div class="summary-card"><div class="big-num">7</div><div class="label">Nature & Gorges</div></div>
+  <div class="summary-card"><div class="big-num">12</div><div class="label">Culture & Towns</div></div>
+  <div class="summary-card"><div class="big-num">6</div><div class="label">Scenic Railways</div></div>
+  <div class="summary-card"><div class="big-num">7</div><div class="label">Food & Drink</div></div>
+  <div class="summary-card"><div class="big-num">5</div><div class="label">Family Fun</div></div>
+</div>
+
+<!-- ═══ Dynamic Activity Map ═══ -->
+<div style="margin: 2rem auto; max-width: 1100px; padding: 0 20px;">
+  <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 4px; font-size: 1.3rem;">📍 Activity Map</h3>
+  <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">
+    <span id="map-count">62 activities shown</span> &mdash; 
+    <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#FF6B35;vertical-align:middle;"></span> Must-do
+    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#1B3C8F;vertical-align:middle;margin-left:8px;"></span> Other activities.
+    Use the filters to narrow down.
+    <label style="display:inline-flex;align-items:center;gap:4px;margin-left:12px;font-size:0.85rem;color:#2d9a2d;cursor:pointer;">
+      <input type="checkbox" id="accom-toggle" checked onchange="toggleAccom(this.checked)" style="accent-color:#2d9a2d;"> &#127965; Accommodation
+    </label>
+  </p>
+  <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.12); border: 2px solid #1B3C8F;">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <div id="mustdo-map" style="width:100%; height:500px;"></div>
+    <div style="padding: 12px 16px; background: #f8f9fa; max-height: 350px; overflow-y: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: 'Inter', sans-serif;">
+        <thead><tr style="border-bottom: 2px solid #1B3C8F; color: #0F2557; position: sticky; top: 0; background: #f8f9fa;">
+            <th style="text-align: left; padding: 5px 8px; width: 40px;">#</th>
+            <th style="text-align: left; padding: 5px 8px;">Activity</th>
+            <th style="text-align: right; padding: 5px 8px; width: 140px;">Links</th>
+        </tr></thead>
+        <tbody id="map-table-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  window.activityMap = L.map('mustdo-map', {scrollWheelZoom: false}).setView([46.8, 11.5], 7);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; CARTO &copy; OSM', maxZoom: 18
+  }).addTo(window.activityMap);
+  window.activityMarkers = [];
+  document.querySelectorAll('.activity-card').forEach(function(card) {
+    var lat = parseFloat(card.dataset.lat); var lng = parseFloat(card.dataset.lng);
+    if (!lat || !lng) { window.activityMarkers.push(null); return; }
+    var num = card.dataset.num || ''; var isMustDo = card.dataset.mustdo === 'true';
+    var title = card.querySelector('h4') ? card.querySelector('h4').textContent.trim() : '';
+    var desc = card.querySelector('.activity-desc');
+    var descText = desc ? desc.textContent.trim().substring(0, 100) + '...' : '';
+    var size = isMustDo ? 28 : 22; var bg = isMustDo ? '#FF6B35' : '#1B3C8F';
+    var fs = isMustDo ? '12px' : '10px';
+    var icon = L.divIcon({ className: '',
+      html: '<div style="background:'+bg+';color:#fff;width:'+size+'px;height:'+size+'px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:'+fs+';font-family:sans-serif;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;cursor:pointer;">'+num+'</div>',
+      iconSize: [size, size], iconAnchor: [size/2, size/2]
+    });
+    var marker = L.marker([lat, lng], {icon: icon})
+      .bindPopup('<div style="min-width:180px;"><b style="color:#0F2557;">' + (isMustDo ? '⭐ ' : '') + title + '</b><br><span style="color:#555;font-size:0.85rem;">' + descText + '</span></div>');
+    marker.addTo(window.activityMap); window.activityMarkers.push(marker);
+  });
+  if (typeof updateMap === 'function') updateMap();
+})();
+</script>
+
+
+<!-- =============================================== -->
+<!-- SECTION: ZELL AM SEE-KAPRUN                     -->
+<!-- =============================================== -->
+<div class="section-header austria" data-section="austria">
+  <div class="icon">🏔️</div>
+  <h2>Zell am See-Kaprun</h2>
+  <p>Alpine lake, glaciers, mountains & the Kaprun Card</p>
+</div>
+
+<div class="austria-section" data-section-wrap="austria">
+
+<!-- WATER ACTIVITIES -->
+<div class="category-header" data-cat-type="water" data-cat-area="austria">
+  <span class="cat-icon">🌊</span>
+  <h3>Water Activities</h3>
+  <span class="cat-count">7 activities</span>
+</div>
+
+<div class="activity-card highlight" data-lat="47.3233" data-lng="12.7967" data-area="zell-am-see" data-type="water" data-tom="yes" data-teens="love" data-cost="free" data-num="1" data-mustdo="true">
+  <div class="activity-num">1</div>
+  <div class="activity-content">
+    <h4><a href="https://www.zellamsee-kaprun.com/en/summer/swimming-lakes" target="_blank">Lake Zell Swimming</a></h4>
+    <div class="activity-desc">Crystal-clear Alpine lake surrounded by mountains. Public beaches (Strandbad) with mountain panorama. Water warm enough in August (22°C). FREE with Kaprun Card!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag free">Free with Card!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-zell">🏔️ Zell am See</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.zellamsee-kaprun.com/en/summer/swimming-lakes" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card highlight" data-lat="47.3250" data-lng="12.7950" data-area="zell-am-see" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="2" data-mustdo="true">
+  <div class="activity-num">2</div>
+  <div class="activity-content">
+    <h4><a href="https://www.zellamsee-kaprun.com/en/summer/swimming-lakes" target="_blank">SUP / Stand-Up Paddleboarding on Lake Zell</a></h4>
+    <div class="activity-desc">Paddleboard on the glassy lake with mountain reflections all around. Tom can kneel! Hire from lakeside vendors.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (kneeling)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€12-18/hr</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-zell">🏔️ Zell am See</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.zellamsee-kaprun.com/en/summer/swimming-lakes" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-lat="47.3200" data-lng="12.7900" data-area="zell-am-see" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="3">
+  <div class="activity-num">3</div>
+  <div class="activity-content">
+    <h4>Kayaking on Lake Zell</h4>
+    <div class="activity-desc">Hire kayaks and explore the shoreline. Calm, flat water — perfect for families and beginners.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (with parent)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€12-20/hr</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-zell">🏔️ Zell am See</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-lat="47.3280" data-lng="12.8000" data-area="zell-am-see" data-type="water" data-tom="yes" data-teens="ok" data-cost="free" data-num="4">
+  <div class="activity-num">4</div>
+  <div class="activity-content">
+    <h4><a href="https://www.zellamsee-kaprun.com/en/summer/swimming-lakes" target="_blank">Boat Trip on Lake Zell</a></h4>
+    <div class="activity-desc">Scenic passenger boat around the lake with mountain views. Regular sailings throughout the day. FREE with Kaprun Card!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag free">Free with Card!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-zell">🏔️ Zell am See</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.zellamsee-kaprun.com/en/summer/swimming-lakes" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-lat="47.3267" data-lng="12.7917" data-area="zell-am-see" data-type="water" data-tom="yes" data-teens="ok" data-cost="free" data-num="5">
+  <div class="activity-num">5</div>
+  <div class="activity-content">
+    <h4><a href="https://www.zellamsee-kaprun.com/en/summer/swimming-lakes" target="_blank">Zell am See Indoor Pool (Freizeitanlage)</a></h4>
+    <div class="activity-desc">Indoor swimming pool and leisure centre. Great for rainy days or when it's too cold for the lake. FREE with Kaprun Card!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag free">Free with Card!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-zell">🏔️ Zell am See</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.zellamsee-kaprun.com/en/summer/swimming-lakes" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-lat="47.2700" data-lng="12.7500" data-area="kaprun" data-type="water" data-tom="yes" data-teens="love" data-cost="mid" data-num="6">
+  <div class="activity-num">6</div>
+  <div class="activity-content">
+    <h4><a href="https://www.tauern-spa.com/en/" target="_blank">Tauern Spa Kaprun</a></h4>
+    <div class="activity-desc">Massive thermal spa and waterpark with indoor/outdoor pools, slides, saunas, and mountain views. A treat for the whole family.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€30-40pp</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag area-kaprun">⛰️ Kaprun</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.tauern-spa.com/en/" target="_blank">Book →</a></div>
+</div>
+
+<div class="activity-card" data-lat="47.3150" data-lng="12.8050" data-area="zell-am-see" data-type="water" data-tom="yes" data-teens="ok" data-cost="budget" data-num="7">
+  <div class="activity-num">7</div>
+  <div class="activity-content">
+    <h4>Campsite Swimming & Water Slides (Sportcamp Woferlgut)</h4>
+    <div class="activity-desc">On-site swimming pool with water slides, if staying at this campsite. Hours of fun for Tom!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">Included with stay</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-zell">🏔️ Zell am See</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.sportcamp.at" target="_blank">Info →</a></div>
+</div>
+
+<!-- MOUNTAIN & CABLE CARS -->
+<div class="category-header" data-cat-type="mountain" data-cat-area="austria">
+  <span class="cat-icon">🏔️</span>
+  <h3>Mountain & Cable Cars</h3>
+  <span class="cat-count">7 activities</span>
+</div>
+
+<div class="activity-card highlight" data-lat="47.1883" data-lng="12.6875" data-area="kaprun" data-type="mountain" data-tom="yes" data-teens="love" data-cost="free" data-num="8" data-mustdo="true">
+  <div class="activity-num">8</div>
+  <div class="activity-content">
+    <h4><a href="https://www.kitzsteinhorn.at/en" target="_blank">Kitzsteinhorn Glacier (3,029m)</a></h4>
+    <div class="activity-desc">Cable car to Austria's only glacier ski resort accessible in summer! Touch snow in August, walk through the Ice Arena tunnel, Nationalpark Gallery viewing platform at 3,029m. Absolutely mind-blowing.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag free">Free with Card!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-kaprun">⛰️ Kaprun</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.kitzsteinhorn.at/en" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card highlight" data-lat="47.3300" data-lng="12.7750" data-area="zell-am-see" data-type="mountain" data-tom="yes" data-teens="love" data-cost="free" data-num="9" data-mustdo="true">
+  <div class="activity-num">9</div>
+  <div class="activity-content">
+    <h4><a href="https://www.schmitten.at/en" target="_blank">Schmittenhöhe Cable Car & Hiking</a></h4>
+    <div class="activity-desc">Cable car up Zell am See's home mountain. Panoramic views of 30+ 3,000m peaks. Family hiking trails, panoramic restaurant at the top. FREE with Kaprun Card!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag free">Free with Card!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-zell">🏔️ Zell am See</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.schmitten.at/en" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card highlight" data-lat="47.1667" data-lng="12.7167" data-area="kaprun" data-type="mountain" data-tom="yes" data-teens="love" data-cost="free" data-num="10" data-mustdo="true">
+  <div class="activity-num">10</div>
+  <div class="activity-content">
+    <h4><a href="https://www.verbund.com/en/about-verbund/visitors-centres/kaprun-high-mountain-reservoirs" target="_blank">Kaprun High Mountain Reservoirs</a></h4>
+    <div class="activity-desc">Take a bus through tunnels and up a steep inclined railway to reach two stunning dam lakes at 2,040m. Surrounded by glaciers and peaks. Incredible engineering + incredible scenery.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag free">Free with Card!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-kaprun">⛰️ Kaprun</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.verbund.com/en/about-verbund/visitors-centres/kaprun-high-mountain-reservoirs" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-lat="47.2650" data-lng="12.7600" data-area="zell-am-see" data-type="mountain" data-tom="yes" data-teens="ok" data-cost="free" data-num="11">
+  <div class="activity-num">11</div>
+  <div class="activity-content">
+    <h4><a href="https://www.maiskogel.at/en" target="_blank">Maiskogel Cable Car</a></h4>
+    <div class="activity-desc">Cable car from Kaprun up to Maiskogel — family mountain with adventure playground at the top and the Maisi Flitzer alpine coaster. FREE with Kaprun Card!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag free">Free with Card!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-kaprun">⛰️ Kaprun</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.maiskogel.at/en" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-lat="47.3100" data-lng="12.7700" data-area="zell-am-see" data-type="mountain" data-tom="yes" data-teens="ok" data-cost="free" data-num="12">
+  <div class="activity-num">12</div>
+  <div class="activity-content">
+    <h4>Family Hiking — Mountain Trails</h4>
+    <div class="activity-desc">Dozens of well-marked hiking trails for all abilities. Take the cable car up and walk down through Alpine meadows with wildflowers and cowbells.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-zell">🏔️ Zell am See</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-lat="47.3267" data-lng="12.7967" data-area="zell-am-see" data-type="mountain" data-tom="yes" data-teens="ok" data-cost="free" data-num="13">
+  <div class="activity-num">13</div>
+  <div class="activity-content">
+    <h4>Zell am See Town Exploration</h4>
+    <div class="activity-desc">Wander the beautiful lakeside town centre — shops, restaurants, ice cream, medieval streets. Evening strolls along the promenade are magical.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-zell">🏔️ Zell am See</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-lat="47.0744" data-lng="12.8427" data-area="day-trip" data-type="mountain" data-tom="yes" data-teens="love" data-cost="mid" data-num="14">
+  <div class="activity-num">14</div>
+  <div class="activity-content">
+    <h4><a href="https://www.grossglockner.at/gg/en" target="_blank">Großglockner High Alpine Road</a></h4>
+    <div class="activity-desc">Drive Austria's most famous mountain road to 2,504m. Views of the Großglockner (3,798m, Austria's highest peak) and the Pasterze Glacier. Incredible scenery. Hire car needed.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">~€40 per car + hire</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag area-daytrip">🚗 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.grossglockner.at/gg/en" target="_blank">Info →</a></div>
+</div>
+
+<!-- ADVENTURE & ADRENALINE -->
+<div class="category-header" data-cat-type="adventure" data-cat-area="austria">
+  <span class="cat-icon">⚡</span>
+  <h3>Adventure & Adrenaline</h3>
+  <span class="cat-count">8 activities</span>
+</div>
+
+<div class="activity-card highlight" data-lat="47.3125" data-lng="12.8042" data-area="kaprun" data-type="adventure" data-tom="yes" data-teens="love" data-cost="budget" data-num="15" data-mustdo="true">
+  <div class="activity-num">15</div>
+  <div class="activity-content">
+    <h4><a href="https://www.maiskogel.at/en/summer/maisi-flitzer" target="_blank">Maisi Flitzer Alpine Coaster</a></h4>
+    <div class="activity-desc">1,300m toboggan run down Maiskogel mountain! Ride solo or tandem (Tom with a parent). Speed up to 40km/h with brakes to control. Huge fun!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐ (with parent)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">~€10 per ride</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-kaprun">⛰️ Kaprun</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.maiskogel.at/en/summer/maisi-flitzer" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-lat="47.2800" data-lng="12.7300" data-area="zell-am-see" data-type="adventure" data-tom="no" data-teens="love" data-cost="mid" data-num="16">
+  <div class="activity-num">16</div>
+  <div class="activity-content">
+    <h4>Via Ferrata Climbing Routes</h4>
+    <div class="activity-desc">Iron-runged cliff climbing, clipped to steel cable. Various routes and difficulties around Zell am See and Kaprun. Incredible exposure and mountain views.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Tom (12+ recommended)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€35-60pp guided</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag area-zell">🏔️ Zell am See</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-lat="47.2600" data-lng="12.7400" data-area="kaprun" data-type="adventure" data-tom="no" data-teens="love" data-cost="mid" data-num="17">
+  <div class="activity-num">17</div>
+  <div class="activity-content">
+    <h4>Canyoning in Kaprun</h4>
+    <div class="activity-desc">Guided descent through mountain canyons — scrambling over rocks, sliding down natural water chutes, jumping into pools. Wetsuits provided.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Tom (min 12-14)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€50-70pp</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag area-kaprun">⛰️ Kaprun</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-lat="47.3050" data-lng="12.7850" data-area="zell-am-see" data-type="adventure" data-tom="no" data-teens="love" data-cost="budget" data-num="18">
+  <div class="activity-num">18</div>
+  <div class="activity-content">
+    <h4>Mountain Biking</h4>
+    <div class="activity-desc">Excellent MTB trails from gentle forest paths to expert downhill runs. Bikes for hire in town. Cable car access to high trails.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Tom (terrain/bike size)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€20-35 hire/day</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-zell">🏔️ Zell am See</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-lat="47.3180" data-lng="12.8000" data-area="zell-am-see" data-type="adventure" data-tom="yes" data-teens="ok" data-cost="budget" data-num="19">
+  <div class="activity-num">19</div>
+  <div class="activity-content">
+    <h4>Family Cycling — Tauern Cycle Path</h4>
+    <div class="activity-desc">Flat, easy cycling along the Salzach river valley. Paved paths suitable for all ages. Bike hire in town, including child-sized bikes.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">€10-20 hire/day</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-zell">🏔️ Zell am See</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-lat="47.3350" data-lng="12.7800" data-area="zell-am-see" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="20">
+  <div class="activity-num">20</div>
+  <div class="activity-content">
+    <h4>Tandem Paragliding</h4>
+    <div class="activity-desc">Fly with an instructor from Schmittenhöhe over the lake and mountains. Spectacular Alpine panorama. Various operators in Zell am See.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">⚠️ Tom (check min weight)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€100-150pp</span>
+      <span class="tag cost-premium">€60+pp</span>
+      <span class="tag area-zell">🏔️ Zell am See</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-lat="47.2900" data-lng="12.7600" data-area="zell-am-see" data-type="adventure" data-tom="check" data-teens="love" data-cost="mid" data-num="21">
+  <div class="activity-num">21</div>
+  <div class="activity-content">
+    <h4>E-Bike Mountain Tour</h4>
+    <div class="activity-desc">Guided electric mountain bike tours through the Alps. The motor takes the pain out of climbing! Various routes and difficulty levels.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">⚠️ Tom (check bike size)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€40-60pp</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag area-zell">🏔️ Zell am See</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-lat="47.2950" data-lng="12.7900" data-area="zell-am-see" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="22">
+  <div class="activity-num">22</div>
+  <div class="activity-content">
+    <h4>Horseback Riding</h4>
+    <div class="activity-desc">Horse and pony trekking through Alpine meadows. Several riding centres in the area with options for all levels including beginners.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (pony)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€30-50pp/hr</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag area-zell">🏔️ Zell am See</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<!-- NATURE & GORGES -->
+<div class="category-header" data-cat-type="nature" data-cat-area="austria">
+  <span class="cat-icon">🌿</span>
+  <h3>Nature & Gorges</h3>
+  <span class="cat-count">5 activities</span>
+</div>
+
+<div class="activity-card highlight" data-lat="47.3200" data-lng="12.8100" data-area="kaprun" data-type="nature" data-tom="yes" data-teens="love" data-cost="budget" data-num="23" data-mustdo="true">
+  <div class="activity-num">23</div>
+  <div class="activity-content">
+    <h4><a href="https://www.zellamsee-kaprun.com/en/summer/sigmund-thun-gorge" target="_blank">Sigmund-Thun Gorge</a></h4>
+    <div class="activity-desc">Dramatic narrow gorge with wooden walkways through rock walls carved by water over millennia. Easy walk, spectacular for Tom. In Kaprun, just 5 minutes from town.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">~€6 adult / €3 child</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-kaprun">⛰️ Kaprun</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.zellamsee-kaprun.com/en/summer/sigmund-thun-gorge" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card highlight" data-lat="47.2058" data-lng="12.1728" data-area="day-trip" data-type="nature" data-tom="yes" data-teens="love" data-cost="free" data-num="24" data-mustdo="true">
+  <div class="activity-num">24</div>
+  <div class="activity-content">
+    <h4><a href="https://www.wasserfaelle-krimml.at/en/" target="_blank">Krimml Waterfalls</a></h4>
+    <div class="activity-desc">Austria's highest waterfalls — 380m in three stunning cascading tiers! Walk alongside all three tiers on the waterfall trail. Bring waterproofs — it's misty! FREE with Kaprun Card via Pinzgauer Lokalbahn.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag free">Free with Card!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-daytrip">🚗 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.wasserfaelle-krimml.at/en/" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-lat="47.1678" data-lng="13.1744" data-area="day-trip" data-type="nature" data-tom="yes" data-teens="love" data-cost="budget" data-num="25">
+  <div class="activity-num">25</div>
+  <div class="activity-content">
+    <h4><a href="https://www.liechtensteinklamm.at/en/" target="_blank">Liechtensteinklamm Gorge</a></h4>
+    <div class="activity-desc">Spectacular gorge near St Johann im Pongau (~1hr drive). Newly rebuilt walkway spirals down into a narrow canyon with a thundering waterfall. One of Austria's most impressive gorges.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">~€10 adult / €5 child</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-daytrip">🚗 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.liechtensteinklamm.at/en/" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-lat="47.5111" data-lng="13.1906" data-area="day-trip" data-type="nature" data-tom="yes" data-teens="love" data-cost="mid" data-num="26">
+  <div class="activity-num">26</div>
+  <div class="activity-content">
+    <h4><a href="https://www.eisriesenwelt.at/en/" target="_blank">Eisriesenwelt Ice Cave</a></h4>
+    <div class="activity-desc">World's largest accessible ice cave! Near Werfen (~1.5hr drive). Cable car + guided tour through frozen underground chambers. Tom will think he's in a movie. Bring warm layers — it's 0°C inside!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">~€30 adult / €18 child</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag area-daytrip">🚗 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.eisriesenwelt.at/en/" target="_blank">Book →</a></div>
+</div>
+
+<div class="activity-card" data-lat="47.1333" data-lng="12.8000" data-area="zell-am-see" data-type="nature" data-tom="yes" data-teens="ok" data-cost="free" data-num="27">
+  <div class="activity-num">27</div>
+  <div class="activity-content">
+    <h4>Wildpark Ferleiten (Alpine Wildlife Park)</h4>
+    <div class="activity-desc">See Alpine animals — marmots, ibex, deer, eagles — in natural enclosures. Near the Großglockner road entrance. Can combine with the High Alpine Road day trip.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">~€12 adult / €6 child</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-zell">🏔️ Zell am See</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<!-- CULTURE & TOWNS -->
+<div class="category-header" data-cat-type="culture" data-cat-area="austria">
+  <span class="cat-icon">🏛️</span>
+  <h3>Culture & Towns — Day Trips</h3>
+  <span class="cat-count">5 activities</span>
+</div>
+
+<div class="activity-card highlight" data-lat="47.8000" data-lng="13.0450" data-area="day-trip" data-type="culture" data-tom="yes" data-teens="love" data-cost="budget" data-num="28" data-mustdo="true">
+  <div class="activity-num">28</div>
+  <div class="activity-content">
+    <h4><a href="https://www.salzburg.info/en" target="_blank">Salzburg Day Trip</a></h4>
+    <div class="activity-desc">Mozart's city! 1.5hr by train. Explore the Old Town (UNESCO), Hohensalzburg Fortress on the hilltop, Mirabell Gardens, Getreidegasse shopping street. Sound of Music locations everywhere. Fantastic city.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">Train ~€15pp return</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-daytrip">🚗 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.salzburg.info/en" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-lat="47.8000" data-lng="13.0450" data-area="day-trip" data-type="culture" data-tom="yes" data-teens="ok" data-cost="budget" data-num="29">
+  <div class="activity-num">29</div>
+  <div class="activity-content">
+    <h4><a href="https://www.salzburg-burgen.at/en/hohensalzburg-fortress/" target="_blank">Hohensalzburg Fortress</a></h4>
+    <div class="activity-desc">Europe's largest fully preserved castle, perched high above Salzburg. Funicular railway up, medieval rooms, incredible views. Tom will love exploring the castle!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">~€16 adult / €9 child</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-daytrip">🚗 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.salzburg-burgen.at/en/hohensalzburg-fortress/" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-lat="47.5622" data-lng="13.6493" data-area="day-trip" data-type="culture" data-tom="yes" data-teens="ok" data-cost="budget" data-num="30">
+  <div class="activity-num">30</div>
+  <div class="activity-content">
+    <h4><a href="https://www.hallstatt.net/about-hallstatt/" target="_blank">Hallstatt</a></h4>
+    <div class="activity-desc">UNESCO fairy-tale lakeside village — pastel houses reflected in a mirror-still lake. Salt mine tour, Skywalk viewing platform. Can be very crowded in summer — go early!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">~€30 salt mine tour</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-daytrip">🚗 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.hallstatt.net/about-hallstatt/" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-lat="47.2692" data-lng="11.4041" data-area="day-trip" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="31">
+  <div class="activity-num">31</div>
+  <div class="activity-content">
+    <h4>Innsbruck Stopover (Day 9)</h4>
+    <div class="activity-desc">2-hour lunch stop en route to Chur. Explore the colourful Old Town, the Golden Roof, and the Nordkette cable car if time allows. Beautiful Alpine city.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag free">Free (lunch stop)</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-daytrip">🚗 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-lat="46.8499" data-lng="9.5329" data-area="day-trip" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="32">
+  <div class="activity-num">32</div>
+  <div class="activity-content">
+    <h4>Chur Old Town (Night before Bernina)</h4>
+    <div class="activity-desc">Switzerland's oldest city! Explore the charming old town the evening before your Bernina Express adventure. Cobbled streets, cafés, Cathedral.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag free">Free to explore</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-daytrip">🚗 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<!-- FAMILY FUN -->
+<div class="category-header" data-cat-type="family" data-cat-area="austria">
+  <span class="cat-icon">🎪</span>
+  <h3>Family Fun</h3>
+  <span class="cat-count">5 activities</span>
+</div>
+
+<div class="activity-card" data-lat="47.2680" data-lng="12.7620" data-area="kaprun" data-type="family" data-tom="yes" data-teens="ok" data-cost="free" data-num="33">
+  <div class="activity-num">33</div>
+  <div class="activity-content">
+    <h4><a href="https://www.maiskogel.at/en" target="_blank">Maiskogel Adventure Playground</a></h4>
+    <div class="activity-desc">Massive adventure playground at the top of Maiskogel cable car. Climbing frames, swings, water play, all with mountain views. FREE with Card!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag free">Free with Card!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-kaprun">⛰️ Kaprun</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.maiskogel.at/en" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-lat="47.3240" data-lng="12.7980" data-area="zell-am-see" data-type="family" data-tom="yes" data-teens="ok" data-cost="budget" data-num="34">
+  <div class="activity-num">34</div>
+  <div class="activity-content">
+    <h4>Mini Golf</h4>
+    <div class="activity-desc">Several mini golf courses in the Zell am See area. Fun evening activity for the whole family after a big day out.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">~€6-8pp</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-zell">🏔️ Zell am See</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-lat="47.3150" data-lng="12.8050" data-area="zell-am-see" data-type="family" data-tom="yes" data-teens="ok" data-cost="budget" data-num="35">
+  <div class="activity-num">35</div>
+  <div class="activity-content">
+    <h4>Campsite Activities (Sportcamp Woferlgut)</h4>
+    <div class="activity-desc">Playground, sports courts, table tennis, trampolines, and more — all included with campsite stay. Tom can play for hours!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">Included with stay</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-zell">🏔️ Zell am See</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.sportcamp.at" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-lat="47.3220" data-lng="12.7930" data-area="zell-am-see" data-type="family" data-tom="yes" data-teens="ok" data-cost="budget" data-num="36">
+  <div class="activity-num">36</div>
+  <div class="activity-content">
+    <h4>Sunset Lake Walk</h4>
+    <div class="activity-desc">Evening walk along the Zell am See lakeside promenade as the sun sets behind the mountains. Ice cream from one of the lakeside gelaterias. Magical atmosphere.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-zell">🏔️ Zell am See</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-lat="47.3300" data-lng="12.7750" data-area="zell-am-see" data-type="family" data-tom="yes" data-teens="ok" data-cost="free" data-num="37">
+  <div class="activity-num">37</div>
+  <div class="activity-content">
+    <h4>Schmidolin's Dragon Trail (Schmittenhöhe)</h4>
+    <div class="activity-desc">Family adventure trail on Schmittenhöhe mountain following the story of Schmidolin the dragon. Interactive stations, puzzles, and play areas along the route.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag free">Free with Card!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-zell">🏔️ Zell am See</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.schmitten.at/en" target="_blank">Info →</a></div>
+</div>
+
+</div><!-- end austria-section -->
+
+<!-- =============================================== -->
+<!-- SECTION: SCENIC RAILWAYS                        -->
+<!-- =============================================== -->
+<div class="section-header railway" data-section="railway">
+  <div class="icon">🚂</div>
+  <h2>Scenic Railways</h2>
+  <p>Three incredible train journeys connecting your holiday</p>
+</div>
+
+<div class="railway-section" data-section-wrap="railway">
+
+<div class="category-header" data-cat-type="railway" data-cat-area="railway">
+  <span class="cat-icon">🚂</span>
+  <h3>Scenic Railways</h3>
+  <span class="cat-count">6 activities</span>
+</div>
+
+<div class="activity-card highlight" data-lat="47.3233" data-lng="12.7967" data-area="scenic-railway" data-type="railway" data-tom="yes" data-teens="love" data-cost="free" data-num="38" data-mustdo="true">
+  <div class="activity-num">38</div>
+  <div class="activity-content">
+    <h4><a href="https://www.pinzgauer-lokalbahn.at" target="_blank">Pinzgauer Lokalbahn (Narrow-Gauge to Krimml)</a></h4>
+    <div class="activity-desc">Charming narrow-gauge railway from Zell am See to Krimml (1.5hrs). Through the beautiful Salzach valley to Austria's highest waterfalls. Tom will LOVE the little train! FREE with Kaprun Card!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag free">Free with Card!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-railway">🚃 Scenic Railway</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.pinzgauer-lokalbahn.at" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card highlight" data-lat="46.4900" data-lng="10.0200" data-area="scenic-railway" data-type="railway" data-tom="yes" data-teens="love" data-cost="premium" data-num="39" data-mustdo="true">
+  <div class="activity-num">39</div>
+  <div class="activity-content">
+    <h4><a href="https://www.rhb.ch/en/panoramic-journeys/bernina-express" target="_blank">Bernina Express (UNESCO World Heritage)</a></h4>
+    <div class="activity-desc">The big one! Chur → Tirano through the Swiss Alps. 144km, 55 tunnels, 196 bridges, summit at 2,253m. Landwasser Viaduct, Palü Glacier, Brusio Spiral Viaduct. Panoramic carriages. Arguably Europe's most spectacular train ride. This IS your journey from Austria to Lake Como!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">~€48pp + CHF 36 reservation</span>
+      <span class="tag cost-premium">€60+pp</span>
+      <span class="tag area-railway">🚃 Scenic Railway</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.rhb.ch/en/panoramic-journeys/bernina-express" target="_blank">Book →</a></div>
+</div>
+
+<div class="activity-card" data-lat="47.2692" data-lng="11.4041" data-area="scenic-railway" data-type="railway" data-tom="yes" data-teens="love" data-cost="mid" data-num="40">
+  <div class="activity-num">40</div>
+  <div class="activity-content">
+    <h4><a href="https://www.oebb.at/en/" target="_blank">Arlberg Railway (Innsbruck → Chur)</a></h4>
+    <div class="activity-desc">Scenic transfer through the Austrian Tirol, over the Arlberg Pass, passing through Liechtenstein into Switzerland. Regular Railjet service but the scenery is spectacular — mountains, valleys, lakes.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">from €20pp (Sparschiene)</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag area-railway">🚃 Scenic Railway</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.oebb.at/en/" target="_blank">Book →</a></div>
+</div>
+
+<div class="activity-card" data-lat="47.8000" data-lng="13.0450" data-area="scenic-railway" data-type="railway" data-tom="yes" data-teens="ok" data-cost="budget" data-num="41">
+  <div class="activity-num">41</div>
+  <div class="activity-content">
+    <h4>Zell am See → Salzburg Train</h4>
+    <div class="activity-desc">Scenic 1.5hr train through the Salzburg region mountains. Views of lakes, forests, and Alpine villages. The journey is half the fun!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">from €15pp return</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-railway">🚃 Scenic Railway</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.oebb.at/en/" target="_blank">Book →</a></div>
+</div>
+
+<div class="activity-card" data-lat="46.2150" data-lng="9.6700" data-area="scenic-railway" data-type="railway" data-tom="yes" data-teens="ok" data-cost="budget" data-num="42">
+  <div class="activity-num">42</div>
+  <div class="activity-content">
+    <h4>Tirano → Varenna Regional Train</h4>
+    <div class="activity-desc">After the Bernina Express arrives in Tirano (Italy), catch the regional train along Lake Como's eastern shore to Varenna. Beautiful lakeside scenery as you arrive at your second destination.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">€12.50pp</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-railway">🚃 Scenic Railway</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.trainline.com" target="_blank">Book →</a></div>
+</div>
+
+<div class="activity-card" data-lat="46.2167" data-lng="10.1694" data-area="scenic-railway" data-type="railway" data-tom="yes" data-teens="ok" data-cost="free" data-num="43">
+  <div class="activity-num">43</div>
+  <div class="activity-content">
+    <h4>Tirano Lunch Stop 🍕</h4>
+    <div class="activity-desc">After the Bernina Express arrives in Tirano at 12:49, enjoy lunch in this charming Italian border town. Your first pizza and gelato of the Italian leg! Train to Varenna at 13:08.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">Lunch ~€10-15pp</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-railway">🚃 Scenic Railway</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+</div><!-- end railway-section -->
+
+<!-- =============================================== -->
+<!-- SECTION: LAKE COMO                              -->
+<!-- =============================================== -->
+<div class="section-header como" data-section="como">
+  <div class="icon">🌊</div>
+  <h2>Lake Como, Italy</h2>
+  <p>Italian lakeside villages, ferries, gelato & la dolce vita</p>
+</div>
+
+<div class="como-section" data-section-wrap="como">
+
+<!-- WATER ACTIVITIES -->
+<div class="category-header" data-cat-type="water" data-cat-area="como">
+  <span class="cat-icon">🌊</span>
+  <h3>Water Activities</h3>
+  <span class="cat-count">3 activities</span>
+</div>
+
+<div class="activity-card" data-lat="46.0200" data-lng="9.2700" data-area="lake-como" data-type="water" data-tom="yes" data-teens="love" data-cost="free" data-num="44">
+  <div class="activity-num">44</div>
+  <div class="activity-content">
+    <h4>Lake Como Swimming</h4>
+    <div class="activity-desc">Swim in Lake Como! Public beaches at Varenna, Bellagio, and Menaggio. Water is warm in August (22-24°C). Stunning mountain backdrop. Pebble beaches — bring water shoes.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-como">🌊 Lake Como</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-lat="47.3250" data-lng="12.7950" data-area="lake-como" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="45">
+  <div class="activity-num">45</div>
+  <div class="activity-content">
+    <h4>Kayaking / SUP on Lake Como</h4>
+    <div class="activity-desc">Hire kayaks or paddleboards and explore the lake from the water. Paddle to hidden coves and between the villages. Several rental points along the shore.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (with parent)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€15-25/hr</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-como">🌊 Lake Como</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-lat="46.0220" data-lng="9.2380" data-area="lake-como" data-type="water" data-tom="yes" data-teens="ok" data-cost="budget" data-num="46">
+  <div class="activity-num">46</div>
+  <div class="activity-content">
+    <h4>Menaggio Lido</h4>
+    <div class="activity-desc">Public lido with swimming pool AND lake access in Menaggio. Sunbathing terrace, diving board, snack bar. Great for a lazy afternoon.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">~€8-10pp</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-como">🌊 Lake Como</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<!-- CULTURE & TOWNS -->
+<div class="category-header" data-cat-type="culture" data-cat-area="como">
+  <span class="cat-icon">🏛️</span>
+  <h3>Culture & Towns</h3>
+  <span class="cat-count">7 activities</span>
+</div>
+
+<div class="activity-card highlight" data-lat="46.0100" data-lng="9.2600" data-area="lake-como" data-type="culture" data-tom="yes" data-teens="love" data-cost="budget" data-num="47" data-mustdo="true">
+  <div class="activity-num">47</div>
+  <div class="activity-content">
+    <h4><a href="https://www.navigazionelaghi.it/en/lake-como.aspx" target="_blank">Lake Como Ferry Hopping</a></h4>
+    <div class="activity-desc">Buy a giornaliero (day pass) and hop between Varenna, Bellagio, Menaggio, and Cadenabbia by ferry. Scenic boat rides with mountain panorama. Tom will love jumping between villages!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">Day pass ~€15pp</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-como">🌊 Lake Como</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.navigazionelaghi.it/en/lake-como.aspx" target="_blank">Timetable →</a></div>
+</div>
+
+<div class="activity-card" data-lat="46.0104" data-lng="9.2847" data-area="lake-como" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="48">
+  <div class="activity-num">48</div>
+  <div class="activity-content">
+    <h4>Varenna Passarella (Lakefront Walkway)</h4>
+    <div class="activity-desc">Stunning lakefront walkway built on the cliff edge right over the water. Connects the main square to the ferry landing. One of the most photographed spots on Lake Como.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-como">🌊 Lake Como</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-lat="46.0083" data-lng="9.2869" data-area="lake-como" data-type="culture" data-tom="yes" data-teens="ok" data-cost="budget" data-num="49">
+  <div class="activity-num">49</div>
+  <div class="activity-content">
+    <h4><a href="https://www.villamonastero.eu/en/" target="_blank">Villa Monastero, Varenna</a></h4>
+    <div class="activity-desc">Beautiful botanical gardens stretching along the lake shore. Former monastery with exotic plants, citrus trees, and stunning lake views. A peaceful paradise.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">~€10 adult / €5 child</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-como">🌊 Lake Como</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.villamonastero.eu/en/" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-lat="45.9866" data-lng="9.2625" data-area="lake-como" data-type="culture" data-tom="yes" data-teens="love" data-cost="budget" data-num="50">
+  <div class="activity-num">50</div>
+  <div class="activity-content">
+    <h4><a href="https://www.bellagiolakecomo.com/" target="_blank">Bellagio — "The Pearl of Lake Como"</a></h4>
+    <div class="activity-desc">The most famous village on Lake Como. Explore cobbled lanes, boutique shops, gelato shops galore. Villa Melzi gardens with beautiful lakeside walks. Shopping for Italian leather and silk.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens (shopping!)</span>
+      <span class="tag free">Free to explore</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-como">🌊 Lake Como</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.bellagiolakecomo.com/" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-lat="45.9866" data-lng="9.2625" data-area="lake-como" data-type="culture" data-tom="yes" data-teens="ok" data-cost="budget" data-num="51">
+  <div class="activity-num">51</div>
+  <div class="activity-content">
+    <h4><a href="https://www.giardinidivillamelzi.it/en/" target="_blank">Villa Melzi Gardens, Bellagio</a></h4>
+    <div class="activity-desc">Stunning neoclassical gardens on the Bellagio waterfront. Azaleas, rhododendrons, Japanese garden, and lakeside promenade. Beautiful and peaceful.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">~€8 adult</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-como">🌊 Lake Como</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.giardinidivillamelzi.it/en/" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-lat="46.0220" data-lng="9.2380" data-area="lake-como" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="52">
+  <div class="activity-num">52</div>
+  <div class="activity-content">
+    <h4>Menaggio</h4>
+    <div class="activity-desc">Charming western shore village. Town beach, waterfront promenade, restaurants with lake views. More relaxed and less touristy than Bellagio. Easy ferry from Varenna.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag free">Free to explore</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-como">🌊 Lake Como</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-lat="45.9866" data-lng="9.2625" data-area="lake-como" data-type="culture" data-tom="yes" data-teens="love" data-cost="budget" data-num="53">
+  <div class="activity-num">53</div>
+  <div class="activity-content">
+    <h4>Bellagio Shopping — Italian Fashion</h4>
+    <div class="activity-desc">Browse Bellagio's boutiques for Italian leather bags, silk scarves, jewellery, and fashion. Katie will love it! George Clooney lives nearby (Katie might care!).</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">⚠️ Tom (bored)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens (Katie!)</span>
+      <span class="tag cost">Varies!</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-como">🌊 Lake Como</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<!-- NATURE & GORGES -->
+<div class="category-header" data-cat-type="nature" data-cat-area="como">
+  <span class="cat-icon">🌿</span>
+  <h3>Nature & Gorges</h3>
+  <span class="cat-count">2 activities</span>
+</div>
+
+<div class="activity-card" data-lat="46.0440" data-lng="9.3000" data-area="lake-como" data-type="nature" data-tom="yes" data-teens="love" data-cost="budget" data-num="54">
+  <div class="activity-num">54</div>
+  <div class="activity-content">
+    <h4><a href="https://www.orridobellano.it" target="_blank">Orrido di Bellano Gorge</a></h4>
+    <div class="activity-desc">Dramatic gorge walkway in Bellano (20 min ferry from Varenna). Narrow rock canyon with thundering water, metal walkways over the chasm. Atmospheric and exciting!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">~€5pp</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-como">🌊 Lake Como</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.orridobellano.it" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-lat="46.0120" data-lng="9.2830" data-area="lake-como" data-type="nature" data-tom="yes" data-teens="ok" data-cost="free" data-num="55">
+  <div class="activity-num">55</div>
+  <div class="activity-content">
+    <h4>Varenna Castle (Castello di Vezio)</h4>
+    <div class="activity-desc">Hilltop castle ruins above Varenna with panoramic lake views. Short steep walk up from the village. Falconry displays in summer. Atmospheric and photogenic.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">~€5pp</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-como">🌊 Lake Como</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<!-- FOOD & DRINK -->
+<div class="category-header" data-cat-type="food" data-cat-area="como">
+  <span class="cat-icon">🍽️</span>
+  <h3>Food & Drink</h3>
+  <span class="cat-count">7 activities</span>
+</div>
+
+<div class="activity-card" data-lat="47.3260" data-lng="12.7970" data-area="zell-am-see" data-type="food" data-tom="yes" data-teens="love" data-cost="budget" data-num="56">
+  <div class="activity-num">56</div>
+  <div class="activity-content">
+    <h4>Wiener Schnitzel 🇦🇹</h4>
+    <div class="activity-desc">THE Austrian classic — breaded veal or pork schnitzel with lingonberry sauce, served bigger than the plate. Every restaurant serves it. Tom will demolish it!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€12-18</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-zell">🏔️ Zell am See</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-lat="47.3240" data-lng="12.7990" data-area="zell-am-see" data-type="food" data-tom="yes" data-teens="love" data-cost="budget" data-num="57">
+  <div class="activity-num">57</div>
+  <div class="activity-content">
+    <h4>Käsespätzle (Austrian Mac & Cheese)</h4>
+    <div class="activity-desc">Soft egg noodles baked with mountain cheese and topped with crispy fried onions. Rich, cheesy, utterly delicious comfort food. Austrian mountain hut classic.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€10-15</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-zell">🏔️ Zell am See</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-lat="47.3270" data-lng="12.7950" data-area="zell-am-see" data-type="food" data-tom="yes" data-teens="love" data-cost="budget" data-num="58">
+  <div class="activity-num">58</div>
+  <div class="activity-content">
+    <h4>Kaiserschmarrn (Emperor's Pancake)</h4>
+    <div class="activity-desc">Fluffy shredded pancake dusted with icing sugar, served with apple sauce or plum compote. Named after Emperor Franz Joseph. Perfect mountain-top treat after a cable car ride!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€8-12</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-zell">🏔️ Zell am See</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-lat="47.3230" data-lng="12.7940" data-area="zell-am-see" data-type="food" data-tom="yes" data-teens="ok" data-cost="budget" data-num="59">
+  <div class="activity-num">59</div>
+  <div class="activity-content">
+    <h4>Apfelstrudel (Apple Strudel)</h4>
+    <div class="activity-desc">Warm apple strudel with vanilla sauce or cream — a quintessential Austrian dessert. Best in a mountain hut after a hike. Find the best Strudel in town!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">€5-8</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-zell">🏔️ Zell am See</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-lat="46.0100" data-lng="9.2620" data-area="lake-como" data-type="food" data-tom="yes" data-teens="love" data-cost="budget" data-num="60">
+  <div class="activity-num">60</div>
+  <div class="activity-content">
+    <h4>Italian Gelato Tour 🍦</h4>
+    <div class="activity-desc">Try a different flavour in every village! Varenna, Bellagio, Menaggio — each has incredible gelaterias. Tom's mission: find the best gelato on Lake Como.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€2-4 per gelato</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-como">🌊 Lake Como</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-lat="46.0150" data-lng="9.2600" data-area="lake-como" data-type="food" data-tom="yes" data-teens="love" data-cost="budget" data-num="61">
+  <div class="activity-num">61</div>
+  <div class="activity-content">
+    <h4>Lakeside Pizza & Pasta 🍕</h4>
+    <div class="activity-desc">Wood-fired pizza and fresh pasta at lakeside restaurants in Varenna and Bellagio. Eat right on the waterfront watching the ferries and the sunset. Italian food at a fraction of Swiss prices!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€8-15 per dish</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-como">🌊 Lake Como</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-lat="47.2700" data-lng="12.7800" data-area="zell-am-see" data-type="food" data-tom="yes" data-teens="ok" data-cost="budget" data-num="62">
+  <div class="activity-num">62</div>
+  <div class="activity-content">
+    <h4>Mountain Hut Lunch (Almhütte)</h4>
+    <div class="activity-desc">Traditional Austrian mountain hut dining — hearty food with spectacular views. Take the cable car up and reward your hike with Käsespätzle, Schnitzel, or Kaiserschmarrn at a rustic wooden hut.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">€10-20pp</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag area-zell">🏔️ Zell am See</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+</div><!-- end como-section -->
+
+</div><!-- end container -->
+</div><!-- end main-content -->
+</div><!-- end page-layout -->
+
+<div class="footer">
+  <p>Created for the Sheldrake family holiday planning · Summer 2026</p>
+  <p>Zell am See + Lake Como via Bernina Express · Fly LBA/MAN → Salzburg, Milan → LBA/MAN</p>
+</div>
+
+<script>
+(function() {
+  const cards = document.querySelectorAll('.activity-card');
+  const checkboxes = document.querySelectorAll('.filter-sidebar input[type="checkbox"]');
+  const countEl = document.getElementById('visibleCount');
+  const TOTAL = 62;
+
+  function getCheckedValues(filterName) {
+    const vals = [];
+    checkboxes.forEach(cb => {
+      if (cb.dataset.filter === filterName && cb.checked) vals.push(cb.value);
+    });
+    return vals;
+  }
+
+
+  
+function toggleAccom(show) {
+  if (!window.accomMarkers) return;
+  window.accomMarkers.forEach(function(m) {
+    if (show) m.addTo(window.activityMap);
+    else window.activityMap.removeLayer(m);
+  });
+}
+
+function updateMap() {
+    if (!window.activityMarkers) return;
+    var bounds = []; var tableBody = document.getElementById('map-table-body');
+    if (tableBody) tableBody.innerHTML = ''; var visibleCount = 0;
+    document.querySelectorAll('.activity-card').forEach(function(card, i) {
+      var marker = window.activityMarkers[i]; if (!marker) return;
+      var lat = parseFloat(card.dataset.lat); var lng = parseFloat(card.dataset.lng);
+      if (!lat || !lng) return;
+      var isVisible = !card.classList.contains('hidden-by-filter') && card.style.display !== 'none';
+      if (isVisible) {
+        marker.addTo(window.activityMap); bounds.push([lat, lng]); visibleCount++;
+        if (tableBody) {
+          var num = card.dataset.num || ''; var title = card.querySelector('h4') ? card.querySelector('h4').textContent.trim() : '';
+          var link = card.querySelector('h4 a'); var href = link ? link.href : '';
+          var isMustDo = card.dataset.mustdo === 'true';
+          var tr = document.createElement('tr'); tr.style.borderBottom = '1px solid #e0e0e0';
+          if (visibleCount % 2 === 0) tr.style.background = '#f0f3f9';
+          tr.innerHTML = '<td style="padding:5px 8px;color:#1B3C8F;font-weight:700;">'+num+'</td><td style="padding:5px 8px;">'+(isMustDo?'⭐ ':'')+title+'</td><td style="padding:5px 8px;text-align:right;">'+(href?'<a href="'+href+'" target="_blank" style="color:#1B3C8F;margin-right:10px;">More Info</a>':'')+'<a href="https://www.google.com/maps?q='+lat+','+lng+'" target="_blank" style="color:#888;">📍 Map</a></td>';
+          tableBody.appendChild(tr);
+        }
+      } else { window.activityMap.removeLayer(marker); }
+    });
+    var countEl2 = document.getElementById('map-count');
+    if (countEl2) countEl2.textContent = visibleCount + ' activities shown';
+    if (bounds.length > 0) window.activityMap.fitBounds(bounds, {padding: [30, 30], maxZoom: 12});
+  }
+
+  function applyFilters() {
+    const areaFilters = getCheckedValues('area');
+    const typeFilters = getCheckedValues('type');
+    const tomFilters = getCheckedValues('tom');
+    const teenFilters = getCheckedValues('teens');
+    const familyFilters = getCheckedValues('family');
+    const costFilters = getCheckedValues('cost');
+    const mustdoFilters = getCheckedValues('mustdo');
+
+    let visible = 0;
+
+    cards.forEach(card => {
+      let show = true;
+
+      if (areaFilters.length > 0 && !areaFilters.includes(card.dataset.area)) show = false;
+      if (typeFilters.length > 0 && !typeFilters.includes(card.dataset.type)) show = false;
+      if (tomFilters.length > 0 && card.dataset.tom !== 'yes') show = false;
+      if (teenFilters.length > 0 && card.dataset.teens !== 'love') show = false;
+      if (familyFilters.length > 0 && card.dataset.tom !== 'yes') show = false;
+      if (costFilters.length > 0 && !costFilters.includes(card.dataset.cost)) show = false;
+      if (mustdoFilters.length > 0 && card.dataset.mustdo !== 'true') show = false;
+
+      if (show) {
+        card.classList.remove('hidden-by-filter');
+        visible++;
+      } else {
+        card.classList.add('hidden-by-filter');
+      }
+    });
+
+    countEl.textContent = visible;
+
+    // Hide section headers if all their activities are hidden
+    document.querySelectorAll('.section-header[data-section]').forEach(header => {
+      const sectionId = header.dataset.section;
+      const wrap = document.querySelector('[data-section-wrap="' + sectionId + '"]');
+      if (wrap) {
+        const visibleCards = wrap.querySelectorAll('.activity-card:not(.hidden-by-filter)');
+        header.classList.toggle('hidden-by-filter', visibleCards.length === 0);
+        wrap.style.display = visibleCards.length === 0 ? 'none' : '';
+      }
+    });
+
+    // Hide category headers if all their activities are hidden
+    document.querySelectorAll('.category-header[data-cat-type]').forEach(catHeader => {
+      let sibling = catHeader.nextElementSibling;
+      let hasVisible = false;
+      while (sibling && !sibling.classList.contains('category-header') && !sibling.classList.contains('section-header')) {
+        if (sibling.classList.contains('activity-card') && !sibling.classList.contains('hidden-by-filter')) {
+          hasVisible = true;
+          break;
+        }
+        sibling = sibling.nextElementSibling;
+      }
+      catHeader.classList.toggle('hidden-by-filter', !hasVisible);
+    });
+    updateMap();
+  }
+
+  checkboxes.forEach(cb => cb.addEventListener('change', applyFilters));
+
+  window.clearFilters = function() {
+    checkboxes.forEach(cb => cb.checked = false);
+    applyFilters();
+  };
+
+  window.toggleFilters = function() {
+    const sidebar = document.getElementById('filterSidebar');
+    const overlay = document.getElementById('filterOverlay');
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('open');
+  };
+
+// Accommodation overlay
+window.accomMarkers = [];
+var accomData = [
+  [47.3200, 12.7900, "Camping Seeblick Toni", "Independent", "https://www.camping-seeblick.at/en/", "Lakeside in Zell am See, mountain views, playground, bike rental."],
+  [47.2700, 12.7600, "Sportcamp Woferlgut", "Independent", "https://www.sportcamp.at/en/", "Family adventure camp, Bruck/Zell am See. Pools, sports, kids\u2019 clubs."],
+  [47.1900, 12.7200, "Camping Kesselgrub", "Independent", "https://www.kesselgrub.at/en/", "Near Kaprun, mountain setting, indoor pool, sauna, playground."],
+  [47.2500, 12.8000, "Panorama Camp Zell am See", "Independent", "https://www.panoramacamp.at/en/", "Stunning views, heated pool, near lake and cable cars."]
+];
+var accomIcon = function(){ return L.divIcon({
+  className:'',
+  html:'<div style="background:#2d9a2d;color:#fff;width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;cursor:pointer;">&#127965;</div>',
+  iconSize:[30,30], iconAnchor:[15,15]
+}); };
+accomData.forEach(function(a){
+  var marker = L.marker([a[0],a[1]], {icon: accomIcon()})
+    .bindPopup('<div style="min-width:220px;"><b style="color:#2d9a2d;font-size:0.95rem;">&#127965; '+a[2]+'</b><br><span style="color:#888;font-size:0.8rem;">'+a[3]+'</span><br><span style="color:#555;font-size:0.85rem;">'+a[5]+'</span><br><a href="'+a[4]+'" target="_blank" style="color:#2d9a2d;font-size:0.85rem;">View on '+a[3]+' \u2192</a></div>');
+  marker.addTo(window.activityMap);
+  window.accomMarkers.push(marker);
+});
+})();
+</script>
+
+<script>
+// Country navbar show on scroll
+(function(){
+  var nav = document.getElementById('countryNav');
+  if (!nav) return;
+  var hero = document.querySelector('.hero');
+  if (!hero) { nav.classList.add('visible'); return; }
+  var observer = new IntersectionObserver(function(entries){
+    nav.classList.toggle('visible', !entries[0].isIntersecting);
+  }, {threshold: 0});
+  observer.observe(hero);
+})();
+</script>
+
+</body>
+</html>

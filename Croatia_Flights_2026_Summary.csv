@@ -1,0 +1,47 @@
+﻿Rank,Option,Outbound Date,Out Start Airport,Out Destination,Out Airline,Out Depart,Out Arrive,Out Duration,Out Total (5 pax),Return Date,Ret Start Airport,Ret Destination,Ret Airline,Ret Depart,Ret Arrive,Ret Duration,Ret Total (5 pax),Holiday Days,Grand Total (5 pax),Time Preference Match,Notes
+1,A1,28-Jul,MAN,SPU,easyJet,06:00,09:50,2h50,£590,09-Aug,DBV,MAN,Ryanair,22:10,00:15+1,3h05,£545,12,"£1,135",NO,MAN early out not pref
+2,A3,28-Jul,MAN,SPU,easyJet,06:00,09:50,2h50,£590,12-Aug,DBV,MAN,Ryanair,15:55,18:00,3h05,£585,15,"£1,175",NO,MAN early out not pref
+3,A2,28-Jul,MAN,SPU,easyJet,06:00,09:50,2h50,£590,11-Aug,DBV,MAN,Ryanair,10:20,12:25,3h05,£590,14,"£1,180",NO,MAN early out not pref
+4,B14,31-Jul,MAN,DBV,Ryanair,18:25,22:20,2h55,£440,13-Aug,SPU,MAN,easyJet,20:45,22:35,2h50,£775,13,"£1,215",NO,MAN evening return not afternoon
+5,B9,29-Jul,MAN,DBV,easyJet,12:50,16:50,3h00,£495,13-Aug,SPU,MAN,easyJet,20:45,22:35,2h50,£775,15,"£1,270",NO,MAN return evening not afternoon
+6,B13,31-Jul,MAN,DBV,Ryanair,18:25,22:20,2h55,£440,12-Aug,SPU,MAN,easyJet,21:00,22:50,2h50,£850,12,"£1,290",NO,MAN evening return not afternoon
+7,A4,28-Jul,MAN,SPU,easyJet,06:00,09:50,2h50,£590,12-Aug,DBV,MAN,easyJet,17:30,19:35,3h05,£710,15,"£1,300",NO,MAN early out not pref
+8,B8,29-Jul,MAN,DBV,easyJet,12:50,16:50,3h00,£495,12-Aug,SPU,MAN,easyJet,21:00,22:50,2h50,£850,14,"£1,345",NO,MAN return evening not afternoon
+9,B7,29-Jul,MAN,DBV,easyJet,12:50,16:50,3h00,£495,11-Aug,SPU,MAN,easyJet,10:45,12:40,2h55,£885,13,"£1,380",NO,MAN return morning not pref
+10,B21,30-Jul,LBA,DBV,Jet2,15:25,19:20,2h55,£645,13-Aug,SPU,MAN,easyJet,20:45,22:35,2h50,£775,14,"£1,420",NO,LBA afternoon out not early + MAN evening return
+11,B15,31-Jul,MAN,DBV,Ryanair,18:25,22:20,2h55,£440,13-Aug,SPU,MAN,Jet2,12:55,14:55,3h00,"£1,005",13,"£1,445",YES,MAN evening out (borderline) + afternoon return
+12,B3,28-Jul,MAN,DBV,Ryanair,05:55,09:50,2h55,£600,12-Aug,SPU,MAN,easyJet,21:00,22:50,2h50,£850,15,"£1,450",NO,MAN early out + evening return
+13,B2,28-Jul,MAN,DBV,Ryanair,05:55,09:50,2h55,£600,11-Aug,SPU,MAN,easyJet,10:45,12:40,2h55,£885,14,"£1,485",NO,MAN early out + morning return
+14,B20,30-Jul,LBA,DBV,Jet2,15:25,19:20,2h55,£645,12-Aug,SPU,MAN,easyJet,21:00,22:50,2h50,£850,13,"£1,495",NO,LBA afternoon out not early + MAN evening return
+15,B9b,29-Jul,MAN,DBV,easyJet,12:50,16:50,3h00,£495,13-Aug,SPU,MAN,Jet2,12:55,14:55,3h00,"£1,005",15,"£1,500",YES - RANK 1 RECOMMENDED,MAN afternoon both ways / 15 days / cheapest match
+16,B19,30-Jul,LBA,DBV,Jet2,15:25,19:20,2h55,£645,11-Aug,SPU,MAN,easyJet,10:45,12:40,2h55,£885,12,"£1,530",NO,LBA afternoon out not early + MAN morning return
+17,A6,28-Jul,MAN,SPU,easyJet,06:00,09:50,2h50,£590,13-Aug,DBV,MAN,Jet2,12:20,14:35,3h15,£960,16,"£1,550",NO,MAN early out not pref / over 15 days
+18,B6,28-Jul,MAN,DBV,Jet2,08:00,12:05,3h05,£765,12-Aug,SPU,MAN,easyJet,21:00,22:50,2h50,£850,15,"£1,615",NO,MAN morning out + evening return
+19,A14,30-Jul,MAN,SPU,easyJet,16:15,20:05,2h50,"£1,050",12-Aug,DBV,MAN,Ryanair,15:55,18:00,3h05,£585,13,"£1,635",YES - RANK 2,MAN afternoon both ways
+20,A13,30-Jul,MAN,SPU,easyJet,16:15,20:05,2h50,"£1,050",11-Aug,DBV,MAN,Ryanair,10:20,12:25,3h05,£590,12,"£1,640",NO,MAN return morning not pref
+21,B5,28-Jul,MAN,DBV,Jet2,08:00,12:05,3h05,£765,11-Aug,SPU,MAN,easyJet,10:45,12:40,2h55,£885,14,"£1,650",NO,MAN morning out + morning return
+22,B22,30-Jul,LBA,DBV,Jet2,15:25,19:20,2h55,£645,13-Aug,SPU,MAN,Jet2,12:55,14:55,3h00,"£1,005",14,"£1,650",NO,LBA afternoon out not early + MAN afternoon return
+23,B18,28-Jul,LBA,DBV,Jet2,07:30,11:25,2h55,£820,12-Aug,SPU,MAN,easyJet,21:00,22:50,2h50,£850,15,"£1,670",NO,LBA early out good but MAN return evening
+24,A5,28-Jul,MAN,SPU,easyJet,06:00,09:50,2h50,£590,11-Aug,DBV,LBA,Jet2,12:20,14:35,3h15,"£1,085",14,"£1,675",NO,MAN early out not pref
+25,B17,28-Jul,LBA,DBV,Jet2,07:30,11:25,2h55,£820,11-Aug,SPU,MAN,easyJet,10:45,12:40,2h55,£885,14,"£1,705",NO,LBA early out good but MAN return morning
+26,A18,31-Jul,MAN,SPU,TUI,06:30,10:10,2h40,"£1,155",12-Aug,DBV,MAN,Ryanair,15:55,18:00,3h05,£585,12,"£1,740",NO,MAN early morning out not pref
+27,A9,29-Jul,MAN,SPU,easyJet,16:30,20:20,2h50,"£1,175",12-Aug,DBV,MAN,Ryanair,15:55,18:00,3h05,£585,14,"£1,760",YES - RANK 3,MAN afternoon both ways
+28,A8,29-Jul,MAN,SPU,easyJet,16:30,20:20,2h50,"£1,175",11-Aug,DBV,MAN,Ryanair,10:20,12:25,3h05,£590,13,"£1,765",NO,MAN return morning not pref
+29,A16,30-Jul,MAN,SPU,easyJet,16:15,20:05,2h50,"£1,050",14-Aug,DBV,MAN,Ryanair,15:55,18:00,3h05,£740,15,"£1,790",YES - RANK 4,MAN afternoon both ways / 15 days
+30,B12,30-Jul,MAN,DBV,Jet2,07:15,11:20,3h05,"£1,020",13-Aug,SPU,MAN,easyJet,20:45,22:35,2h50,£775,14,"£1,795",NO,MAN morning out + evening return
+31,B17c,28-Jul,LBA,DBV,Jet2,07:30,11:25,2h55,£820,13-Aug,SPU,MAN,Jet2,12:55,14:55,3h00,"£1,005",16,"£1,825",YES (16 days),LBA early out + MAN afternoon return - 1 day over max
+32,A17,30-Jul,MAN,SPU,easyJet,16:15,20:05,2h50,"£1,050",13-Aug,DBV,LBA,Jet2,20:10,22:25,3h15,£785,14,"£1,835",YES - RANK 5,MAN afternoon out + LBA late return
+33,B11,30-Jul,MAN,DBV,Jet2,07:15,11:20,3h05,"£1,020",12-Aug,SPU,MAN,easyJet,21:00,22:50,2h50,£850,13,"£1,870",NO,MAN morning out + evening return
+34,B1,28-Jul,MAN,DBV,Ryanair,05:55,09:50,2h55,£600,09-Aug,SPU,MAN,Jet2,13:15,15:15,3h00,"£1,285",12,"£1,885",NO,MAN early morning out not pref
+35,A20,31-Jul,MAN,SPU,TUI,06:30,10:10,2h40,"£1,155",14-Aug,DBV,MAN,Ryanair,15:55,18:00,3h05,£740,14,"£1,895",NO,MAN early morning out not pref
+36,B10,30-Jul,MAN,DBV,Jet2,07:15,11:20,3h05,"£1,020",11-Aug,SPU,MAN,easyJet,10:45,12:40,2h55,£885,12,"£1,905",NO,MAN morning out + morning return
+37,A7,28-Jul,MAN,SPU,Jet2,08:00,11:55,2h55,"£1,380",09-Aug,DBV,MAN,Ryanair,22:10,00:15+1,3h05,£545,12,"£1,925",NO,MAN morning out not pref
+38,A21,31-Jul,MAN,SPU,TUI,06:30,10:10,2h40,"£1,155",13-Aug,DBV,LBA,Jet2,20:10,22:25,3h15,£785,13,"£1,940",NO,MAN early morning out not pref
+39,A12,29-Jul,MAN,SPU,easyJet,16:30,20:20,2h50,"£1,175",13-Aug,DBV,LBA,Jet2,20:10,22:25,3h15,£785,15,"£1,960",YES - RANK 6,MAN afternoon out + LBA late return
+40,A15,30-Jul,MAN,SPU,easyJet,16:15,20:05,2h50,"£1,050",13-Aug,DBV,MAN,Jet2,12:20,14:35,3h15,£960,14,"£2,010",YES,MAN afternoon both ways
+41,B4,28-Jul,MAN,DBV,Jet2,08:00,12:05,3h05,£765,09-Aug,SPU,MAN,Jet2,13:15,15:15,3h00,"£1,285",12,"£2,050",NO,MAN morning out not pref
+42,B16,28-Jul,LBA,DBV,Jet2,07:30,11:25,2h55,£820,09-Aug,SPU,MAN,Jet2,13:15,15:15,3h00,"£1,285",12,"£2,105",YES,LBA early out + MAN afternoon return
+43,A19,31-Jul,MAN,SPU,TUI,06:30,10:10,2h40,"£1,155",13-Aug,DBV,MAN,Jet2,12:20,14:35,3h15,£960,13,"£2,115",NO,MAN early morning out not pref
+44,A10,29-Jul,MAN,SPU,easyJet,16:30,20:20,2h50,"£1,175",13-Aug,DBV,MAN,Jet2,12:20,14:35,3h15,£960,15,"£2,135",YES,MAN afternoon both ways
+45,A11,29-Jul,MAN,SPU,easyJet,16:30,20:20,2h50,"£1,175",11-Aug,DBV,LBA,Jet2,12:20,14:35,3h15,"£1,085",13,"£2,260",NO,LBA return midday not late
+46,B17b,28-Jul,LBA,DBV,Jet2,07:30,11:25,2h55,£820,11-Aug,SPU,MAN,Jet2,12:50,14:50,2h55,"£1,455",14,"£2,275",YES - RANK 8,LBA early out + MAN afternoon return

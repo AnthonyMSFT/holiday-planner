@@ -1,0 +1,2208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>France: Gorges du Verdon + Côte d'Azur — 93 Family Activities</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+  :root {
+    --verdon: #1B3C8F;
+    --verdon-light: #e8edf7;
+    --azur: #0F2557;
+    --azur-light: #f0f0f0;
+    --accent: #1B3C8F;
+    --gold: #1B3C8F;
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #0F2557;
+    --muted: #4a6bb5555;
+    --border: #e0e0e0;
+    --sidebar-width: 280px;
+    --accent-orange: #FF6B35;
+  }
+
+
+  /* -- Country Navbar ----------------------------------------- */
+  .country-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(15, 37, 87, 0.95);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    transform: translateY(-100%); transition: transform 0.3s ease;
+  }
+  .country-nav.visible { transform: translateY(0); }
+  .country-nav__inner {
+    max-width: 1400px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 1rem; height: 48px;
+  }
+  .country-nav__label {
+    font-family: 'Playfair Display', serif; font-size: 0.8rem;
+    color: rgba(255,255,255,0.7); white-space: nowrap; margin-right: 0.5rem;
+  }
+  .country-nav__links {
+    display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .country-nav__link {
+    display: flex; align-items: center; gap: 5px;
+    padding: 12px 12px; color: rgba(255,255,255,0.8);
+    font-size: 0.78rem; font-weight: 500; white-space: nowrap;
+    transition: all 0.2s; border-bottom: 2px solid transparent; text-decoration: none;
+  }
+  .country-nav__link:hover { color: #fff; background: rgba(255,255,255,0.08); border-bottom-color: #FF6B35; }
+  .country-nav__link .nav-icon { width: 16px; height: 16px; flex-shrink: 0; opacity: 0.85; }
+  .country-nav__link:hover .nav-icon { opacity: 1; }
+  .country-nav__link--accent { color: #FF6B35; }
+  .country-nav__link--accent:hover { color: #fff; border-bottom-color: #FF6B35; }
+  @media (max-width: 768px) {
+    .country-nav__label { display: none; }
+    .country-nav__link { padding: 12px 8px; font-size: 0.72rem; }
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Montserrat', 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #0F2557 0%, #1B3C8F 100%);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    margin-bottom: 10px;
+  }
+  .hero .subtitle { font-size: 1.1rem; opacity: 0.9; margin-bottom: 8px; }
+  .hero .count {
+    display: inline-block;
+    background: #FF6B35;
+    padding: 8px 24px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-top: 12px;
+  }
+  .hero .family {
+    margin-top: 16px;
+    font-size: 0.95rem;
+    opacity: 0.85;
+  }
+
+  /* ========= LAYOUT: sidebar + main ========= */
+  .page-layout {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* ========= FILTER SIDEBAR ========= */
+  .filter-sidebar {
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: #0F2557;
+    color: #fff;
+    padding: 20px 16px;
+    z-index: 100;
+    scrollbar-width: thin;
+    scrollbar-color: #4a6bb5 #0F2557;
+  }
+  .filter-sidebar::-webkit-scrollbar { width: 6px; }
+  .filter-sidebar::-webkit-scrollbar-track { background: #0F2557; }
+  .filter-sidebar::-webkit-scrollbar-thumb { background: #4a6bb5; border-radius: 3px; }
+
+  .filter-sidebar h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: #1B3C8F;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .filter-sidebar h3::before {
+    content: '⚙️';
+  }
+
+  .filter-count {
+    background: #1B3C8F;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+  .filter-count span { font-size: 1.3rem; }
+
+  .filter-group {
+    margin-bottom: 18px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 14px;
+  }
+  .filter-group:last-child { border-bottom: none; }
+  .filter-group-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #aaa;
+    margin-bottom: 8px;
+  }
+  .filter-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: color 0.15s;
+    font-family: 'Inter', sans-serif;
+  }
+  .filter-group label:hover { color: #1B3C8F; }
+
+  .filter-group input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #4a6bb5;
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .filter-group input[type="checkbox"]:checked {
+    background: #1B3C8F;
+    border-color: #1B3C8F;
+  }
+  .filter-group input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: -1px;
+    left: 2px;
+    font-size: 13px;
+    color: white;
+    font-weight: bold;
+  }
+
+  .clear-filters {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    color: #1B3C8F;
+    border: 2px solid #1B3C8F;
+    border-radius: 8px;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+  }
+  .clear-filters:hover {
+    background: #1B3C8F;
+    color: white;
+  }
+
+  /* Mobile filter toggle */
+  .filter-toggle {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 200;
+    background: #1B3C8F;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  /* ========= MAIN CONTENT ========= */
+  .main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 0 20px;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .top10 {
+    background: linear-gradient(135deg, #e8edf7, #e0e8f5);
+    border: 2px solid var(--gold);
+    border-radius: 16px;
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 800px;
+  }
+  .top10 h2 { font-family: 'Playfair Display', serif; color: #1B3C8F; margin-bottom: 16px; font-size: 1.5rem; }
+  .top10 ol { padding-left: 24px; }
+  .top10 li { margin-bottom: 8px; font-size: 0.95rem; }
+  .top10 li strong { color: #0F2557; }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 30px 0;
+  }
+  .summary-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+  .summary-card .big-num { font-size: 2.5rem; font-weight: 700; color: #1B3C8F; }
+  .summary-card .label { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+
+  .section-header {
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 16px;
+    margin: 40px 0 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .section-header.verdon { background: linear-gradient(135deg, #1B3C8F, #142f6e); color: white; }
+  .section-header.azur { background: linear-gradient(135deg, #0F2557, #1B3C8F); color: white; }
+  .section-header .icon { font-size: 3rem; margin-bottom: 8px; }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+  }
+  .section-header p { opacity: 0.9; margin-top: 6px; font-size: 0.95rem; }
+  .section-header.hidden-by-filter { display: none; }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 32px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--border);
+  }
+  .category-header .cat-icon { font-size: 1.6rem; }
+  .category-header h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; }
+  .category-header .cat-count {
+    background: var(--verdon-light);
+    color: var(--verdon);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .azur-section .category-header .cat-count { background: var(--azur-light); color: var(--azur); }
+  .category-header.hidden-by-filter { display: none; }
+
+  .activity-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    gap: 12px;
+    align-items: start;
+    transition: box-shadow 0.2s, opacity 0.2s;
+  }
+  .activity-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .activity-card.highlight { border-left: 4px solid var(--accent); }
+  .activity-card.hidden-by-filter { display: none; }
+
+  .activity-num {
+    background: var(--verdon);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .azur-num { background: #0F2557 !important; }
+  .azur-section .activity-num { background: #0F2557; }
+
+  .activity-content h4 { font-size: 1rem; margin-bottom: 4px; }
+  .activity-content h4 a { color: inherit; text-decoration: none; }
+  .activity-content h4 a:hover { color: var(--accent); text-decoration: underline; }
+  .activity-desc { font-size: 0.88rem; color: var(--muted); margin-bottom: 8px; }
+
+  .activity-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .tag.tom-yes { background: #d1fae5; color: #065f46; }
+  .tag.tom-no { background: #fee2e2; color: #991b1b; }
+  .tag.tom-check { background: #fef3c7; color: #92400e; }
+  .tag.teen-love { background: #ede9fe; color: #5b21b6; }
+  .tag.teen-ok { background: #f3f4f6; color: #4b5563; }
+  .tag.cost { background: #e0f2fe; color: #075985; }
+  .tag.free { background: #d1fae5; color: #065f46; }
+
+  /* Cost badges */
+  .tag.cost-free { background: #d1fae5; color: #065f46; font-weight: 600; }
+  .tag.cost-budget { background: #dbeafe; color: #1e40af; font-weight: 600; }
+  .tag.cost-mid { background: #bfdbfe; color: #1e3a8a; font-weight: 600; }
+  .tag.cost-premium { background: #c4b5fd; color: #3b0764; font-weight: 600; }
+
+  /* Week badges */
+  .tag.week-verdon { background: #e8edf7; color: #1B3C8F; font-weight: 600; }
+  .tag.week-azur { background: #e5e5e5; color: #0F2557; font-weight: 600; }
+
+  .activity-link {
+    flex-shrink: 0;
+    align-self: center;
+  }
+  .activity-link a {
+    display: inline-block;
+    background: var(--verdon);
+    color: white;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+  .activity-link a:hover { background: #0a1b3f; }
+  .azur-link a { background: #0F2557 !important; }
+  .azur-link a:hover { background: #1B3C8F !important; }
+  .azur-section .activity-link a { background: #0F2557; }
+  .azur-section .activity-link a:hover { background: #1B3C8F; }
+
+  .footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  /* ========= RESPONSIVE ========= */
+  @media (max-width: 900px) {
+    .filter-sidebar {
+      position: fixed;
+      left: -300px;
+      top: 0;
+      height: 100vh;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+    .filter-sidebar.open { left: 0; }
+    .filter-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+    }
+    .filter-overlay.open { display: block; }
+    .filter-toggle { display: flex; align-items: center; justify-content: center; }
+    .main-content { padding: 0 12px; }
+    .page-layout { display: block; }
+  }
+
+  @media (max-width: 640px) {
+    .activity-card { grid-template-columns: 32px 1fr; }
+    .activity-link { grid-column: 1 / -1; }
+    .activity-link a { width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="country-nav" id="countryNav">
+  <div class="country-nav__inner">
+    <span class="country-nav__label">Explore:</span>
+    <div class="country-nav__links">
+      <a href="showcase/index.html" class="country-nav__link country-nav__link--accent"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg> Home</a>
+      <a href="France_Verdon_CotedAzur_Activities_2026.html" class="country-nav__link" style="border-bottom-color: #FF6B35; color: #fff;"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h6v18H3V3zm12 0h6v18h-6V3zM9 3h6v18H9V3z" opacity="0.8"/></svg> France</a>
+      <a href="Germany_Bavaria_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L8.5 8.5 2 9.5l5 4.5L5.5 21 12 17.5 18.5 21 17 14l5-4.5-6.5-1L12 2z"/></svg> Germany</a>
+      <a href="Croatia_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20v4H2zm0 6h4v4H6v-2H4v4h4v-2h2v4H8v-2H4v4h20V10H2zm6 0h4v2h-2v2H8v-4zm6 0h4v2h-2v2h-2v-4z"/></svg> Croatia</a>
+      <a href="Sicily_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c3.31 0 6-2.69 6-6 0-4.96-4.49-9-10-9z"/></svg> Sicily</a>
+      <a href="Egypt_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 21h18L12 3 3 21zm9-3l-4.5-9h9L12 18z"/></svg> Egypt</a>
+      <a href="Austria_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z"/></svg> Austria</a>
+      <a href="Bulgaria_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 2.84L18 11v7h-2v-6H8v6H6v-7l6-5.16z"/></svg> Bulgaria</a>
+      <a href="Japan_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg> Japan</a>
+      <a href="Spain_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg> Spain</a>
+      <a href="CostaRica_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.71c.76.34 1.59.54 2.46.59L9 20c.5-4 4.17-8 9-8V8z"/></svg> Costa Rica</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" style="position:relative; overflow:hidden;">
+  <div class="hero__bg" style="position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=1920&q=80') center/cover no-repeat;"></div>
+  <div class="hero__overlay" style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,37,87,.75) 0%, rgba(15,37,87,.9) 100%);"></div>
+  <div style="position:relative; z-index:2;">
+  <h1>🇫🇷 Gorges du Verdon + Côte d'Azur</h1>
+  <div class="subtitle">The Complete Family Activities Guide — Summer 2026</div>
+  <div class="count">🎯 93 Activities Found</div>
+  <div class="family">👨‍👩‍👧‍👦 2 Adults · Katie (17) · George (15) · Tom (8)</div>
+  </div>
+</div>
+<!-- ═══ Weather Summary ═══ -->
+<div class="weather-section" style="background: linear-gradient(135deg, #f0f4ff 0%, #e8edf7 100%); padding: 2rem 0;">
+  <div style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
+    <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 16px; font-size: 1.2rem;">
+      ☀️ August Weather — What to Expect
+    </h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 12px;">
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">🌡️</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">30-34°C</div>
+        <div style="font-size: 0.75rem; color: #666;">Avg. High</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">🌙</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">18-22°C</div>
+        <div style="font-size: 0.75rem; color: #666;">Avg. Low</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">☀️</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">10-12</div>
+        <div style="font-size: 0.75rem; color: #666;">Sun hrs/day</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">🌧️</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">2-5 days</div>
+        <div style="font-size: 0.75rem; color: #666;">Rainy Days</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">🏊</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">23-24°C</div>
+        <div style="font-size: 0.75rem; color: #666;">Sea Temp</div>
+      </div>
+    </div>
+    <p style="font-size: 0.82rem; color: #555; line-height: 1.6; margin: 0;">
+      ☀️ <strong>Hot, sunny, and dry.</strong> Inland Verdon can hit 34°C — perfect for gorge swimming. The Côte d'Azur enjoys sea breezes. Rain is rare (2-5 days), usually brief afternoon showers. UV is high — pack factor 50. Evenings are warm enough for outdoor dining. The Perseid meteor shower peaks 10-13 Aug — zero light pollution in the Verdon!
+    </p>
+  </div>
+</div>
+<!-- MOBILE FILTER TOGGLE -->
+<button class="filter-toggle" onclick="toggleFilters()" aria-label="Toggle filters">⚙️</button>
+<div class="filter-overlay" id="filterOverlay" onclick="toggleFilters()"></div>
+
+<div class="page-layout">
+
+<!-- FILTER SIDEBAR -->
+<aside class="filter-sidebar" id="filterSidebar">
+  <h3>Filters</h3>
+  <div class="filter-count">Showing <span id="visibleCount">93</span> of 93 activities</div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Week</div>
+    <label><input type="checkbox" data-filter="week" value="verdon"> 🏔️ Verdon (Week 1)</label>
+    <label><input type="checkbox" data-filter="week" value="azur"> 🏖️ Côte d'Azur (Week 2)</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Activity Type</div>
+    <label><input type="checkbox" data-filter="type" value="water"> 🌊 Water</label>
+    <label><input type="checkbox" data-filter="type" value="adventure"> ⚡ Adventure & Adrenaline</label>
+    <label><input type="checkbox" data-filter="type" value="culture"> 🏛️ Culture & Villages</label>
+    <label><input type="checkbox" data-filter="type" value="unique"> 🌟 Unique Experiences</label>
+    <label><input type="checkbox" data-filter="type" value="hiking"> 🥾 Hiking</label>
+    <label><input type="checkbox" data-filter="type" value="parks"> 🎢 Parks & Thrills</label>
+    <label><input type="checkbox" data-filter="type" value="beaches"> 🏖️ Beaches</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Suitable for</div>
+    <label><input type="checkbox" data-filter="tom" value="yes"> ✅ Tom (8)</label>
+    <label><input type="checkbox" data-filter="teens" value="love"> ⭐ Teens love it</label>
+    <label><input type="checkbox" data-filter="family" value="yes"> 👨‍👩‍👧‍👦 Whole family</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Cost</div>
+    <label><input type="checkbox" data-filter="cost" value="free"> Free</label>
+    <label><input type="checkbox" data-filter="cost" value="budget"> Budget (under €25pp)</label>
+    <label><input type="checkbox" data-filter="cost" value="mid"> Mid-range (€25-60pp)</label>
+    <label><input type="checkbox" data-filter="cost" value="premium"> Premium (€60+pp)</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Special</div>
+    <label><input type="checkbox" data-filter="mustdo" value="true"> ⭐ Must-do highlights only</label>
+  </div>
+
+  <button class="clear-filters" onclick="clearFilters()">Clear all filters</button>
+</aside>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+<div class="container">
+
+<!-- TOP 10 -->
+<div class="top10">
+  <h2>⭐ The Unmissable 10</h2>
+  <ol>
+    <li>🛶 <strong>Kayak into the Gorges du Verdon</strong> — paddle between 300m cliffs on turquoise water</li>
+    <li>🪂 <strong>Paragliding over the gorge</strong> — whole family, from age 4!</li>
+    <li>🌊 <strong>Aqualand Fréjus</strong> — one of France's biggest water parks</li>
+    <li>🚤 <strong>Hire your own boat</strong> on the Riviera — no licence needed, find secret coves</li>
+    <li>🏎️ <strong>Walk the Monaco F1 circuit</strong> — then go-karting after!</li>
+    <li>🌸 <strong>Lavender fields at Valensole</strong> — peak bloom, timing is perfect</li>
+    <li>🌟 <strong>Perseid meteor shower</strong> — shooting stars, zero light pollution, free</li>
+    <li>🤿 <strong>Underwater snorkelling trail</strong> — France's only marked route</li>
+    <li>🚂 <strong>Train des Pignes steam train</strong> — historic ride through mountain valleys</li>
+    <li>🪂 <strong>Bungee jump Pont de l'Artuby</strong> — 182m, Europe's highest! (Katie, if she dares)</li>
+  </ol>
+</div>
+
+<!-- SUMMARY STATS -->
+<div class="summary-grid">
+  <div class="summary-card"><div class="big-num">93</div><div class="label">Total Activities</div></div>
+  <div class="summary-card"><div class="big-num">27</div><div class="label">Water Activities</div></div>
+  <div class="summary-card"><div class="big-num">11</div><div class="label">Adventure / Adrenaline</div></div>
+  <div class="summary-card"><div class="big-num">15</div><div class="label">Culture & Towns</div></div>
+  <div class="summary-card"><div class="big-num">8</div><div class="label">Parks & Thrills</div></div>
+  <div class="summary-card"><div class="big-num">8</div><div class="label">Unique Experiences</div></div>
+  <div class="summary-card"><div class="big-num">7</div><div class="label">Beaches</div></div>
+  <div class="summary-card"><div class="big-num">7</div><div class="label">Food & Markets</div></div>
+</div>
+
+<!-- ═══ Activity Map ═══ -->
+<div style="margin: 2rem auto; max-width: 1100px; padding: 0 20px;">
+  <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 4px; font-size: 1.3rem;">📍 Activity Map</h3>
+  <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">
+    <span id="map-count">93 activities shown</span> — 
+    <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#FF6B35;vertical-align:middle;"></span> Must-do
+    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#1B3C8F;vertical-align:middle;margin-left:8px;"></span> Other activities.
+    Use the filters to narrow down.
+    <label style="display:inline-flex;align-items:center;gap:4px;margin-left:12px;font-size:0.85rem;color:#2d9a2d;cursor:pointer;">
+      <input type="checkbox" id="accom-toggle" checked onchange="toggleAccom(this.checked)" style="accent-color:#2d9a2d;"> &#127965; Accommodation
+    </label>
+  </p>
+  <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.12); border: 2px solid #1B3C8F;">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <div id="mustdo-map" style="width:100%; height:500px;"></div>
+    <div style="padding: 12px 16px; background: #f8f9fa; max-height: 350px; overflow-y: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: 'Inter', sans-serif;">
+        <thead>
+          <tr style="border-bottom: 2px solid #1B3C8F; color: #0F2557; position: sticky; top: 0; background: #f8f9fa;">
+            <th style="text-align: left; padding: 5px 8px; width: 40px;">#</th>
+            <th style="text-align: left; padding: 5px 8px;">Activity</th>
+            <th style="text-align: right; padding: 5px 8px; width: 140px;">Links</th>
+          </tr>
+        </thead>
+        <tbody id="map-table-body">
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<div class="section-header verdon" data-section="verdon">
+  <div class="icon">🏔️</div>
+  <h2>Week 1: Gorges du Verdon</h2>
+  <p>Europe's Grand Canyon — adventure, nature & Provence</p>
+</div>
+
+<div class="verdon-section" data-section-wrap="verdon">
+
+<div class="category-header" data-cat-type="water" data-cat-week="verdon">
+  <span class="cat-icon">🌊</span>
+  <h3>Water Activities</h3>
+  <span class="cat-count">13 activities</span>
+</div>
+<div class="activity-card highlight" data-week="verdon" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="1" data-mustdo="true" data-lat="43.7711" data-lng="6.2253">
+  <div class="activity-num">1</div>
+  <div class="activity-content">
+    <h4><a href="https://www.moustiers.fr/en/sport-and-escape/water-sports-activities/" target="_blank">Kayak Into the Gorge</a></h4>
+    <div class="activity-desc">Paddle from Lac de Sainte-Croix into the gorge mouth between 300m cliffs. Turquoise water. THE highlight of the whole holiday.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (with parent)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€15-25/hr</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.moustiers.fr/en/sport-and-escape/water-sports-activities/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="water" data-tom="yes" data-teens="ok" data-cost="budget" data-num="2" data-lat="43.768" data-lng="6.23">
+  <div class="activity-num">2</div>
+  <div class="activity-content">
+    <h4><a href="https://www.moustiers.fr/en/sport-and-escape/water-sports-activities/" target="_blank">Pedalo on the Lake</a></h4>
+    <div class="activity-desc">Family pedalo on Lac de Sainte-Croix — can also enter the gorge mouth. Perfect for all ages.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">€15-20/hr</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.moustiers.fr/en/sport-and-escape/water-sports-activities/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="3" data-lat="43.77" data-lng="6.24">
+  <div class="activity-num">3</div>
+  <div class="activity-content">
+    <h4><a href="https://www.moustiers.fr/en/sport-and-escape/water-sports-activities/" target="_blank">Stand-Up Paddleboarding (SUP)</a></h4>
+    <div class="activity-desc">Paddleboard on Lac de Sainte-Croix or Lac de Castillon. Tom can kneel!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (kneeling)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€12-18/hr</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.moustiers.fr/en/sport-and-escape/water-sports-activities/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="water" data-tom="yes" data-teens="ok" data-cost="mid" data-num="4" data-lat="43.88" data-lng="6.53">
+  <div class="activity-num">4</div>
+  <div class="activity-content">
+    <h4><a href="https://www.moustiers.fr/en/sport-and-escape/water-sports-activities/" target="_blank">Electric Boat Hire</a></h4>
+    <div class="activity-desc">No-licence electric boat on the lake — be your own captain! Quiet, easy to drive.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">€30-50/hr</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.moustiers.fr/en/sport-and-escape/water-sports-activities/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card highlight" data-week="verdon" data-type="water" data-tom="yes" data-teens="love" data-cost="mid" data-num="5" data-mustdo="true" data-lat="43.76" data-lng="6.39">
+  <div class="activity-num">5</div>
+  <div class="activity-content">
+    <h4><a href="https://www.moustiers.fr/en/sport-and-escape/thrills-and-spills/white-water-sports/" target="_blank">White Water Rafting</a></h4>
+    <div class="activity-desc">Guided raft trip on the Verdon, Class II-III rapids. All equipment provided. Tom can join from age 6!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (age 6+)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€35-50pp</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.moustiers.fr/en/sport-and-escape/thrills-and-spills/white-water-sports/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="water" data-tom="no" data-teens="love" data-cost="mid" data-num="6" data-lat="43.755" data-lng="6.4">
+  <div class="activity-num">6</div>
+  <div class="activity-content">
+    <h4><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/activites/avec-leau/" target="_blank">Canyoning (Easy / Family)</a></h4>
+    <div class="activity-desc">Guided descent through a side canyon — scrambling, sliding, small pool jumps. Wetsuits provided.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Tom (min 10-12)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€40-60pp</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/activites/avec-leau/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="water" data-tom="no" data-teens="love" data-cost="mid" data-num="7" data-lat="43.75" data-lng="6.38">
+  <div class="activity-num">7</div>
+  <div class="activity-content">
+    <h4><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/activites/avec-leau/" target="_blank">Canyoning (Advanced)</a></h4>
+    <div class="activity-desc">Bigger jumps (up to 8m), abseiling waterfalls, deeper canyons. For experienced adventurers.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Tom</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€50-70pp</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/activites/avec-leau/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="water" data-tom="check" data-teens="love" data-cost="mid" data-num="8" data-lat="43.765" data-lng="6.235">
+  <div class="activity-num">8</div>
+  <div class="activity-content">
+    <h4><a href="https://www.moustiers.fr/en/sport-and-escape/thrills-and-spills/white-water-sports/" target="_blank">Aqua Rando / River Hiking</a></h4>
+    <div class="activity-desc">Walk and swim along the Verdon in a wetsuit — easier than canyoning. A great middle ground.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">⚠️ Tom (some from 8)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€35-50pp</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.moustiers.fr/en/sport-and-escape/thrills-and-spills/white-water-sports/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="water" data-tom="no" data-teens="love" data-cost="mid" data-num="9" data-lat="43.758" data-lng="6.37">
+  <div class="activity-num">9</div>
+  <div class="activity-content">
+    <h4><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/activites/avec-leau/" target="_blank">Hydrospeed</a></h4>
+    <div class="activity-desc">Lie on a body-board face-first into white water rapids. Exhilarating!</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Tom (14+)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€40-60pp</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/activites/avec-leau/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="10" data-lat="43.73" data-lng="5.97">
+  <div class="activity-num">10</div>
+  <div class="activity-content">
+    <h4><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/activites/baignade/nautisme-sur-le-lac-de-castillon/" target="_blank">Lac de Castillon Water Sports</a></h4>
+    <div class="activity-desc">Second lake near Castellane — kayak, pedalo, SUP. Less crowded than Sainte-Croix.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">Various</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/activites/baignade/nautisme-sur-le-lac-de-castillon/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="water" data-tom="yes" data-teens="ok" data-cost="free" data-num="11" data-lat="43.772" data-lng="6.228">
+  <div class="activity-num">11</div>
+  <div class="activity-content">
+    <h4><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/activites/baignade/" target="_blank">River Swimming</a></h4>
+    <div class="activity-desc">Free natural swimming spots along the Verdon and in the lakes. Warm in August!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/activites/baignade/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="water" data-tom="check" data-teens="love" data-cost="mid" data-num="12" data-lat="43.773" data-lng="6.226">
+  <div class="activity-num">12</div>
+  <div class="activity-content">
+    <h4>Night Kayak / SUP</h4>
+    <div class="activity-desc">Paddle at sunset or dusk with headlamps on the lake — atmospheric and unforgettable!</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">⚠️ Tom (check operator)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€25-40pp</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="water" data-tom="yes" data-teens="ok" data-cost="budget" data-num="13" data-lat="43.76" data-lng="6.17">
+  <div class="activity-num">13</div>
+  <div class="activity-content">
+    <h4>Fishing</h4>
+    <div class="activity-desc">Trout fishing in the Verdon river. Licence required — buy at tourist office.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (with parent)</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">€15-20/day licence</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="category-header" data-cat-type="adventure" data-cat-week="verdon">
+  <span class="cat-icon">⚡</span>
+  <h3>Adventure & Adrenaline</h3>
+  <span class="cat-count">11 activities</span>
+</div>
+<div class="activity-card highlight" data-week="verdon" data-type="adventure" data-tom="no" data-teens="love" data-cost="premium" data-num="14" data-mustdo="true" data-lat="43.713" data-lng="6.397">
+  <div class="activity-num">14</div>
+  <div class="activity-content">
+    <h4><a href="https://www.latitude-challenge.fr/en/" target="_blank">Bungee Jump — Pont de l'Artuby</a></h4>
+    <div class="activity-desc">182m — EUROPE'S HIGHEST bridge bungee jump! Over 90,000 jumps supervised. Min age 15 with parental consent.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Tom (min 15)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Katie ✅ George ✅</span>
+      <span class="tag cost">~€130pp</span>
+      <span class="tag cost-premium">€60+pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.latitude-challenge.fr/en/" target="_blank">Book →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="adventure" data-tom="check" data-teens="love" data-cost="mid" data-num="15" data-lat="43.72" data-lng="6.41">
+  <div class="activity-num">15</div>
+  <div class="activity-content">
+    <h4><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/activites/vias-ferrata-cordata-et-souterrata/" target="_blank">Via Ferrata</a></h4>
+    <div class="activity-desc">Iron-runged cliff climbing, clipped to steel cable the whole time. Various routes and difficulties.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">⚠️ Tom (some from 8)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€35-50pp guided</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/activites/vias-ferrata-cordata-et-souterrata/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="adventure" data-tom="check" data-teens="love" data-cost="budget" data-num="16" data-lat="43.735" data-lng="6.35">
+  <div class="activity-num">16</div>
+  <div class="activity-content">
+    <h4><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/activites/vias-ferrata-cordata-et-souterrata/" target="_blank">Souterrata (Underground Via Ferrata)</a></h4>
+    <div class="activity-desc">Via ferrata but INSIDE caves — climbing through underground passages! Unique to this area.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">⚠️ Tom (check)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">Guide-dependent</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/activites/vias-ferrata-cordata-et-souterrata/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="adventure" data-tom="check" data-teens="love" data-cost="mid" data-num="17" data-lat="43.74" data-lng="6.42">
+  <div class="activity-num">17</div>
+  <div class="activity-content">
+    <h4><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/activites/escalade/" target="_blank">Rock Climbing (Intro)</a></h4>
+    <div class="activity-desc">Guided outdoor climbing on Verdon limestone. This is one of the world's most famous climbing areas.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">⚠️ Tom (some from 6+)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€40-60pp</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/activites/escalade/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="adventure" data-tom="yes" data-teens="love" data-cost="budget" data-num="18" data-lat="43.78" data-lng="6.3">
+  <div class="activity-num">18</div>
+  <div class="activity-content">
+    <h4><a href="https://www.verdontourisme.com/parcours-aventure/" target="_blank">Accrobranche / Treetop Adventure</a></h4>
+    <div class="activity-desc">High ropes, zip lines, rope bridges through forest canopy. Junior courses from age 4!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (junior from 4+)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€15-25pp</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.verdontourisme.com/parcours-aventure/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card highlight" data-week="verdon" data-type="adventure" data-tom="yes" data-teens="love" data-cost="premium" data-num="19" data-mustdo="true" data-lat="43.79" data-lng="6.22">
+  <div class="activity-num">19</div>
+  <div class="activity-content">
+    <h4><a href="https://www.moustiers.fr/en/sport-and-escape/thrills-and-spills/paragliding/" target="_blank">Paragliding (Tandem)</a></h4>
+    <div class="activity-desc">Fly with an instructor over the gorge and lake. One operator takes children from AGE 4! The whole family can fly!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐ (from age 4!)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€80-120pp</span>
+      <span class="tag cost-premium">€60+pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.moustiers.fr/en/sport-and-escape/thrills-and-spills/paragliding/" target="_blank">Book →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="adventure" data-tom="no" data-teens="love" data-cost="mid" data-num="20" data-lat="43.775" data-lng="6.31">
+  <div class="activity-num">20</div>
+  <div class="activity-content">
+    <h4><a href="https://www.verdontourisme.com/en/informations/commerce-et-service-en/buena-vista-electrics-bike-rental-en-5714139id/" target="_blank">Electric Mountain Biking (e-MTB)</a></h4>
+    <div class="activity-desc">Guided ride through gorge trails on e-bikes — hills are easy with electric assist!</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Tom (12+ for bike size)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€40-60pp half day</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.verdontourisme.com/en/informations/commerce-et-service-en/buena-vista-electrics-bike-rental-en-5714139id/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="adventure" data-tom="no" data-teens="love" data-cost="budget" data-num="21" data-lat="43.845" data-lng="6.513">
+  <div class="activity-num">21</div>
+  <div class="activity-content">
+    <h4><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/activites/mountain-bike/" target="_blank">Mountain Biking</a></h4>
+    <div class="activity-desc">709km of MTB trails around the Verdon! Various difficulties.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Tom (terrain)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€15-25 hire/day</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/activites/mountain-bike/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="adventure" data-tom="yes" data-teens="ok" data-cost="budget" data-num="22" data-lat="43.76" data-lng="6.28">
+  <div class="activity-num">22</div>
+  <div class="activity-content">
+    <h4>Family Cycling</h4>
+    <div class="activity-desc">Flat-ish roads around the lakes, suitable for all ages and abilities.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">€10-15 hire/day</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="23" data-lat="43.75" data-lng="6.32">
+  <div class="activity-num">23</div>
+  <div class="activity-content">
+    <h4><a href="https://www.moustiers.fr/en/sport-and-escape/horse-riding/" target="_blank">Horseback Riding</a></h4>
+    <div class="activity-desc">Ride through Provençal countryside and lavender fields. Ponies available for children from age 6.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (pony, from 6)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€30-50pp/hr</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.moustiers.fr/en/sport-and-escape/horse-riding/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="adventure" data-tom="yes" data-teens="ok" data-cost="mid" data-num="24" data-lat="43.8456" data-lng="6.22">
+  <div class="activity-num">24</div>
+  <div class="activity-content">
+    <h4>Donkey Trekking</h4>
+    <div class="activity-desc">Walk scenic trails with donkeys carrying your bags. Gentle, charming, very Provençal.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">€40-60 half day</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="category-header" data-cat-type="culture" data-cat-week="verdon">
+  <span class="cat-icon">🏛️</span>
+  <h3>Culture, Villages & Viewpoints</h3>
+  <span class="cat-count">14 activities</span>
+</div>
+<div class="activity-card highlight" data-week="verdon" data-type="culture" data-tom="yes" data-teens="love" data-cost="free" data-num="25" data-mustdo="true" data-lat="43.7565" data-lng="6.399">
+  <div class="activity-num">25</div>
+  <div class="activity-content">
+    <h4><a href="https://www.verdontourisme.com/en/route-des-cretes/" target="_blank">Route des Crêtes Scenic Drive</a></h4>
+    <div class="activity-desc">Cliff-edge road along the north rim of the gorge. Multiple viewpoints 700m above the canyon floor.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.verdontourisme.com/en/route-des-cretes/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="26" data-lat="43.74" data-lng="6.36">
+  <div class="activity-num">26</div>
+  <div class="activity-content">
+    <h4><a href="https://www.verdontourisme.com/en/route-des-cretes/" target="_blank">Point Sublime Viewpoint</a></h4>
+    <div class="activity-desc">The most famous viewpoint over the Gorges du Verdon.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-ok">✅ Teens</span><span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.verdontourisme.com/en/route-des-cretes/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="culture" data-tom="yes" data-teens="love" data-cost="free" data-num="27" data-lat="43.8457" data-lng="6.5128">
+  <div class="activity-num">27</div>
+  <div class="activity-content">
+    <h4>Balcons de la Mescla</h4>
+    <div class="activity-desc">Where two gorges meet — stunning viewpoint with dramatic drops.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-love">⭐⭐⭐⭐ Teens</span><span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="28" data-lat="43.82" data-lng="5.98">
+  <div class="activity-num">28</div>
+  <div class="activity-content">
+    <h4><a href="https://www.moustiers.fr/en/" target="_blank">Moustiers-Sainte-Marie</a></h4>
+    <div class="activity-desc">"Most Beautiful Village in France" — cliff village with a gold star suspended between two rocks, plus a waterfall.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-ok">⭐⭐⭐ Teens</span><span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.moustiers.fr/en/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="29" data-lat="43.775" data-lng="6.24">
+  <div class="activity-num">29</div>
+  <div class="activity-content">
+    <h4><a href="https://www.verdontourisme.com/en/" target="_blank">Castellane Old Town</a></h4>
+    <div class="activity-desc">Gateway town to the gorge. Old town walk, clock tower hike, shops and cafés.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-ok">✅ Teens</span><span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.verdontourisme.com/en/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="culture" data-tom="yes" data-teens="love" data-cost="free" data-num="30" data-lat="43.76" data-lng="5.88">
+  <div class="activity-num">30</div>
+  <div class="activity-content">
+    <h4><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/discover-verdon/discover-destination/nos-cites-vauban/" target="_blank">Entrevaux Fortified Town</a></h4>
+    <div class="activity-desc">Vauban-fortified hilltop town with drawbridge and citadel climb. Real medieval atmosphere.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span><span class="tag teen-love">⭐⭐⭐⭐ Teens</span><span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/discover-verdon/discover-destination/nos-cites-vauban/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="31" data-lat="43.697" data-lng="6.035">
+  <div class="activity-num">31</div>
+  <div class="activity-content">
+    <h4><a href="https://www.verdontourisme.com/en/la-route-napoleon/" target="_blank">Route Napoléon Drive</a></h4>
+    <div class="activity-desc">Historic scenic road — Napoleon marched this way on his return from Elba in 1815.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-ok">⭐⭐⭐ Teens</span><span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.verdontourisme.com/en/la-route-napoleon/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="32" data-lat="43.765" data-lng="6.44">
+  <div class="activity-num">32</div>
+  <div class="activity-content">
+    <h4><a href="https://www.verdontourisme.com/en/sejourner/restauration/our-marches/" target="_blank">Provençal Markets</a></h4>
+    <div class="activity-desc">Castellane (Wed & Sat), Riez, Aups — olives, cheese, saucisson, honey, lavender. Taste everything!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (tasting!)</span><span class="tag teen-ok">⭐⭐⭐ Teens</span><span class="tag free">Free to browse</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.verdontourisme.com/en/sejourner/restauration/our-marches/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card highlight" data-week="verdon" data-type="culture" data-tom="yes" data-teens="love" data-cost="free" data-num="33" data-mustdo="true" data-lat="43.8372" data-lng="5.9828">
+  <div class="activity-num">33</div>
+  <div class="activity-content">
+    <h4><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/discover-verdon/decouvrir-le-terroir/la-lavande/" target="_blank">Lavender Fields — Valensole Plateau</a></h4>
+    <div class="activity-desc">Endless purple fields at peak bloom in late July! Instagram heaven. Your timing is perfect.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-love">⭐⭐⭐⭐ Teens (Katie: photos!)</span><span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/discover-verdon/decouvrir-le-terroir/la-lavande/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="34" data-lat="43.82" data-lng="6.2">
+  <div class="activity-num">34</div>
+  <div class="activity-content">
+    <h4><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/discover-verdon/decouvrir-le-terroir/la-lavande/" target="_blank">Lavender Distillery Visit</a></h4>
+    <div class="activity-desc">See how lavender essential oil is extracted, buy local products.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-ok">⭐⭐⭐ Teens</span><span class="tag cost">Free-€5</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/discover-verdon/decouvrir-le-terroir/la-lavande/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="culture" data-tom="yes" data-teens="ok" data-cost="budget" data-num="35" data-lat="43.83" data-lng="6.18">
+  <div class="activity-num">35</div>
+  <div class="activity-content">
+    <h4><a href="https://www.moustiers.fr/en/must-sees-in-moustiers/the-earthenware/" target="_blank">Pottery Workshop (Moustiers)</a></h4>
+    <div class="activity-desc">Moustiers is famous for faïence pottery. Hands-on workshop to create your own piece.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-ok">⭐⭐⭐ Teens</span><span class="tag cost">€15-25pp</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.moustiers.fr/en/must-sees-in-moustiers/the-earthenware/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="culture" data-tom="yes" data-teens="ok" data-cost="budget" data-num="36" data-lat="43.81" data-lng="6.15">
+  <div class="activity-num">36</div>
+  <div class="activity-content">
+    <h4><a href="https://www.museeprehistoire.com/" target="_blank">Musée de la Préhistoire (Quinson)</a></h4>
+    <div class="activity-desc">Excellent prehistory museum + reconstructed prehistoric village. Designed by Norman Foster.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span><span class="tag teen-ok">⭐⭐⭐ Teens</span><span class="tag cost">€8-10pp</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.museeprehistoire.com/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="culture" data-tom="yes" data-teens="ok" data-cost="budget" data-num="37" data-lat="43.8456" data-lng="6.22">
+  <div class="activity-num">37</div>
+  <div class="activity-content">
+    <h4><a href="https://www.moustiers.fr/en/fiche/individual-guided-tour-of-moustiers-2/" target="_blank">Guided Tour of Moustiers</a></h4>
+    <div class="activity-desc">Heritage walk through the village with a local guide — history, architecture, stories.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-ok">⭐⭐⭐ Teens</span><span class="tag cost">Ticketed</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.moustiers.fr/en/fiche/individual-guided-tour-of-moustiers-2/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="38" data-lat="43.846" data-lng="6.221">
+  <div class="activity-num">38</div>
+  <div class="activity-content">
+    <h4><a href="https://www.moustiers.fr/en/must-sees-in-moustiers/local-products/" target="_blank">Local Producers / Terroir</a></h4>
+    <div class="activity-desc">Visit honey producers, cheese makers, olive oil mills — taste the best of Provence.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-ok">⭐⭐⭐ Teens</span><span class="tag cost">Free-varies</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.moustiers.fr/en/must-sees-in-moustiers/local-products/" target="_blank">Info →</a></div>
+</div>
+
+<div class="category-header" data-cat-type="unique" data-cat-week="verdon">
+  <span class="cat-icon">🌟</span>
+  <h3>Unique & Unexpected</h3>
+  <span class="cat-count">8 activities</span>
+</div>
+<div class="activity-card highlight" data-week="verdon" data-type="unique" data-tom="yes" data-teens="love" data-cost="free" data-num="39" data-mustdo="true" data-lat="43.78" data-lng="6.3">
+  <div class="activity-num">39</div>
+  <div class="activity-content">
+    <h4>Perseid Meteor Shower Stargazing</h4>
+    <div class="activity-desc">Peak 10-13 Aug — almost zero light pollution in the Verdon. Lie in a field and count shooting stars. Unforgettable and free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span><span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span><span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="unique" data-tom="yes" data-teens="love" data-cost="budget" data-num="40" data-lat="43.8456" data-lng="6.22">
+  <div class="activity-num">40</div>
+  <div class="activity-content">
+    <h4><a href="https://www.verdontourisme.com/en/informations/activite-en/astronomy-activities-in-the-verdon-gorges-en-7330357id/" target="_blank">Guided Astronomy Evening</a></h4>
+    <div class="activity-desc">Telescope session with an expert at a dark-sky site in the gorge area. See planets, nebulae, and the Milky Way.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-love">⭐⭐⭐⭐ Teens</span><span class="tag cost">€10-20pp</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.verdontourisme.com/en/informations/activite-en/astronomy-activities-in-the-verdon-gorges-en-7330357id/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card highlight" data-week="verdon" data-type="unique" data-tom="yes" data-teens="love" data-cost="free" data-num="41" data-mustdo="true" data-lat="43.788" data-lng="6.405">
+  <div class="activity-num">41</div>
+  <div class="activity-content">
+    <h4><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/discover-verdon/les-incontournables/les-vautours/" target="_blank">Vulture Watching (Rougon)</a></h4>
+    <div class="activity-desc">Griffon vultures (2.5m wingspan!) reintroduced to the gorge. Watch them soar from viewpoints near Rougon village.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span><span class="tag teen-love">⭐⭐⭐⭐ Teens</span><span class="tag free">Free (€5 guided)</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/discover-verdon/les-incontournables/les-vautours/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card highlight" data-week="verdon" data-type="unique" data-tom="yes" data-teens="love" data-cost="budget" data-num="42" data-mustdo="true" data-lat="43.8456" data-lng="6.22">
+  <div class="activity-num">42</div>
+  <div class="activity-content">
+    <h4><a href="https://www.moustiers.fr/en/fiche/cluedo-geant-la-chronique-du-tresor-esvanouis-3/" target="_blank">Giant Cluedo Treasure Hunt (Moustiers)</a></h4>
+    <div class="activity-desc">Family detective treasure hunt game through the streets of the village. Solve clues, find the treasure!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span><span class="tag teen-love">⭐⭐⭐⭐ Teens</span><span class="tag cost">Ticketed</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.moustiers.fr/en/fiche/cluedo-geant-la-chronique-du-tresor-esvanouis-3/" target="_blank">Book →</a></div>
+</div>
+<div class="activity-card highlight" data-week="verdon" data-type="unique" data-tom="yes" data-teens="love" data-cost="budget" data-num="43" data-mustdo="true" data-lat="43.86" data-lng="6.63">
+  <div class="activity-num">43</div>
+  <div class="activity-content">
+    <h4><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/discover-verdon/les-incontournables/train-des-pignes-a-vapeur/" target="_blank">Train des Pignes (Steam Train!) 🚂</a></h4>
+    <div class="activity-desc">Historic steam train ride through mountain valleys — Puget-Théniers, Entrevaux, Annot. Tom's dream!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span><span class="tag teen-love">⭐⭐⭐⭐ Teens</span><span class="tag cost">Ticketed</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/discover-verdon/les-incontournables/train-des-pignes-a-vapeur/" target="_blank">Book →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="unique" data-tom="yes" data-teens="ok" data-cost="budget" data-num="44" data-lat="43.77" data-lng="6.31">
+  <div class="activity-num">44</div>
+  <div class="activity-content">
+    <h4>Truffle Discovery Walk</h4>
+    <div class="activity-desc">Guided walk with a truffle dog to find summer truffles in the Provençal woods.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-ok">⭐⭐⭐ Teens</span><span class="tag cost">€20-40pp</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="unique" data-tom="yes" data-teens="ok" data-cost="budget" data-num="45" data-lat="43.8456" data-lng="6.22">
+  <div class="activity-num">45</div>
+  <div class="activity-content">
+    <h4><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/discover-verdon/decouvrir-le-terroir/transhumance/" target="_blank">Transhumance / Farm Experience</a></h4>
+    <div class="activity-desc">See traditional sheep migration or visit working Provençal farms.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-ok">⭐⭐⭐ Teens</span><span class="tag cost">Varies</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.verdontourisme.com/en/bienvenue-sur-le-site-verdontourisme-com-2/discover-verdon/decouvrir-le-terroir/transhumance/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="unique" data-tom="yes" data-teens="love" data-cost="free" data-num="46" data-lat="43.82" data-lng="6.1">
+  <div class="activity-num">46</div>
+  <div class="activity-content">
+    <h4><a href="https://www.verdontourisme.com/en/sentier-du-lac-dallos/" target="_blank">Lac d'Allos Hike</a></h4>
+    <div class="activity-desc">Easy family hike to Europe's largest natural high-altitude lake (2,228m) in the Mercantour National Park.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-love">⭐⭐⭐⭐ Teens</span><span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.verdontourisme.com/en/sentier-du-lac-dallos/" target="_blank">Info →</a></div>
+</div>
+
+<div class="category-header" data-cat-type="hiking" data-cat-week="verdon">
+  <span class="cat-icon">🥾</span>
+  <h3>Hiking</h3>
+  <span class="cat-count">3 activities</span>
+</div>
+<div class="activity-card" data-week="verdon" data-type="hiking" data-tom="no" data-teens="love" data-cost="free" data-num="47" data-lat="43.0033" data-lng="6.2044">
+  <div class="activity-num">47</div>
+  <div class="activity-content">
+    <h4><a href="https://www.verdontourisme.com/en/unmissable-tours/sentier-blanc-martel/" target="_blank">Sentier Blanc-Martel</a></h4>
+    <div class="activity-desc">Iconic gorge-floor trail — tunnels, ladders, bridges, swimming. 6-7 hours, demanding.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Tom (demanding)</span><span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span><span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.verdontourisme.com/en/unmissable-tours/sentier-blanc-martel/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="hiking" data-tom="no" data-teens="love" data-cost="free" data-num="48" data-lat="43.42" data-lng="6.86">
+  <div class="activity-num">48</div>
+  <div class="activity-content">
+    <h4>Sentier de l'Imbut</h4>
+    <div class="activity-desc">Shorter gorge-floor trail with scrambling and swimming sections. Challenging but rewarding.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Tom (challenging)</span><span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span><span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="verdon" data-type="hiking" data-tom="check" data-teens="love" data-cost="free" data-num="49" data-lat="43.375" data-lng="6.685">
+  <div class="activity-num">49</div>
+  <div class="activity-content">
+    <h4>Family Gorge Walk (Point Sublime)</h4>
+    <div class="activity-desc">Easier trail from Point Sublime down into the gorge — shorter sections, manageable for families.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">⚠️ Tom (careful on steep bits)</span><span class="tag teen-love">⭐⭐⭐⭐ Teens</span><span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">🏔️ Verdon</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+</div><!-- end verdon section -->
+
+<div class="section-header azur" data-section="azur">
+  <div class="icon">🏖️</div>
+  <h2>Week 2: Côte d'Azur</h2>
+  <p>The French Riviera — beaches, glamour & Mediterranean adventure</p>
+</div>
+
+<div class="azur-section" data-section-wrap="azur">
+
+<div class="category-header" data-cat-type="water" data-cat-week="azur">
+  <span class="cat-icon">🌊</span>
+  <h3>Water Activities</h3>
+  <span class="cat-count">14 activities</span>
+</div>
+<div class="activity-card highlight" data-week="azur" data-type="water" data-tom="yes" data-teens="love" data-cost="premium" data-num="50" data-mustdo="true" data-lat="43.423" data-lng="6.858">
+  <div class="activity-num azur-num">50</div>
+  <div class="activity-content">
+    <h4>Hire Your Own Boat (No Licence!)</h4>
+    <div class="activity-desc">Small motorboat along the Estérel coast — find hidden coves, anchor and swim, picnic on the water. Captain your own family adventure!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (whole family)</span><span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span><span class="tag cost">€80-150 half day</span>
+      <span class="tag cost-premium">€60+pp</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="water" data-tom="no" data-teens="love" data-cost="mid" data-num="51" data-lat="43.425" data-lng="6.75">
+  <div class="activity-num azur-num">51</div>
+  <div class="activity-content">
+    <h4>Jet Skiing</h4>
+    <div class="activity-desc">Jet ski hire or guided tours from Fréjus/Saint-Raphaël beaches.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Tom (16+)</span><span class="tag teen-love">⭐⭐⭐⭐⭐ Katie</span><span class="tag cost">€40-80/30min</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="water" data-tom="check" data-teens="love" data-cost="mid" data-num="52" data-lat="43.42" data-lng="6.77">
+  <div class="activity-num azur-num">52</div>
+  <div class="activity-content">
+    <h4>Parasailing</h4>
+    <div class="activity-desc">Fly behind a boat over the sea on a parachute — incredible views of the coast!</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">⚠️ Tom (some from 8 with parent)</span><span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span><span class="tag cost">€40-60pp</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="water" data-tom="no" data-teens="love" data-cost="mid" data-num="53" data-lat="43.423" data-lng="6.76">
+  <div class="activity-num azur-num">53</div>
+  <div class="activity-content">
+    <h4>Flyboarding</h4>
+    <div class="activity-desc">Water jet-powered hoverboard — stand on jets of water and fly! Like Iron Man on water.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Tom (16+)</span><span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span><span class="tag cost">€60-90/20min</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="water" data-tom="yes" data-teens="love" data-cost="mid" data-num="54" data-lat="43.421" data-lng="6.84">
+  <div class="activity-num azur-num">54</div>
+  <div class="activity-content">
+    <h4>Sea Scooter / Underwater Scooter</h4>
+    <div class="activity-desc">Hold an electric scooter that pulls you along while snorkelling — effortless underwater exploration!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-love">⭐⭐⭐⭐ Teens</span><span class="tag cost">€30-50pp</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card highlight" data-week="azur" data-type="water" data-tom="yes" data-teens="love" data-cost="free" data-num="55" data-mustdo="true" data-lat="43.4175" data-lng="6.8022">
+  <div class="activity-num azur-num">55</div>
+  <div class="activity-content">
+    <h4><a href="https://www.visitvar.fr/" target="_blank">Snorkelling Trail — Sentier Sous-Marin (Boulouris)</a></h4>
+    <div class="activity-desc">France's ONLY marked underwater snorkelling trail! Info boards under water identify fish and sea life. Tom = Jacques Cousteau.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span><span class="tag teen-love">⭐⭐⭐⭐ Teens</span><span class="tag free">Free! (bring/rent mask)</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link azur-link"><a href="https://www.visitvar.fr/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="water" data-tom="yes" data-teens="love" data-cost="free" data-num="56" data-lat="43.422" data-lng="6.74">
+  <div class="activity-num azur-num">56</div>
+  <div class="activity-content">
+    <h4>Snorkelling at Estérel Calanques</h4>
+    <div class="activity-desc">Red rock coves with crystal clear water — fish, sea urchins, underwater gardens.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-love">⭐⭐⭐⭐ Teens</span><span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="water" data-tom="yes" data-teens="ok" data-cost="budget" data-num="57" data-lat="43.418" data-lng="6.865">
+  <div class="activity-num azur-num">57</div>
+  <div class="activity-content">
+    <h4>Glass-Bottom Boat</h4>
+    <div class="activity-desc">See the reef without getting wet — perfect for Tom if he's nervous of deep water.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span><span class="tag teen-ok">✅ Teens</span><span class="tag cost">€15-25pp</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card highlight" data-week="azur" data-type="water" data-tom="yes" data-teens="love" data-cost="mid" data-num="58" data-mustdo="true" data-lat="43.425" data-lng="6.87">
+  <div class="activity-num azur-num">58</div>
+  <div class="activity-content">
+    <h4>Sunset Boat Trip — Estérel Coast</h4>
+    <div class="activity-desc">Evening cruise along the red Estérel rocks at sunset — the rocks turn crimson. Aperitif + swimming stop included.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span><span class="tag cost">€30-45pp</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="59" data-lat="43.424" data-lng="6.735">
+  <div class="activity-num azur-num">59</div>
+  <div class="activity-content">
+    <h4>Boat to Saint-Tropez</h4>
+    <div class="activity-desc">Ferry from Sainte-Maxime across the bay — more fun than driving! ~20 min crossing.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span><span class="tag teen-love">⭐⭐⭐⭐ Teens</span><span class="tag cost">~€8pp each way</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="60" data-lat="43.423" data-lng="6.73">
+  <div class="activity-num azur-num">60</div>
+  <div class="activity-content">
+    <h4>Boat to Îles de Lérins (Cannes)</h4>
+    <div class="activity-desc">Ferry to Sainte-Marguerite island — fort of the Man in the Iron Mask! Swimming, snorkelling, forest walks.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span><span class="tag teen-love">⭐⭐⭐⭐ Teens</span><span class="tag cost">~€15pp return</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="61" data-lat="43.42" data-lng="6.89">
+  <div class="activity-num azur-num">61</div>
+  <div class="activity-content">
+    <h4>Kayak / SUP Along Estérel Coast</h4>
+    <div class="activity-desc">Paddle between red rock coves — stunning colours, quiet water, hidden beaches.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (with parent)</span><span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span><span class="tag cost">€15-25/hr</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="water" data-tom="no" data-teens="love" data-cost="mid" data-num="62" data-lat="43.421" data-lng="6.72">
+  <div class="activity-num azur-num">62</div>
+  <div class="activity-content">
+    <h4>Coasteering</h4>
+    <div class="activity-desc">Swim, scramble and cliff jump along the rocky coast with a guide. Exhilarating!</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Tom (12+)</span><span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span><span class="tag cost">€40-60pp</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="water" data-tom="yes" data-teens="love" data-cost="free" data-num="63" data-lat="43.61" data-lng="7.07">
+  <div class="activity-num azur-num">63</div>
+  <div class="activity-content">
+    <h4>Cliff Jumping (Estérel)</h4>
+    <div class="activity-desc">Natural rock jumps into the sea — 2-3m for Tom-sized courage, higher for teens. Free and thrilling!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (small jumps)</span><span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span><span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="category-header" data-cat-type="parks" data-cat-week="azur">
+  <span class="cat-icon">🎢</span>
+  <h3>Parks, Thrills & Fun</h3>
+  <span class="cat-count">8 activities</span>
+</div>
+<div class="activity-card highlight" data-week="azur" data-type="parks" data-tom="yes" data-teens="love" data-cost="mid" data-num="64" data-mustdo="true" data-lat="43.4318" data-lng="6.7268">
+  <div class="activity-num azur-num">64</div>
+  <div class="activity-content">
+    <h4><a href="https://www.aqualand.fr/frejus/" target="_blank">Aqualand Fréjus</a></h4>
+    <div class="activity-desc">One of France's biggest water parks — huge slides, wave pool, lazy river, children's paradise zone. Opens 20 June 2026.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span><span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span><span class="tag cost">€26 child / €34 adult</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link azur-link"><a href="https://www.aqualand.fr/frejus/" target="_blank">Book →</a></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="parks" data-tom="yes" data-teens="love" data-cost="mid" data-num="65" data-lat="43.435" data-lng="6.735">
+  <div class="activity-num azur-num">65</div>
+  <div class="activity-content">
+    <h4><a href="https://www.marineland.fr/en/" target="_blank">Aquasplash Antibes</a></h4>
+    <div class="activity-desc">Water park near Antibes (Marineland zoo closed, but Aquasplash and Adventure Golf remain open).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-love">⭐⭐⭐⭐ Teens</span><span class="tag cost">~€25-30pp</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link azur-link"><a href="https://www.marineland.fr/en/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="parks" data-tom="yes" data-teens="love" data-cost="budget" data-num="66" data-lat="43.53" data-lng="6.93">
+  <div class="activity-num azur-num">66</div>
+  <div class="activity-content">
+    <h4>Go-Karting (Puget-sur-Argens)</h4>
+    <div class="activity-desc">Outdoor kart circuit — junior karts for Tom (8+), adult/teen karts. "You walked the F1 circuit, now it's YOUR turn!"</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (junior)</span><span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span><span class="tag cost">€15-25/session</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="parks" data-tom="yes" data-teens="love" data-cost="budget" data-num="67" data-lat="43.44" data-lng="6.74">
+  <div class="activity-num azur-num">67</div>
+  <div class="activity-content">
+    <h4>Treetop Adventure (Roquebrune-sur-Argens)</h4>
+    <div class="activity-desc">High-ropes near Lei Suves campsite — zip lines through pine forest. All age courses available.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-love">⭐⭐⭐⭐ Teens</span><span class="tag cost">€15-25pp</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="parks" data-tom="yes" data-teens="ok" data-cost="budget" data-num="68" data-lat="43.435" data-lng="6.75">
+  <div class="activity-num azur-num">68</div>
+  <div class="activity-content">
+    <h4>Adventure Golf</h4>
+    <div class="activity-desc">Multiple themed courses along the Riviera — good for an easy afternoon.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-ok">✅ Teens</span><span class="tag cost">€8-12pp</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="parks" data-tom="check" data-teens="love" data-cost="budget" data-num="69" data-lat="43.4254" data-lng="6.7685">
+  <div class="activity-num azur-num">69</div>
+  <div class="activity-content">
+    <h4>Laser Tag / Paintball</h4>
+    <div class="activity-desc">Various outdoor locations near Fréjus. Great for a competitive family session!</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">⚠️ Tom (usually 8+)</span><span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span><span class="tag cost">€15-25pp</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="parks" data-tom="yes" data-teens="love" data-cost="budget" data-num="70" data-lat="43.4333" data-lng="6.7361">
+  <div class="activity-num azur-num">70</div>
+  <div class="activity-content">
+    <h4>Escape Room</h4>
+    <div class="activity-desc">Indoor puzzle rooms — various themes. Family-friendly options available. Great for a rainy day (unlikely in August!).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (team up)</span><span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span><span class="tag cost">€20-30pp</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="parks" data-tom="yes" data-teens="ok" data-cost="budget" data-num="71" data-lat="43.551" data-lng="7.017">
+  <div class="activity-num azur-num">71</div>
+  <div class="activity-content">
+    <h4>Luna Park / Travelling Funfair</h4>
+    <div class="activity-desc">Summer funfairs pop up along the Riviera throughout August — rides, games, candy floss.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span><span class="tag teen-ok">⭐⭐⭐ Teens</span><span class="tag cost">€2-5/ride</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="category-header" data-cat-type="culture" data-cat-week="azur">
+  <span class="cat-icon">🏛️</span>
+  <h3>Culture, Towns & Experiences</h3>
+  <span class="cat-count">15 activities</span>
+</div>
+<div class="activity-card" data-week="azur" data-type="culture" data-tom="yes" data-teens="love" data-cost="free" data-num="72" data-lat="43.6976" data-lng="7.276">
+  <div class="activity-num azur-num">72</div>
+  <div class="activity-content">
+    <h4><a href="https://www.nicetourisme.com/en" target="_blank">Nice Old Town (Vieux Nice)</a></h4>
+    <div class="activity-desc">Narrow streets, Cours Saleya market, Castle Hill views. The beating heart of the Riviera.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-love">⭐⭐⭐⭐ Teens</span><span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link azur-link"><a href="https://www.nicetourisme.com/en" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card highlight" data-week="azur" data-type="culture" data-tom="yes" data-teens="love" data-cost="budget" data-num="73" data-mustdo="true" data-lat="43.697" data-lng="7.276">
+  <div class="activity-num azur-num">73</div>
+  <div class="activity-content">
+    <h4><a href="https://www.fenocchio.fr/" target="_blank">Fenocchio Gelato — 96 Flavours!</a></h4>
+    <div class="activity-desc">Lavender, black olive, tomato-basil, cactus, Nutella, beer... 96 flavours including the weirdest you've ever tried!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span><span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span><span class="tag cost">€3-5</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link azur-link"><a href="https://www.fenocchio.fr/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="culture" data-tom="yes" data-teens="love" data-cost="budget" data-num="74" data-lat="43.658" data-lng="6.9225">
+  <div class="activity-num azur-num">74</div>
+  <div class="activity-content">
+    <h4>DIY Food Trail Through Nice</h4>
+    <div class="activity-desc">Socca → pissaladière → Fenocchio gelato → pan bagnat → tarte tropézienne. ~€40 for the whole family, stuffed!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-love">⭐⭐⭐⭐ Teens</span><span class="tag cost">~€40 total</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card highlight" data-week="azur" data-type="culture" data-tom="yes" data-teens="love" data-cost="free" data-num="75" data-mustdo="true" data-lat="43.7347" data-lng="7.4206">
+  <div class="activity-num azur-num">75</div>
+  <div class="activity-content">
+    <h4><a href="https://www.visitmonaco.com/en" target="_blank">Monaco — Walk the F1 Circuit</a></h4>
+    <div class="activity-desc">Walk the actual Grand Prix track through the streets of Monte Carlo! Identify every corner, tunnel, and chicane.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-love">⭐⭐⭐⭐⭐ George!</span><span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link azur-link"><a href="https://www.visitmonaco.com/en" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="culture" data-tom="yes" data-teens="love" data-cost="budget" data-num="76" data-lat="43.7311" data-lng="7.4253">
+  <div class="activity-num azur-num">76</div>
+  <div class="activity-content">
+    <h4><a href="https://www.oceano.org/en/" target="_blank">Monaco Oceanographic Museum</a></h4>
+    <div class="activity-desc">World-class aquarium built into a cliff — sharks, turtles, coral reef, touching pools. Founded by Prince Albert I.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span><span class="tag teen-love">⭐⭐⭐⭐ Teens</span><span class="tag cost">€18/€12 child</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link azur-link"><a href="https://www.oceano.org/en/" target="_blank">Book →</a></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="77" data-lat="43.2727" data-lng="6.6406">
+  <div class="activity-num azur-num">77</div>
+  <div class="activity-content">
+    <h4><a href="https://www.palais.mc/en/" target="_blank">Monaco Prince's Palace</a></h4>
+    <div class="activity-desc">Changing of the guard at 11:55am daily. Ceremonial, atmospheric, and free to watch.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-ok">⭐⭐⭐ Teens</span><span class="tag free">Free (exterior)</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link azur-link"><a href="https://www.palais.mc/en/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="culture" data-tom="yes" data-teens="ok" data-cost="budget" data-num="78" data-lat="43.7282" data-lng="7.3611">
+  <div class="activity-num azur-num">78</div>
+  <div class="activity-content">
+    <h4><a href="https://www.jardin-exotique.mc/" target="_blank">Monaco Exotic Garden</a></h4>
+    <div class="activity-desc">Incredible cacti garden on a cliff + underground cave with stalactites. Two experiences in one.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-ok">⭐⭐⭐ Teens</span><span class="tag cost">~€7pp</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link azur-link"><a href="https://www.jardin-exotique.mc/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="culture" data-tom="yes" data-teens="love" data-cost="free" data-num="79" data-lat="43.5808" data-lng="7.1239">
+  <div class="activity-num azur-num">79</div>
+  <div class="activity-content">
+    <h4>Cannes — Walk the Red Carpet Steps</h4>
+    <div class="activity-desc">Stand on the Palais des Festivals steps where movie stars walk during the film festival. Strike a pose!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-love">⭐⭐⭐⭐ Katie!</span><span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="culture" data-tom="yes" data-teens="love" data-cost="budget" data-num="80" data-lat="43.512" data-lng="7.045">
+  <div class="activity-num azur-num">80</div>
+  <div class="activity-content">
+    <h4>Île Sainte-Marguerite (Cannes)</h4>
+    <div class="activity-desc">Island fort where the Man in the Iron Mask was imprisoned! Plus forest walks, swimming coves, snorkelling.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span><span class="tag teen-love">⭐⭐⭐⭐ Teens</span><span class="tag cost">~€15pp ferry</span>
+      <span class="tag cost-budget">< €25pp</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="culture" data-tom="yes" data-teens="love" data-cost="free" data-num="81" data-lat="43.275" data-lng="6.58">
+  <div class="activity-num azur-num">81</div>
+  <div class="activity-content">
+    <h4>Saint-Tropez Harbour</h4>
+    <div class="activity-desc">Superyacht spotting, Place des Lices boules, boutiques. Arrive by boat from Sainte-Maxime for extra fun.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-love">⭐⭐⭐⭐ Katie!</span><span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="culture" data-tom="yes" data-teens="love" data-cost="mid" data-num="82" data-lat="43.213" data-lng="6.608">
+  <div class="activity-num azur-num">82</div>
+  <div class="activity-content">
+    <h4><a href="https://www.fragonard.com/en/" target="_blank">Perfume Workshop (Grasse)</a></h4>
+    <div class="activity-desc">Create your own perfume at Fragonard, Molinard, or Galimard in Grasse — the world capital of perfume. 45 min from Fréjus.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (from ~8)</span><span class="tag teen-love">⭐⭐⭐⭐ Katie!</span><span class="tag cost">€30-50pp</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link azur-link"><a href="https://www.fragonard.com/en/" target="_blank">Book →</a></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="culture" data-tom="yes" data-teens="love" data-cost="free" data-num="83" data-lat="43.434" data-lng="6.736">
+  <div class="activity-num azur-num">83</div>
+  <div class="activity-content">
+    <h4>Estérel Coastal Drive (Corniche d'Or)</h4>
+    <div class="activity-desc">Stunning coast road from Saint-Raphaël to Cannes — red rocks meeting blue sea. Stop at every cove.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-love">⭐⭐⭐⭐ Teens</span><span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="culture" data-tom="yes" data-teens="love" data-cost="free" data-num="84" data-lat="43.6964" data-lng="7.1214">
+  <div class="activity-num azur-num">84</div>
+  <div class="activity-content">
+    <h4>Provençal Evening / Night Markets</h4>
+    <div class="activity-desc">Marchés nocturnes — crafts, street food, live music, summer atmosphere. Many Riviera towns run them in August.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-love">⭐⭐⭐⭐ Teens</span><span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="85" data-lat="43.7" data-lng="7.33">
+  <div class="activity-num azur-num">85</div>
+  <div class="activity-content">
+    <h4>Fréjus Roman Ruins</h4>
+    <div class="activity-desc">Amphitheatre and aqueduct remains — small but interesting. 2,000 years old.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-ok">⭐⭐⭐ Teens</span><span class="tag cost">Free-€5</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card highlight" data-week="azur" data-type="culture" data-tom="yes" data-teens="love" data-cost="free" data-num="86" data-mustdo="true" data-lat="43.425" data-lng="6.77">
+  <div class="activity-num azur-num">86</div>
+  <div class="activity-content">
+    <h4>Beach Fireworks</h4>
+    <div class="activity-desc">Free firework displays from Riviera towns throughout August — watch from the beach with toes in the sand!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span><span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span><span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="category-header" data-cat-type="beaches" data-cat-week="azur">
+  <span class="cat-icon">🏖️</span>
+  <h3>Beaches</h3>
+  <span class="cat-count">7 activities</span>
+</div>
+<div class="activity-card" data-week="azur" data-type="beaches" data-tom="yes" data-teens="ok" data-cost="free" data-num="87" data-lat="43.425" data-lng="6.768">
+  <div class="activity-num azur-num">87</div>
+  <div class="activity-content">
+    <h4><a href="https://www.frejus.fr/" target="_blank">Fréjus Plage</a></h4>
+    <div class="activity-desc">Long sandy beach, all facilities, shallow water — the family-friendly classic.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span><span class="tag teen-ok">✅ Teens</span><span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link azur-link"><a href="https://www.frejus.fr/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="beaches" data-tom="yes" data-teens="ok" data-cost="free" data-num="88" data-lat="43.24" data-lng="6.65">
+  <div class="activity-num azur-num">88</div>
+  <div class="activity-content">
+    <h4><a href="https://www.saint-raphael.com/" target="_blank">Saint-Raphaël Beach</a></h4>
+    <div class="activity-desc">Sandy, promenade, restaurants, water sports rental — a proper seaside town.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-ok">✅ Teens</span><span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link azur-link"><a href="https://www.saint-raphael.com/" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="beaches" data-tom="yes" data-teens="love" data-cost="free" data-num="89" data-lat="43.71" data-lng="7.33">
+  <div class="activity-num azur-num">89</div>
+  <div class="activity-content">
+    <h4>Pampelonne Beach (Saint-Tropez)</h4>
+    <div class="activity-desc">Famous 5km sandy beach with beach clubs. Where the celebrities go. Free public sections too!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-love">⭐⭐⭐⭐ Teens</span><span class="tag free">Free (public) / $$$ (beach club)</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card highlight" data-week="azur" data-type="beaches" data-tom="yes" data-teens="love" data-cost="free" data-num="90" data-mustdo="true" data-lat="43.435" data-lng="6.88">
+  <div class="activity-num azur-num">90</div>
+  <div class="activity-content">
+    <h4>Calanques de l'Estérel</h4>
+    <div class="activity-desc">Hidden red rock coves with turquoise water — like a mini Sardinia. Short walks from car parks lead to secret swimming spots.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span><span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="beaches" data-tom="yes" data-teens="ok" data-cost="free" data-num="91" data-lat="43.41" data-lng="6.83">
+  <div class="activity-num azur-num">91</div>
+  <div class="activity-content">
+    <h4>Plage de la Nartelle (Sainte-Maxime)</h4>
+    <div class="activity-desc">Sandy, calm water, family-friendly. Less crowded than the big-name beaches.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span><span class="tag teen-ok">✅ Teens</span><span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="beaches" data-tom="yes" data-teens="ok" data-cost="free" data-num="92" data-lat="43.39" data-lng="6.67">
+  <div class="activity-num azur-num">92</div>
+  <div class="activity-content">
+    <h4>Plage du Débarquement (Fréjus)</h4>
+    <div class="activity-desc">Wide sandy beach, quieter than the main strand. Named after the 1944 Allied landings.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-ok">✅ Teens</span><span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-week="azur" data-type="beaches" data-tom="yes" data-teens="ok" data-cost="free" data-num="93" data-lat="43.205" data-lng="6.625">
+  <div class="activity-num azur-num">93</div>
+  <div class="activity-content">
+    <h4>Plage de Boulouris</h4>
+    <div class="activity-desc">Where the underwater snorkelling trail is — combine beach time with the trail!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span><span class="tag teen-ok">✅ Teens</span><span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">🏖️ Côte d'Azur</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+</div><!-- end azur section -->
+
+
+</div><!-- end container -->
+</div><!-- end main-content -->
+</div><!-- end page-layout -->
+
+<div class="footer">
+  <p>Created for the Sheldrake family holiday planning · Summer 2026</p>
+  <p>Gorges du Verdon + Côte d'Azur · Fly Jet2 LBA → Nice</p>
+</div>
+
+<script>
+(function() {
+  const cards = document.querySelectorAll('.activity-card');
+  const checkboxes = document.querySelectorAll('.filter-sidebar input[type="checkbox"]');
+  const countEl = document.getElementById('visibleCount');
+  const TOTAL = 93;
+
+  function getCheckedValues(filterName) {
+    const vals = [];
+    checkboxes.forEach(cb => {
+      if (cb.dataset.filter === filterName && cb.checked) vals.push(cb.value);
+    });
+    return vals;
+  }
+
+  function applyFilters() {
+    const weekFilters = getCheckedValues('week');
+    const typeFilters = getCheckedValues('type');
+    const tomFilters = getCheckedValues('tom');
+    const teenFilters = getCheckedValues('teens');
+    const familyFilters = getCheckedValues('family');
+    const costFilters = getCheckedValues('cost');
+    const mustdoFilters = getCheckedValues('mustdo');
+
+    let visible = 0;
+
+    cards.forEach(card => {
+      let show = true;
+
+      // Week filter (OR within group)
+      if (weekFilters.length > 0 && !weekFilters.includes(card.dataset.week)) show = false;
+
+      // Type filter (OR within group)
+      if (typeFilters.length > 0 && !typeFilters.includes(card.dataset.type)) show = false;
+
+      // Tom filter
+      if (tomFilters.length > 0 && card.dataset.tom !== 'yes') show = false;
+
+      // Teens filter
+      if (teenFilters.length > 0 && card.dataset.teens !== 'love') show = false;
+
+      // Family filter (tom=yes AND teens love/ok)
+      if (familyFilters.length > 0 && card.dataset.tom !== 'yes') show = false;
+
+      // Cost filter (OR within group)
+      if (costFilters.length > 0 && !costFilters.includes(card.dataset.cost)) show = false;
+
+      // Must-do filter
+      if (mustdoFilters.length > 0 && card.dataset.mustdo !== 'true') show = false;
+
+      if (show) {
+        card.classList.remove('hidden-by-filter');
+        visible++;
+      } else {
+        card.classList.add('hidden-by-filter');
+      }
+    });
+
+    countEl.textContent = visible;
+
+    // Hide section headers if all their activities are hidden
+    document.querySelectorAll('.section-header[data-section]').forEach(header => {
+      const sectionId = header.dataset.section;
+      const wrap = document.querySelector('[data-section-wrap="' + sectionId + '"]');
+      if (wrap) {
+        const visibleCards = wrap.querySelectorAll('.activity-card:not(.hidden-by-filter)');
+        header.classList.toggle('hidden-by-filter', visibleCards.length === 0);
+        wrap.style.display = visibleCards.length === 0 ? 'none' : '';
+      }
+    });
+
+    // Hide category headers if all their activities are hidden
+    document.querySelectorAll('.category-header[data-cat-type]').forEach(catHeader => {
+      const catType = catHeader.dataset.catType;
+      const catWeek = catHeader.dataset.catWeek;
+      // Find next sibling activity cards until next category-header or section end
+      let sibling = catHeader.nextElementSibling;
+      let hasVisible = false;
+      while (sibling && !sibling.classList.contains('category-header') && !sibling.classList.contains('section-header')) {
+        if (sibling.classList.contains('activity-card') && !sibling.classList.contains('hidden-by-filter')) {
+          hasVisible = true;
+          break;
+        }
+        sibling = sibling.nextElementSibling;
+      }
+      catHeader.classList.toggle('hidden-by-filter', !hasVisible);
+    });
+    if (typeof updateMap === 'function') updateMap();
+  }
+
+  checkboxes.forEach(cb => cb.addEventListener('change', applyFilters));
+
+  window.clearFilters = function() {
+    checkboxes.forEach(cb => cb.checked = false);
+    applyFilters();
+  };
+
+  window.toggleFilters = function() {
+    const sidebar = document.getElementById('filterSidebar');
+    const overlay = document.getElementById('filterOverlay');
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('open');
+  };
+})();
+
+
+function toggleAccom(show) {
+  if (!window.accomMarkers) return;
+  window.accomMarkers.forEach(function(m) {
+    if (show) m.addTo(window.activityMap);
+    else window.activityMap.removeLayer(m);
+  });
+}
+
+// Dynamic activity map
+function updateMap() {
+  if (!window.activityMarkers) return;
+  var bounds = [];
+  var tableBody = document.getElementById('map-table-body');
+  if (tableBody) tableBody.innerHTML = '';
+  var visibleCount = 0;
+  
+  document.querySelectorAll('.activity-card').forEach(function(card, i) {
+    var marker = window.activityMarkers[i];
+    if (!marker) return;
+    var lat = parseFloat(card.dataset.lat);
+    var lng = parseFloat(card.dataset.lng);
+    if (!lat || !lng) return;
+    
+    var isVisible = !card.classList.contains('hidden-by-filter');
+    if (isVisible) {
+      marker.addTo(window.activityMap);
+      bounds.push([lat, lng]);
+      visibleCount++;
+      if (tableBody) {
+        var num = card.dataset.num;
+        var title = card.querySelector('h4').textContent.trim();
+        var link = card.querySelector('h4 a');
+        var href = link ? link.href : '';
+        var isMustDo = card.dataset.mustdo === 'true';
+        var tr = document.createElement('tr');
+        tr.style.borderBottom = '1px solid #e0e0e0';
+        if (visibleCount % 2 === 0) tr.style.background = '#f0f3f9';
+        tr.innerHTML = '<td style="padding:5px 8px;color:#1B3C8F;font-weight:700;">' + num + '</td>' +
+          '<td style="padding:5px 8px;">' + (isMustDo ? '⭐ ' : '') + title + '</td>' +
+          '<td style="padding:5px 8px;text-align:right;">' + 
+          (href ? '<a href="'+href+'" target="_blank" style="color:#1B3C8F;margin-right:10px;">More Info</a>' : '') +
+          '<a href="https://www.google.com/maps?q='+lat+','+lng+'" target="_blank" style="color:#888;">📍 Map</a></td>';
+        tableBody.appendChild(tr);
+      }
+    } else {
+      window.activityMap.removeLayer(marker);
+    }
+  });
+  
+  var countEl = document.getElementById('map-count');
+  if (countEl) countEl.textContent = visibleCount + ' activities shown';
+  
+  if (bounds.length > 0) {
+    window.activityMap.fitBounds(bounds, {padding: [30, 30], maxZoom: 12});
+  }
+}
+
+(function(){
+  window.activityMap = L.map('mustdo-map', {scrollWheelZoom: false}).setView([43.65, 6.55], 8);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; CARTO &copy; OSM', maxZoom: 18
+  }).addTo(window.activityMap);
+  
+  window.activityMarkers = [];
+  
+  document.querySelectorAll('.activity-card').forEach(function(card) {
+    var lat = parseFloat(card.dataset.lat);
+    var lng = parseFloat(card.dataset.lng);
+    if (!lat || !lng) { window.activityMarkers.push(null); return; }
+    
+    var num = card.dataset.num;
+    var isMustDo = card.dataset.mustdo === 'true';
+    var title = card.querySelector('h4').textContent.trim();
+    var desc = card.querySelector('.activity-desc');
+    var descText = desc ? desc.textContent.trim().substring(0, 100) + '...' : '';
+    
+    var size = isMustDo ? 28 : 22;
+    var bg = isMustDo ? '#FF6B35' : '#1B3C8F';
+    var fontSize = isMustDo ? '12px' : '10px';
+    
+    var icon = L.divIcon({
+      className: '',
+      html: '<div style="background:'+bg+';color:#fff;width:'+size+'px;height:'+size+'px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:'+fontSize+';font-family:Montserrat,sans-serif;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;cursor:pointer;">'+num+'</div>',
+      iconSize: [size, size],
+      iconAnchor: [size/2, size/2]
+    });
+    
+    var marker = L.marker([lat, lng], {icon: icon})
+      .bindPopup('<div style="min-width:200px;"><b style="color:#0F2557;font-size:0.95rem;">' + (isMustDo ? '⭐ ' : '') + title + '</b><br><span style="color:#555;font-size:0.85rem;">' + descText + '</span></div>');
+    
+    marker.addTo(window.activityMap);
+    window.activityMarkers.push(marker);
+  });
+  
+  updateMap();
+
+// Accommodation overlay
+window.accomMarkers = [];
+var accomData = [
+  [43.6450, 6.1350, "Les Lacs du Verdon", "Eurocamp", "https://www.eurocamp.co.uk/campsites/france/provence/lacs-du-verdon-campsite", "Large waterpark, heated pools, slides, kids\u2019 clubs. Near Gorges du Verdon."],
+  [43.7600, 5.8800, "Verdon Parc", "Eurocamp", "https://www.eurocamp.co.uk/campsites/france/provence/verdon-parc-campsite", "Lagoon pool, splash park, on banks of River Verdon. Gr\u00e9oux-les-Bains."],
+  [43.8500, 6.5200, "RCN Les Collines de Castellane", "RCN", "https://www.rcn.nl/en/holiday-parks/france/les-collines-de-castellane", "Hillside park above Castellane, waterpark, adventure park, near gorge."],
+  [43.4350, 6.7400, "La Baume", "Eurocamp", "https://www.eurocamp.co.uk/campsites/france/riviera/la-baume-campsite", "6 pools, 10 waterslides, spa, kids\u2019 clubs. Fr\u00e9jus, 5min to beach."],
+  [43.4400, 6.7300, "La Pierre Verte", "Eurocamp", "https://www.eurocamp.co.uk/campsites/france/riviera/la-pierre-verte-campsite", "Lagoon pool with sandy beach area, woodland setting. Fr\u00e9jus."],
+  [43.4300, 6.7500, "Holiday Green", "Eurocamp", "https://www.eurocamp.co.uk/campsites/france/riviera/holiday-green-campsite", "Spacious, green setting, multiple pools, large decks. Fr\u00e9jus."],
+  [43.4280, 6.8100, "Esterel Caravaning", "Esterel", "https://www.esterel-caravaning.fr/en/", "5-star, 6 pools, jungle toddler pool, sandy beach, wellness centre. St-Rapha\u00ebl."]
+];
+var accomIcon = function(){ return L.divIcon({
+  className:'',
+  html:'<div style="background:#2d9a2d;color:#fff;width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;cursor:pointer;">&#127965;</div>',
+  iconSize:[30,30], iconAnchor:[15,15]
+}); };
+accomData.forEach(function(a){
+  var marker = L.marker([a[0],a[1]], {icon: accomIcon()})
+    .bindPopup('<div style="min-width:220px;"><b style="color:#2d9a2d;font-size:0.95rem;">&#127965; '+a[2]+'</b><br><span style="color:#888;font-size:0.8rem;">'+a[3]+'</span><br><span style="color:#555;font-size:0.85rem;">'+a[5]+'</span><br><a href="'+a[4]+'" target="_blank" style="color:#2d9a2d;font-size:0.85rem;">View on '+a[3]+' \u2192</a></div>');
+  marker.addTo(window.activityMap);
+  window.accomMarkers.push(marker);
+});
+})();
+
+// Country navbar show on scroll
+(function(){
+  var nav = document.getElementById('countryNav');
+  if (!nav) return;
+  var hero = document.querySelector('.hero');
+  if (!hero) { nav.classList.add('visible'); return; }
+  var observer = new IntersectionObserver(function(entries){
+    nav.classList.toggle('visible', !entries[0].isIntersecting);
+  }, {threshold: 0});
+  observer.observe(hero);
+})();
+
+</script>
+
+</body>
+</html>

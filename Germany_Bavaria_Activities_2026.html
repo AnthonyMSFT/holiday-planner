@@ -1,0 +1,2276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Germany: Bavarian Alps — 86 Family Activities</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+  :root {
+    --verdon: #1B3C8F;
+    --verdon-light: #e8edf7;
+    --azur: #0F2557;
+    --azur-light: #f0f0f0;
+    --accent: #1B3C8F;
+    --gold: #1B3C8F;
+    --bg: #f5f7fa;
+    --card: #ffffff;
+    --text: #0F2557;
+    --muted: #4a6bb5;
+    --border: #e0e0e0;
+    --sidebar-width: 280px;
+    --accent-orange: #FF6B35;
+  }
+
+
+  /* -- Country Navbar ----------------------------------------- */
+  .country-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(15, 37, 87, 0.95);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    transform: translateY(-100%); transition: transform 0.3s ease;
+  }
+  .country-nav.visible { transform: translateY(0); }
+  .country-nav__inner {
+    max-width: 1400px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 1rem; height: 48px;
+  }
+  .country-nav__label {
+    font-family: 'Playfair Display', serif; font-size: 0.8rem;
+    color: rgba(255,255,255,0.7); white-space: nowrap; margin-right: 0.5rem;
+  }
+  .country-nav__links {
+    display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .country-nav__link {
+    display: flex; align-items: center; gap: 5px;
+    padding: 12px 12px; color: rgba(255,255,255,0.8);
+    font-size: 0.78rem; font-weight: 500; white-space: nowrap;
+    transition: all 0.2s; border-bottom: 2px solid transparent; text-decoration: none;
+  }
+  .country-nav__link:hover { color: #fff; background: rgba(255,255,255,0.08); border-bottom-color: #FF6B35; }
+  .country-nav__link .nav-icon { width: 16px; height: 16px; flex-shrink: 0; opacity: 0.85; }
+  .country-nav__link:hover .nav-icon { opacity: 1; }
+  .country-nav__link--accent { color: #FF6B35; }
+  .country-nav__link--accent:hover { color: #fff; border-bottom-color: #FF6B35; }
+  @media (max-width: 768px) {
+    .country-nav__label { display: none; }
+    .country-nav__link { padding: 12px 8px; font-size: 0.72rem; }
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #0F2557 0%, #1B3C8F 100%);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    margin-bottom: 10px;
+  }
+  .hero .subtitle { font-size: 1.1rem; opacity: 0.9; margin-bottom: 8px; }
+  .hero .count {
+    display: inline-block;
+    background: #FF6B35;
+    padding: 8px 24px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-top: 12px;
+  }
+  .hero .family {
+    margin-top: 16px;
+    font-size: 0.95rem;
+    opacity: 0.85;
+  }
+  .hero .flights {
+    margin-top: 12px;
+    font-size: 0.85rem;
+    opacity: 0.75;
+  }
+
+  .page-layout {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .filter-sidebar {
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: #0F2557;
+    color: #fff;
+    padding: 20px 16px;
+    z-index: 100;
+    scrollbar-width: thin;
+    scrollbar-color: #4a6bb5 #0F2557;
+  }
+  .filter-sidebar::-webkit-scrollbar { width: 6px; }
+  .filter-sidebar::-webkit-scrollbar-track { background: #0F2557; }
+  .filter-sidebar::-webkit-scrollbar-thumb { background: #4a6bb5; border-radius: 3px; }
+
+  .filter-sidebar h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: #8ab4f8;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .filter-sidebar h3::before { content: '⚙️'; }
+
+  .filter-count {
+    background: #1B3C8F;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+  .filter-count span { font-size: 1.3rem; }
+
+  .filter-group {
+    margin-bottom: 18px;
+    border-bottom: 1px solid #1B3C8F;
+    padding-bottom: 14px;
+  }
+  .filter-group:last-child { border-bottom: none; }
+  .filter-group-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #8ab4f8;
+    margin-bottom: 8px;
+  }
+  .filter-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: color 0.15s;
+    font-family: 'Inter', sans-serif;
+  }
+  .filter-group label:hover { color: #8ab4f8; }
+
+  .filter-group input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #4a6bb5;
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .filter-group input[type="checkbox"]:checked {
+    background: #1B3C8F;
+    border-color: #1B3C8F;
+  }
+  .filter-group input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: -1px;
+    left: 2px;
+    font-size: 13px;
+    color: white;
+    font-weight: bold;
+  }
+
+  .clear-filters {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    color: #8ab4f8;
+    border: 2px solid #1B3C8F;
+    border-radius: 8px;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+  }
+  .clear-filters:hover {
+    background: #1B3C8F;
+    color: white;
+  }
+
+  .filter-toggle {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 200;
+    background: #1B3C8F;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  .main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 0 20px;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .top10 {
+    background: linear-gradient(135deg, #e8edf7, #e0e8f5);
+    border: 2px solid var(--gold);
+    border-radius: 16px;
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 800px;
+  }
+  .top10 h2 { font-family: 'Playfair Display', serif; color: #1B3C8F; margin-bottom: 16px; font-size: 1.5rem; }
+  .top10 ol { padding-left: 24px; }
+  .top10 li { margin-bottom: 8px; font-size: 0.95rem; }
+  .top10 li strong { color: #0F2557; }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin: 30px 0;
+  }
+  .summary-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+  .summary-card .big-num { font-size: 2.5rem; font-weight: 700; color: #1B3C8F; }
+  .summary-card .label { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+
+  .section-header {
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 16px;
+    margin: 40px 0 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .section-header.berchtesgaden-style { background: linear-gradient(135deg, #1B3C8F, #142f6e); color: white; }
+  .section-header.garmisch-style { background: linear-gradient(135deg, #0F2557, #1B3C8F); color: white; }
+  .section-header.salzburg-style { background: linear-gradient(135deg, #2d5a27, #3d7a35); color: white; }
+  .section-header.other-style { background: linear-gradient(135deg, #6b3a0a, #8b5e34); color: white; }
+  .section-header .icon { font-size: 3rem; margin-bottom: 8px; }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+  }
+  .section-header p { opacity: 0.9; margin-top: 6px; font-size: 0.95rem; }
+  .section-header.hidden-by-filter { display: none; }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 32px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--border);
+  }
+  .category-header .cat-icon { font-size: 1.6rem; }
+  .category-header h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; }
+  .category-header .cat-count {
+    background: var(--verdon-light);
+    color: var(--verdon);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .category-header.hidden-by-filter { display: none; }
+
+  .activity-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    gap: 12px;
+    align-items: start;
+    transition: box-shadow 0.2s, opacity 0.2s;
+  }
+  .activity-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .activity-card.highlight { border-left: 4px solid var(--accent); }
+  .activity-card.hidden-by-filter { display: none; }
+
+  .activity-num {
+    background: var(--verdon);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .activity-content h4 { font-family: 'Playfair Display', serif; font-size: 1rem; margin-bottom: 4px; }
+  .activity-content h4 a { color: inherit; text-decoration: none; }
+  .activity-content h4 a:hover { color: var(--accent); text-decoration: underline; }
+  .activity-desc { font-size: 0.88rem; color: var(--muted); margin-bottom: 8px; }
+
+  .activity-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .tag.tom-yes { background: #d1fae5; color: #065f46; }
+  .tag.tom-no { background: #fee2e2; color: #991b1b; }
+  .tag.tom-check { background: #fef3c7; color: #92400e; }
+  .tag.teen-love { background: #ede9fe; color: #5b21b6; }
+  .tag.teen-ok { background: #f3f4f6; color: #4b5563; }
+  .tag.cost { background: #e0f2fe; color: #075985; }
+  .tag.free { background: #d1fae5; color: #065f46; }
+
+  .tag.cost-free { background: #d1fae5; color: #065f46; font-weight: 600; }
+  .tag.cost-budget { background: #dbeafe; color: #1e40af; font-weight: 600; }
+  .tag.cost-mid { background: #bfdbfe; color: #1e3a8a; font-weight: 600; }
+  .tag.cost-premium { background: #c4b5fd; color: #3b0764; font-weight: 600; }
+
+  .tag.area-berchtesgaden { background: #e8edf7; color: #1B3C8F; font-weight: 600; }
+  .tag.area-garmisch { background: #e5e5e5; color: #0F2557; font-weight: 600; }
+  .tag.area-salzburg { background: #dcfce7; color: #166534; font-weight: 600; }
+  .tag.area-other { background: #fef3c7; color: #92400e; font-weight: 600; }
+
+  .activity-link {
+    flex-shrink: 0;
+    align-self: center;
+  }
+  .activity-link a {
+    display: inline-block;
+    background: var(--verdon);
+    color: white;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+  .activity-link a:hover { background: #0a1b3f; }
+
+  .footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 900px) {
+    .filter-sidebar {
+      position: fixed;
+      left: -300px;
+      top: 0;
+      height: 100vh;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+    .filter-sidebar.open { left: 0; }
+    .filter-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+    }
+    .filter-overlay.open { display: block; }
+    .filter-toggle { display: flex; align-items: center; justify-content: center; }
+    .main-content { padding: 0 12px; }
+    .page-layout { display: block; }
+  }
+
+  @media (max-width: 640px) {
+    .activity-card { grid-template-columns: 32px 1fr; }
+    .activity-link { grid-column: 1 / -1; }
+    .activity-link a { width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="country-nav" id="countryNav">
+  <div class="country-nav__inner">
+    <span class="country-nav__label">Explore:</span>
+    <div class="country-nav__links">
+      <a href="showcase/index.html" class="country-nav__link country-nav__link--accent"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg> Home</a>
+      <a href="France_Verdon_CotedAzur_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h6v18H3V3zm12 0h6v18h-6V3zM9 3h6v18H9V3z" opacity="0.8"/></svg> France</a>
+      <a href="Germany_Bavaria_Activities_2026.html" class="country-nav__link" style="border-bottom-color: #FF6B35; color: #fff;"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L8.5 8.5 2 9.5l5 4.5L5.5 21 12 17.5 18.5 21 17 14l5-4.5-6.5-1L12 2z"/></svg> Germany</a>
+      <a href="Croatia_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20v4H2zm0 6h4v4H6v-2H4v4h4v-2h2v4H8v-2H4v4h20V10H2zm6 0h4v2h-2v2H8v-4zm6 0h4v2h-2v2h-2v-4z"/></svg> Croatia</a>
+      <a href="Sicily_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c3.31 0 6-2.69 6-6 0-4.96-4.49-9-10-9z"/></svg> Sicily</a>
+      <a href="Egypt_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 21h18L12 3 3 21zm9-3l-4.5-9h9L12 18z"/></svg> Egypt</a>
+      <a href="Austria_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z"/></svg> Austria</a>
+      <a href="Bulgaria_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 2.84L18 11v7h-2v-6H8v6H6v-7l6-5.16z"/></svg> Bulgaria</a>
+      <a href="Japan_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg> Japan</a>
+      <a href="Spain_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg> Spain</a>
+      <a href="CostaRica_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.71c.76.34 1.59.54 2.46.59L9 20c.5-4 4.17-8 9-8V8z"/></svg> Costa Rica</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" style="position:relative; overflow:hidden;">
+  <div class="hero__bg" style="position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1516876437184-593fda40c7ce?w=1920&q=80') center/cover no-repeat;"></div>
+  <div class="hero__overlay" style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,37,87,.75) 0%, rgba(15,37,87,.9) 100%);"></div>
+  <div style="position:relative; z-index:2;">
+  <h1>🇩🇪 Bavarian Alps — Family Activities Guide</h1>
+  <div class="subtitle">The Complete Family Adventure Planner — Summer 2026</div>
+  <div class="count">🎯 86 Activities Found</div>
+  <div class="family">👨‍👩‍👧‍👦 2 Adults · Katie (17) · George (15) · Tom (8)</div>
+  <div class="flights">✈️ Jet2: LBA → Salzburg (direct, 2hr 10min) · Berchtesgaden 30min · Garmisch 2hrs</div>
+  </div>
+</div>
+<!-- ═══ Weather Summary ═══ -->
+<div class="weather-section" style="background: linear-gradient(135deg, #f0f4ff 0%, #e8edf7 100%); padding: 2rem 0;">
+  <div style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
+    <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 16px; font-size: 1.2rem;">
+      ☀️ August Weather — What to Expect
+    </h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 12px;">
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">🌡️</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">22-26°C</div>
+        <div style="font-size: 0.75rem; color: #666;">Avg. High</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">🌙</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">12-15°C</div>
+        <div style="font-size: 0.75rem; color: #666;">Avg. Low</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">☀️</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">6-8</div>
+        <div style="font-size: 0.75rem; color: #666;">Sun hrs/day</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">🌧️</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">11-13 days</div>
+        <div style="font-size: 0.75rem; color: #666;">Rainy Days</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">⛰️</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">20-22°C</div>
+        <div style="font-size: 0.75rem; color: #666;">Lake Temp</div>
+      </div>
+    </div>
+    <p style="font-size: 0.82rem; color: #555; line-height: 1.6; margin: 0;">
+      🌦️ <strong>Warm but changeable.</strong> Bavaria is beautiful in August but expect afternoon thunderstorms, especially in the mountains. Mornings are often sunny — plan outdoor activities early. Pack layers and a waterproof jacket. Mountain summits (Zugspitze, Kitzsteinhorn) will be significantly cooler. Lakes are swimmable at 20-22°C.
+    </p>
+  </div>
+</div>
+<!-- MOBILE FILTER TOGGLE -->
+<button class="filter-toggle" onclick="toggleFilters()" aria-label="Toggle filters">⚙️</button>
+<div class="filter-overlay" id="filterOverlay" onclick="toggleFilters()"></div>
+
+<div class="page-layout">
+
+<!-- FILTER SIDEBAR -->
+<aside class="filter-sidebar" id="filterSidebar">
+  <h3>Filters</h3>
+  <div class="filter-count">Showing <span id="visibleCount">86</span> of 86 activities</div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Area</div>
+    <label><input type="checkbox" data-filter="area" value="berchtesgaden"> 🏔️ Berchtesgaden</label>
+    <label><input type="checkbox" data-filter="area" value="garmisch"> ⛰️ Garmisch</label>
+    <label><input type="checkbox" data-filter="area" value="salzburg"> 🎵 Salzburg</label>
+    <label><input type="checkbox" data-filter="area" value="other"> 🏰 Further Afield</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Activity Type</div>
+    <label><input type="checkbox" data-filter="type" value="mountains"> ⛰️ Mountains & Cable Cars</label>
+    <label><input type="checkbox" data-filter="type" value="water"> 💧 Lakes & Water</label>
+    <label><input type="checkbox" data-filter="type" value="castles"> 🏰 Castles & Palaces</label>
+    <label><input type="checkbox" data-filter="type" value="culture"> 🏛️ Culture & Towns</label>
+    <label><input type="checkbox" data-filter="type" value="adventure"> ⚡ Adventure & Thrills</label>
+    <label><input type="checkbox" data-filter="type" value="unique"> 🌟 Unique Experiences</label>
+    <label><input type="checkbox" data-filter="type" value="aqua"> 🏊 Aqua Parks & Swimming</label>
+    <label><input type="checkbox" data-filter="type" value="food"> 🥨 Food & Drink</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Suitable for</div>
+    <label><input type="checkbox" data-filter="tom" value="yes"> ✅ Tom (8)</label>
+    <label><input type="checkbox" data-filter="teens" value="love"> ⭐ Teens love it</label>
+    <label><input type="checkbox" data-filter="family" value="yes"> 👨‍👩‍👧‍👦 Whole family</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Cost</div>
+    <label><input type="checkbox" data-filter="cost" value="free"> Free</label>
+    <label><input type="checkbox" data-filter="cost" value="budget"> Budget (&lt;€20pp)</label>
+    <label><input type="checkbox" data-filter="cost" value="mid"> Mid-range (€20-50pp)</label>
+    <label><input type="checkbox" data-filter="cost" value="premium"> Premium (€50+pp)</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Special</div>
+    <label><input type="checkbox" data-filter="mustdo" value="true"> ⭐ Must-do highlights only</label>
+  </div>
+
+  <button class="clear-filters" onclick="clearFilters()">Clear all filters</button>
+</aside>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+<div class="container">
+
+<!-- TOP 10 -->
+<div class="top10">
+  <h2>⭐ The Unmissable 10</h2>
+  <ol>
+    <li>🏔️ <strong>Zugspitze Summit</strong> — stand on Germany's highest point, snow in summer, see 4 countries!</li>
+    <li>🚢 <strong>Königssee Electric Boat Trip</strong> — glide across Germany's cleanest lake, hear the echo, visit St. Bartholomä</li>
+    <li>🏰 <strong>Neuschwanstein Castle</strong> — THE fairy-tale castle, Disney's inspiration, utterly magical</li>
+    <li>🦅 <strong>Eagle's Nest (Kehlsteinhaus)</strong> — dramatic mountain-top retreat with 360° Alpine panorama</li>
+    <li>⛏️ <strong>Berchtesgaden Salt Mine</strong> — underground train, wooden slides, raft across a glowing salt lake!</li>
+    <li>💧 <strong>Partnachklamm Gorge</strong> — walk through thundering waterfalls in a narrow canyon</li>
+    <li>🏎️ <strong>Alpine Coasters (Sommerrodelbahn)</strong> — at least 4 to find! Tom will want every single one</li>
+    <li>🏖️ <strong>Eibsee Lake</strong> — Caribbean-blue water at the foot of the Zugspitze, swim & SUP</li>
+    <li>⛲ <strong>Hellbrunn Trick Fountains</strong> — 400-year-old fountains that soak you when you least expect it!</li>
+    <li>🥨 <strong>Kaiserschmarrn at a Mountain Hut</strong> — hike up, feast on torn pancakes, THIS is Bavaria</li>
+  </ol>
+</div>
+
+<!-- SUMMARY STATS -->
+<div class="summary-grid">
+  <div class="summary-card"><div class="big-num">86</div><div class="label">Total Activities</div></div>
+  <div class="summary-card"><div class="big-num">10</div><div class="label">Mountains & Cable Cars</div></div>
+  <div class="summary-card"><div class="big-num">17</div><div class="label">Lakes & Water</div></div>
+  <div class="summary-card"><div class="big-num">4</div><div class="label">Castles & Palaces</div></div>
+  <div class="summary-card"><div class="big-num">15</div><div class="label">Adventure & Thrills</div></div>
+  <div class="summary-card"><div class="big-num">20</div><div class="label">Culture & Towns</div></div>
+  <div class="summary-card"><div class="big-num">11</div><div class="label">Unique Experiences</div></div>
+  <div class="summary-card"><div class="big-num">9</div><div class="label">Food, Aqua & More</div></div>
+</div>
+
+<!-- ═══ Dynamic Activity Map ═══ -->
+<div style="margin: 2rem auto; max-width: 1100px; padding: 0 20px;">
+  <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 4px; font-size: 1.3rem;">📍 Activity Map</h3>
+  <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">
+    <span id="map-count">86 activities shown</span> — 
+    <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#FF6B35;vertical-align:middle;"></span> Must-do
+    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#1B3C8F;vertical-align:middle;margin-left:8px;"></span> Other activities.
+    Use the filters to narrow down.
+    <label style="display:inline-flex;align-items:center;gap:4px;margin-left:12px;font-size:0.85rem;color:#2d9a2d;cursor:pointer;">
+      <input type="checkbox" id="accom-toggle" checked onchange="toggleAccom(this.checked)" style="accent-color:#2d9a2d;"> &#127965; Accommodation
+    </label>
+  </p>
+  <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.12); border: 2px solid #1B3C8F;">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <div id="mustdo-map" style="width:100%; height:500px;"></div>
+    <div style="padding: 12px 16px; background: #f8f9fa; max-height: 350px; overflow-y: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: 'Inter', sans-serif;">
+        <thead>
+          <tr style="border-bottom: 2px solid #1B3C8F; color: #0F2557; position: sticky; top: 0; background: #f8f9fa;">
+            <th style="text-align: left; padding: 5px 8px; width: 40px;">#</th>
+            <th style="text-align: left; padding: 5px 8px;">Activity</th>
+            <th style="text-align: right; padding: 5px 8px; width: 140px;">Links</th>
+          </tr>
+        </thead>
+        <tbody id="map-table-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  window.activityMap = L.map('mustdo-map', {scrollWheelZoom: false}).setView([47.5, 12.5], 8);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; CARTO &copy; OSM', maxZoom: 18
+  }).addTo(window.activityMap);
+  window.activityMarkers = [];
+  document.querySelectorAll('.activity-card').forEach(function(card) {
+    var lat = parseFloat(card.dataset.lat);
+    var lng = parseFloat(card.dataset.lng);
+    if (!lat || !lng) { window.activityMarkers.push(null); return; }
+    var num = card.dataset.num || '';
+    var isMustDo = card.dataset.mustdo === 'true';
+    var title = card.querySelector('h4') ? card.querySelector('h4').textContent.trim() : '';
+    var desc = card.querySelector('.activity-desc');
+    var descText = desc ? desc.textContent.trim().substring(0, 100) + '...' : '';
+    var size = isMustDo ? 28 : 22;
+    var bg = isMustDo ? '#FF6B35' : '#1B3C8F';
+    var fs = isMustDo ? '12px' : '10px';
+    var icon = L.divIcon({
+      className: '',
+      html: '<div style="background:'+bg+';color:#fff;width:'+size+'px;height:'+size+'px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:'+fs+';font-family:sans-serif;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;cursor:pointer;">'+num+'</div>',
+      iconSize: [size, size], iconAnchor: [size/2, size/2]
+    });
+    var marker = L.marker([lat, lng], {icon: icon})
+      .bindPopup('<div style="min-width:180px;"><b style="color:#0F2557;">' + (isMustDo ? '⭐ ' : '') + title + '</b><br><span style="color:#555;font-size:0.85rem;">' + descText + '</span></div>');
+    marker.addTo(window.activityMap);
+    window.activityMarkers.push(marker);
+  });
+  if (typeof updateMap === 'function') updateMap();
+})();
+</script>
+<div class="section-header berchtesgaden-style" data-section="berchtesgaden">
+  <div class="icon">🏔️</div>
+  <h2>Berchtesgaden & Königssee Area</h2>
+  <p>Week 1 base — fly into Salzburg, 30min drive south</p>
+</div>
+
+<div data-section-wrap="berchtesgaden">
+<div class="category-header" data-cat-type="mountains" data-cat-area="berchtesgaden">
+  <span class="cat-icon">⛰️</span>
+  <h3>Mountains & Cable Cars</h3>
+  <span class="cat-count">5 activities</span>
+</div>
+<div class="activity-card highlight" data-area="berchtesgaden" data-type="mountains" data-tom="yes" data-teens="love" data-cost="mid" data-num="1" data-lat="47.6117" data-lng="13.0417" data-mustdo="true">
+  <div class="activity-num">1</div>
+  <div class="activity-content">
+    <h4><a href="https://www.kehlsteinhaus.de" target="_blank">Eagle&#x27;s Nest (Kehlsteinhaus)</a></h4>
+    <div class="activity-desc">Hitler&#x27;s mountain retreat at 1,834m. Bus ride up a winding road, then gold-plated elevator through the mountain. Jaw-dropping 360° views of the Alps. Fascinating &amp; beautiful.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€20-30pp</span>
+      <span class="tag cost-mid">€20-50pp</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.kehlsteinhaus.de" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card highlight" data-area="berchtesgaden" data-type="mountains" data-tom="yes" data-teens="love" data-cost="mid" data-num="2" data-lat="47.5900" data-lng="12.9867" data-mustdo="true">
+  <div class="activity-num">2</div>
+  <div class="activity-content">
+    <h4><a href="https://www.jennerbahn.de" target="_blank">Jennerbahn Cable Car</a></h4>
+    <div class="activity-desc">Cable car to 1,874m Jenner summit overlooking Königssee. Panoramic viewing platform, hiking trails at top, playground for kids. Can hike down!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€30-38pp adults</span>
+      <span class="tag cost-mid">€20-50pp</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.jennerbahn.de" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="berchtesgaden" data-type="mountains" data-tom="yes" data-teens="ok" data-cost="free" data-num="3" data-lat="47.5850" data-lng="12.9900">
+  <div class="activity-num">3</div>
+  <div class="activity-content">
+    <h4>Watzmann Views — Wimbachbrücke</h4>
+    <div class="activity-desc">Easy walk to the dramatic Wimbachbrücke viewpoint looking up at Germany&#x27;s 3rd highest peak (2,713m). Free roadside viewpoints too.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-ok">✅ Teens OK</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free!</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-area="berchtesgaden" data-type="mountains" data-tom="yes" data-teens="ok" data-cost="free" data-num="4" data-lat="47.5920" data-lng="12.9850">
+  <div class="activity-num">4</div>
+  <div class="activity-content">
+    <h4>Obersalzberg Panoramaweg</h4>
+    <div class="activity-desc">Stunning panoramic hiking trail on the Obersalzberg with views over Berchtesgaden valley. Moderate, well-signposted, family-friendly sections.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-ok">✅ Teens OK</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free!</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-area="berchtesgaden" data-type="mountains" data-tom="yes" data-teens="ok" data-cost="budget" data-num="5" data-lat="47.6322" data-lng="13.0042">
+  <div class="activity-num">5</div>
+  <div class="activity-content">
+    <h4><a href="https://www.rossfeld-panoramastrasse.de" target="_blank">Rossfeld Panoramastrasse</a></h4>
+    <div class="activity-desc">Germany&#x27;s highest panoramic road (1,600m). Drive along the ridge with staggering views into Austria. Picnic areas, short walks, cow bells!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-ok">✅ Teens OK</span>
+      <span class="tag cost">€10 per car</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.rossfeld-panoramastrasse.de" target="_blank">Info →</a></div>
+</div>
+<div class="category-header" data-cat-type="water" data-cat-area="berchtesgaden">
+  <span class="cat-icon">💧</span>
+  <h3>Lakes & Water</h3>
+  <span class="cat-count">8 activities</span>
+</div>
+<div class="activity-card highlight" data-area="berchtesgaden" data-type="water" data-tom="yes" data-teens="love" data-cost="mid" data-num="6" data-lat="47.6200" data-lng="12.9800" data-mustdo="true">
+  <div class="activity-num">6</div>
+  <div class="activity-content">
+    <h4><a href="https://www.seenschifffahrt.de" target="_blank">Königssee Electric Boat Trip</a></h4>
+    <div class="activity-desc">Iconic electric boat across Germany&#x27;s cleanest lake, surrounded by 1,000m cliffs. Famous echo demonstration (trumpet bounces off walls!). Stop at St. Bartholomä church.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€20-25pp</span>
+      <span class="tag cost-mid">€20-50pp</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.seenschifffahrt.de" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card highlight" data-area="berchtesgaden" data-type="water" data-tom="yes" data-teens="love" data-cost="mid" data-num="7" data-lat="47.5800" data-lng="13.0100" data-mustdo="true">
+  <div class="activity-num">7</div>
+  <div class="activity-content">
+    <h4><a href="https://www.seenschifffahrt.de" target="_blank">Obersee Lake Walk</a></h4>
+    <div class="activity-desc">From St. Bartholomä or Salet (end of Königssee boat), walk to the hidden Obersee — even more stunning, emerald green, with a waterfall at the far end.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€20-25pp (boat)</span>
+      <span class="tag cost-mid">€20-50pp</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.seenschifffahrt.de" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="berchtesgaden" data-type="water" data-tom="yes" data-teens="love" data-cost="free" data-num="8" data-lat="47.6300" data-lng="13.0200">
+  <div class="activity-num">8</div>
+  <div class="activity-content">
+    <h4>Hintersee Lake Swimming</h4>
+    <div class="activity-desc">Crystal-clear mountain lake near Ramsau. Sandy/pebbly shore, turquoise water, surrounded by forest. Famous &#x27;Zauberwald&#x27; (magic forest) walk alongside.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free!</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-area="berchtesgaden" data-type="water" data-tom="yes" data-teens="ok" data-cost="free" data-num="9" data-lat="47.6050" data-lng="12.9950">
+  <div class="activity-num">9</div>
+  <div class="activity-content">
+    <h4>Abtsdorfer See Swimming</h4>
+    <div class="activity-desc">Warm, shallow lake perfect for families. Sandy beach area, grassy sunbathing spots, water temp reaches 24°C in summer!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-ok">✅ Teens OK</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free!</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card highlight" data-area="berchtesgaden" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="10" data-lat="47.5700" data-lng="13.0300" data-mustdo="true">
+  <div class="activity-num">10</div>
+  <div class="activity-content">
+    <h4><a href="https://www.almbachklamm.com" target="_blank">Partnachklamm-Style: Almbachklamm Gorge</a></h4>
+    <div class="activity-desc">Walk through a spectacular narrow gorge with waterfalls crashing around you on metal walkways. 3km trail, bridges, tunnels. Dramatic!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€7-9pp</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.almbachklamm.com" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="berchtesgaden" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="11" data-lat="47.6100" data-lng="13.0500">
+  <div class="activity-num">11</div>
+  <div class="activity-content">
+    <h4>Wimbachklamm Gorge</h4>
+    <div class="activity-desc">Short but dramatic gorge walk (200m) through thundering waterfalls in a narrow rock slot. Easy, suitable for all. Combine with Wimbachgries valley walk.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€3-5pp</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-area="berchtesgaden" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="12" data-lat="47.5950" data-lng="13.0100">
+  <div class="activity-num">12</div>
+  <div class="activity-content">
+    <h4>SUP &amp; Kayak on Hintersee</h4>
+    <div class="activity-desc">Rent stand-up paddleboards or kayaks on the beautiful Hintersee. Calm water, stunning mountain backdrop. Several rental shops in Ramsau.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€15-20/hr</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-area="berchtesgaden" data-type="water" data-tom="yes" data-teens="ok" data-cost="free" data-num="13" data-lat="47.6000" data-lng="12.9700">
+  <div class="activity-num">13</div>
+  <div class="activity-content">
+    <h4>Thumsee Lake Swimming</h4>
+    <div class="activity-desc">Popular local swimming lake near Bad Reichenhall. Warmer water, beach areas, diving platform, kiosk. Less touristy than Königssee.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-ok">✅ Teens OK</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free!</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="category-header" data-cat-type="culture" data-cat-area="berchtesgaden">
+  <span class="cat-icon">🏛️</span>
+  <h3>Culture & Towns</h3>
+  <span class="cat-count">5 activities</span>
+</div>
+<div class="activity-card highlight" data-area="berchtesgaden" data-type="culture" data-tom="yes" data-teens="love" data-cost="mid" data-num="14" data-lat="47.6150" data-lng="13.0600" data-mustdo="true">
+  <div class="activity-num">14</div>
+  <div class="activity-content">
+    <h4><a href="https://www.salzbergwerk.de" target="_blank">Berchtesgaden Salt Mine</a></h4>
+    <div class="activity-desc">Underground adventure! Ride a miners&#x27; train deep into the mountain, slide down wooden slides, cross an underground salt lake on a raft. Kids absolutely LOVE this.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€20-25pp</span>
+      <span class="tag cost-mid">€20-50pp</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.salzbergwerk.de" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="berchtesgaden" data-type="culture" data-tom="check" data-teens="love" data-cost="budget" data-num="15" data-lat="47.5750" data-lng="12.9600">
+  <div class="activity-num">15</div>
+  <div class="activity-content">
+    <h4><a href="https://www.obersalzberg.de" target="_blank">Dokumentation Obersalzberg</a></h4>
+    <div class="activity-desc">World-class WWII museum explaining Hitler&#x27;s mountain headquarters. Bunker tunnels to explore. Gives context to Eagle&#x27;s Nest. Very well done, important history.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">⚠️ Tom (check age)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€5pp</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.obersalzberg.de" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="berchtesgaden" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="16" data-lat="47.5850" data-lng="13.0200">
+  <div class="activity-num">16</div>
+  <div class="activity-content">
+    <h4>Berchtesgaden Old Town</h4>
+    <div class="activity-desc">Pretty Alpine town centre with painted houses, pedestrian streets, shops, ice cream parlours. Royal Castle visible. Great for an evening stroll.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-ok">✅ Teens OK</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free!</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-area="berchtesgaden" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="17" data-lat="47.6200" data-lng="13.0300">
+  <div class="activity-num">17</div>
+  <div class="activity-content">
+    <h4>Ramsau Parish Church</h4>
+    <div class="activity-desc">Germany&#x27;s most photographed church! Tiny church with mountain backdrop, next to a rushing stream. Instagram-perfect, 5-minute stop.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-ok">✅ Teens OK</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free!</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-area="berchtesgaden" data-type="culture" data-tom="yes" data-teens="ok" data-cost="budget" data-num="18" data-lat="47.6100" data-lng="12.9900">
+  <div class="activity-num">18</div>
+  <div class="activity-content">
+    <h4><a href="https://www.haus-der-berge.bayern.de" target="_blank">Haus der Berge (National Park Centre)</a></h4>
+    <div class="activity-desc">Interactive exhibition about the Berchtesgaden National Park. Hands-on displays, virtual reality nature experiences, cinema. Great on a rainy day.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-ok">✅ Teens OK</span>
+      <span class="tag cost">€5-8pp</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.haus-der-berge.bayern.de" target="_blank">Info →</a></div>
+</div>
+<div class="category-header" data-cat-type="adventure" data-cat-area="berchtesgaden">
+  <span class="cat-icon">⚡</span>
+  <h3>Adventure & Thrills</h3>
+  <span class="cat-count">6 activities</span>
+</div>
+<div class="activity-card highlight" data-area="berchtesgaden" data-type="adventure" data-tom="yes" data-teens="love" data-cost="budget" data-num="19" data-lat="47.4211" data-lng="10.9856" data-mustdo="true">
+  <div class="activity-num">19</div>
+  <div class="activity-content">
+    <h4>Berchtesgaden Sommerrodelbahn (Alpine Coaster)</h4>
+    <div class="activity-desc">Summer toboggan run at Obersalzberg! Ride a cart on rails down a mountain track with curves and dips. Tom will want to do it 10 times.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€5-8 per ride</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-area="berchtesgaden" data-type="adventure" data-tom="yes" data-teens="love" data-cost="budget" data-num="20" data-lat="47.4558" data-lng="10.9711">
+  <div class="activity-num">20</div>
+  <div class="activity-content">
+    <h4>Hochseilgarten Berchtesgaden (Treetop Adventure)</h4>
+    <div class="activity-desc">High ropes course through the forest canopy. Multiple difficulty levels from kids&#x27; course to extreme. Zip lines, Tarzan swings, wobbly bridges.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€18-28pp</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-area="berchtesgaden" data-type="adventure" data-tom="check" data-teens="love" data-cost="premium" data-num="21" data-lat="47.4500" data-lng="11.1200">
+  <div class="activity-num">21</div>
+  <div class="activity-content">
+    <h4>Tandem Paragliding Berchtesgaden</h4>
+    <div class="activity-desc">Fly tandem with a pilot from the Jenner or local peaks. Soar over Königssee and the Alps. Minimum age usually 5-6. Unforgettable!</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">⚠️ Tom (check age)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€120-180pp</span>
+      <span class="tag cost-premium">€50+pp</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-area="berchtesgaden" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="22" data-lat="47.4600" data-lng="11.0900">
+  <div class="activity-num">22</div>
+  <div class="activity-content">
+    <h4>E-Bike Rental Berchtesgaden</h4>
+    <div class="activity-desc">Explore the valley on electric mountain bikes. Rental shops throughout town. Ride to Ramsau, Hintersee, or up to mountain huts. Even Tom can ride with e-assist!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€30-45/day</span>
+      <span class="tag cost-mid">€20-50pp</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-area="berchtesgaden" data-type="adventure" data-tom="no" data-teens="love" data-cost="budget" data-num="23" data-lat="47.4400" data-lng="11.1000">
+  <div class="activity-num">23</div>
+  <div class="activity-content">
+    <h4>Via Ferrata Grünstein</h4>
+    <div class="activity-desc">Family-friendly via ferrata (iron path) near Königssee. Fixed steel cables, ladders, and bridges on a rock face. Minimum age ~10, so Katie &amp; George but not Tom.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Tom (too young)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€15-20 gear rental</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-area="berchtesgaden" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="24" data-lat="47.4350" data-lng="11.0800">
+  <div class="activity-num">24</div>
+  <div class="activity-content">
+    <h4>Rafting on the Salzach River</h4>
+    <div class="activity-desc">White water rafting on the Salzach near the Austrian border. Class II-III rapids, family-friendly from age 6. All equipment provided, guides included.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€40-55pp</span>
+      <span class="tag cost-mid">€20-50pp</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="category-header" data-cat-type="aqua" data-cat-area="berchtesgaden">
+  <span class="cat-icon">🏊</span>
+  <h3>Aqua Parks & Swimming</h3>
+  <span class="cat-count">2 activities</span>
+</div>
+<div class="activity-card" data-area="berchtesgaden" data-type="aqua" data-tom="yes" data-teens="love" data-cost="mid" data-num="25" data-lat="47.4700" data-lng="11.0700">
+  <div class="activity-num">25</div>
+  <div class="activity-content">
+    <h4><a href="https://www.watzmann-therme.de" target="_blank">Watzmann Therme</a></h4>
+    <div class="activity-desc">Berchtesgaden&#x27;s thermal spa complex. Indoor/outdoor thermal pools, water slides for kids, sauna world for adults. Mountain views from the outdoor pools!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€20-30pp</span>
+      <span class="tag cost-mid">€20-50pp</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.watzmann-therme.de" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="berchtesgaden" data-type="aqua" data-tom="yes" data-teens="love" data-cost="mid" data-num="26" data-lat="47.4300" data-lng="11.1100">
+  <div class="activity-num">26</div>
+  <div class="activity-content">
+    <h4><a href="https://www.rupertustherme.de" target="_blank">Rupertus Therme (Bad Reichenhall)</a></h4>
+    <div class="activity-desc">Large thermal bath complex with wave pool, water slides, lazy river, outdoor pools. 20min from Berchtesgaden. Great rainy-day option.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€20-28pp</span>
+      <span class="tag cost-mid">€20-50pp</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.rupertustherme.de" target="_blank">Info →</a></div>
+</div>
+<div class="category-header" data-cat-type="food" data-cat-area="berchtesgaden">
+  <span class="cat-icon">🥨</span>
+  <h3>Food & Drink</h3>
+  <span class="cat-count">2 activities</span>
+</div>
+<div class="activity-card highlight" data-area="berchtesgaden" data-type="food" data-tom="yes" data-teens="love" data-cost="budget" data-num="27" data-lat="47.4550" data-lng="11.0600" data-mustdo="true">
+  <div class="activity-num">27</div>
+  <div class="activity-content">
+    <h4>Bavarian Beer Garden Experience</h4>
+    <div class="activity-desc">Traditional Biergarten with huge pretzels (Brezn), Weisswurst, Schweinshaxe, Obatzda. Kids get massive portions too. Non-alcoholic wheat beer (alkoholfrei Weizen) for all!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€10-18pp</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card highlight" data-area="berchtesgaden" data-type="food" data-tom="yes" data-teens="love" data-cost="budget" data-num="28" data-lat="47.4650" data-lng="11.0500" data-mustdo="true">
+  <div class="activity-num">28</div>
+  <div class="activity-content">
+    <h4>Kaiserschmarrn at a Mountain Hut</h4>
+    <div class="activity-desc">Hike to an Almhütte (mountain hut) and reward yourself with Kaiserschmarrn — torn-up fluffy pancake with powdered sugar &amp; berry compote. THE Alps experience.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€10-15pp</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="category-header" data-cat-type="unique" data-cat-area="berchtesgaden">
+  <span class="cat-icon">🌟</span>
+  <h3>Unique Experiences</h3>
+  <span class="cat-count">3 activities</span>
+</div>
+<div class="activity-card" data-area="berchtesgaden" data-type="unique" data-tom="yes" data-teens="love" data-cost="mid" data-num="29" data-lat="47.8000" data-lng="13.0450">
+  <div class="activity-num">29</div>
+  <div class="activity-content">
+    <h4><a href="https://www.salzbergwerk.de" target="_blank">Salt Mine Underground Lake &amp; Slides</a></h4>
+    <div class="activity-desc">Part of the Salt Mine tour — but deserves its own highlight. You slide down wooden miners&#x27; slides, then float on a raft across an underground lake lit up with lights!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">Included in mine ticket</span>
+      <span class="tag cost-mid">€20-50pp</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.salzbergwerk.de" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="berchtesgaden" data-type="unique" data-tom="yes" data-teens="love" data-cost="free" data-num="30" data-lat="47.7950" data-lng="13.0480">
+  <div class="activity-num">30</div>
+  <div class="activity-content">
+    <h4>Stargazing in the Alps</h4>
+    <div class="activity-desc">Virtually zero light pollution in the mountains. Bring a blanket, lie on a meadow, watch the Milky Way. If timing is right (Aug 12-13), catch the Perseid meteor shower!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free!</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-area="berchtesgaden" data-type="unique" data-tom="yes" data-teens="ok" data-cost="budget" data-num="31" data-lat="47.7980" data-lng="13.0400">
+  <div class="activity-num">31</div>
+  <div class="activity-content">
+    <h4>Alpine Cheese Dairy Visit</h4>
+    <div class="activity-desc">Visit a working Sennerei (alpine dairy). Watch cheese being made, sample fresh Bergkäse, buy to take home. Several dairies around Berchtesgaden &amp; Ramsau.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-ok">✅ Teens OK</span>
+      <span class="tag cost">€5-10pp</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-berchtesgaden">🏔️ Berchtesgaden</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+</div><!-- end section -->
+
+<div class="section-header garmisch-style" data-section="garmisch">
+  <div class="icon">⛰️</div>
+  <h2>Garmisch-Partenkirchen Area</h2>
+  <p>Week 2 base — 1.5hrs west, Germany's highest mountain</p>
+</div>
+
+<div data-section-wrap="garmisch">
+<div class="category-header" data-cat-type="mountains" data-cat-area="garmisch">
+  <span class="cat-icon">⛰️</span>
+  <h3>Mountains & Cable Cars</h3>
+  <span class="cat-count">5 activities</span>
+</div>
+<div class="activity-card highlight" data-area="garmisch" data-type="mountains" data-tom="yes" data-teens="love" data-cost="premium" data-num="32" data-lat="47.7628" data-lng="13.0603" data-mustdo="true">
+  <div class="activity-num">32</div>
+  <div class="activity-content">
+    <h4><a href="https://www.zugspitze.de" target="_blank">Zugspitze Summit</a></h4>
+    <div class="activity-desc">Germany&#x27;s HIGHEST mountain at 2,962m! Cable car from Eibsee to the summit. Stand on the terrace, see 4 countries. Snow in summer! Cross into Austria at the top.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€40-60pp</span>
+      <span class="tag cost-premium">€50+pp</span>
+      <span class="tag area-garmisch">⛰️ Garmisch</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.zugspitze.de" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="garmisch" data-type="mountains" data-tom="yes" data-teens="love" data-cost="mid" data-num="33" data-lat="47.8020" data-lng="13.0430">
+  <div class="activity-num">33</div>
+  <div class="activity-content">
+    <h4><a href="https://www.zugspitze.de" target="_blank">AlpspiX Viewing Platform</a></h4>
+    <div class="activity-desc">Two steel beams jut 13m out over a 1,000m drop on the Alpspitze. Glass floor sections. Cable car up, then walk to the platforms. Vertigo-inducing!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€30-40pp (cable car)</span>
+      <span class="tag cost-mid">€20-50pp</span>
+      <span class="tag area-garmisch">⛰️ Garmisch</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.zugspitze.de" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="garmisch" data-type="mountains" data-tom="yes" data-teens="love" data-cost="mid" data-num="34" data-lat="47.8100" data-lng="13.0350">
+  <div class="activity-num">34</div>
+  <div class="activity-content">
+    <h4><a href="https://www.zugspitze.de" target="_blank">Alpspitze Garmisch Cable Car</a></h4>
+    <div class="activity-desc">The Alpspitzbahn takes you to 2,050m with amazing views. Starting point for the AlpspiX platform and great hiking trails. Combined ticket with Zugspitze available.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€30-40pp</span>
+      <span class="tag cost-mid">€20-50pp</span>
+      <span class="tag area-garmisch">⛰️ Garmisch</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.zugspitze.de" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="garmisch" data-type="mountains" data-tom="yes" data-teens="ok" data-cost="budget" data-num="35" data-lat="47.8050" data-lng="13.0500">
+  <div class="activity-num">35</div>
+  <div class="activity-content">
+    <h4>Wank Mountain Hike</h4>
+    <div class="activity-desc">Don&#x27;t laugh at the name! Easy-moderate hike or cable car to 1,780m with fabulous views of Garmisch and the Zugspitze. Popular family mountain.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-ok">✅ Teens OK</span>
+      <span class="tag cost">€15-20pp cable car</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-garmisch">⛰️ Garmisch</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card highlight" data-area="garmisch" data-type="mountains" data-tom="yes" data-teens="love" data-cost="budget" data-num="36" data-lat="47.8000" data-lng="13.0380" data-mustdo="true">
+  <div class="activity-num">36</div>
+  <div class="activity-content">
+    <h4>Eckbauer Sommerrodelbahn (Alpine Coaster)</h4>
+    <div class="activity-desc">1,300m-long summer toboggan run from Eckbauer mountain! Ride up on the chairlift, then race down the track. Garmisch&#x27;s best alpine coaster.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€8-12 per ride</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-garmisch">⛰️ Garmisch</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="category-header" data-cat-type="water" data-cat-area="garmisch">
+  <span class="cat-icon">💧</span>
+  <h3>Lakes & Water</h3>
+  <span class="cat-count">6 activities</span>
+</div>
+<div class="activity-card highlight" data-area="garmisch" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="37" data-lat="47.7700" data-lng="13.0700" data-mustdo="true">
+  <div class="activity-num">37</div>
+  <div class="activity-content">
+    <h4><a href="https://www.partnachklamm.de" target="_blank">Partnachklamm Gorge</a></h4>
+    <div class="activity-desc">Walk through a 700m-long gorge with thundering waterfalls crashing over you. Metal walkways and tunnels cut into the rock face. Absolutely spectacular — will get wet!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€6-9pp</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-garmisch">⛰️ Garmisch</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.partnachklamm.de" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card highlight" data-area="garmisch" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="38" data-lat="47.7900" data-lng="13.0550" data-mustdo="true">
+  <div class="activity-num">38</div>
+  <div class="activity-content">
+    <h4><a href="https://www.eibsee.de" target="_blank">Eibsee Lake</a></h4>
+    <div class="activity-desc">Crystal-clear turquoise lake at the foot of the Zugspitze. Swim, rent rowing boats, SUP, or walk the 7km loop trail. Caribbean-blue water, mountain backdrop.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€5 parking</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-garmisch">⛰️ Garmisch</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.eibsee.de" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="garmisch" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="39" data-lat="47.5576" data-lng="10.7498">
+  <div class="activity-num">39</div>
+  <div class="activity-content">
+    <h4><a href="https://www.eibsee.de" target="_blank">Eibsee SUP &amp; Boat Hire</a></h4>
+    <div class="activity-desc">Rent SUP boards, rowing boats, or pedalos on the stunning Eibsee. Paddle to tiny islands. Water is very clear — can see the bottom!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€15-25/hr</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-garmisch">⛰️ Garmisch</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.eibsee.de" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="garmisch" data-type="water" data-tom="yes" data-teens="ok" data-cost="free" data-num="40" data-lat="47.5530" data-lng="10.7350">
+  <div class="activity-num">40</div>
+  <div class="activity-content">
+    <h4>Riessersee Lake Swimming</h4>
+    <div class="activity-desc">Small, beautiful lake just above Garmisch. Easy to reach, less crowded than Eibsee. Grassy banks, mountain views, good for a quick swim.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-ok">✅ Teens OK</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free!</span>
+      <span class="tag area-garmisch">⛰️ Garmisch</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-area="garmisch" data-type="water" data-tom="yes" data-teens="ok" data-cost="free" data-num="41" data-lat="47.5500" data-lng="10.7600">
+  <div class="activity-num">41</div>
+  <div class="activity-content">
+    <h4>Barmsee &amp; Grubsee Lakes</h4>
+    <div class="activity-desc">Twin hidden lakes near Mittenwald. Barmsee has stunning Karwendel views. Grubsee is tiny and forest-enclosed. Both swimmable, both gorgeous.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-ok">✅ Teens OK</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free!</span>
+      <span class="tag area-garmisch">⛰️ Garmisch</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-area="garmisch" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="42" data-lat="47.4800" data-lng="11.0600">
+  <div class="activity-num">42</div>
+  <div class="activity-content">
+    <h4><a href="https://www.leutasch.at" target="_blank">Leutasch Spirit Gorge (Geisterklamm)</a></h4>
+    <div class="activity-desc">Dramatic gorge walk near Mittenwald with a &#x27;ghost&#x27; theme for kids! Metal walkways, waterfall platform (23m high!). Kids course tells legend of the gorge spirit.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€6-8pp</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-garmisch">⛰️ Garmisch</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.leutasch.at" target="_blank">Info →</a></div>
+</div>
+<div class="category-header" data-cat-type="culture" data-cat-area="garmisch">
+  <span class="cat-icon">🏛️</span>
+  <h3>Culture & Towns</h3>
+  <span class="cat-count">5 activities</span>
+</div>
+<div class="activity-card" data-area="garmisch" data-type="culture" data-tom="yes" data-teens="ok" data-cost="budget" data-num="43" data-lat="47.3600" data-lng="11.1300">
+  <div class="activity-num">43</div>
+  <div class="activity-content">
+    <h4><a href="https://www.mittenwald.de" target="_blank">Mittenwald — Violin-Making Town</a></h4>
+    <div class="activity-desc">Charming town famous for Lüftlmalerei (painted house facades) and violin making since 1684. Visit the Geigenbau Museum, walk the painted streets, eat Apfelstrudel.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-ok">✅ Teens OK</span>
+      <span class="tag cost">€5-8pp museum</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-garmisch">⛰️ Garmisch</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.mittenwald.de" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="garmisch" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="44" data-lat="47.5950" data-lng="11.0650">
+  <div class="activity-num">44</div>
+  <div class="activity-content">
+    <h4><a href="https://www.ammergauer-alpen.de" target="_blank">Oberammergau Painted Houses</a></h4>
+    <div class="activity-desc">Village famous for its Passion Play (every 10 years) and stunning Lüftlmalerei painted buildings. Woodcarving shops everywhere, beautiful to walk around.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-ok">✅ Teens OK</span>
+      <span class="tag cost">Free (town)</span>
+      <span class="tag cost-free">Free!</span>
+      <span class="tag area-garmisch">⛰️ Garmisch</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.ammergauer-alpen.de" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="garmisch" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="45" data-lat="47.6000" data-lng="11.0700">
+  <div class="activity-num">45</div>
+  <div class="activity-content">
+    <h4>Garmisch-Partenkirchen Old Town</h4>
+    <div class="activity-desc">Two towns merged for the 1936 Olympics! Wander painted streets, see the ski jump, browse shops. Garmisch side is livelier, Partenkirchen more traditional.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-ok">✅ Teens OK</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free!</span>
+      <span class="tag area-garmisch">⛰️ Garmisch</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-area="garmisch" data-type="culture" data-tom="yes" data-teens="love" data-cost="free" data-num="46" data-lat="47.5900" data-lng="11.0600">
+  <div class="activity-num">46</div>
+  <div class="activity-content">
+    <h4>Olympic Ski Jump (Große Olympiaschanze)</h4>
+    <div class="activity-desc">Walk up to the 1936 Winter Olympics ski jump. See where athletes launched themselves. There&#x27;s a viewing point and you can sometimes watch summer training on the plastic slopes.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free!</span>
+      <span class="tag area-garmisch">⛰️ Garmisch</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-area="garmisch" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="47" data-lat="47.4650" data-lng="11.0980">
+  <div class="activity-num">47</div>
+  <div class="activity-content">
+    <h4><a href="https://www.kloster-ettal.de" target="_blank">Kloster Ettal (Ettal Monastery)</a></h4>
+    <div class="activity-desc">Stunning Baroque monastery between Garmisch and Oberammergau. Beautiful church interior, monastery brewery (try the beer!), cheese shop. Free to enter.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-ok">✅ Teens OK</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free!</span>
+      <span class="tag area-garmisch">⛰️ Garmisch</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.kloster-ettal.de" target="_blank">Info →</a></div>
+</div>
+<div class="category-header" data-cat-type="adventure" data-cat-area="garmisch">
+  <span class="cat-icon">⚡</span>
+  <h3>Adventure & Thrills</h3>
+  <span class="cat-count">5 activities</span>
+</div>
+<div class="activity-card" data-area="garmisch" data-type="adventure" data-tom="yes" data-teens="love" data-cost="budget" data-num="48" data-lat="47.4680" data-lng="11.1020">
+  <div class="activity-num">48</div>
+  <div class="activity-content">
+    <h4>Garmisch Alpine Coaster at Graseck</h4>
+    <div class="activity-desc">Another sommerrodelbahn option near Garmisch. Ride on the Graseck area with mountain scenery. Check seasonal availability.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€5-8 per ride</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-garmisch">⛰️ Garmisch</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-area="garmisch" data-type="adventure" data-tom="check" data-teens="love" data-cost="budget" data-num="49" data-lat="47.4500" data-lng="11.1060">
+  <div class="activity-num">49</div>
+  <div class="activity-content">
+    <h4>Mountain Go-Karting (Garmisch)</h4>
+    <div class="activity-desc">Pedal-powered go-karts you ride down mountain roads! Rent at various locations. Thrilling downhill rides with mountain scenery.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">⚠️ Tom (check age)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€10-15pp</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-garmisch">⛰️ Garmisch</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-area="garmisch" data-type="adventure" data-tom="yes" data-teens="love" data-cost="budget" data-num="50" data-lat="47.4530" data-lng="11.0900">
+  <div class="activity-num">50</div>
+  <div class="activity-content">
+    <h4>Zip Line at Garmisch Adventure Park</h4>
+    <div class="activity-desc">Forest adventure park near Garmisch with zip lines, rope bridges, climbing walls. Multiple courses graded by difficulty. Tom can do the kids&#x27; course!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€20-30pp</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-garmisch">⛰️ Garmisch</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-area="garmisch" data-type="adventure" data-tom="no" data-teens="love" data-cost="mid" data-num="51" data-lat="47.4560" data-lng="11.0940">
+  <div class="activity-num">51</div>
+  <div class="activity-content">
+    <h4>Canyoning in the Leutasch</h4>
+    <div class="activity-desc">Guided canyoning in the gorges near Leutasch/Mittenwald. Jumping into pools, sliding down natural water slides, abseiling waterfalls. Age 10+ typically.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Tom (too young)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€50-70pp</span>
+      <span class="tag cost-mid">€20-50pp</span>
+      <span class="tag area-garmisch">⛰️ Garmisch</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-area="garmisch" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="52" data-lat="47.4590" data-lng="11.0980">
+  <div class="activity-num">52</div>
+  <div class="activity-content">
+    <h4>Mountain Biking Garmisch Trails</h4>
+    <div class="activity-desc">Extensive network of mountain bike trails. E-bike rentals widely available. Ride to lakes, through valleys, up to mountain huts. Trail maps at tourist office.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€30-45/day e-bike</span>
+      <span class="tag cost-mid">€20-50pp</span>
+      <span class="tag area-garmisch">⛰️ Garmisch</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="category-header" data-cat-type="aqua" data-cat-area="garmisch">
+  <span class="cat-icon">🏊</span>
+  <h3>Aqua Parks & Swimming</h3>
+  <span class="cat-count">1 activity</span>
+</div>
+<div class="activity-card" data-area="garmisch" data-type="aqua" data-tom="yes" data-teens="love" data-cost="budget" data-num="53" data-lat="47.4620" data-lng="11.1020">
+  <div class="activity-num">53</div>
+  <div class="activity-content">
+    <h4><a href="https://www.gapa-tourismus.de" target="_blank">Alpspitz-Wellenbad</a></h4>
+    <div class="activity-desc">Garmisch&#x27;s outdoor swimming complex with a wave pool! Also has lap pools, diving boards, waterslides, huge grassy sunbathing area with mountain views. Summer only.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€6-10pp</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-garmisch">⛰️ Garmisch</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.gapa-tourismus.de" target="_blank">Info →</a></div>
+</div>
+<div class="category-header" data-cat-type="food" data-cat-area="garmisch">
+  <span class="cat-icon">🥨</span>
+  <h3>Food & Drink</h3>
+  <span class="cat-count">2 activities</span>
+</div>
+<div class="activity-card" data-area="garmisch" data-type="food" data-tom="yes" data-teens="ok" data-cost="budget" data-num="54" data-lat="47.4650" data-lng="11.1060">
+  <div class="activity-num">54</div>
+  <div class="activity-content">
+    <h4>Weisswurst Frühstück (Breakfast)</h4>
+    <div class="activity-desc">Traditional Bavarian breakfast of white sausages (Weisswurst) with sweet mustard and Brezn, eaten before noon. Order in any traditional Gasthof. A must-try cultural experience!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-ok">✅ Teens OK</span>
+      <span class="tag cost">€8-12pp</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-garmisch">⛰️ Garmisch</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-area="garmisch" data-type="food" data-tom="yes" data-teens="love" data-cost="budget" data-num="55" data-lat="47.4680" data-lng="11.0900">
+  <div class="activity-num">55</div>
+  <div class="activity-content">
+    <h4>Apfelstrudel at a Café</h4>
+    <div class="activity-desc">Warm apple strudel with vanilla sauce or ice cream at a traditional café. Best in Mittenwald or Garmisch old town. Tom will devour it.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€6-9pp</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-garmisch">⛰️ Garmisch</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="category-header" data-cat-type="unique" data-cat-area="garmisch">
+  <span class="cat-icon">🌟</span>
+  <h3>Unique Experiences</h3>
+  <span class="cat-count">2 activities</span>
+</div>
+<div class="activity-card" data-area="garmisch" data-type="unique" data-tom="yes" data-teens="love" data-cost="premium" data-num="56" data-lat="47.4500" data-lng="11.0940">
+  <div class="activity-num">56</div>
+  <div class="activity-content">
+    <h4><a href="https://www.zugspitze.de" target="_blank">Zugspitze Glacier — Snow in Summer!</a></h4>
+    <div class="activity-desc">Even in August there&#x27;s snow on the Zugspitze glacier. Have a snowball fight, make snow angels, sled. Surreal to be in snow while valleys are 30°C!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">Included in Zugspitze ticket</span>
+      <span class="tag cost-premium">€50+pp</span>
+      <span class="tag area-garmisch">⛰️ Garmisch</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.zugspitze.de" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="garmisch" data-type="unique" data-tom="yes" data-teens="love" data-cost="free" data-num="57" data-lat="47.4530" data-lng="11.0980">
+  <div class="activity-num">57</div>
+  <div class="activity-content">
+    <h4>Krun Stargazing Meadows</h4>
+    <div class="activity-desc">The dark meadows around Krün and Mittenwald offer exceptional stargazing. Away from town lights, crystal-clear mountain air. Bring binoculars!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free!</span>
+      <span class="tag area-garmisch">⛰️ Garmisch</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+</div><!-- end section -->
+
+<div class="section-header salzburg-style" data-section="salzburg">
+  <div class="icon">🎵</div>
+  <h2>Salzburg (Austria — 30min away!)</h2>
+  <p>Mozart's city, just across the border from Berchtesgaden</p>
+</div>
+
+<div data-section-wrap="salzburg">
+<div class="category-header" data-cat-type="culture" data-cat-area="salzburg">
+  <span class="cat-icon">🏛️</span>
+  <h3>Culture & Towns</h3>
+  <span class="cat-count">6 activities</span>
+</div>
+<div class="activity-card highlight" data-area="salzburg" data-type="culture" data-tom="yes" data-teens="love" data-cost="free" data-num="58" data-lat="47.8060" data-lng="13.0570" data-mustdo="true">
+  <div class="activity-num">58</div>
+  <div class="activity-content">
+    <h4><a href="https://www.salzburg.info" target="_blank">Salzburg Old Town (Altstadt)</a></h4>
+    <div class="activity-desc">UNESCO World Heritage old town. Getreidegasse shopping street, Mozart&#x27;s birthplace, cathedral, horse fountain (kids love it), Mirabell Gardens. Stunning.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">Free (town)</span>
+      <span class="tag cost-free">Free!</span>
+      <span class="tag area-salzburg">🎵 Salzburg</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.salzburg.info" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="salzburg" data-type="culture" data-tom="yes" data-teens="love" data-cost="mid" data-num="59" data-lat="47.8090" data-lng="13.0610">
+  <div class="activity-num">59</div>
+  <div class="activity-content">
+    <h4><a href="https://www.salzburg-burgen.at" target="_blank">Hohensalzburg Fortress</a></h4>
+    <div class="activity-desc">Massive medieval fortress dominating the skyline. Funicular railway up, explore ramparts, torture museum (teens love it!), panoramic views. One of Europe&#x27;s largest.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€15-20pp</span>
+      <span class="tag cost-mid">€20-50pp</span>
+      <span class="tag area-salzburg">🎵 Salzburg</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.salzburg-burgen.at" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="salzburg" data-type="culture" data-tom="yes" data-teens="ok" data-cost="mid" data-num="60" data-lat="47.8120" data-lng="13.0450">
+  <div class="activity-num">60</div>
+  <div class="activity-content">
+    <h4><a href="https://www.salzburg.info" target="_blank">Sound of Music Tour</a></h4>
+    <div class="activity-desc">Visit the filming locations from the movie — Mirabell Gardens (Do Re Mi), Leopoldskron Palace, the lake district. Bus tours or DIY by bike. Fun even if you&#x27;re not a fan!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-ok">✅ Teens OK</span>
+      <span class="tag cost">€50pp (tour) / Free DIY</span>
+      <span class="tag cost-mid">€20-50pp</span>
+      <span class="tag area-salzburg">🎵 Salzburg</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.salzburg.info" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="salzburg" data-type="culture" data-tom="check" data-teens="ok" data-cost="budget" data-num="61" data-lat="47.8150" data-lng="13.0490">
+  <div class="activity-num">61</div>
+  <div class="activity-content">
+    <h4><a href="https://www.mozarteum.at" target="_blank">Mozart&#x27;s Birthplace</a></h4>
+    <div class="activity-desc">The house where Mozart was born in 1756 on Getreidegasse. Small museum with instruments, letters, portraits. Quick visit, interesting for older kids.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">⚠️ Tom (check age)</span>
+      <span class="tag teen-ok">✅ Teens OK</span>
+      <span class="tag cost">€14pp</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-salzburg">🎵 Salzburg</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.mozarteum.at" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="salzburg" data-type="culture" data-tom="yes" data-teens="ok" data-cost="mid" data-num="62" data-lat="47.8180" data-lng="13.0530">
+  <div class="activity-num">62</div>
+  <div class="activity-content">
+    <h4><a href="https://www.marionetten.at" target="_blank">Salzburg Marionette Theatre</a></h4>
+    <div class="activity-desc">World-famous puppet theatre performing operas and musicals. The Sound of Music puppet show is magical. Even non-theatre fans are captivated.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-ok">✅ Teens OK</span>
+      <span class="tag cost">€25-40pp</span>
+      <span class="tag cost-mid">€20-50pp</span>
+      <span class="tag area-salzburg">🎵 Salzburg</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.marionetten.at" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="salzburg" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="63" data-lat="47.8000" data-lng="13.0570">
+  <div class="activity-num">63</div>
+  <div class="activity-content">
+    <h4>Salzburg Christmas-in-Summer Markets</h4>
+    <div class="activity-desc">Salzburg&#x27;s Grünmarkt (green market) runs daily with food stalls, flowers, cheese, bread. Not Christmas markets but atmospheric. Try a Bosna (spicy sausage in bread).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-ok">✅ Teens OK</span>
+      <span class="tag cost">Free to browse</span>
+      <span class="tag cost-free">Free!</span>
+      <span class="tag area-salzburg">🎵 Salzburg</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="category-header" data-cat-type="adventure" data-cat-area="salzburg">
+  <span class="cat-icon">⚡</span>
+  <h3>Adventure & Thrills</h3>
+  <span class="cat-count">1 activity</span>
+</div>
+<div class="activity-card" data-area="salzburg" data-type="adventure" data-tom="yes" data-teens="love" data-cost="budget" data-num="64" data-lat="47.8030" data-lng="13.0610">
+  <div class="activity-num">64</div>
+  <div class="activity-content">
+    <h4>Salzburg Bike Tour along the Salzach</h4>
+    <div class="activity-desc">Cycle the flat riverside path from Salzburg into the countryside. Bike rental easy in town. Family-friendly, mostly flat, beautiful scenery.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€15-20/day bike hire</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-salzburg">🎵 Salzburg</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="category-header" data-cat-type="unique" data-cat-area="salzburg">
+  <span class="cat-icon">🌟</span>
+  <h3>Unique Experiences</h3>
+  <span class="cat-count">3 activities</span>
+</div>
+<div class="activity-card" data-area="salzburg" data-type="unique" data-tom="yes" data-teens="love" data-cost="budget" data-num="65" data-lat="47.8060" data-lng="13.0450">
+  <div class="activity-num">65</div>
+  <div class="activity-content">
+    <h4><a href="https://www.original-mozartkugel.com" target="_blank">Salzburg Mozartkugeln Chocolate</a></h4>
+    <div class="activity-desc">Buy the famous Mozart chocolate balls! The ORIGINAL ones are from Fürst (blue wrapper), not the mass-produced Mirabell ones. Great souvenirs.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€2-15</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-salzburg">🎵 Salzburg</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.original-mozartkugel.com" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="salzburg" data-type="unique" data-tom="yes" data-teens="love" data-cost="mid" data-num="66" data-lat="47.8090" data-lng="13.0490">
+  <div class="activity-num">66</div>
+  <div class="activity-content">
+    <h4><a href="https://www.untersbergbahn.at" target="_blank">Untersberg Cable Car</a></h4>
+    <div class="activity-desc">From the edge of Salzburg, cable car to 1,853m Untersberg. Hike, explore the ice caves at the summit, incredible views. Said to be where Emperor Frederick sleeps!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€28-35pp</span>
+      <span class="tag cost-mid">€20-50pp</span>
+      <span class="tag area-salzburg">🎵 Salzburg</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.untersbergbahn.at" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card highlight" data-area="salzburg" data-type="unique" data-tom="yes" data-teens="love" data-cost="budget" data-num="67" data-lat="47.8120" data-lng="13.0530" data-mustdo="true">
+  <div class="activity-num">67</div>
+  <div class="activity-content">
+    <h4><a href="https://www.hellbrunn.at" target="_blank">Hellbrunn Palace &amp; Trick Fountains</a></h4>
+    <div class="activity-desc">17th-century palace with trick water fountains that spray unsuspecting visitors! Table with water jets, hidden sprays in grottos. Tom will be DRENCHED and love it.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€14-18pp</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-salzburg">🎵 Salzburg</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.hellbrunn.at" target="_blank">Info →</a></div>
+</div>
+</div><!-- end section -->
+
+<div class="section-header other-style" data-section="other">
+  <div class="icon">🏰</div>
+  <h2>Further Afield — Day Trips</h2>
+  <p>Castles, lakes & cities within 1-2hrs drive</p>
+</div>
+
+<div data-section-wrap="other">
+<div class="category-header" data-cat-type="water" data-cat-area="other">
+  <span class="cat-icon">💧</span>
+  <h3>Lakes & Water</h3>
+  <span class="cat-count">3 activities</span>
+</div>
+<div class="activity-card" data-area="other" data-type="water" data-tom="yes" data-teens="love" data-cost="free" data-num="68" data-lat="47.5400" data-lng="12.5240">
+  <div class="activity-num">68</div>
+  <div class="activity-content">
+    <h4>Walchensee Lake</h4>
+    <div class="activity-desc">One of Germany&#x27;s deepest and most beautiful alpine lakes. Crystal-clear, surrounded by mountains. Sandy beaches, windsurfing, diving. Between Garmisch and Munich.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free!</span>
+      <span class="tag area-other">🏰 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-area="other" data-type="water" data-tom="yes" data-teens="ok" data-cost="free" data-num="69" data-lat="47.5450" data-lng="12.5300">
+  <div class="activity-num">69</div>
+  <div class="activity-content">
+    <h4>Tegernsee Lake</h4>
+    <div class="activity-desc">Beautiful lake with charming towns around it. Swimming beaches, boat trips, the famous Tegernsee brewery. Day trip option from Garmisch.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-ok">✅ Teens OK</span>
+      <span class="tag cost">Free (swimming)</span>
+      <span class="tag cost-free">Free!</span>
+      <span class="tag area-other">🏰 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-area="other" data-type="water" data-tom="yes" data-teens="ok" data-cost="budget" data-num="70" data-lat="47.5000" data-lng="12.5360">
+  <div class="activity-num">70</div>
+  <div class="activity-content">
+    <h4>Starnberger See</h4>
+    <div class="activity-desc">Large lake south of Munich. Royal history, swimming beaches, boat cruises. Where King Ludwig II mysteriously drowned. Can combine with Munich day trip.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-ok">✅ Teens OK</span>
+      <span class="tag cost">€10-15 boat cruise</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-other">🏰 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="category-header" data-cat-type="castles" data-cat-area="other">
+  <span class="cat-icon">🏰</span>
+  <h3>Castles & Palaces</h3>
+  <span class="cat-count">4 activities</span>
+</div>
+<div class="activity-card highlight" data-area="other" data-type="castles" data-tom="yes" data-teens="love" data-cost="mid" data-num="71" data-lat="47.5050" data-lng="12.5420" data-mustdo="true">
+  <div class="activity-num">71</div>
+  <div class="activity-content">
+    <h4><a href="https://www.neuschwanstein.de" target="_blank">Neuschwanstein Castle</a></h4>
+    <div class="activity-desc">THE fairy-tale castle. Disney&#x27;s inspiration. Perched on a cliff, stunning interiors, mountain backdrop. 2hrs from Berchtesgaden. BOOK TICKETS IN ADVANCE — sells out!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€15-20pp</span>
+      <span class="tag cost-mid">€20-50pp</span>
+      <span class="tag area-other">🏰 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.neuschwanstein.de" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="other" data-type="castles" data-tom="yes" data-teens="ok" data-cost="mid" data-num="72" data-lat="47.5100" data-lng="12.5000">
+  <div class="activity-num">72</div>
+  <div class="activity-content">
+    <h4><a href="https://www.hohenschwangau.de" target="_blank">Hohenschwangau Castle</a></h4>
+    <div class="activity-desc">Right next to Neuschwanstein — King Ludwig grew up here. More intimate, richly decorated. Do both castles in one visit. Yellow exterior, lakeside setting.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-ok">✅ Teens OK</span>
+      <span class="tag cost">€15-20pp</span>
+      <span class="tag cost-mid">€20-50pp</span>
+      <span class="tag area-other">🏰 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.hohenschwangau.de" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="other" data-type="castles" data-tom="yes" data-teens="love" data-cost="budget" data-num="73" data-lat="47.5150" data-lng="12.5060">
+  <div class="activity-num">73</div>
+  <div class="activity-content">
+    <h4><a href="https://www.linderhof.de" target="_blank">Linderhof Palace</a></h4>
+    <div class="activity-desc">King Ludwig II&#x27;s smallest but most ornate palace. Versailles-inspired. Stunning gardens with Venus Grotto (an artificial cave with coloured lighting!). Between Garmisch and castles.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€10-12pp</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-other">🏰 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.linderhof.de" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="other" data-type="castles" data-tom="yes" data-teens="love" data-cost="mid" data-num="74" data-lat="47.5200" data-lng="12.5120">
+  <div class="activity-num">74</div>
+  <div class="activity-content">
+    <h4><a href="https://www.herrenchiemsee.de" target="_blank">Herrenchiemsee Palace</a></h4>
+    <div class="activity-desc">Ludwig II&#x27;s grandest project — a copy of Versailles on an ISLAND in Lake Chiemsee! Boat to the island, tour the palace, explore the grounds. Hall of Mirrors!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€10-12pp + boat</span>
+      <span class="tag cost-mid">€20-50pp</span>
+      <span class="tag area-other">🏰 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.herrenchiemsee.de" target="_blank">Info →</a></div>
+</div>
+<div class="category-header" data-cat-type="culture" data-cat-area="other">
+  <span class="cat-icon">🏛️</span>
+  <h3>Culture & Towns</h3>
+  <span class="cat-count">4 activities</span>
+</div>
+<div class="activity-card" data-area="other" data-type="culture" data-tom="yes" data-teens="love" data-cost="mid" data-num="75" data-lat="47.5250" data-lng="12.5180">
+  <div class="activity-num">75</div>
+  <div class="activity-content">
+    <h4><a href="https://www.muenchen.de" target="_blank">Munich Day Trip</a></h4>
+    <div class="activity-desc">Bavaria&#x27;s capital! Marienplatz Glockenspiel, English Garden (huge park, surfing on the river!), BMW World (free!), Viktualienmarkt food market, Deutsches Museum.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€30-50pp transport + activities</span>
+      <span class="tag cost-mid">€20-50pp</span>
+      <span class="tag area-other">🏰 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.muenchen.de" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="other" data-type="culture" data-tom="yes" data-teens="love" data-cost="budget" data-num="76" data-lat="47.5300" data-lng="12.5240">
+  <div class="activity-num">76</div>
+  <div class="activity-content">
+    <h4><a href="https://www.deutsches-museum.de" target="_blank">Deutsches Museum (Munich)</a></h4>
+    <div class="activity-desc">World&#x27;s largest science &amp; technology museum. Planes, submarines, mining tunnels, kids&#x27; kingdom. Could spend a whole day. Tom and teens will love different sections.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€15pp</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-other">🏰 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.deutsches-museum.de" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="other" data-type="culture" data-tom="yes" data-teens="love" data-cost="free" data-num="77" data-lat="47.5350" data-lng="12.5300">
+  <div class="activity-num">77</div>
+  <div class="activity-content">
+    <h4><a href="https://www.bmw-welt.com" target="_blank">BMW World &amp; Museum (Munich)</a></h4>
+    <div class="activity-desc">Free to enter BMW World showroom — see the latest cars, motorbikes, concept vehicles. Adjacent museum is €10. Kids can sit in display cars!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">Free (World) / €10 (Museum)</span>
+      <span class="tag cost-free">Free!</span>
+      <span class="tag area-other">🏰 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.bmw-welt.com" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="other" data-type="culture" data-tom="yes" data-teens="love" data-cost="budget" data-num="78" data-lat="47.5400" data-lng="12.5360">
+  <div class="activity-num">78</div>
+  <div class="activity-content">
+    <h4>Chiemsee Lake Day Trip</h4>
+    <div class="activity-desc">Bavaria&#x27;s largest lake, called the &#x27;Bavarian Sea&#x27;. Beaches, swimming, boat trips to Herrenchiemsee island. Can combine with the palace visit.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€15-20 boat trip</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-other">🏰 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="category-header" data-cat-type="adventure" data-cat-area="other">
+  <span class="cat-icon">⚡</span>
+  <h3>Adventure & Thrills</h3>
+  <span class="cat-count">3 activities</span>
+</div>
+<div class="activity-card highlight" data-area="other" data-type="adventure" data-tom="yes" data-teens="love" data-cost="budget" data-num="79" data-lat="47.5450" data-lng="12.5420" data-mustdo="true">
+  <div class="activity-num">79</div>
+  <div class="activity-content">
+    <h4><a href="https://www.kolbensattel.de" target="_blank">Oberammergau Kolbensattel Coaster</a></h4>
+    <div class="activity-desc">Long alpine coaster (2,600m track!) at Kolbensattel in Oberammergau. You control the speed — teens will go flat out! Chair lift up. One of Bavaria&#x27;s best coasters.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€8-12 per ride</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-other">🏰 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.kolbensattel.de" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="other" data-type="adventure" data-tom="yes" data-teens="love" data-cost="budget" data-num="80" data-lat="47.5000" data-lng="12.5000">
+  <div class="activity-num">80</div>
+  <div class="activity-content">
+    <h4><a href="https://www.blombergbahn.de" target="_blank">Blombergbahn Alpine Coaster (Bad Tölz)</a></h4>
+    <div class="activity-desc">One of the LONGEST alpine coasters in Germany (1,286m). Near Bad Tölz, about 1.5hrs from Berchtesgaden. Worth the drive! Can also hike the Blomberg.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€8-10 per ride</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-other">🏰 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.blombergbahn.de" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="other" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="81" data-lat="47.5050" data-lng="12.5060">
+  <div class="activity-num">81</div>
+  <div class="activity-content">
+    <h4>Wallbergbahn Cable Car (Tegernsee)</h4>
+    <div class="activity-desc">Cable car up the Wallberg (1,722m) above Lake Tegernsee. Paragliding launch point, hiking, and Germany&#x27;s longest summer toboggan run (6,450 feet!) nearby.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€20-30pp</span>
+      <span class="tag cost-mid">€20-50pp</span>
+      <span class="tag area-other">🏰 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="category-header" data-cat-type="food" data-cat-area="other">
+  <span class="cat-icon">🥨</span>
+  <h3>Food & Drink</h3>
+  <span class="cat-count">2 activities</span>
+</div>
+<div class="activity-card" data-area="other" data-type="food" data-tom="yes" data-teens="love" data-cost="budget" data-num="82" data-lat="47.5100" data-lng="12.5120">
+  <div class="activity-num">82</div>
+  <div class="activity-content">
+    <h4>Brezn Trail (Pretzel Tour)</h4>
+    <div class="activity-desc">Visit traditional bakeries in any Bavarian town for fresh Brezn (giant soft pretzels). Best straight from the oven with butter. Cost almost nothing. Tom will eat his bodyweight.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€1-3 each</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-other">🏰 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+<div class="activity-card" data-area="other" data-type="food" data-tom="yes" data-teens="ok" data-cost="budget" data-num="83" data-lat="47.5150" data-lng="12.5180">
+  <div class="activity-num">83</div>
+  <div class="activity-content">
+    <h4><a href="https://www.braustuberl.de" target="_blank">Tegernsee Brewery Visit</a></h4>
+    <div class="activity-desc">The historic Tegernsee brewery in the former monastery. Taste fresh beer (non-alcoholic for kids), eat in the beer garden by the lake. Beautiful setting.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-ok">✅ Teens OK</span>
+      <span class="tag cost">€10-18pp</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-other">🏰 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.braustuberl.de" target="_blank">Info →</a></div>
+</div>
+<div class="category-header" data-cat-type="unique" data-cat-area="other">
+  <span class="cat-icon">🌟</span>
+  <h3>Unique Experiences</h3>
+  <span class="cat-count">3 activities</span>
+</div>
+<div class="activity-card" data-area="other" data-type="unique" data-tom="yes" data-teens="love" data-cost="mid" data-num="84" data-lat="47.5200" data-lng="12.5240">
+  <div class="activity-num">84</div>
+  <div class="activity-content">
+    <h4><a href="https://www.eisriesenwelt.at" target="_blank">Eisriesenwelt Ice Caves (Austria)</a></h4>
+    <div class="activity-desc">World&#x27;s LARGEST ice caves, just over the border near Salzburg. Cable car up, then guided tour through massive frozen chambers. Temperature inside is 0°C — bring warm clothes!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-love">⭐ Teens love it</span>
+      <span class="tag cost">€30-35pp inc cable car</span>
+      <span class="tag cost-mid">€20-50pp</span>
+      <span class="tag area-other">🏰 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.eisriesenwelt.at" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="other" data-type="unique" data-tom="yes" data-teens="ok" data-cost="free" data-num="85" data-lat="47.5250" data-lng="12.5300">
+  <div class="activity-num">85</div>
+  <div class="activity-content">
+    <h4><a href="https://www.nationalpark-berchtesgaden.bayern.de" target="_blank">Berchtesgaden National Park Ranger Walk</a></h4>
+    <div class="activity-desc">Free or low-cost guided walks with park rangers. Learn about eagles, marmots, chamois, alpine flowers. Several routes, some specifically designed for families.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (8)</span>
+      <span class="tag teen-ok">✅ Teens OK</span>
+      <span class="tag cost">Free / €5pp</span>
+      <span class="tag cost-free">Free!</span>
+      <span class="tag area-other">🏰 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.nationalpark-berchtesgaden.bayern.de" target="_blank">Info →</a></div>
+</div>
+<div class="activity-card" data-area="other" data-type="unique" data-tom="check" data-teens="ok" data-cost="budget" data-num="86" data-lat="47.5300" data-lng="12.5360">
+  <div class="activity-num">86</div>
+  <div class="activity-content">
+    <h4><a href="https://www.stiegl.at" target="_blank">Salzburg Stiegl Brewery Tour</a></h4>
+    <div class="activity-desc">Austria&#x27;s largest private brewery. Tour the brewing process, interactive museum, tasting session (non-alcoholic for kids). In Salzburg, combine with old town visit.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">⚠️ Tom (check age)</span>
+      <span class="tag teen-ok">✅ Teens OK</span>
+      <span class="tag cost">€15pp</span>
+      <span class="tag cost-budget">< €20pp</span>
+      <span class="tag area-other">🏰 Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.stiegl.at" target="_blank">Info →</a></div>
+</div>
+</div><!-- end section -->
+
+</div><!-- end container -->
+</div><!-- end main-content -->
+</div><!-- end page-layout -->
+
+<div class="footer">
+  <p>Created for the Sheldrake family holiday planning · Summer 2026</p>
+  <p>Bavarian Alps · Fly Jet2 LBA → Salzburg (direct) · Berchtesgaden + Garmisch-Partenkirchen</p>
+</div>
+
+<script>
+(function() {
+  const cards = document.querySelectorAll('.activity-card');
+  const checkboxes = document.querySelectorAll('.filter-sidebar input[type="checkbox"]');
+  const countEl = document.getElementById('visibleCount');
+  const TOTAL = 86;
+
+  function getCheckedValues(filterName) {
+    const vals = [];
+    checkboxes.forEach(cb => {
+      if (cb.dataset.filter === filterName && cb.checked) vals.push(cb.value);
+    });
+    return vals;
+  }
+
+  
+
+function toggleAccom(show) {
+  if (!window.accomMarkers) return;
+  window.accomMarkers.forEach(function(m) {
+    if (show) m.addTo(window.activityMap);
+    else window.activityMap.removeLayer(m);
+  });
+}
+
+function updateMap() {
+  if (!window.activityMarkers) return;
+  var bounds = [];
+  var tableBody = document.getElementById('map-table-body');
+  if (tableBody) tableBody.innerHTML = '';
+  var visibleCount = 0;
+  document.querySelectorAll('.activity-card').forEach(function(card, i) {
+    var marker = window.activityMarkers[i];
+    if (!marker) return;
+    var lat = parseFloat(card.dataset.lat);
+    var lng = parseFloat(card.dataset.lng);
+    if (!lat || !lng) return;
+    var isVisible = !card.classList.contains('hidden-by-filter') && card.style.display !== 'none';
+    if (isVisible) {
+      marker.addTo(window.activityMap);
+      bounds.push([lat, lng]);
+      visibleCount++;
+      if (tableBody) {
+        var num = card.dataset.num || '';
+        var title = card.querySelector('h4') ? card.querySelector('h4').textContent.trim() : '';
+        var link = card.querySelector('h4 a');
+        var href = link ? link.href : '';
+        var isMustDo = card.dataset.mustdo === 'true';
+        var tr = document.createElement('tr');
+        tr.style.borderBottom = '1px solid #e0e0e0';
+        if (visibleCount % 2 === 0) tr.style.background = '#f0f3f9';
+        tr.innerHTML = '<td style="padding:5px 8px;color:#1B3C8F;font-weight:700;">' + num + '</td><td style="padding:5px 8px;">' + (isMustDo ? '\u2b50 ' : '') + title + '</td><td style="padding:5px 8px;text-align:right;">' + (href ? '<a href="'+href+'" target="_blank" style="color:#1B3C8F;margin-right:10px;">More Info</a>' : '') + '<a href="https://www.google.com/maps?q='+lat+','+lng+'" target="_blank" style="color:#888;">\ud83d\udccd Map</a></td>';
+        tableBody.appendChild(tr);
+      }
+    } else {
+      window.activityMap.removeLayer(marker);
+    }
+  });
+  var countEl2 = document.getElementById('map-count');
+  if (countEl2) countEl2.textContent = visibleCount + ' activities shown';
+  if (bounds.length > 0) window.activityMap.fitBounds(bounds, {padding: [30, 30], maxZoom: 12});
+}
+
+function applyFilters() {
+    const areaFilters = getCheckedValues('area');
+    const typeFilters = getCheckedValues('type');
+    const tomFilters = getCheckedValues('tom');
+    const teenFilters = getCheckedValues('teens');
+    const familyFilters = getCheckedValues('family');
+    const costFilters = getCheckedValues('cost');
+    const mustdoFilters = getCheckedValues('mustdo');
+
+    let visible = 0;
+
+    cards.forEach(card => {
+      let show = true;
+
+      if (areaFilters.length > 0 && !areaFilters.includes(card.dataset.area)) show = false;
+      if (typeFilters.length > 0 && !typeFilters.includes(card.dataset.type)) show = false;
+      if (tomFilters.length > 0 && card.dataset.tom !== 'yes') show = false;
+      if (teenFilters.length > 0 && card.dataset.teens !== 'love') show = false;
+      if (familyFilters.length > 0 && (card.dataset.tom !== 'yes')) show = false;
+      if (costFilters.length > 0 && !costFilters.includes(card.dataset.cost)) show = false;
+      if (mustdoFilters.length > 0 && card.dataset.mustdo !== 'true') show = false;
+
+      if (show) {
+        card.classList.remove('hidden-by-filter');
+        visible++;
+      } else {
+        card.classList.add('hidden-by-filter');
+      }
+    });
+
+    countEl.textContent = visible;
+
+    // Hide section headers if all their activities are hidden
+    document.querySelectorAll('.section-header[data-section]').forEach(header => {
+      const sectionId = header.dataset.section;
+      const wrap = document.querySelector('[data-section-wrap="' + sectionId + '"]');
+      if (wrap) {
+        const visibleCards = wrap.querySelectorAll('.activity-card:not(.hidden-by-filter)');
+        header.classList.toggle('hidden-by-filter', visibleCards.length === 0);
+        wrap.style.display = visibleCards.length === 0 ? 'none' : '';
+      }
+    });
+
+    // Hide category headers if all their activities are hidden
+    document.querySelectorAll('.category-header[data-cat-type]').forEach(catHeader => {
+      let sibling = catHeader.nextElementSibling;
+      let hasVisible = false;
+      while (sibling && !sibling.classList.contains('category-header') && !sibling.classList.contains('section-header')) {
+        if (sibling.classList.contains('activity-card') && !sibling.classList.contains('hidden-by-filter')) {
+          hasVisible = true;
+          break;
+        }
+        sibling = sibling.nextElementSibling;
+      }
+      catHeader.classList.toggle('hidden-by-filter', !hasVisible);
+    });
+  updateMap();
+}
+
+  checkboxes.forEach(cb => cb.addEventListener('change', applyFilters));
+
+  window.clearFilters = function() {
+    checkboxes.forEach(cb => cb.checked = false);
+    applyFilters();
+  };
+
+  window.toggleFilters = function() {
+    const sidebar = document.getElementById('filterSidebar');
+    const overlay = document.getElementById('filterOverlay');
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('open');
+  };
+
+// Accommodation overlay
+window.accomMarkers = [];
+var accomData = [
+  [47.5500, 9.7100, "Campingpark Gitzenweiler Hof", "Eurocamp", "https://www.eurocamp.co.uk/campsites/germany/bavaria/campingpark-gitzenweiler-hof", "Pool, horse riding, family entertainment. Lindau, Lake Constance."],
+  [47.6300, 13.0100, "Camping-Resort Allweglehen", "Independent", "https://www.allweglehen.de/en/", "Mountain setting, pools, playground. In Berchtesgaden itself."],
+  [47.6100, 12.9600, "Camping Winkl-Landthal", "Independent", "https://www.camping-winkl.de/en/", "Family-run, near Berchtesgaden National Park and Salzburg."],
+  [47.8050, 13.0700, "Camping Schloss Aigen", "Independent", "https://www.campingineurope.co.uk/austria/salzburg/aigen.html", "Near Salzburg, family-run, year-round. 11 miles from Berchtesgaden."],
+  [47.5800, 12.6000, "Park Grubhof", "Independent", "https://www.grubhof.com/en/", "Highly rated family park, Lofer, Austria. Full facilities."]
+];
+var accomIcon = function(){ return L.divIcon({
+  className:'',
+  html:'<div style="background:#2d9a2d;color:#fff;width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;cursor:pointer;">&#127965;</div>',
+  iconSize:[30,30], iconAnchor:[15,15]
+}); };
+accomData.forEach(function(a){
+  var marker = L.marker([a[0],a[1]], {icon: accomIcon()})
+    .bindPopup('<div style="min-width:220px;"><b style="color:#2d9a2d;font-size:0.95rem;">&#127965; '+a[2]+'</b><br><span style="color:#888;font-size:0.8rem;">'+a[3]+'</span><br><span style="color:#555;font-size:0.85rem;">'+a[5]+'</span><br><a href="'+a[4]+'" target="_blank" style="color:#2d9a2d;font-size:0.85rem;">View on '+a[3]+' \u2192</a></div>');
+  marker.addTo(window.activityMap);
+  window.accomMarkers.push(marker);
+});
+})();
+
+
+// Country navbar show on scroll
+(function(){
+  var nav = document.getElementById('countryNav');
+  if (!nav) return;
+  var hero = document.querySelector('.hero');
+  if (!hero) { nav.classList.add('visible'); return; }
+  var observer = new IntersectionObserver(function(entries){
+    nav.classList.toggle('visible', !entries[0].isIntersecting);
+  }, {threshold: 0});
+  observer.observe(hero);
+})();
+
+</script>
+
+</body>
+</html>

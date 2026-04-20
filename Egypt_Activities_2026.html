@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Egypt: Red Sea + Pyramids — Family Activities Guide 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+  :root {
+    --verdon: #1B3C8F;
+    --verdon-light: #e8edf7;
+    --azur: #0F2557;
+    --azur-light: #f0f0f0;
+    --accent: #1B3C8F;
+    --gold: #1B3C8F;
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #0F2557;
+    --muted: #4a6bb5;
+    --border: #e0e0e0;
+    --sidebar-width: 280px;
+    --accent-orange: #FF6B35;
+  }
+
+
+  /* -- Country Navbar ----------------------------------------- */
+  .country-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(15, 37, 87, 0.95);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    transform: translateY(-100%); transition: transform 0.3s ease;
+  }
+  .country-nav.visible { transform: translateY(0); }
+  .country-nav__inner {
+    max-width: 1400px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 1rem; height: 48px;
+  }
+  .country-nav__label {
+    font-family: 'Playfair Display', serif; font-size: 0.8rem;
+    color: rgba(255,255,255,0.7); white-space: nowrap; margin-right: 0.5rem;
+  }
+  .country-nav__links {
+    display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .country-nav__link {
+    display: flex; align-items: center; gap: 5px;
+    padding: 12px 12px; color: rgba(255,255,255,0.8);
+    font-size: 0.78rem; font-weight: 500; white-space: nowrap;
+    transition: all 0.2s; border-bottom: 2px solid transparent; text-decoration: none;
+  }
+  .country-nav__link:hover { color: #fff; background: rgba(255,255,255,0.08); border-bottom-color: #FF6B35; }
+  .country-nav__link .nav-icon { width: 16px; height: 16px; flex-shrink: 0; opacity: 0.85; }
+  .country-nav__link:hover .nav-icon { opacity: 1; }
+  .country-nav__link--accent { color: #FF6B35; }
+  .country-nav__link--accent:hover { color: #fff; border-bottom-color: #FF6B35; }
+  @media (max-width: 768px) {
+    .country-nav__label { display: none; }
+    .country-nav__link { padding: 12px 8px; font-size: 0.72rem; }
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Montserrat', 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #0F2557 0%, #1B3C8F 100%);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    margin-bottom: 10px;
+  }
+  .hero .subtitle { font-size: 1.1rem; opacity: 0.9; margin-bottom: 8px; }
+  .hero .count {
+    display: inline-block;
+    background: #FF6B35;
+    padding: 8px 24px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-top: 12px;
+  }
+  .hero .family {
+    margin-top: 16px;
+    font-size: 0.95rem;
+    opacity: 0.85;
+  }
+
+  /* ========= LAYOUT: sidebar + main ========= */
+  .page-layout {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* ========= FILTER SIDEBAR ========= */
+  .filter-sidebar {
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: #0F2557;
+    color: #fff;
+    padding: 20px 16px;
+    z-index: 100;
+    scrollbar-width: thin;
+    scrollbar-color: #4a6bb5 #0F2557;
+  }
+  .filter-sidebar::-webkit-scrollbar { width: 6px; }
+  .filter-sidebar::-webkit-scrollbar-track { background: #0F2557; }
+  .filter-sidebar::-webkit-scrollbar-thumb { background: #4a6bb5; border-radius: 3px; }
+
+  .filter-sidebar h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: #1B3C8F;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .filter-sidebar h3::before {
+    content: '⚙️';
+  }
+
+  .filter-count {
+    background: #1B3C8F;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+  .filter-count span { font-size: 1.3rem; }
+
+  .filter-group {
+    margin-bottom: 18px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 14px;
+  }
+  .filter-group:last-child { border-bottom: none; }
+  .filter-group-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #aaa;
+    margin-bottom: 8px;
+  }
+  .filter-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: color 0.15s;
+    font-family: 'Inter', sans-serif;
+  }
+  .filter-group label:hover { color: #1B3C8F; }
+
+  .filter-group input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #4a6bb5;
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .filter-group input[type="checkbox"]:checked {
+    background: #1B3C8F;
+    border-color: #1B3C8F;
+  }
+  .filter-group input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: -1px;
+    left: 2px;
+    font-size: 13px;
+    color: white;
+    font-weight: bold;
+  }
+
+  .clear-filters {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    color: #1B3C8F;
+    border: 2px solid #1B3C8F;
+    border-radius: 8px;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+  }
+  .clear-filters:hover {
+    background: #1B3C8F;
+    color: white;
+  }
+
+  /* Mobile filter toggle */
+  .filter-toggle {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 200;
+    background: #1B3C8F;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  /* ========= MAIN CONTENT ========= */
+  .main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 0 20px;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .top10 {
+    background: linear-gradient(135deg, #e8edf7, #e0e8f5);
+    border: 2px solid var(--gold);
+    border-radius: 16px;
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 800px;
+  }
+  .top10 h2 { font-family: 'Playfair Display', serif; color: #1B3C8F; margin-bottom: 16px; font-size: 1.5rem; }
+  .top10 ol { padding-left: 24px; }
+  .top10 li { margin-bottom: 8px; font-size: 0.95rem; }
+  .top10 li strong { color: #0F2557; }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 30px 0;
+  }
+  .summary-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+  .summary-card .big-num { font-size: 2.5rem; font-weight: 700; color: #1B3C8F; }
+  .summary-card .label { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+
+  .section-header {
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 16px;
+    margin: 40px 0 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .section-header.resort { background: linear-gradient(135deg, #1B3C8F, #142f6e); color: white; }
+  .section-header.redsea { background: linear-gradient(135deg, #0F2557, #1B3C8F); color: white; }
+  .section-header.desert { background: linear-gradient(135deg, #8B6914, #C49B2A); color: white; }
+  .section-header.luxor { background: linear-gradient(135deg, #5B2C6F, #7D3C98); color: white; }
+  .section-header.cairo { background: linear-gradient(135deg, #0F2557, #1B3C8F); color: white; }
+  .section-header.food { background: linear-gradient(135deg, #1B3C8F, #142f6e); color: white; }
+  .section-header.practical { background: linear-gradient(135deg, #0F2557, #1B3C8F); color: white; }
+  .section-header .icon { font-size: 3rem; margin-bottom: 8px; }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+  }
+  .section-header p { opacity: 0.9; margin-top: 6px; font-size: 0.95rem; }
+  .section-header.hidden-by-filter { display: none; }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 32px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--border);
+  }
+  .category-header .cat-icon { font-size: 1.6rem; }
+  .category-header h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; }
+  .category-header .cat-count {
+    background: var(--verdon-light);
+    color: var(--verdon);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .category-header.hidden-by-filter { display: none; }
+
+  .activity-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    gap: 12px;
+    align-items: start;
+    transition: box-shadow 0.2s, opacity 0.2s;
+  }
+  .activity-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .activity-card.highlight { border-left: 4px solid var(--accent); }
+  .activity-card.hidden-by-filter { display: none; }
+
+  .activity-num {
+    background: var(--verdon);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .activity-content h4 { font-size: 1rem; margin-bottom: 4px; }
+  .activity-content h4 a { color: inherit; text-decoration: none; }
+  .activity-content h4 a:hover { color: var(--accent); text-decoration: underline; }
+  .activity-desc { font-size: 0.88rem; color: var(--muted); margin-bottom: 8px; }
+
+  .activity-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .tag.tom-yes { background: #d1fae5; color: #065f46; }
+  .tag.tom-no { background: #fee2e2; color: #991b1b; }
+  .tag.tom-check { background: #fef3c7; color: #92400e; }
+  .tag.teen-love { background: #ede9fe; color: #5b21b6; }
+  .tag.teen-ok { background: #f3f4f6; color: #4b5563; }
+  .tag.cost { background: #e0f2fe; color: #075985; }
+  .tag.free { background: #d1fae5; color: #065f46; }
+
+  /* Cost badges */
+  .tag.cost-free { background: #d1fae5; color: #065f46; font-weight: 600; }
+  .tag.cost-included { background: #d1fae5; color: #065f46; font-weight: 600; }
+  .tag.cost-budget { background: #dbeafe; color: #1e40af; font-weight: 600; }
+  .tag.cost-mid { background: #bfdbfe; color: #1e3a8a; font-weight: 600; }
+  .tag.cost-premium { background: #c4b5fd; color: #3b0764; font-weight: 600; }
+
+  /* Area badges */
+  .tag.area-resort { background: #e8edf7; color: #1B3C8F; font-weight: 600; }
+  .tag.area-redsea { background: #dbeafe; color: #1e40af; font-weight: 600; }
+  .tag.area-desert { background: #fef3c7; color: #92400e; font-weight: 600; }
+  .tag.area-luxor { background: #ede9fe; color: #5b21b6; font-weight: 600; }
+  .tag.area-cairo { background: #e5e5e5; color: #0F2557; font-weight: 600; }
+  .tag.area-food { background: #fce7f3; color: #9d174d; font-weight: 600; }
+  .tag.area-practical { background: #f3f4f6; color: #4b5563; font-weight: 600; }
+
+  .activity-link {
+    flex-shrink: 0;
+    align-self: center;
+  }
+  .activity-link a {
+    display: inline-block;
+    background: var(--verdon);
+    color: white;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+  .activity-link a:hover { background: #0a1b3f; }
+
+  .footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  /* ========= RESPONSIVE ========= */
+  @media (max-width: 900px) {
+    .filter-sidebar {
+      position: fixed;
+      left: -300px;
+      top: 0;
+      height: 100vh;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+    .filter-sidebar.open { left: 0; }
+    .filter-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+    }
+    .filter-overlay.open { display: block; }
+    .filter-toggle { display: flex; align-items: center; justify-content: center; }
+    .main-content { padding: 0 12px; }
+    .page-layout { display: block; }
+  }
+
+  @media (max-width: 640px) {
+    .activity-card { grid-template-columns: 32px 1fr; }
+    .activity-link { grid-column: 1 / -1; }
+    .activity-link a { width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="country-nav" id="countryNav">
+  <div class="country-nav__inner">
+    <span class="country-nav__label">Explore:</span>
+    <div class="country-nav__links">
+      <a href="showcase/index.html" class="country-nav__link country-nav__link--accent"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg> Home</a>
+      <a href="France_Verdon_CotedAzur_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h6v18H3V3zm12 0h6v18h-6V3zM9 3h6v18H9V3z" opacity="0.8"/></svg> France</a>
+      <a href="Germany_Bavaria_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L8.5 8.5 2 9.5l5 4.5L5.5 21 12 17.5 18.5 21 17 14l5-4.5-6.5-1L12 2z"/></svg> Germany</a>
+      <a href="Croatia_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20v4H2zm0 6h4v4H6v-2H4v4h4v-2h2v4H8v-2H4v4h20V10H2zm6 0h4v2h-2v2H8v-4zm6 0h4v2h-2v2h-2v-4z"/></svg> Croatia</a>
+      <a href="Sicily_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c3.31 0 6-2.69 6-6 0-4.96-4.49-9-10-9z"/></svg> Sicily</a>
+      <a href="Egypt_Activities_2026.html" class="country-nav__link" style="border-bottom-color: #FF6B35; color: #fff;"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 21h18L12 3 3 21zm9-3l-4.5-9h9L12 18z"/></svg> Egypt</a>
+      <a href="Austria_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z"/></svg> Austria</a>
+      <a href="Bulgaria_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 2.84L18 11v7h-2v-6H8v6H6v-7l6-5.16z"/></svg> Bulgaria</a>
+      <a href="Japan_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg> Japan</a>
+      <a href="Spain_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg> Spain</a>
+      <a href="CostaRica_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.71c.76.34 1.59.54 2.46.59L9 20c.5-4 4.17-8 9-8V8z"/></svg> Costa Rica</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" style="position:relative; overflow:hidden;">
+  <div class="hero__bg" style="position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1539768942893-daf53e736b68?w=1920&q=80') center/cover no-repeat;"></div>
+  <div class="hero__overlay" style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,37,87,.75) 0%, rgba(15,37,87,.9) 100%);"></div>
+  <div style="position:relative; z-index:2;">
+  <h1>🇪🇬 Egypt — Family Activities Guide</h1>
+  <div class="subtitle">Red Sea, Ancient Temples & Pyramids — Summer 2026</div>
+  <div class="count">🎯 50 Activities Found</div>
+  <div class="family">👨‍👩‍👧‍👦 2 Adults · Katie (17) · George (15) · Tom (8)</div>
+  </div>
+</div>
+<!-- ═══ Weather Summary ═══ -->
+<div class="weather-section" style="background: linear-gradient(135deg, #f0f4ff 0%, #e8edf7 100%); padding: 2rem 0;">
+  <div style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
+    <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 16px; font-size: 1.2rem;">
+      ☀️ August Weather — What to Expect
+    </h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 12px;">
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">🌡️</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">35-37°C</div>
+        <div style="font-size: 0.75rem; color: #666;">Avg. High</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">🌙</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">27-28°C</div>
+        <div style="font-size: 0.75rem; color: #666;">Avg. Low</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">☀️</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">13</div>
+        <div style="font-size: 0.75rem; color: #666;">Sun hrs/day</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">🌧️</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">0 days</div>
+        <div style="font-size: 0.75rem; color: #666;">Rainy Days</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">🏊</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">28-29°C</div>
+        <div style="font-size: 0.75rem; color: #666;">Sea Temp</div>
+      </div>
+    </div>
+    <p style="font-size: 0.82rem; color: #555; line-height: 1.6; margin: 0;">
+      🔥 <strong>Extremely hot and bone dry.</strong> Zero rain. 13 hours of sunshine daily. Hurghada's Red Sea coast is slightly more bearable than Cairo/Luxor thanks to coastal breezes, but midday is brutal (35°C+). Snorkelling and diving are perfect — sea is 28-29°C with excellent visibility. Cairo/Luxor day trips will be sweltering (40°C+) — start very early. Humidity is surprisingly low (40-55%).
+    </p>
+  </div>
+</div>
+<!-- MOBILE FILTER TOGGLE -->
+<button class="filter-toggle" onclick="toggleFilters()" aria-label="Toggle filters">⚙️</button>
+<div class="filter-overlay" id="filterOverlay" onclick="toggleFilters()"></div>
+
+<div class="page-layout">
+
+<!-- FILTER SIDEBAR -->
+<aside class="filter-sidebar" id="filterSidebar">
+  <h3>Filters</h3>
+  <div class="filter-count">Showing <span id="visibleCount">50</span> of 50 activities</div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Area</div>
+    <label><input type="checkbox" data-filter="area" value="resort"> 🏖️ Hurghada Resort</label>
+    <label><input type="checkbox" data-filter="area" value="redsea"> 🌊 Red Sea</label>
+    <label><input type="checkbox" data-filter="area" value="desert"> 🏜️ Desert</label>
+    <label><input type="checkbox" data-filter="area" value="luxor"> 🏛️ Luxor</label>
+    <label><input type="checkbox" data-filter="area" value="cairo"> 🏛️ Cairo</label>
+    <label><input type="checkbox" data-filter="area" value="food"> 🍽️ Food & Drink</label>
+    <label><input type="checkbox" data-filter="area" value="practical"> 🧭 Practical</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Activity Type</div>
+    <label><input type="checkbox" data-filter="type" value="water"> 🌊 Water & Snorkelling</label>
+    <label><input type="checkbox" data-filter="type" value="adventure"> ⚡ Adventure</label>
+    <label><input type="checkbox" data-filter="type" value="culture"> 🏛️ Culture & History</label>
+    <label><input type="checkbox" data-filter="type" value="resort"> 🏖️ Resort & Relaxation</label>
+    <label><input type="checkbox" data-filter="type" value="food"> 🍽️ Food & Markets</label>
+    <label><input type="checkbox" data-filter="type" value="unique"> 🌟 Unique Experiences</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Suitable for</div>
+    <label><input type="checkbox" data-filter="tom" value="yes"> ✅ Tom (8)</label>
+    <label><input type="checkbox" data-filter="teens" value="love"> ⭐ Teens love it</label>
+    <label><input type="checkbox" data-filter="family" value="yes"> 👨‍👩‍👧‍👦 Whole family</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Cost</div>
+    <label><input type="checkbox" data-filter="cost" value="included"> Included (AI)</label>
+    <label><input type="checkbox" data-filter="cost" value="budget"> Budget (under £25pp)</label>
+    <label><input type="checkbox" data-filter="cost" value="mid"> Mid-range (£25-60pp)</label>
+    <label><input type="checkbox" data-filter="cost" value="premium"> Premium (£60+pp)</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Special</div>
+    <label><input type="checkbox" data-filter="mustdo" value="true"> ⭐ Must-do highlights only</label>
+  </div>
+
+  <button class="clear-filters" onclick="clearFilters()">Clear all filters</button>
+</aside>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+<div class="container">
+
+<!-- TOP 10 -->
+<div class="top10">
+  <h2>⭐ The Unmissable 10</h2>
+  <ol>
+    <li>🏛️ <strong>Great Pyramids of Giza & go INSIDE</strong> — the last Wonder of the Ancient World, 4,500 years old</li>
+    <li>🏛️ <strong>Valley of the Kings & Tutankhamun's Tomb</strong> — walk into a pharaoh's burial chamber</li>
+    <li>🐪 <strong>Camel ride at the Pyramids</strong> — Tom on a camel with the Sahara behind him = framed forever</li>
+    <li>🐬 <strong>Swim with wild dolphins</strong> — Dolphin House reef, snorkel alongside pods of spinners</li>
+    <li>🏝️ <strong>Giftun Island boat trip</strong> — paradise island, crystal-clear water, incredible snorkelling</li>
+    <li>🏛️ <strong>Karnak Temple</strong> — 134 giant columns, the largest ancient religious site in the world</li>
+    <li>🏛️ <strong>Grand Egyptian Museum</strong> — Tutankhamun's gold death mask and treasures</li>
+    <li>🏜️ <strong>Desert quad biking & Bedouin village</strong> — sunset in the Sahara with tea under the stars</li>
+    <li>🤿 <strong>Red Sea snorkelling from house reef</strong> — tropical fish and coral straight from the beach</li>
+    <li>🏛️ <strong>Khan El-Khalili Bazaar</strong> — Cairo's ancient souk, haggling, spices, lanterns, mint tea</li>
+  </ol>
+</div>
+
+<!-- SUMMARY STATS -->
+<div class="summary-grid">
+  <div class="summary-card"><div class="big-num">50</div><div class="label">Total Activities</div></div>
+  <div class="summary-card"><div class="big-num">11</div><div class="label">Water & Snorkelling</div></div>
+  <div class="summary-card"><div class="big-num">10</div><div class="label">Resort & Pool</div></div>
+  <div class="summary-card"><div class="big-num">11</div><div class="label">Culture & History</div></div>
+  <div class="summary-card"><div class="big-num">5</div><div class="label">Desert Adventures</div></div>
+  <div class="summary-card"><div class="big-num">5</div><div class="label">Food & Markets</div></div>
+  <div class="summary-card"><div class="big-num">4</div><div class="label">Unique Experiences</div></div>
+  <div class="summary-card"><div class="big-num">4</div><div class="label">Practical / Cultural</div></div>
+</div>
+
+<!-- ═══ Dynamic Activity Map ═══ -->
+<div style="margin: 2rem auto; max-width: 1100px; padding: 0 20px;">
+  <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 4px; font-size: 1.3rem;">📍 Activity Map</h3>
+  <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">
+    <span id="map-count">50 activities shown</span> &mdash; 
+    <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#FF6B35;vertical-align:middle;"></span> Must-do
+    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#1B3C8F;vertical-align:middle;margin-left:8px;"></span> Other activities.
+    Use the filters to narrow down.
+    <label style="display:inline-flex;align-items:center;gap:4px;margin-left:12px;font-size:0.85rem;color:#2d9a2d;cursor:pointer;">
+      <input type="checkbox" id="accom-toggle" checked onchange="toggleAccom(this.checked)" style="accent-color:#2d9a2d;"> &#127965; Accommodation
+    </label>
+  </p>
+  <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.12); border: 2px solid #1B3C8F;">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <div id="mustdo-map" style="width:100%; height:500px;"></div>
+    <div style="padding: 12px 16px; background: #f8f9fa; max-height: 350px; overflow-y: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: 'Inter', sans-serif;">
+        <thead><tr style="border-bottom: 2px solid #1B3C8F; color: #0F2557; position: sticky; top: 0; background: #f8f9fa;">
+            <th style="text-align: left; padding: 5px 8px; width: 40px;">#</th>
+            <th style="text-align: left; padding: 5px 8px;">Activity</th>
+            <th style="text-align: right; padding: 5px 8px; width: 140px;">Links</th>
+        </tr></thead>
+        <tbody id="map-table-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  window.activityMap = L.map('mustdo-map', {scrollWheelZoom: false}).setView([27.5, 32.5], 6);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; CARTO &copy; OSM', maxZoom: 18
+  }).addTo(window.activityMap);
+  window.activityMarkers = [];
+  document.querySelectorAll('.activity-card').forEach(function(card) {
+    var lat = parseFloat(card.dataset.lat); var lng = parseFloat(card.dataset.lng);
+    if (!lat || !lng) { window.activityMarkers.push(null); return; }
+    var num = card.dataset.num || ''; var isMustDo = card.dataset.mustdo === 'true';
+    var title = card.querySelector('h4') ? card.querySelector('h4').textContent.trim() : '';
+    var desc = card.querySelector('.activity-desc');
+    var descText = desc ? desc.textContent.trim().substring(0, 100) + '...' : '';
+    var size = isMustDo ? 28 : 22; var bg = isMustDo ? '#FF6B35' : '#1B3C8F';
+    var fs = isMustDo ? '12px' : '10px';
+    var icon = L.divIcon({ className: '',
+      html: '<div style="background:'+bg+';color:#fff;width:'+size+'px;height:'+size+'px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:'+fs+';font-family:sans-serif;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;cursor:pointer;">'+num+'</div>',
+      iconSize: [size, size], iconAnchor: [size/2, size/2]
+    });
+    var marker = L.marker([lat, lng], {icon: icon})
+      .bindPopup('<div style="min-width:180px;"><b style="color:#0F2557;">' + (isMustDo ? '⭐ ' : '') + title + '</b><br><span style="color:#555;font-size:0.85rem;">' + descText + '</span></div>');
+    marker.addTo(window.activityMap); window.activityMarkers.push(marker);
+  });
+  if (typeof updateMap === 'function') updateMap();
+})();
+</script>
+
+
+<!-- ===================== RESORT SECTION ===================== -->
+<div class="section-header resort" data-section="resort">
+  <div class="icon">🏖️</div>
+  <h2>Hurghada All-Inclusive Resort</h2>
+  <p>Pools, aqua park, beach & unlimited fun — all included</p>
+</div>
+
+<div data-section-wrap="resort">
+
+<div class="category-header" data-cat-type="resort" data-cat-area="resort">
+  <span class="cat-icon">🏊</span>
+  <h3>Pool & Aqua Park</h3>
+  <span class="cat-count">5 activities</span>
+</div>
+
+<div class="activity-card highlight" data-lat="27.1800" data-lng="33.8300" data-area="resort" data-type="resort" data-tom="yes" data-teens="love" data-cost="included" data-num="1" data-mustdo="true">
+  <div class="activity-num">1</div>
+  <div class="activity-content">
+    <h4>Aqua Park Slides — All Day!</h4>
+    <div class="activity-desc">Up to 36 slides at top Hurghada resorts (Jungle Aqua Park has 36!). Speed slides, tube rides, wave pool, lazy river. Tom and the teens will never want to leave.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost-included">🎫 Included (AI)</span>
+      <span class="tag area-resort">🏖️ Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-lat="27.1850" data-lng="33.8350" data-area="resort" data-type="resort" data-tom="yes" data-teens="ok" data-cost="included" data-num="2">
+  <div class="activity-num">2</div>
+  <div class="activity-content">
+    <h4>Swimming Pools</h4>
+    <div class="activity-desc">Multiple pools at the resort — kids pools, main pool, adults-only pool, infinity pool. Loungers, shade, and unlimited drinks from the pool bar.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost-included">🎫 Included (AI)</span>
+      <span class="tag area-resort">🏖️ Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-lat="27.1830" data-lng="33.8280" data-area="resort" data-type="resort" data-tom="yes" data-teens="ok" data-cost="included" data-num="3">
+  <div class="activity-num">3</div>
+  <div class="activity-content">
+    <h4>Wave Pool & Lazy River</h4>
+    <div class="activity-desc">Ride the waves or float the lazy river for hours. Most top Hurghada resorts have both. Perfect for all ages.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost-included">🎫 Included (AI)</span>
+      <span class="tag area-resort">🏖️ Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-lat="27.1780" data-lng="33.8400" data-area="resort" data-type="resort" data-tom="yes" data-teens="ok" data-cost="included" data-num="4">
+  <div class="activity-num">4</div>
+  <div class="activity-content">
+    <h4>Private Resort Beach</h4>
+    <div class="activity-desc">Sandy beach on the Red Sea. Sunbeds, parasols, crystal-clear warm water. Snorkel gear usually available free. Perfect for morning and late afternoon.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost-included">🎫 Included (AI)</span>
+      <span class="tag area-resort">🏖️ Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-lat="27.1820" data-lng="33.8250" data-area="resort" data-type="resort" data-tom="yes" data-teens="ok" data-cost="included" data-num="5">
+  <div class="activity-num">5</div>
+  <div class="activity-content">
+    <h4>Beach Volleyball, Table Tennis & Football</h4>
+    <div class="activity-desc">Free sports activities at the resort. Beach volleyball courts, table tennis tables, football pitches. Great for family competitions.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost-included">🎫 Included (AI)</span>
+      <span class="tag area-resort">🏖️ Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="category-header" data-cat-type="resort" data-cat-area="resort">
+  <span class="cat-icon">🎉</span>
+  <h3>Kids, Teens & Entertainment</h3>
+  <span class="cat-count">5 activities</span>
+</div>
+
+<div class="activity-card" data-lat="27.1840" data-lng="33.8320" data-area="resort" data-type="resort" data-tom="yes" data-teens="no" data-cost="included" data-num="6">
+  <div class="activity-num">6</div>
+  <div class="activity-content">
+    <h4>Kids Club (Ages 4-12)</h4>
+    <div class="activity-desc">Supervised activities, crafts, games, and fun for Tom. Gives the adults and teens some free time. Usually morning and afternoon sessions.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">— Not for teens</span>
+      <span class="tag cost-included">🎫 Included (AI)</span>
+      <span class="tag area-resort">🏖️ Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-lat="27.1860" data-lng="33.8340" data-area="resort" data-type="resort" data-tom="yes" data-teens="no" data-cost="included" data-num="7">
+  <div class="activity-num">7</div>
+  <div class="activity-content">
+    <h4>Mini Disco (Evening)</h4>
+    <div class="activity-desc">Tom's favourite resort activity! Dance floor, music, games, face painting. Every evening before the main show. Tom will be front and centre.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">— Teens watch & laugh</span>
+      <span class="tag cost-included">🎫 Included (AI)</span>
+      <span class="tag area-resort">🏖️ Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-lat="27.1810" data-lng="33.8370" data-area="resort" data-type="resort" data-tom="no" data-teens="love" data-cost="included" data-num="8">
+  <div class="activity-num">8</div>
+  <div class="activity-content">
+    <h4>Teen Zone & Activities</h4>
+    <div class="activity-desc">Many resorts have dedicated teen areas with gaming, pool tables, chill zones. Plus teen-specific activities, movie nights, and competitions.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">— Not for Tom</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost-included">🎫 Included (AI)</span>
+      <span class="tag area-resort">🏖️ Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-lat="27.1870" data-lng="33.8310" data-area="resort" data-type="resort" data-tom="yes" data-teens="ok" data-cost="included" data-num="9">
+  <div class="activity-num">9</div>
+  <div class="activity-content">
+    <h4>Evening Shows & Live Entertainment</h4>
+    <div class="activity-desc">Nightly entertainment — acrobatics, dance shows, comedy, live music, fire shows. Something different every evening after dinner.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost-included">🎫 Included (AI)</span>
+      <span class="tag area-resort">🏖️ Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-lat="27.1790" data-lng="33.8360" data-area="resort" data-type="resort" data-tom="yes" data-teens="ok" data-cost="included" data-num="10">
+  <div class="activity-num">10</div>
+  <div class="activity-content">
+    <h4>All-Inclusive Dining — Unlimited Food & Drink</h4>
+    <div class="activity-desc">Breakfast, lunch, dinner buffets plus snacks all day. Multiple restaurants (often Italian, Asian, a la carte options). Unlimited soft drinks, cocktails, ice cream.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost-included">🎫 Included (AI)</span>
+      <span class="tag area-resort">🏖️ Resort</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /resort section -->
+
+
+<!-- ===================== RED SEA SECTION ===================== -->
+<div class="section-header redsea" data-section="redsea">
+  <div class="icon">🌊</div>
+  <h2>Red Sea Adventures</h2>
+  <p>World-class snorkelling, dolphins, islands & underwater wonders</p>
+</div>
+
+<div data-section-wrap="redsea">
+
+<div class="category-header" data-cat-type="water" data-cat-area="redsea">
+  <span class="cat-icon">🤿</span>
+  <h3>Snorkelling & Diving</h3>
+  <span class="cat-count">5 activities</span>
+</div>
+
+<div class="activity-card highlight" data-lat="27.1750" data-lng="33.8450" data-area="redsea" data-type="water" data-tom="yes" data-teens="love" data-cost="included" data-num="11" data-mustdo="true">
+  <div class="activity-num">11</div>
+  <div class="activity-content">
+    <h4>Snorkelling from the House Reef</h4>
+    <div class="activity-desc">Many Hurghada resorts have a house reef — walk off the beach and snorkel over coral gardens with tropical fish, angelfish, parrotfish, maybe even turtles. The Red Sea has some of the best snorkelling in the WORLD. Gear usually free with AI.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost-included">🎫 Included (AI)</span>
+      <span class="tag area-redsea">🌊 Red Sea</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card highlight" data-lat="27.2000" data-lng="33.8700" data-area="redsea" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="12" data-mustdo="true">
+  <div class="activity-num">12</div>
+  <div class="activity-content">
+    <h4><a href="https://www.viator.com/Hurghada-tours/Snorkeling/d4372-g6-c56" target="_blank">Snorkelling Boat Trip — Coral Reefs</a></h4>
+    <div class="activity-desc">Full-day boat trip to the best offshore reefs. Visit 2-3 reef sites, see incredible coral, tropical fish, possibly rays and turtles. Lunch on board. Much better reefs than shore snorkelling.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">£15-25pp</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-redsea">🌊 Red Sea</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.viator.com/Hurghada-tours/Snorkeling/d4372-g6-c56" target="_blank">Book →</a></div>
+</div>
+
+<div class="activity-card highlight" data-lat="27.1700" data-lng="33.9200" data-area="redsea" data-type="water" data-tom="yes" data-teens="love" data-cost="mid" data-num="13" data-mustdo="true">
+  <div class="activity-num">13</div>
+  <div class="activity-content">
+    <h4><a href="https://www.viator.com/Hurghada-tours/Dolphin-tours/d4372-g6-c71" target="_blank">Dolphin House — Swim with Wild Dolphins</a></h4>
+    <div class="activity-desc">Boat trip to Dolphin House reef where pods of wild spinner dolphins live. Snorkel alongside them in crystal-clear water. They usually come right up to you! Full day trip with lunch. "I can't believe that happened" memories.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">£30-50pp</span>
+      <span class="tag cost-mid">£25-60pp</span>
+      <span class="tag area-redsea">🌊 Red Sea</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.viator.com/Hurghada-tours/Dolphin-tours/d4372-g6-c71" target="_blank">Book →</a></div>
+</div>
+
+<div class="activity-card" data-lat="27.1950" data-lng="33.8600" data-area="redsea" data-type="water" data-tom="no" data-teens="love" data-cost="mid" data-num="14">
+  <div class="activity-num">14</div>
+  <div class="activity-content">
+    <h4><a href="https://www.viator.com/Hurghada-tours/Scuba-Diving/d4372-g6-c55" target="_blank">Intro Scuba Dive (Katie & George)</a></h4>
+    <div class="activity-desc">Discover scuba — no qualification needed. Pool introduction then a real reef dive with a 1-on-1 instructor. Breathe underwater on a coral reef in the Red Sea. Min age usually 10-12. "I scuba dived in the Red Sea" = serious bragging rights.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Tom (min age 10-12)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">£40-60pp</span>
+      <span class="tag cost-mid">£25-60pp</span>
+      <span class="tag area-redsea">🌊 Red Sea</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.viator.com/Hurghada-tours/Scuba-Diving/d4372-g6-c55" target="_blank">Book →</a></div>
+</div>
+
+<div class="activity-card" data-lat="27.1900" data-lng="33.8550" data-area="redsea" data-type="water" data-tom="yes" data-teens="ok" data-cost="budget" data-num="15">
+  <div class="activity-num">15</div>
+  <div class="activity-content">
+    <h4>Snorkelling with Reef Shoes & Guide</h4>
+    <div class="activity-desc">Guided snorkelling session from the resort beach. Learn to identify fish species, safe coral viewing, and the best spots. Wear reef shoes — sea urchins exist! Don't touch coral (protected and sharp!).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">£5-15pp</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-redsea">🌊 Red Sea</span>
+    </div>
+  </div>
+</div>
+
+<div class="category-header" data-cat-type="water" data-cat-area="redsea">
+  <span class="cat-icon">🚤</span>
+  <h3>Boat Trips & Underwater Viewing</h3>
+  <span class="cat-count">4 activities</span>
+</div>
+
+<div class="activity-card highlight" data-lat="27.1200" data-lng="33.9400" data-area="redsea" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="16" data-mustdo="true">
+  <div class="activity-num">16</div>
+  <div class="activity-content">
+    <h4><a href="https://www.viator.com/Hurghada-tours/Day-Trips/d4372-g5-c16" target="_blank">Giftun Island Paradise Trip</a></h4>
+    <div class="activity-desc">Full-day boat trip to Giftun Island national park. Crystal-clear turquoise water, white sand beach, incredible snorkelling stops. Lunch on board. The "desert island" experience. Genuinely paradise.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">£25-40pp</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-redsea">🌊 Red Sea</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.viator.com/Hurghada-tours/Day-Trips/d4372-g5-c16" target="_blank">Book →</a></div>
+</div>
+
+<div class="activity-card" data-lat="27.2100" data-lng="33.8650" data-area="redsea" data-type="water" data-tom="yes" data-teens="ok" data-cost="budget" data-num="17">
+  <div class="activity-num">17</div>
+  <div class="activity-content">
+    <h4><a href="https://www.viator.com/Hurghada-tours/Glass-Bottom-Boat-Tours/d4372-g6-c54" target="_blank">Glass-Bottom Boat Trip</a></h4>
+    <div class="activity-desc">See the reef without getting wet! View coral, tropical fish, and marine life through the glass hull. Perfect for Tom if he's nervous of deep water. 2-3hr trip, some include a snorkelling stop.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">£15-25pp</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-redsea">🌊 Red Sea</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.viator.com/Hurghada-tours/Glass-Bottom-Boat-Tours/d4372-g6-c54" target="_blank">Book →</a></div>
+</div>
+
+<div class="activity-card" data-lat="27.2050" data-lng="33.8800" data-area="redsea" data-type="water" data-tom="yes" data-teens="love" data-cost="mid" data-num="18">
+  <div class="activity-num">18</div>
+  <div class="activity-content">
+    <h4><a href="https://www.viator.com/Hurghada-tours/Submarine-Tours/d4372-g6-c186" target="_blank">Submarine / Semi-Submarine Trip</a></h4>
+    <div class="activity-desc">Descend below the surface in a real tourist submarine or semi-sub. Watch the reef and fish through large portholes. Incredible for younger kids — they feel like underwater explorers without getting wet.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">£25-45pp</span>
+      <span class="tag cost-mid">£25-60pp</span>
+      <span class="tag area-redsea">🌊 Red Sea</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.viator.com/Hurghada-tours/Submarine-Tours/d4372-g6-c186" target="_blank">Book →</a></div>
+</div>
+
+<div class="activity-card" data-lat="27.1950" data-lng="33.8500" data-area="redsea" data-type="water" data-tom="yes" data-teens="ok" data-cost="budget" data-num="19">
+  <div class="activity-num">19</div>
+  <div class="activity-content">
+    <h4>Sunset Boat Cruise</h4>
+    <div class="activity-desc">Relaxing evening boat cruise along the Hurghada coast. Watch the sun set over the desert mountains while floating on the Red Sea. Some include dinner or BBQ on board.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">£15-30pp</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-redsea">🌊 Red Sea</span>
+    </div>
+  </div>
+</div>
+
+<div class="category-header" data-cat-type="water" data-cat-area="redsea">
+  <span class="cat-icon">🏄</span>
+  <h3>Water Sports</h3>
+  <span class="cat-count">2 activities</span>
+</div>
+
+<div class="activity-card" data-lat="27.2200" data-lng="33.8750" data-area="redsea" data-type="water" data-tom="check" data-teens="love" data-cost="mid" data-num="20">
+  <div class="activity-num">20</div>
+  <div class="activity-content">
+    <h4>Parasailing over the Red Sea</h4>
+    <div class="activity-desc">Fly high above the Red Sea towed by a speedboat. Incredible views of the coastline, desert, and coral reefs below. Tandem rides available — Tom could go with a parent.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">⚠️ Tom (with parent, check age)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">£25-40pp</span>
+      <span class="tag cost-mid">£25-60pp</span>
+      <span class="tag area-redsea">🌊 Red Sea</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-lat="27.2150" data-lng="33.8600" data-area="redsea" data-type="water" data-tom="check" data-teens="love" data-cost="mid" data-num="21">
+  <div class="activity-num">21</div>
+  <div class="activity-content">
+    <h4>Banana Boat & Tube Rides</h4>
+    <div class="activity-desc">Hold on tight! Inflatable banana boat and tube rides pulled by speedboat. Guaranteed laughter and guaranteed to fall off. Tom can usually join (check operator min age).</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">⚠️ Tom (check min age)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">£10-20pp</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-redsea">🌊 Red Sea</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /redsea section -->
+
+
+<!-- ===================== DESERT SECTION ===================== -->
+<div class="section-header desert" data-section="desert">
+  <div class="icon">🏜️</div>
+  <h2>Desert Adventures</h2>
+  <p>Quad bikes, camels, Bedouin culture & stargazing in the Sahara</p>
+</div>
+
+<div data-section-wrap="desert">
+
+<div class="category-header" data-cat-type="adventure" data-cat-area="desert">
+  <span class="cat-icon">🏜️</span>
+  <h3>Desert Safari & Experiences</h3>
+  <span class="cat-count">5 activities</span>
+</div>
+
+<div class="activity-card highlight" data-lat="27.2500" data-lng="33.8000" data-area="desert" data-type="adventure" data-tom="yes" data-teens="love" data-cost="budget" data-num="22" data-mustdo="true">
+  <div class="activity-num">22</div>
+  <div class="activity-content">
+    <h4><a href="https://www.viator.com/Hurghada-tours/4WD-ATV-and-Off-Road-Tours/d4372-g6-c113" target="_blank">Desert Safari — Quad Biking</a></h4>
+    <div class="activity-desc">Evening quad bike ride into the Saharan desert at sunset. Exhilarating ride over dunes and desert trails. George will love this! Min age for quad bikes usually 12-16 — Tom rides with a parent on a double.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (with parent)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">£25-40pp</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-desert">🏜️ Desert</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.viator.com/Hurghada-tours/4WD-ATV-and-Off-Road-Tours/d4372-g6-c113" target="_blank">Book →</a></div>
+</div>
+
+<div class="activity-card highlight" data-lat="27.2400" data-lng="33.7800" data-area="desert" data-type="adventure" data-tom="yes" data-teens="love" data-cost="budget" data-num="23" data-mustdo="true">
+  <div class="activity-num">23</div>
+  <div class="activity-content">
+    <h4>Camel Ride Through the Desert</h4>
+    <div class="activity-desc">Ride a camel through the desert dunes at sunset. Surreal experience — you're on a camel in the actual Sahara. Tom will be buzzing. Included in most desert safari packages.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">£10-20pp</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-desert">🏜️ Desert</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-lat="27.2300" data-lng="33.7500" data-area="desert" data-type="unique" data-tom="yes" data-teens="love" data-cost="budget" data-num="24">
+  <div class="activity-num">24</div>
+  <div class="activity-content">
+    <h4>Bedouin Village Visit & Tea</h4>
+    <div class="activity-desc">Visit a Bedouin camp in the desert. Traditional bread-making, mint tea, learn about nomadic desert life. Authentic cultural experience away from the tourist areas. Usually part of the desert safari package.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">Included in safari</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-desert">🏜️ Desert</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-lat="27.2600" data-lng="33.7600" data-area="desert" data-type="unique" data-tom="yes" data-teens="love" data-cost="budget" data-num="25">
+  <div class="activity-num">25</div>
+  <div class="activity-content">
+    <h4>Desert Stargazing</h4>
+    <div class="activity-desc">Zero light pollution in the desert = incredible night sky. See the Milky Way, shooting stars (Perseids peak in August!), and constellations you've never seen. Often part of the Bedouin evening experience.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">Included in safari</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-desert">🏜️ Desert</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-lat="27.2550" data-lng="33.7700" data-area="desert" data-type="adventure" data-tom="no" data-teens="love" data-cost="mid" data-num="26">
+  <div class="activity-num">26</div>
+  <div class="activity-content">
+    <h4>Dune Buggy Safari</h4>
+    <div class="activity-desc">More powerful than quad bikes — dune buggies tear through the desert at higher speeds. Two-seater, so one teen can ride with a parent. Min age usually 16 to drive solo. Katie or George could try driving!</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Tom (min age 16 to drive)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">£30-50pp</span>
+      <span class="tag cost-mid">£25-60pp</span>
+      <span class="tag area-desert">🏜️ Desert</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /desert section -->
+
+
+<!-- ===================== LUXOR SECTION ===================== -->
+<div class="section-header luxor" data-section="luxor">
+  <div class="icon">🏛️</div>
+  <h2>Luxor — Ancient Temples & Tombs</h2>
+  <p>Valley of the Kings, Karnak Temple & 3,300 years of history</p>
+</div>
+
+<div data-section-wrap="luxor">
+
+<div class="category-header" data-cat-type="culture" data-cat-area="luxor">
+  <span class="cat-icon">⚱️</span>
+  <h3>West Bank — Tombs & Temples</h3>
+  <span class="cat-count">4 activities</span>
+</div>
+
+<div class="activity-card highlight" data-lat="25.7402" data-lng="32.6014" data-area="luxor" data-type="culture" data-tom="yes" data-teens="love" data-cost="budget" data-num="27" data-mustdo="true">
+  <div class="activity-num">27</div>
+  <div class="activity-content">
+    <h4><a href="https://www.viator.com/Luxor-attractions/Valley-of-the-Kings/d826-a25777" target="_blank">Valley of the Kings</a></h4>
+    <div class="activity-desc">Where the pharaohs were buried. Walk into actual royal tombs carved deep into rock, covered in vivid 3,300-year-old paintings. 3 tombs included in standard ticket (~£15pp). Go at opening (6am) before the heat — can hit 45°C!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">~£15pp (3 tombs)</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-luxor">🏛️ Luxor</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.viator.com/Luxor-attractions/Valley-of-the-Kings/d826-a25777" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card highlight" data-lat="25.7410" data-lng="32.6020" data-area="luxor" data-type="culture" data-tom="yes" data-teens="love" data-cost="budget" data-num="28" data-mustdo="true">
+  <div class="activity-num">28</div>
+  <div class="activity-content">
+    <h4>Tutankhamun's Tomb (Extra Ticket)</h4>
+    <div class="activity-desc">THE tomb. The one Howard Carter opened in 1922. Stand inside the actual burial chamber of the boy pharaoh. Extra ~£25pp but absolutely worth it. "We stood inside the tomb of an Egyptian pharaoh" = life story material.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">~£25pp extra</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-luxor">🏛️ Luxor</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-lat="25.7379" data-lng="32.6067" data-area="luxor" data-type="culture" data-tom="yes" data-teens="love" data-cost="budget" data-num="29">
+  <div class="activity-num">29</div>
+  <div class="activity-content">
+    <h4><a href="https://en.wikipedia.org/wiki/Mortuary_Temple_of_Hatshepsut" target="_blank">Temple of Hatshepsut</a></h4>
+    <div class="activity-desc">Dramatic three-tiered temple carved into a cliff face. Built for Egypt's most powerful female pharaoh. Incredible architecture against the desert mountains — looks like something from a movie set.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">~£8pp</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-luxor">🏛️ Luxor</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://en.wikipedia.org/wiki/Mortuary_Temple_of_Hatshepsut" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-lat="25.7205" data-lng="32.6103" data-area="luxor" data-type="culture" data-tom="yes" data-teens="ok" data-cost="included" data-num="30">
+  <div class="activity-num">30</div>
+  <div class="activity-content">
+    <h4>Colossi of Memnon</h4>
+    <div class="activity-desc">Two massive 18m stone statues guarding the Nile floodplain. Free to visit, on the way to Valley of the Kings. Quick photo stop but deeply impressive — 3,400 years old and still standing.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost-included">🆓 Free</span>
+      <span class="tag area-luxor">🏛️ Luxor</span>
+    </div>
+  </div>
+</div>
+
+<div class="category-header" data-cat-type="culture" data-cat-area="luxor">
+  <span class="cat-icon">🏛️</span>
+  <h3>East Bank — Temples</h3>
+  <span class="cat-count">2 activities</span>
+</div>
+
+<div class="activity-card highlight" data-lat="25.7188" data-lng="32.6573" data-area="luxor" data-type="culture" data-tom="yes" data-teens="love" data-cost="budget" data-num="31" data-mustdo="true">
+  <div class="activity-num">31</div>
+  <div class="activity-content">
+    <h4><a href="https://www.viator.com/Luxor-attractions/Temple-of-Karnak/d826-a25776" target="_blank">Karnak Temple</a></h4>
+    <div class="activity-desc">The largest ancient religious site in the world. A forest of 134 massive columns, some 21m high. Walking through it feels like being in an Indiana Jones film. Sound and light show available in the evening. Absolutely jaw-dropping.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">~£12pp</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-luxor">🏛️ Luxor</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.viator.com/Luxor-attractions/Temple-of-Karnak/d826-a25776" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-lat="25.6995" data-lng="32.6390" data-area="luxor" data-type="culture" data-tom="yes" data-teens="ok" data-cost="budget" data-num="32">
+  <div class="activity-num">32</div>
+  <div class="activity-content">
+    <h4><a href="https://en.wikipedia.org/wiki/Luxor_Temple" target="_blank">Luxor Temple</a></h4>
+    <div class="activity-desc">Right in the centre of modern Luxor, lit up beautifully at night. Connected to Karnak by the recently restored Avenue of Sphinxes. Visit at sunset/evening for the most dramatic experience.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">~£10pp</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-luxor">🏛️ Luxor</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://en.wikipedia.org/wiki/Luxor_Temple" target="_blank">Info →</a></div>
+</div>
+
+<div class="category-header" data-cat-type="unique" data-cat-area="luxor">
+  <span class="cat-icon">⛵</span>
+  <h3>Nile Experiences</h3>
+  <span class="cat-count">2 activities</span>
+</div>
+
+<div class="activity-card" data-lat="25.6900" data-lng="32.6400" data-area="luxor" data-type="unique" data-tom="yes" data-teens="ok" data-cost="budget" data-num="33">
+  <div class="activity-num">33</div>
+  <div class="activity-content">
+    <h4>Felucca Sailing on the Nile</h4>
+    <div class="activity-desc">Traditional Egyptian sailboat gliding silently along the Nile at sunset. No engine, just wind. Watch the temples and palm trees slide past. Timeless. Best at golden hour.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">£5-15pp</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-luxor">🏛️ Luxor</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-lat="25.7200" data-lng="32.6560" data-area="luxor" data-type="culture" data-tom="yes" data-teens="ok" data-cost="budget" data-num="34">
+  <div class="activity-num">34</div>
+  <div class="activity-content">
+    <h4>Karnak Sound & Light Show</h4>
+    <div class="activity-desc">Evening spectacular — the temple illuminated with coloured lights and projections while narration tells the story of ancient Thebes. Walking through the temple at night is magical and much cooler than daytime.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">~£15pp</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-luxor">🏛️ Luxor</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /luxor section -->
+
+
+<!-- ===================== CAIRO SECTION ===================== -->
+<div class="section-header cairo" data-section="cairo">
+  <div class="icon">🏛️</div>
+  <h2>Cairo — Pyramids, Sphinx & Museum</h2>
+  <p>The #1 bucket list — 4,500 years of wonder</p>
+</div>
+
+<div data-section-wrap="cairo">
+
+<div class="category-header" data-cat-type="culture" data-cat-area="cairo">
+  <span class="cat-icon">🔺</span>
+  <h3>Pyramids & Ancient Wonders</h3>
+  <span class="cat-count">4 activities</span>
+</div>
+
+<div class="activity-card highlight" data-lat="29.9792" data-lng="31.1342" data-area="cairo" data-type="culture" data-tom="yes" data-teens="love" data-cost="budget" data-num="35" data-mustdo="true">
+  <div class="activity-num">35</div>
+  <div class="activity-content">
+    <h4><a href="https://www.viator.com/Cairo-attractions/Pyramids-of-Giza/d782-a15898" target="_blank">Great Pyramids of Giza</a></h4>
+    <div class="activity-desc">THE last surviving Wonder of the Ancient World. 4,500 years old. Three massive pyramids rising from the desert. Photo at the panorama viewpoint with all 3 pyramids. THE single most impressive thing any of you will ever see.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">~£10pp entry</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-cairo">🏛️ Cairo</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.viator.com/Cairo-attractions/Pyramids-of-Giza/d782-a15898" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card highlight" data-lat="29.9800" data-lng="31.1350" data-area="cairo" data-type="culture" data-tom="check" data-teens="love" data-cost="budget" data-num="36" data-mustdo="true">
+  <div class="activity-num">36</div>
+  <div class="activity-content">
+    <h4>Go INSIDE the Great Pyramid</h4>
+    <div class="activity-desc">Narrow passage leading to the burial chamber deep inside the Great Pyramid. Claustrophobic but incredible — you're walking inside a 4,500-year-old wonder. Extra ~£15pp. Tom may find the narrow passage scary but older kids love it.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">⚠️ Tom (narrow passage — check comfort)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">~£15pp extra</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-cairo">🏛️ Cairo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-lat="29.9753" data-lng="31.1376" data-area="cairo" data-type="culture" data-tom="yes" data-teens="love" data-cost="included" data-num="37">
+  <div class="activity-num">37</div>
+  <div class="activity-content">
+    <h4>The Great Sphinx</h4>
+    <div class="activity-desc">Half-lion, half-human, carved from a single piece of limestone. Right next to the pyramids. Tom will have seen this in school — now he's standing in front of the real thing. Included with Giza plateau entry.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost-included">🎫 Included with Giza entry</span>
+      <span class="tag area-cairo">🏛️ Cairo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card highlight" data-lat="29.9770" data-lng="31.1320" data-area="cairo" data-type="adventure" data-tom="yes" data-teens="love" data-cost="budget" data-num="38" data-mustdo="true">
+  <div class="activity-num">38</div>
+  <div class="activity-content">
+    <h4>Camel Ride at the Pyramids</h4>
+    <div class="activity-desc">Ride a camel around the pyramids with the Sahara behind you. Photo opportunity of a lifetime. Tom on a camel in front of the Pyramids = framed forever. ~£10-20pp for a short ride. Haggle the price!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">£10-20pp</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-cairo">🏛️ Cairo</span>
+    </div>
+  </div>
+</div>
+
+<div class="category-header" data-cat-type="culture" data-cat-area="cairo">
+  <span class="cat-icon">🏺</span>
+  <h3>Museums & Markets</h3>
+  <span class="cat-count">3 activities</span>
+</div>
+
+<div class="activity-card highlight" data-lat="29.9950" data-lng="31.1200" data-area="cairo" data-type="culture" data-tom="yes" data-teens="love" data-cost="budget" data-num="39" data-mustdo="true">
+  <div class="activity-num">39</div>
+  <div class="activity-content">
+    <h4><a href="https://grandegyptianmuseum.org/" target="_blank">Grand Egyptian Museum (GEM)</a></h4>
+    <div class="activity-desc">Brand new, near the Pyramids. THE place to see Tutankhamun's treasures — gold death mask, chariots, jewellery, sarcophagi. After seeing his tomb in Luxor, now you see his treasure in Cairo. One of the world's greatest museums.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">~£20pp</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-cairo">🏛️ Cairo</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://grandegyptianmuseum.org/" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card highlight" data-lat="30.0477" data-lng="31.2627" data-area="cairo" data-type="food" data-tom="yes" data-teens="love" data-cost="budget" data-num="40" data-mustdo="true">
+  <div class="activity-num">40</div>
+  <div class="activity-content">
+    <h4><a href="https://en.wikipedia.org/wiki/Khan_el-Khalili" target="_blank">Khan El-Khalili Bazaar</a></h4>
+    <div class="activity-desc">Cairo's ancient souk — hundreds of years old. Spices, lanterns, jewellery, scarves, perfumes. Katie will love shopping. George will love the chaos. Tom will love the smells. Haggling expected and fun! Stop for mint tea at El Fishawy café.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">Free to browse</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-cairo">🏛️ Cairo</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://en.wikipedia.org/wiki/Khan_el-Khalili" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-lat="29.9730" data-lng="31.1280" data-area="cairo" data-type="culture" data-tom="yes" data-teens="ok" data-cost="budget" data-num="41">
+  <div class="activity-num">41</div>
+  <div class="activity-content">
+    <h4>Pyramids Panorama Viewpoint</h4>
+    <div class="activity-desc">The iconic viewpoint where you see all three pyramids perfectly aligned. THE photo spot — every postcard of Egypt is taken from here. Go early morning or late afternoon for the best light. Free with Giza plateau entry.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost-included">🎫 Included with Giza entry</span>
+      <span class="tag area-cairo">🏛️ Cairo</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /cairo section -->
+
+
+<!-- ===================== FOOD SECTION ===================== -->
+<div class="section-header food" data-section="food">
+  <div class="icon">🍽️</div>
+  <h2>Food & Flavours</h2>
+  <p>Egyptian cuisine, street food & dining experiences</p>
+</div>
+
+<div data-section-wrap="food">
+
+<div class="category-header" data-cat-type="food" data-cat-area="food">
+  <span class="cat-icon">🥘</span>
+  <h3>Egyptian Food Experiences</h3>
+  <span class="cat-count">5 activities</span>
+</div>
+
+<div class="activity-card" data-lat="27.1850" data-lng="33.8380" data-area="food" data-type="food" data-tom="yes" data-teens="ok" data-cost="budget" data-num="42">
+  <div class="activity-num">42</div>
+  <div class="activity-content">
+    <h4>Egyptian Cuisine at the Resort</h4>
+    <div class="activity-desc">Most AI resorts have themed Egyptian nights — koshari (Egypt's national dish), ful medames, falafel, shawarma, fresh flatbread, hummus, baklava. All included. Introduce the kids gently to the flavours.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost-included">🎫 Included (AI)</span>
+      <span class="tag area-food">🍽️ Food</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-lat="30.0480" data-lng="31.2620" data-area="food" data-type="food" data-tom="yes" data-teens="love" data-cost="budget" data-num="43">
+  <div class="activity-num">43</div>
+  <div class="activity-content">
+    <h4>Mint Tea at El Fishawy Café, Cairo</h4>
+    <div class="activity-desc">Allegedly the oldest café in Cairo (est. 1773), in the heart of Khan El-Khalili bazaar. Sweet mint tea in ornate glasses, shisha pipes, mirrors everywhere. A moment of calm in the Cairo chaos.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">£2-5pp</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-food">🍽️ Food</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-lat="30.0460" data-lng="31.2640" data-area="food" data-type="food" data-tom="yes" data-teens="ok" data-cost="budget" data-num="44">
+  <div class="activity-num">44</div>
+  <div class="activity-content">
+    <h4>Bazaar Street Food Tasting</h4>
+    <div class="activity-desc">Try street food in the bazaars — freshly squeezed sugarcane juice, mango juice, falafel sandwiches, kunafa (sweet cheese pastry). Incredibly cheap. Stick to busy stalls for safety. An adventure for the taste buds!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">£1-5pp</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-food">🍽️ Food</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-lat="27.2350" data-lng="33.7550" data-area="food" data-type="food" data-tom="yes" data-teens="ok" data-cost="budget" data-num="45">
+  <div class="activity-num">45</div>
+  <div class="activity-content">
+    <h4>Bedouin Bread & Tea in the Desert</h4>
+    <div class="activity-desc">Learn to make traditional flatbread on an open fire at the Bedouin camp. Sweet mint tea served in the desert under the stars. Part of the desert safari experience — authentic and memorable.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">Included in safari</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-food">🍽️ Food</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-lat="29.9760" data-lng="31.1360" data-area="food" data-type="food" data-tom="yes" data-teens="ok" data-cost="mid" data-num="46">
+  <div class="activity-num">46</div>
+  <div class="activity-content">
+    <h4>Dinner with Pyramid Views</h4>
+    <div class="activity-desc">Several restaurants near the Giza plateau offer rooftop dining with the Pyramids lit up at night. One of the most surreal dinner experiences in the world. Book at 9 PM Restaurant or similar.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">£15-30pp</span>
+      <span class="tag cost-mid">£25-60pp</span>
+      <span class="tag area-food">🍽️ Food</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /food section -->
+
+
+<!-- ===================== PRACTICAL SECTION ===================== -->
+<div class="section-header practical" data-section="practical">
+  <div class="icon">🧭</div>
+  <h2>Practical & Cultural Experiences</h2>
+  <p>Skills, culture & unique Egyptian experiences</p>
+</div>
+
+<div data-section-wrap="practical">
+
+<div class="category-header" data-cat-type="unique" data-cat-area="practical">
+  <span class="cat-icon">🌟</span>
+  <h3>Cultural & Practical</h3>
+  <span class="cat-count">4 activities</span>
+</div>
+
+<div class="activity-card" data-lat="30.0490" data-lng="31.2610" data-area="practical" data-type="unique" data-tom="yes" data-teens="love" data-cost="included" data-num="47">
+  <div class="activity-num">47</div>
+  <div class="activity-content">
+    <h4>The Art of Haggling</h4>
+    <div class="activity-desc">Haggling is expected and enjoyed everywhere in Egypt — markets, taxis, boat trips, souvenirs. Start at 50% of the asking price and work from there. Get the kids involved — they'll love it! A genuine life skill and a fun game.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost-included">🆓 Free (saves you money!)</span>
+      <span class="tag area-practical">🧭 Practical</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-lat="30.0470" data-lng="31.2650" data-area="practical" data-type="unique" data-tom="yes" data-teens="ok" data-cost="budget" data-num="48">
+  <div class="activity-num">48</div>
+  <div class="activity-content">
+    <h4>Egyptian Spice Shopping</h4>
+    <div class="activity-desc">Buy incredible spices at a fraction of UK prices — saffron, cumin, hibiscus tea, dried mango. Khan El-Khalili and Luxor souks have the best selection. The colours and smells are intoxicating. Great gifts for grandparents!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">£2-10</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-practical">🧭 Practical</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-lat="30.0450" data-lng="31.2600" data-area="practical" data-type="unique" data-tom="yes" data-teens="ok" data-cost="budget" data-num="49">
+  <div class="activity-num">49</div>
+  <div class="activity-content">
+    <h4>Papyrus & Cartouche Souvenir</h4>
+    <div class="activity-desc">Get your name written in hieroglyphics on a cartouche pendant or papyrus painting. Sold everywhere near the temples and bazaars. Tom can get his name in the same script the pharaohs used. Unique keepsake.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">£3-15</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-practical">🧭 Practical</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-lat="27.1900" data-lng="33.8100" data-area="practical" data-type="culture" data-tom="yes" data-teens="ok" data-cost="budget" data-num="50">
+  <div class="activity-num">50</div>
+  <div class="activity-content">
+    <h4><a href="https://visa2egypt.gov.eg/" target="_blank">E-Visa & Arrival Experience</a></h4>
+    <div class="activity-desc">UK citizens need a tourist visa — buy e-visa online at visa2egypt.gov.eg (~£20pp) at least 7 days before travel. Or buy visa-on-arrival (~$25pp). Currency is Egyptian Pound (£1 ≈ 60 EGP). Everything is incredibly cheap!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">~£20pp</span>
+      <span class="tag cost-budget">< £25pp</span>
+      <span class="tag area-practical">🧭 Practical</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://visa2egypt.gov.eg/" target="_blank">Apply →</a></div>
+</div>
+
+</div><!-- /practical section -->
+
+
+</div><!-- /container -->
+</div><!-- /main-content -->
+
+</div><!-- /page-layout -->
+
+<div class="footer">
+  <p>🇪🇬 Egypt: Red Sea + Pyramids — Family Activities Guide 2026 · 1–15 Aug · 14 nights</p>
+  <p>Budget estimate: £4,420–£8,770 (5 pax) · Jet2 direct from LBA · All-inclusive resort + 2 overnight adventures</p>
+</div>
+
+<script>
+(function() {
+  const cards = document.querySelectorAll('.activity-card');
+  const checkboxes = document.querySelectorAll('.filter-sidebar input[type="checkbox"]');
+  const countEl = document.getElementById('visibleCount');
+  const TOTAL = 50;
+
+  function getCheckedValues(filterName) {
+    const vals = [];
+    checkboxes.forEach(cb => {
+      if (cb.dataset.filter === filterName && cb.checked) vals.push(cb.value);
+    });
+    return vals;
+  }
+
+
+  
+function toggleAccom(show) {
+  if (!window.accomMarkers) return;
+  window.accomMarkers.forEach(function(m) {
+    if (show) m.addTo(window.activityMap);
+    else window.activityMap.removeLayer(m);
+  });
+}
+
+function updateMap() {
+    if (!window.activityMarkers) return;
+    var bounds = []; var tableBody = document.getElementById('map-table-body');
+    if (tableBody) tableBody.innerHTML = ''; var visibleCount = 0;
+    document.querySelectorAll('.activity-card').forEach(function(card, i) {
+      var marker = window.activityMarkers[i]; if (!marker) return;
+      var lat = parseFloat(card.dataset.lat); var lng = parseFloat(card.dataset.lng);
+      if (!lat || !lng) return;
+      var isVisible = !card.classList.contains('hidden-by-filter') && card.style.display !== 'none';
+      if (isVisible) {
+        marker.addTo(window.activityMap); bounds.push([lat, lng]); visibleCount++;
+        if (tableBody) {
+          var num = card.dataset.num || ''; var title = card.querySelector('h4') ? card.querySelector('h4').textContent.trim() : '';
+          var link = card.querySelector('h4 a'); var href = link ? link.href : '';
+          var isMustDo = card.dataset.mustdo === 'true';
+          var tr = document.createElement('tr'); tr.style.borderBottom = '1px solid #e0e0e0';
+          if (visibleCount % 2 === 0) tr.style.background = '#f0f3f9';
+          tr.innerHTML = '<td style="padding:5px 8px;color:#1B3C8F;font-weight:700;">'+num+'</td><td style="padding:5px 8px;">'+(isMustDo?'⭐ ':'')+title+'</td><td style="padding:5px 8px;text-align:right;">'+(href?'<a href="'+href+'" target="_blank" style="color:#1B3C8F;margin-right:10px;">More Info</a>':'')+'<a href="https://www.google.com/maps?q='+lat+','+lng+'" target="_blank" style="color:#888;">📍 Map</a></td>';
+          tableBody.appendChild(tr);
+        }
+      } else { window.activityMap.removeLayer(marker); }
+    });
+    var countEl2 = document.getElementById('map-count');
+    if (countEl2) countEl2.textContent = visibleCount + ' activities shown';
+    if (bounds.length > 0) window.activityMap.fitBounds(bounds, {padding: [30, 30], maxZoom: 12});
+  }
+
+  function applyFilters() {
+    const areaFilters = getCheckedValues('area');
+    const typeFilters = getCheckedValues('type');
+    const tomFilters = getCheckedValues('tom');
+    const teenFilters = getCheckedValues('teens');
+    const familyFilters = getCheckedValues('family');
+    const costFilters = getCheckedValues('cost');
+    const mustdoFilters = getCheckedValues('mustdo');
+
+    let visible = 0;
+
+    cards.forEach(card => {
+      let show = true;
+
+      // Area filter (OR within group)
+      if (areaFilters.length > 0 && !areaFilters.includes(card.dataset.area)) show = false;
+
+      // Type filter (OR within group)
+      if (typeFilters.length > 0 && !typeFilters.includes(card.dataset.type)) show = false;
+
+      // Tom filter
+      if (tomFilters.length > 0 && card.dataset.tom !== 'yes') show = false;
+
+      // Teens filter
+      if (teenFilters.length > 0 && card.dataset.teens !== 'love') show = false;
+
+      // Family filter (tom=yes AND teens love/ok)
+      if (familyFilters.length > 0 && card.dataset.tom !== 'yes') show = false;
+
+      // Cost filter (OR within group)
+      if (costFilters.length > 0 && !costFilters.includes(card.dataset.cost)) show = false;
+
+      // Must-do filter
+      if (mustdoFilters.length > 0 && card.dataset.mustdo !== 'true') show = false;
+
+      if (show) {
+        card.classList.remove('hidden-by-filter');
+        visible++;
+      } else {
+        card.classList.add('hidden-by-filter');
+      }
+    });
+
+    countEl.textContent = visible;
+
+    // Hide section headers if all their activities are hidden
+    document.querySelectorAll('.section-header[data-section]').forEach(header => {
+      const sectionId = header.dataset.section;
+      const wrap = document.querySelector('[data-section-wrap="' + sectionId + '"]');
+      if (wrap) {
+        const visibleCards = wrap.querySelectorAll('.activity-card:not(.hidden-by-filter)');
+        header.classList.toggle('hidden-by-filter', visibleCards.length === 0);
+        wrap.style.display = visibleCards.length === 0 ? 'none' : '';
+      }
+    });
+
+    // Hide category headers if all their activities are hidden
+    document.querySelectorAll('.category-header[data-cat-type]').forEach(catHeader => {
+      let sibling = catHeader.nextElementSibling;
+      let hasVisible = false;
+      while (sibling && !sibling.classList.contains('category-header') && !sibling.classList.contains('section-header')) {
+        if (sibling.classList.contains('activity-card') && !sibling.classList.contains('hidden-by-filter')) {
+          hasVisible = true;
+          break;
+        }
+        sibling = sibling.nextElementSibling;
+      }
+      catHeader.classList.toggle('hidden-by-filter', !hasVisible);
+    });
+    updateMap();
+  }
+
+  checkboxes.forEach(cb => cb.addEventListener('change', applyFilters));
+
+  window.clearFilters = function() {
+    checkboxes.forEach(cb => cb.checked = false);
+    applyFilters();
+  };
+
+  window.toggleFilters = function() {
+    const sidebar = document.getElementById('filterSidebar');
+    const overlay = document.getElementById('filterOverlay');
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('open');
+  };
+
+// Accommodation overlay
+window.accomMarkers = [];
+var accomData = [
+  [27.2000, 33.8400, "Sunrise Royal Makadi", "Hotel", "https://www.booking.com/hotel/eg/sunrise-royal-makadi-resort.html", "5-star AI resort, aqua park, private beach, kids\u2019 clubs. Makadi Bay."],
+  [27.1800, 33.8600, "Dana Beach Resort", "Hotel", "https://www.booking.com/hotel/eg/dana-beach-resort.html", "4-star AI, huge pool complex, water slides, family friendly. Hurghada."],
+  [27.1200, 33.8500, "Jungle Aqua Park", "Hotel", "https://www.booking.com/hotel/eg/jungle-aqua-park.html", "35 water slides, wave pool, lazy river, kids\u2019 aqua area. Hurghada."],
+  [27.2400, 33.8700, "Steigenberger Aqua Magic", "Hotel", "https://www.booking.com/hotel/eg/steigenberger-aqua-magic.html", "5-star, 22 slides, huge pools, private beach, all-inclusive."]
+];
+var accomIcon = function(){ return L.divIcon({
+  className:'',
+  html:'<div style="background:#2d9a2d;color:#fff;width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;cursor:pointer;">&#127965;</div>',
+  iconSize:[30,30], iconAnchor:[15,15]
+}); };
+accomData.forEach(function(a){
+  var marker = L.marker([a[0],a[1]], {icon: accomIcon()})
+    .bindPopup('<div style="min-width:220px;"><b style="color:#2d9a2d;font-size:0.95rem;">&#127965; '+a[2]+'</b><br><span style="color:#888;font-size:0.8rem;">'+a[3]+'</span><br><span style="color:#555;font-size:0.85rem;">'+a[5]+'</span><br><a href="'+a[4]+'" target="_blank" style="color:#2d9a2d;font-size:0.85rem;">View on '+a[3]+' \u2192</a></div>');
+  marker.addTo(window.activityMap);
+  window.accomMarkers.push(marker);
+});
+})();
+
+
+// Country navbar show on scroll
+(function(){
+  var nav = document.getElementById('countryNav');
+  if (!nav) return;
+  var hero = document.querySelector('.hero');
+  if (!hero) { nav.classList.add('visible'); return; }
+  var observer = new IntersectionObserver(function(entries){
+    nav.classList.toggle('visible', !entries[0].isIntersecting);
+  }, {threshold: 0});
+  observer.observe(hero);
+})();
+
+</script>
+
+</body>
+</html>

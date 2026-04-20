@@ -1,0 +1,1945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sicily — 62 Family Activities Guide 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+  :root {
+    --verdon: #1B3C8F;
+    --verdon-light: #e8edf7;
+    --azur: #0F2557;
+    --azur-light: #f0f0f0;
+    --accent: #1B3C8F;
+    --gold: #1B3C8F;
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #0F2557;
+    --muted: #4a6bb5;
+    --border: #e0e0e0;
+    --sidebar-width: 280px;
+    --accent-orange: #FF6B35;
+  }
+
+
+  /* -- Country Navbar ----------------------------------------- */
+  .country-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(15, 37, 87, 0.95);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    transform: translateY(-100%); transition: transform 0.3s ease;
+  }
+  .country-nav.visible { transform: translateY(0); }
+  .country-nav__inner {
+    max-width: 1400px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 1rem; height: 48px;
+  }
+  .country-nav__label {
+    font-family: 'Playfair Display', serif; font-size: 0.8rem;
+    color: rgba(255,255,255,0.7); white-space: nowrap; margin-right: 0.5rem;
+  }
+  .country-nav__links {
+    display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .country-nav__link {
+    display: flex; align-items: center; gap: 5px;
+    padding: 12px 12px; color: rgba(255,255,255,0.8);
+    font-size: 0.78rem; font-weight: 500; white-space: nowrap;
+    transition: all 0.2s; border-bottom: 2px solid transparent; text-decoration: none;
+  }
+  .country-nav__link:hover { color: #fff; background: rgba(255,255,255,0.08); border-bottom-color: #FF6B35; }
+  .country-nav__link .nav-icon { width: 16px; height: 16px; flex-shrink: 0; opacity: 0.85; }
+  .country-nav__link:hover .nav-icon { opacity: 1; }
+  .country-nav__link--accent { color: #FF6B35; }
+  .country-nav__link--accent:hover { color: #fff; border-bottom-color: #FF6B35; }
+  @media (max-width: 768px) {
+    .country-nav__label { display: none; }
+    .country-nav__link { padding: 12px 8px; font-size: 0.72rem; }
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Montserrat', 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #0F2557 0%, #1B3C8F 100%);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    margin-bottom: 10px;
+  }
+  .hero .subtitle { font-size: 1.1rem; opacity: 0.9; margin-bottom: 8px; }
+  .hero .count {
+    display: inline-block;
+    background: #FF6B35;
+    padding: 8px 24px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-top: 12px;
+  }
+  .hero .family {
+    margin-top: 16px;
+    font-size: 0.95rem;
+    opacity: 0.85;
+  }
+
+  /* ========= LAYOUT: sidebar + main ========= */
+  .page-layout {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* ========= FILTER SIDEBAR ========= */
+  .filter-sidebar {
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: #0F2557;
+    color: #fff;
+    padding: 20px 16px;
+    z-index: 100;
+    scrollbar-width: thin;
+    scrollbar-color: #4a6bb5 #0F2557;
+  }
+  .filter-sidebar::-webkit-scrollbar { width: 6px; }
+  .filter-sidebar::-webkit-scrollbar-track { background: #0F2557; }
+  .filter-sidebar::-webkit-scrollbar-thumb { background: #4a6bb5; border-radius: 3px; }
+
+  .filter-sidebar h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: #1B3C8F;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .filter-sidebar h3::before { content: '⚙️'; }
+
+  .filter-count {
+    background: #1B3C8F;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+  .filter-count span { font-size: 1.3rem; }
+
+  .filter-group {
+    margin-bottom: 18px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 14px;
+  }
+  .filter-group:last-child { border-bottom: none; }
+  .filter-group-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #aaa;
+    margin-bottom: 8px;
+  }
+  .filter-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: color 0.15s;
+    font-family: 'Inter', sans-serif;
+  }
+  .filter-group label:hover { color: #1B3C8F; }
+
+  .filter-group input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #4a6bb5;
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .filter-group input[type="checkbox"]:checked {
+    background: #1B3C8F;
+    border-color: #1B3C8F;
+  }
+  .filter-group input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: -1px;
+    left: 2px;
+    font-size: 13px;
+    color: white;
+    font-weight: bold;
+  }
+
+  .clear-filters {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    color: #1B3C8F;
+    border: 2px solid #1B3C8F;
+    border-radius: 8px;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+  }
+  .clear-filters:hover {
+    background: #1B3C8F;
+    color: white;
+  }
+
+  /* Mobile filter toggle */
+  .filter-toggle {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 200;
+    background: #1B3C8F;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  /* ========= MAIN CONTENT ========= */
+  .main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 0 20px;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .top10 {
+    background: linear-gradient(135deg, #e8edf7, #e0e8f5);
+    border: 2px solid var(--gold);
+    border-radius: 16px;
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 800px;
+  }
+  .top10 h2 { font-family: 'Playfair Display', serif; color: #1B3C8F; margin-bottom: 16px; font-size: 1.5rem; }
+  .top10 ol { padding-left: 24px; }
+  .top10 li { margin-bottom: 8px; font-size: 0.95rem; }
+  .top10 li strong { color: #0F2557; }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 30px 0;
+  }
+  .summary-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+  .summary-card .big-num { font-size: 2.5rem; font-weight: 700; color: #1B3C8F; }
+  .summary-card .label { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+
+  .section-header {
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 16px;
+    margin: 40px 0 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .section-header.verdon { background: linear-gradient(135deg, #1B3C8F, #142f6e); color: white; }
+  .section-header.azur { background: linear-gradient(135deg, #0F2557, #1B3C8F); color: white; }
+  .section-header .icon { font-size: 3rem; margin-bottom: 8px; }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+  }
+  .section-header p { opacity: 0.9; margin-top: 6px; font-size: 0.95rem; }
+  .section-header.hidden-by-filter { display: none; }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 32px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--border);
+  }
+  .category-header .cat-icon { font-size: 1.6rem; }
+  .category-header h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; }
+  .category-header .cat-count {
+    background: var(--verdon-light);
+    color: var(--verdon);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .azur-section .category-header .cat-count { background: var(--azur-light); color: var(--azur); }
+  .category-header.hidden-by-filter { display: none; }
+
+  .activity-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    gap: 12px;
+    align-items: start;
+    transition: box-shadow 0.2s, opacity 0.2s;
+  }
+  .activity-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .activity-card.highlight { border-left: 4px solid var(--accent); }
+  .activity-card.hidden-by-filter { display: none; }
+
+  .activity-num {
+    background: var(--verdon);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .azur-num { background: #0F2557 !important; }
+  .azur-section .activity-num { background: #0F2557; }
+
+  .activity-content h4 { font-size: 1rem; margin-bottom: 4px; }
+  .activity-content h4 a { color: inherit; text-decoration: none; }
+  .activity-content h4 a:hover { color: var(--accent); text-decoration: underline; }
+  .activity-desc { font-size: 0.88rem; color: var(--muted); margin-bottom: 8px; }
+
+  .activity-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .tag.tom-yes { background: #d1fae5; color: #065f46; }
+  .tag.tom-no { background: #fee2e2; color: #991b1b; }
+  .tag.tom-check { background: #fef3c7; color: #92400e; }
+  .tag.teen-love { background: #ede9fe; color: #5b21b6; }
+  .tag.teen-ok { background: #f3f4f6; color: #4b5563; }
+  .tag.cost { background: #e0f2fe; color: #075985; }
+  .tag.free { background: #d1fae5; color: #065f46; }
+
+  .tag.cost-free { background: #d1fae5; color: #065f46; font-weight: 600; }
+  .tag.cost-budget { background: #dbeafe; color: #1e40af; font-weight: 600; }
+  .tag.cost-mid { background: #bfdbfe; color: #1e3a8a; font-weight: 600; }
+  .tag.cost-premium { background: #c4b5fd; color: #3b0764; font-weight: 600; }
+
+  .tag.week-east { background: #e8edf7; color: #1B3C8F; font-weight: 600; }
+  .tag.week-south { background: #e5e5e5; color: #0F2557; font-weight: 600; }
+
+  .activity-link {
+    flex-shrink: 0;
+    align-self: center;
+  }
+  .activity-link a {
+    display: inline-block;
+    background: var(--verdon);
+    color: white;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+  .activity-link a:hover { background: #0a1b3f; }
+  .azur-section .activity-link a { background: #0F2557; }
+  .azur-section .activity-link a:hover { background: #1B3C8F; }
+
+  .footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  /* ========= RESPONSIVE ========= */
+  @media (max-width: 900px) {
+    .filter-sidebar {
+      position: fixed;
+      left: -300px;
+      top: 0;
+      height: 100vh;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+    .filter-sidebar.open { left: 0; }
+    .filter-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+    }
+    .filter-overlay.open { display: block; }
+    .filter-toggle { display: flex; align-items: center; justify-content: center; }
+    .main-content { padding: 0 12px; }
+    .page-layout { display: block; }
+  }
+
+  @media (max-width: 640px) {
+    .activity-card { grid-template-columns: 32px 1fr; }
+    .activity-link { grid-column: 1 / -1; }
+    .activity-link a { width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="country-nav" id="countryNav">
+  <div class="country-nav__inner">
+    <span class="country-nav__label">Explore:</span>
+    <div class="country-nav__links">
+      <a href="showcase/index.html" class="country-nav__link country-nav__link--accent"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg> Home</a>
+      <a href="France_Verdon_CotedAzur_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h6v18H3V3zm12 0h6v18h-6V3zM9 3h6v18H9V3z" opacity="0.8"/></svg> France</a>
+      <a href="Germany_Bavaria_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L8.5 8.5 2 9.5l5 4.5L5.5 21 12 17.5 18.5 21 17 14l5-4.5-6.5-1L12 2z"/></svg> Germany</a>
+      <a href="Croatia_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20v4H2zm0 6h4v4H6v-2H4v4h4v-2h2v4H8v-2H4v4h20V10H2zm6 0h4v2h-2v2H8v-4zm6 0h4v2h-2v2h-2v-4z"/></svg> Croatia</a>
+      <a href="Sicily_Activities_2026.html" class="country-nav__link" style="border-bottom-color: #FF6B35; color: #fff;"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c3.31 0 6-2.69 6-6 0-4.96-4.49-9-10-9z"/></svg> Sicily</a>
+      <a href="Egypt_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 21h18L12 3 3 21zm9-3l-4.5-9h9L12 18z"/></svg> Egypt</a>
+      <a href="Austria_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z"/></svg> Austria</a>
+      <a href="Bulgaria_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 2.84L18 11v7h-2v-6H8v6H6v-7l6-5.16z"/></svg> Bulgaria</a>
+      <a href="Japan_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg> Japan</a>
+      <a href="Spain_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg> Spain</a>
+      <a href="CostaRica_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.71c.76.34 1.59.54 2.46.59L9 20c.5-4 4.17-8 9-8V8z"/></svg> Costa Rica</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" style="position:relative; overflow:hidden;">
+  <div class="hero__bg" style="position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1523365280197-f1783db9fe62?w=1920&q=80') center/cover no-repeat;"></div>
+  <div class="hero__overlay" style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,37,87,.75) 0%, rgba(15,37,87,.9) 100%);"></div>
+  <div style="position:relative; z-index:2;">
+  <h1>🇮🇹 Sicily — Family Activities Guide</h1>
+  <div class="subtitle">The Complete Family Activities Guide — Summer 2026</div>
+  <div class="count">🎯 62 Activities Found</div>
+  <div class="family">👨‍👩‍👧‍👦 2 Adults · Katie (17) · George (15) · Tom (8) &nbsp;|&nbsp; 29 Jul – 12 Aug 2026</div>
+  </div>
+</div>
+<!-- ═══ Weather Summary ═══ -->
+<div class="weather-section" style="background: linear-gradient(135deg, #f0f4ff 0%, #e8edf7 100%); padding: 2rem 0;">
+  <div style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
+    <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 16px; font-size: 1.2rem;">
+      ☀️ August Weather — What to Expect
+    </h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 12px;">
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">🌡️</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">30-35°C</div>
+        <div style="font-size: 0.75rem; color: #666;">Avg. High</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">🌙</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">22-25°C</div>
+        <div style="font-size: 0.75rem; color: #666;">Avg. Low</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">☀️</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">10-12</div>
+        <div style="font-size: 0.75rem; color: #666;">Sun hrs/day</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">🌧️</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">1-2 days</div>
+        <div style="font-size: 0.75rem; color: #666;">Rainy Days</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">🏊</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">27-28°C</div>
+        <div style="font-size: 0.75rem; color: #666;">Sea Temp</div>
+      </div>
+    </div>
+    <p style="font-size: 0.82rem; color: #555; line-height: 1.6; margin: 0;">
+      🔥 <strong>Scorching, dry, and very sunny.</strong> Sicily in August is seriously hot — inland areas can hit 40°C with sirocco winds from Africa. Coastal areas are more bearable with sea breezes. Rain is almost non-existent. The sea is bath-warm at 27-28°C. Schedule Mt Etna tours for early morning. Carry water everywhere and seek shade midday.
+    </p>
+  </div>
+</div>
+<!-- MOBILE FILTER TOGGLE -->
+<button class="filter-toggle" onclick="toggleFilters()" aria-label="Toggle filters">⚙️</button>
+<div class="filter-overlay" id="filterOverlay" onclick="toggleFilters()"></div>
+
+<div class="page-layout">
+
+<!-- FILTER SIDEBAR -->
+<aside class="filter-sidebar" id="filterSidebar">
+  <h3>Filters</h3>
+  <div class="filter-count">Showing <span id="visibleCount">62</span> of 62 activities</div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Area</div>
+    <label><input type="checkbox" data-filter="area" value="taormina"> 🌋 Taormina / East Coast</label>
+    <label><input type="checkbox" data-filter="area" value="catania"> 🏙️ Catania</label>
+    <label><input type="checkbox" data-filter="area" value="etna"> 🌋 Mount Etna</label>
+    <label><input type="checkbox" data-filter="area" value="syracuse"> 🏛️ Syracuse / Ortigia</label>
+    <label><input type="checkbox" data-filter="area" value="noto-ragusa"> 🏛️ Noto / Ragusa / Modica</label>
+    <label><input type="checkbox" data-filter="area" value="south-beaches"> 🏖️ South-East Beaches</label>
+    <label><input type="checkbox" data-filter="area" value="other"> 📍 Other</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Activity Type</div>
+    <label><input type="checkbox" data-filter="type" value="volcano"> 🌋 Volcano & Nature</label>
+    <label><input type="checkbox" data-filter="type" value="water"> 🌊 Water & Beaches</label>
+    <label><input type="checkbox" data-filter="type" value="adventure"> ⚡ Adventure</label>
+    <label><input type="checkbox" data-filter="type" value="culture"> 🏛️ Culture & History</label>
+    <label><input type="checkbox" data-filter="type" value="food"> 🍝 Food & Markets</label>
+    <label><input type="checkbox" data-filter="type" value="towns"> 🏘️ Towns & Villages</label>
+    <label><input type="checkbox" data-filter="type" value="scenic"> 🚂 Scenic & Transport</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Suitable for</div>
+    <label><input type="checkbox" data-filter="tom" value="yes"> ✅ Tom (8)</label>
+    <label><input type="checkbox" data-filter="teens" value="love"> ⭐ Teens love it</label>
+    <label><input type="checkbox" data-filter="family" value="yes"> 👨‍👩‍👧‍👦 Whole family</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Cost</div>
+    <label><input type="checkbox" data-filter="cost" value="free"> Free</label>
+    <label><input type="checkbox" data-filter="cost" value="budget"> Budget (under €25pp)</label>
+    <label><input type="checkbox" data-filter="cost" value="mid"> Mid-range (€25-60pp)</label>
+    <label><input type="checkbox" data-filter="cost" value="premium"> Premium (€60+pp)</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Special</div>
+    <label><input type="checkbox" data-filter="mustdo" value="true"> ⭐ Must-do highlights only</label>
+  </div>
+
+  <button class="clear-filters" onclick="clearFilters()">Clear all filters</button>
+</aside>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+<div class="container">
+
+<!-- TOP 10 -->
+<div class="top10">
+  <h2>⭐ The Unmissable 10</h2>
+  <ol>
+    <li>🌋 <strong>Mount Etna Guided Volcano Tour</strong> — walk on Europe's highest active volcano at 2,900m</li>
+    <li>🌊 <strong>Alcantara Gorge Body Rafting</strong> — wade and swim through a volcanic basalt canyon</li>
+    <li>🏛️ <strong>Taormina Greek Theatre</strong> — 2,300-year-old theatre with Etna as the backdrop</li>
+    <li>🏖️ <strong>Isola Bella Beach & Snorkelling</strong> — iconic turquoise cove reached by cable car</li>
+    <li>🏛️ <strong>Syracuse Ortigia Evening</strong> — dinner by the sea in one of the ancient world's greatest cities</li>
+    <li>🍧 <strong>Caffè Sicilia Granita + Cannoli</strong> — the most famous café in Sicily, Noto</li>
+    <li>🏖️ <strong>Calamosche Hidden Cove</strong> — breathtaking secret beach inside a nature reserve</li>
+    <li>🍫 <strong>Modica Chocolate Factory</strong> — taste ancient Aztec-recipe chocolate, unlike anything else</li>
+    <li>🌅 <strong>Etna Sunset Tour</strong> — watch the sun set from 2,500m over the Ionian Sea</li>
+    <li>🐟 <strong>Marzamemi Fishing Village</strong> — eat seafood in Sicily's most photogenic piazza</li>
+  </ol>
+</div>
+
+<!-- SUMMARY STATS -->
+<div class="summary-grid">
+  <div class="summary-card"><div class="big-num">62</div><div class="label">Total Activities</div></div>
+  <div class="summary-card"><div class="big-num">9</div><div class="label">Volcano & Nature</div></div>
+  <div class="summary-card"><div class="big-num">13</div><div class="label">Water & Beaches</div></div>
+  <div class="summary-card"><div class="big-num">6</div><div class="label">Adventure</div></div>
+  <div class="summary-card"><div class="big-num">12</div><div class="label">Culture & History</div></div>
+  <div class="summary-card"><div class="big-num">12</div><div class="label">Food & Markets</div></div>
+  <div class="summary-card"><div class="big-num">6</div><div class="label">Towns & Villages</div></div>
+  <div class="summary-card"><div class="big-num">4</div><div class="label">Scenic & Transport</div></div>
+</div>
+
+<!-- ═══ Dynamic Activity Map ═══ -->
+<div style="margin: 2rem auto; max-width: 1100px; padding: 0 20px;">
+  <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 4px; font-size: 1.3rem;">📍 Activity Map</h3>
+  <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">
+    <span id="map-count">62 activities shown</span> — 
+    <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#FF6B35;vertical-align:middle;"></span> Must-do
+    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#1B3C8F;vertical-align:middle;margin-left:8px;"></span> Other activities.
+    Use the filters to narrow down.
+    <label style="display:inline-flex;align-items:center;gap:4px;margin-left:12px;font-size:0.85rem;color:#2d9a2d;cursor:pointer;">
+      <input type="checkbox" id="accom-toggle" checked onchange="toggleAccom(this.checked)" style="accent-color:#2d9a2d;"> &#127965; Accommodation
+    </label>
+  </p>
+  <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.12); border: 2px solid #1B3C8F;">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <div id="mustdo-map" style="width:100%; height:500px;"></div>
+    <div style="padding: 12px 16px; background: #f8f9fa; max-height: 350px; overflow-y: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: 'Inter', sans-serif;">
+        <thead>
+          <tr style="border-bottom: 2px solid #1B3C8F; color: #0F2557; position: sticky; top: 0; background: #f8f9fa;">
+            <th style="text-align: left; padding: 5px 8px; width: 40px;">#</th>
+            <th style="text-align: left; padding: 5px 8px;">Activity</th>
+            <th style="text-align: right; padding: 5px 8px; width: 140px;">Links</th>
+          </tr>
+        </thead>
+        <tbody id="map-table-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  window.activityMap = L.map('mustdo-map', {scrollWheelZoom: false}).setView([37.5, 14.9], 8);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; CARTO &copy; OSM', maxZoom: 18
+  }).addTo(window.activityMap);
+  window.activityMarkers = [];
+  document.querySelectorAll('.activity-card').forEach(function(card) {
+    var lat = parseFloat(card.dataset.lat);
+    var lng = parseFloat(card.dataset.lng);
+    if (!lat || !lng) { window.activityMarkers.push(null); return; }
+    var num = card.dataset.num || '';
+    var isMustDo = card.dataset.mustdo === 'true';
+    var title = card.querySelector('h4') ? card.querySelector('h4').textContent.trim() : '';
+    var desc = card.querySelector('.activity-desc');
+    var descText = desc ? desc.textContent.trim().substring(0, 100) + '...' : '';
+    var size = isMustDo ? 28 : 22;
+    var bg = isMustDo ? '#FF6B35' : '#1B3C8F';
+    var fs = isMustDo ? '12px' : '10px';
+    var icon = L.divIcon({
+      className: '',
+      html: '<div style="background:'+bg+';color:#fff;width:'+size+'px;height:'+size+'px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:'+fs+';font-family:sans-serif;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;cursor:pointer;">'+num+'</div>',
+      iconSize: [size, size], iconAnchor: [size/2, size/2]
+    });
+    var marker = L.marker([lat, lng], {icon: icon})
+      .bindPopup('<div style="min-width:180px;"><b style="color:#0F2557;">' + (isMustDo ? '⭐ ' : '') + title + '</b><br><span style="color:#555;font-size:0.85rem;">' + descText + '</span></div>');
+    marker.addTo(window.activityMap);
+    window.activityMarkers.push(marker);
+  });
+  if (typeof updateMap === 'function') updateMap();
+})();
+</script>
+<!-- ===== WEEK 1: TAORMINA / EAST COAST ===== -->
+<div class="section-header verdon" data-section="east">
+  <div class="icon">🌋</div>
+  <h2>Week 1: Taormina & East Coast</h2>
+  <p>Mount Etna, Alcantara Gorge, Taormina hilltop town, boat trips & beaches</p>
+</div>
+
+<div class="verdon-section" data-section-wrap="east">
+
+<!-- VOLCANO & NATURE -->
+<div class="category-header" data-cat-type="volcano" data-cat-week="east">
+  <span class="cat-icon">🌋</span>
+  <h3>Volcano & Nature</h3>
+  <span class="cat-count">9 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="etna" data-type="volcano" data-tom="yes" data-teens="love" data-cost="premium" data-num="1" data-lat="37.7510" data-lng="14.9934" data-mustdo="true">
+  <div class="activity-num">1</div>
+  <div class="activity-content">
+    <h4><a href="https://www.etnapeople.com/en/top-easy/" target="_blank">Mount Etna Guided Tour — "Top Easy" (Cable Car + 4×4)</a></h4>
+    <div class="activity-desc">THE highlight. Cable car to 2,500m, then 4×4 to ~2,900m with guided walk on lava fields, craters and steam vents. Europe's highest active volcano. George will be mind-blown, Katie gets the Instagram shots, Tom will tell the story for years.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (with encouragement)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">~€89pp</span>
+      <span class="tag cost-premium">€60+pp</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.etnapeople.com/en/top-easy/" target="_blank">Book →</a></div>
+</div>
+
+<div class="activity-card highlight" data-area="etna" data-type="volcano" data-tom="yes" data-teens="love" data-cost="premium" data-num="2" data-lat="37.7400" data-lng="15.0000" data-mustdo="true">
+  <div class="activity-num">2</div>
+  <div class="activity-content">
+    <h4><a href="https://www.viator.com/Sicily/d4862-ttd/c5-a64" target="_blank">Etna Sunset Tour</a></h4>
+    <div class="activity-desc">Magical evening tour — watch the sun set from 2,500m over the Ionian Sea. The sky turns crimson while steam rises from craters. An unforgettable family experience.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (moderate walk)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">~€89pp</span>
+      <span class="tag cost-premium">€60+pp</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.viator.com/Sicily/d4862-ttd/c5-a64" target="_blank">Book →</a></div>
+</div>
+
+<div class="activity-card" data-area="etna" data-type="volcano" data-tom="yes" data-teens="ok" data-cost="mid" data-num="3" data-lat="37.7600" data-lng="14.9800">
+  <div class="activity-num">3</div>
+  <div class="activity-content">
+    <h4><a href="https://www.viator.com/Sicily-attractions/Mount-Etna/d4862-a22011" target="_blank">Etna Cable Car (Funivia dell'Etna)</a></h4>
+    <div class="activity-desc">Take the cable car from Rifugio Sapienza (1,900m) to 2,500m. Can explore independently at the top or add a 4×4 + guide to go higher. Stunning volcanic landscape.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">~€35pp each way</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.funiviaetna.com/" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-area="etna" data-type="volcano" data-tom="yes" data-teens="ok" data-cost="budget" data-num="4" data-lat="37.8783" data-lng="15.1750">
+  <div class="activity-num">4</div>
+  <div class="activity-content">
+    <h4><a href="https://www.viator.com/Sicily/d4862-ttd/c5-a64" target="_blank">Etna Lava Cave Exploration</a></h4>
+    <div class="activity-desc">Explore lava tubes formed by ancient eruptions. Walk through underground tunnels with helmet and torch. Fascinating geology — the kids will feel like explorers.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">Often included in tour</span>
+      <span class="tag cost-budget">&lt; €25pp</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.etnapeople.com/en/" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-area="etna" data-type="volcano" data-tom="yes" data-teens="ok" data-cost="budget" data-num="5" data-lat="37.8523" data-lng="15.2920">
+  <div class="activity-num">5</div>
+  <div class="activity-content">
+    <h4>Etna Crateri Silvestri (Free Walk)</h4>
+    <div class="activity-desc">Free walk around the Silvestri craters at Rifugio Sapienza (1,900m). Easy, family-friendly loop on old lava. Great even without paying for cable car — Tom can scramble on the volcanic rocks.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Crateri+Silvestri/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card" data-area="etna" data-type="volcano" data-tom="yes" data-teens="ok" data-cost="budget" data-num="6" data-lat="37.8500" data-lng="15.3000">
+  <div class="activity-num">6</div>
+  <div class="activity-content">
+    <h4>Etna Wine Tasting (Etna DOC)</h4>
+    <div class="activity-desc">Visit a vineyard on Etna's slopes — volcanic soil produces exceptional wines. Adults taste Etna Rosso/Bianco, kids get fresh grape juice, local cheese and honey. Views are incredible.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (juice + snacks)</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">€15-30pp</span>
+      <span class="tag cost-budget">&lt; €25pp</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.viator.com/Sicily-tours/Wine-Tasting/d4862-g6-c949" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-area="etna" data-type="volcano" data-tom="yes" data-teens="love" data-cost="budget" data-num="7" data-lat="37.8480" data-lng="15.2850">
+  <div class="activity-num">7</div>
+  <div class="activity-content">
+    <h4>Etna Hiking — Valle del Bove</h4>
+    <div class="activity-desc">Spectacular desert-like valley created by a massive ancient collapse. Guided hike through black lava landscapes that look like another planet. Stunning photography opportunities.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">⚠️ Tom (longer walk)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€20-40pp guided</span>
+      <span class="tag cost-budget">&lt; €25pp</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.etnapeople.com/en/" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-area="taormina" data-type="volcano" data-tom="yes" data-teens="ok" data-cost="budget" data-num="8" data-lat="37.8510" data-lng="15.2880">
+  <div class="activity-num">8</div>
+  <div class="activity-content">
+    <h4><a href="https://www.viator.com/Sicily-attractions/Alcantara-Gorge/d4862-a22069" target="_blank">Alcantara Gorge — Wading & Swimming</a></h4>
+    <div class="activity-desc">Dramatic volcanic basalt canyon with freezing river water rushing through. Wade into the gorge — the water is COLD (Etna snowmelt) but thrilling! Tom can paddle at the entrance while Katie & George go deeper.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (entrance area)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€13 entry + lift</span>
+      <span class="tag cost-budget">&lt; €25pp</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.viator.com/Sicily-attractions/Alcantara-Gorge/d4862-a22069" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-area="south-beaches" data-type="volcano" data-tom="yes" data-teens="ok" data-cost="free" data-num="9" data-lat="37.8490" data-lng="15.2900">
+  <div class="activity-num">9</div>
+  <div class="activity-content">
+    <h4>Vendicari Nature Reserve — Flamingos & Wildlife</h4>
+    <div class="activity-desc">Protected coastal reserve with flamingos, herons and pristine beaches. Walk the nature trails, spot birds, then swim at one of the wild beaches. A totally different side of Sicily.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-south">🏖️ South-East</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Riserva+Naturale+di+Vendicari/" target="_blank">Map →</a></div>
+</div>
+
+<!-- ADVENTURE -->
+<div class="category-header" data-cat-type="adventure" data-cat-week="east">
+  <span class="cat-icon">⚡</span>
+  <h3>Adventure</h3>
+  <span class="cat-count">6 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="taormina" data-type="adventure" data-tom="no" data-teens="love" data-cost="mid" data-num="10" data-lat="37.8550" data-lng="15.2950" data-mustdo="true">
+  <div class="activity-num">10</div>
+  <div class="activity-content">
+    <h4><a href="https://www.viator.com/Sicily-tours/River-Rafting-Tubing/d4862-g15-c51" target="_blank">Alcantara Gorge — Body Rafting</a></h4>
+    <div class="activity-desc">Guided body rafting through the gorge — slide down natural rock chutes, swim through narrow canyons, jump into pools. Wetsuits and helmets provided. Katie & George will LOVE this.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Tom (min age 10-12)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€40-55pp</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.viator.com/Sicily-tours/River-Rafting-Tubing/d4862-g15-c51" target="_blank">Book →</a></div>
+</div>
+
+<div class="activity-card" data-area="taormina" data-type="adventure" data-tom="no" data-teens="love" data-cost="mid" data-num="11" data-lat="37.8470" data-lng="15.2870">
+  <div class="activity-num">11</div>
+  <div class="activity-content">
+    <h4>Alcantara Gorge — Canyoning</h4>
+    <div class="activity-desc">Full canyoning experience with rope descents, jumps, swimming and scrambling through the volcanic gorge. More intense than body rafting. Epic for adventurous teens.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Tom (min age 12+)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€50-70pp</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.viator.com/Sicily-tours/Climbing/d4862-g15-c18" target="_blank">Book →</a></div>
+</div>
+
+<div class="activity-card" data-area="taormina" data-type="adventure" data-tom="yes" data-teens="love" data-cost="budget" data-num="12" data-lat="37.8530" data-lng="15.2860">
+  <div class="activity-num">12</div>
+  <div class="activity-content">
+    <h4>Snorkelling at Isola Bella</h4>
+    <div class="activity-desc">Crystal-clear water around the rocky island — colourful fish, sea urchins, and underwater caves. Rent masks/fins from the beach or bring your own. Perfect family snorkelling.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€5-10 gear rental</span>
+      <span class="tag cost-budget">&lt; €25pp</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Isola+Bella,+Taormina/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card" data-area="taormina" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="13" data-lat="37.5025" data-lng="15.0870">
+  <div class="activity-num">13</div>
+  <div class="activity-content">
+    <h4><a href="https://www.viator.com/Taormina-tours/Sailing/d4378-g6-c62" target="_blank">Boat Trip from Giardini Naxos</a></h4>
+    <div class="activity-desc">Half-day boat tour exploring hidden coves, Grotta Azzurra (Blue Grotto), swim stops in turquoise water. Some tours include snorkelling gear and aperitivo on board.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€30-50pp</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.viator.com/Taormina-tours/Sailing/d4378-g6-c62" target="_blank">Book →</a></div>
+</div>
+
+<div class="activity-card" data-area="taormina" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="14" data-lat="37.5020" data-lng="15.0900">
+  <div class="activity-num">14</div>
+  <div class="activity-content">
+    <h4>Dive / Discover Scuba at Isola Bella</h4>
+    <div class="activity-desc">Try scuba diving with a "Discover Scuba" session — no certification needed. Guided shallow dive in crystal-clear water. Katie & George can go while Tom snorkels with a parent.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Tom (min age 10)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€50-70pp</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.viator.com/Taormina-tours/Scuba-Diving/d4378-g6-c72" target="_blank">Book →</a></div>
+</div>
+
+<div class="activity-card" data-area="taormina" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="15" data-lat="37.5050" data-lng="15.0850">
+  <div class="activity-num">15</div>
+  <div class="activity-content">
+    <h4>Kayak Tour — Taormina Coast</h4>
+    <div class="activity-desc">Guided sea kayaking along the dramatic Taormina coastline. Paddle past sea caves, hidden beaches and rocky arches. Swim stops included. Morning or sunset tours available.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (tandem with parent)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€30-45pp</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.viator.com/Taormina-tours/Kayaking/d4378-g6-c43" target="_blank">Book →</a></div>
+</div>
+
+
+<!-- WATER & BEACHES (EAST) -->
+<div class="category-header" data-cat-type="water" data-cat-week="east">
+  <span class="cat-icon">🏖️</span>
+  <h3>Water & Beaches</h3>
+  <span class="cat-count">7 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="taormina" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="16" data-lat="37.5000" data-lng="15.0880" data-mustdo="true">
+  <div class="activity-num">16</div>
+  <div class="activity-content">
+    <h4>Isola Bella Beach & Cable Car</h4>
+    <div class="activity-desc">Sicily's most iconic beach — a tiny island connected to shore by a sand strip. Crystal-clear turquoise swimming. Take the cable car down from Taormina (Tom will love the ride!). Snorkelling is excellent.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€3 cable car + beach free</span>
+      <span class="tag cost-budget">&lt; €25pp</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Isola+Bella,+Taormina/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card" data-area="taormina" data-type="water" data-tom="yes" data-teens="ok" data-cost="free" data-num="17" data-lat="37.0758" data-lng="15.2783">
+  <div class="activity-num">17</div>
+  <div class="activity-content">
+    <h4>Giardini Naxos Beach</h4>
+    <div class="activity-desc">Long sandy beach below Taormina — all facilities, waterfront restaurants, shallow water. Perfect for lazy family days. Evening promenade is lovely.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">Free (lido ~€15)</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Giardini+Naxos/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card" data-area="taormina" data-type="water" data-tom="yes" data-teens="ok" data-cost="free" data-num="18" data-lat="37.0600" data-lng="15.2930">
+  <div class="activity-num">18</div>
+  <div class="activity-content">
+    <h4>Letojanni Beach</h4>
+    <div class="activity-desc">Quieter pebble/sand beach just north of Taormina. Less crowded than Giardini Naxos, good for families. Several beachfront restaurants for lunch.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Letojanni/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card" data-area="taormina" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="19" data-lat="37.0620" data-lng="15.2950">
+  <div class="activity-num">19</div>
+  <div class="activity-content">
+    <h4>Mazzarò Beach</h4>
+    <div class="activity-desc">Beautiful pebble beach with crystal-clear water, accessible by cable car from Taormina. More upmarket feel, excellent snorkelling. Less crowded in the morning.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€3 cable car</span>
+      <span class="tag cost-budget">&lt; €25pp</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Mazzar%C3%B2/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card" data-area="taormina" data-type="water" data-tom="yes" data-teens="ok" data-cost="budget" data-num="20" data-lat="37.0580" data-lng="15.2940">
+  <div class="activity-num">20</div>
+  <div class="activity-content">
+    <h4>Giardini Naxos — Sunset Aperitivo on the Beach</h4>
+    <div class="activity-desc">Watch the sunset over Etna from a beach bar in Giardini Naxos. Spritz for the adults, juice for Tom, incredible views. The perfect way to end a day.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">€5-10 drinks</span>
+      <span class="tag cost-budget">&lt; €25pp</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Giardini+Naxos/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card" data-area="taormina" data-type="water" data-tom="yes" data-teens="ok" data-cost="mid" data-num="21" data-lat="36.8300" data-lng="15.1000">
+  <div class="activity-num">21</div>
+  <div class="activity-content">
+    <h4>Boat Hire — Self-Drive from Giardini Naxos</h4>
+    <div class="activity-desc">Hire a small boat (no licence needed for under 40HP) and explore the coast independently. Find your own secret coves, swim wherever you like. Half-day or full day.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€80-150 half day</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.viator.com/Taormina-tours/Sailing/d4378-g6-c62" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-area="taormina" data-type="water" data-tom="yes" data-teens="ok" data-cost="free" data-num="22" data-lat="36.8917" data-lng="15.0700">
+  <div class="activity-num">22</div>
+  <div class="activity-content">
+    <h4>Rock Jumping at Isola Bella</h4>
+    <div class="activity-desc">Natural rock platforms at Isola Bella for jumping into deep clear water. Various heights from gentle to thrilling. Katie and George will compete for the highest jump.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">⚠️ Tom (low rocks only)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Isola+Bella,+Taormina/" target="_blank">Map →</a></div>
+</div>
+
+
+<!-- CULTURE & HISTORY (EAST) -->
+<div class="category-header" data-cat-type="culture" data-cat-week="east">
+  <span class="cat-icon">🏛️</span>
+  <h3>Culture & History</h3>
+  <span class="cat-count">5 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="taormina" data-type="culture" data-tom="yes" data-teens="love" data-cost="budget" data-num="23" data-lat="36.7467" data-lng="15.1167" data-mustdo="true">
+  <div class="activity-num">23</div>
+  <div class="activity-content">
+    <h4><a href="https://www.viator.com/Sicily-attractions/Ancient-Theatre-of-Taormina/d4862-a22068" target="_blank">Taormina Greek Theatre (Teatro Antico)</a></h4>
+    <div class="activity-desc">2,300-year-old Greek/Roman theatre with Mount Etna as its backdrop and the sea below. One of the most dramatically sited ancient theatres in the world. Check for summer performances!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€10 adults</span>
+      <span class="tag cost-budget">&lt; €25pp</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.viator.com/Sicily-attractions/Ancient-Theatre-of-Taormina/d4862-a22068" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-area="taormina" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="24" data-lat="36.8600" data-lng="14.7600">
+  <div class="activity-num">24</div>
+  <div class="activity-content">
+    <h4>Taormina — Corso Umberto Evening Stroll</h4>
+    <div class="activity-desc">Taormina's stunning main street — boutiques, cafés, gelato, spectacular viewpoints. Visit in the evening when it's cooler, lit up, and the atmosphere is magical. Don't miss Piazza IX Aprile for the views.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (gelato motivation)</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">Free (gelato €3-4)</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Corso+Umberto+I,+Taormina/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card" data-area="taormina" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="25" data-lat="36.9300" data-lng="14.7400">
+  <div class="activity-num">25</div>
+  <div class="activity-content">
+    <h4>Taormina — Villa Comunale Gardens</h4>
+    <div class="activity-desc">Beautiful terraced gardens with panoramic views over the coast and Etna. Shady paths, exotic plants, quirky Victorian follies. Peaceful escape from the Corso Umberto crowds. Free entry.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Villa+Comunale+Taormina/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card" data-area="taormina" data-type="culture" data-tom="yes" data-teens="ok" data-cost="budget" data-num="26" data-lat="36.6900" data-lng="15.1300">
+  <div class="activity-num">26</div>
+  <div class="activity-content">
+    <h4>Taormina Cable Car (Funivia)</h4>
+    <div class="activity-desc">Short cable car ride connecting Taormina hilltop with the beaches below (Mazzarò / Isola Bella). Saves the steep walk and gives amazing aerial views. Tom will ride it repeatedly.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">€3 each way</span>
+      <span class="tag cost-budget">&lt; €25pp</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Funivia+Taormina/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card" data-area="taormina" data-type="culture" data-tom="yes" data-teens="ok" data-cost="budget" data-num="27" data-lat="37.8680" data-lng="15.2980">
+  <div class="activity-num">27</div>
+  <div class="activity-content">
+    <h4>Giardini Naxos Archaeological Museum</h4>
+    <div class="activity-desc">Small museum on the site of the first Greek colony in Sicily (734 BC). Good for a rainy hour — ancient artefacts from the original settlement. Gives context to all the Greek ruins you'll see.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom (quick visit)</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">€4-6</span>
+      <span class="tag cost-budget">&lt; €25pp</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Museo+Archeologico+di+Naxos/" target="_blank">Map →</a></div>
+</div>
+
+
+<!-- FOOD (EAST) -->
+<div class="category-header" data-cat-type="food" data-cat-week="east">
+  <span class="cat-icon">🍝</span>
+  <h3>Food & Markets</h3>
+  <span class="cat-count">6 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="catania" data-type="food" data-tom="yes" data-teens="love" data-cost="free" data-num="28" data-lat="37.5020" data-lng="15.1000" data-mustdo="true">
+  <div class="activity-num">28</div>
+  <div class="activity-content">
+    <h4><a href="https://www.google.com/maps/place/La+Pescheria,+Catania/" target="_blank">La Pescheria Fish Market, Catania</a></h4>
+    <div class="activity-desc">One of Europe's most famous markets — a riot of swordfish, tuna, octopus, shouting vendors and incredible atmosphere. Go in the morning. Even if you don't buy anything, it's an unforgettable experience.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">Free to browse</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/La+Pescheria,+Catania/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card" data-area="catania" data-type="food" data-tom="yes" data-teens="love" data-cost="budget" data-num="29" data-lat="37.5050" data-lng="15.1040">
+  <div class="activity-num">29</div>
+  <div class="activity-content">
+    <h4>Catania Street Food Tour — Arancini, Cipollina & More</h4>
+    <div class="activity-desc">Catania is Sicily's street food capital. Hunt down the best arancini (€2-3 each — ricotta, ragù, pistachio), cipollina (onion pastry), cartocciate. Every corner has something amazing. Self-guided or with a food tour.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€10-15pp to eat loads</span>
+      <span class="tag cost-budget">&lt; €25pp</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.viator.com/Catania-tours/Food-Tours/d4377-g6-c1" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-area="catania" data-type="food" data-tom="yes" data-teens="ok" data-cost="budget" data-num="30" data-lat="37.5080" data-lng="15.0880">
+  <div class="activity-num">30</div>
+  <div class="activity-content">
+    <h4>Granita + Brioche Breakfast</h4>
+    <div class="activity-desc">THE Sicilian breakfast — flavoured slushy ice (almond, pistachio, lemon, coffee) served with a warm sweet brioche bun. Have it at a café every morning. Absolutely addictive. Tom will go for strawberry!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">€5-6</span>
+      <span class="tag cost-budget">&lt; €25pp</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/search?q=best+granita+catania+sicily" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-area="taormina" data-type="food" data-tom="yes" data-teens="love" data-cost="budget" data-num="31" data-lat="37.8590" data-lng="15.2940">
+  <div class="activity-num">31</div>
+  <div class="activity-content">
+    <h4>Gelato Tour — Taormina & Catania</h4>
+    <div class="activity-desc">Sicilian gelato is legendary. Try pistachio (from Bronte, on Etna's slopes), cassata, ricotta & fig, cannoli-flavoured. Rate them across multiple gelaterias. Tom's favourite activity, guaranteed.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€2-4 per gelato</span>
+      <span class="tag cost-budget">&lt; €25pp</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/search?q=best+gelato+taormina" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-area="catania" data-type="food" data-tom="yes" data-teens="ok" data-cost="budget" data-num="32" data-lat="37.5140" data-lng="15.0960">
+  <div class="activity-num">32</div>
+  <div class="activity-content">
+    <h4>Pasta alla Norma in Catania</h4>
+    <div class="activity-desc">This classic pasta dish was INVENTED in Catania — aubergine, tomato, ricotta salata, basil. Eat it where it was born. Best at simple trattorie near the fish market. Life-changingly good.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">€8-12</span>
+      <span class="tag cost-budget">&lt; €25pp</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/search?q=best+pasta+alla+norma+catania" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-area="taormina" data-type="food" data-tom="yes" data-teens="ok" data-cost="budget" data-num="33" data-lat="37.8650" data-lng="15.3020">
+  <div class="activity-num">33</div>
+  <div class="activity-content">
+    <h4>Cannoli Tasting — Fresh-Filled Only!</h4>
+    <div class="activity-desc">The rules: NEVER eat a pre-filled cannolo. Find a bar that fills them fresh to order — crispy shell, sweet ricotta, candied fruit or pistachio ends. Night and day difference. Available everywhere.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">€3-4 each</span>
+      <span class="tag cost-budget">&lt; €25pp</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/search?q=best+cannoli+sicily" target="_blank">Info →</a></div>
+</div>
+
+
+<!-- TOWNS & SIGHTSEEING (EAST) -->
+<div class="category-header" data-cat-type="towns" data-cat-week="east">
+  <span class="cat-icon">🏙️</span>
+  <h3>Towns & Sightseeing</h3>
+  <span class="cat-count">3 activities</span>
+</div>
+
+<div class="activity-card" data-area="catania" data-type="towns" data-tom="yes" data-teens="ok" data-cost="free" data-num="34" data-lat="37.5200" data-lng="15.1040">
+  <div class="activity-num">34</div>
+  <div class="activity-content">
+    <h4>Catania — Piazza del Duomo & Elephant Fountain</h4>
+    <div class="activity-desc">Catania's baroque heart — the famous elephant fountain (Fontana dell'Elefante), the cathedral built from Etna lava stone. Vibrant square, great for people-watching. Via Etnea stretches north with Etna views.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Piazza+del+Duomo,+Catania/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card" data-area="catania" data-type="towns" data-tom="yes" data-teens="love" data-cost="free" data-num="35" data-lat="37.5020" data-lng="15.0880">
+  <div class="activity-num">35</div>
+  <div class="activity-content">
+    <h4>Via Etnea Shopping & Stroll</h4>
+    <div class="activity-desc">Catania's main shopping street — runs straight as an arrow towards Etna. Mix of high street shops, cafés, street performers. The volcano framed at the end of the street is surreal. Evening is best.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens (shopping)</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Via+Etnea,+Catania/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card" data-area="catania" data-type="towns" data-tom="yes" data-teens="ok" data-cost="budget" data-num="36" data-lat="37.5050" data-lng="15.0920">
+  <div class="activity-num">36</div>
+  <div class="activity-content">
+    <h4>Catania — Roman Amphitheatre & Underground</h4>
+    <div class="activity-desc">Hidden beneath Piazza Stesicoro, a Roman amphitheatre that once held 15,000 spectators. Parts are visible from street level, or take a guided underground tour. Fascinating layers of history.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">€6-8</span>
+      <span class="tag cost-budget">&lt; €25pp</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Anfiteatro+Romano+di+Catania/" target="_blank">Map →</a></div>
+</div>
+
+
+<!-- SCENIC & TRANSPORT -->
+<div class="category-header" data-cat-type="scenic" data-cat-week="east">
+  <span class="cat-icon">🚂</span>
+  <h3>Scenic & Transport</h3>
+  <span class="cat-count">2 activities</span>
+</div>
+
+<div class="activity-card" data-area="etna" data-type="scenic" data-tom="yes" data-teens="ok" data-cost="budget" data-num="37" data-lat="37.7560" data-lng="14.9980">
+  <div class="activity-num">37</div>
+  <div class="activity-content">
+    <h4><a href="https://www.circumetnea.it/" target="_blank">Circumetnea Railway 🚂</a></h4>
+    <div class="activity-desc">Historic narrow-gauge railway circling the base of Etna — Catania Borgo → Riposto (~3hrs). Pass through lava fields, vineyards, pistachio orchards and small villages. Tom will LOVE the train. Very cheap — regular fares.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">~€5-8pp</span>
+      <span class="tag cost-budget">&lt; €25pp</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.circumetnea.it/" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-area="etna" data-type="scenic" data-tom="yes" data-teens="ok" data-cost="free" data-num="38" data-lat="37.7590" data-lng="15.0020">
+  <div class="activity-num">38</div>
+  <div class="activity-content">
+    <h4>Scenic Drive up Etna — Rifugio Sapienza</h4>
+    <div class="activity-desc">Drive the winding SP92 road up to 1,900m — the landscape transforms from citrus groves to pine forest to black volcanic desert. Stop at viewpoints along the way. Free car park at the top.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">Free (+ fuel)</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-east">🌋 East Coast</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Rifugio+Sapienza/" target="_blank">Map →</a></div>
+</div>
+
+</div><!-- end east section -->
+
+
+<!-- ===== WEEK 2: SOUTH-EAST SICILY ===== -->
+<div class="section-header azur" data-section="south">
+  <div class="icon">🏖️</div>
+  <h2>Week 2: South-East Sicily</h2>
+  <p>UNESCO baroque towns, Sicily's best beaches, ancient Greek ruins & incredible seafood</p>
+</div>
+
+<div class="azur-section" data-section-wrap="south">
+
+<!-- CULTURE & HISTORY (SOUTH) -->
+<div class="category-header" data-cat-type="culture" data-cat-week="south">
+  <span class="cat-icon">🏛️</span>
+  <h3>Culture & History</h3>
+  <span class="cat-count">7 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="syracuse" data-type="culture" data-tom="yes" data-teens="love" data-cost="budget" data-num="39" data-lat="37.0770" data-lng="15.3060" data-mustdo="true">
+  <div class="activity-num azur-num">39</div>
+  <div class="activity-content">
+    <h4><a href="https://www.viator.com/Syracuse-tours/Archaeology/d4862-g6-c957" target="_blank">Syracuse — Neapolis Archaeological Park</a></h4>
+    <div class="activity-desc">One of the ancient world's greatest cities. Greek Theatre (still hosts summer performances!), the Ear of Dionysius (enormous cave with incredible acoustics — shout and be amazed), Roman Amphitheatre.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐ (the cave!)</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€16 adults, kids discounted</span>
+      <span class="tag cost-budget">&lt; €25pp</span>
+      <span class="tag week-south">🏖️ South-East</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.viator.com/Syracuse-tours/Archaeology/d4862-g6-c957" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card highlight" data-area="syracuse" data-type="culture" data-tom="yes" data-teens="love" data-cost="free" data-num="40" data-lat="37.0800" data-lng="15.2900" data-mustdo="true">
+  <div class="activity-num azur-num">40</div>
+  <div class="activity-content">
+    <h4>Evening in Ortigia — Dinner by the Sea</h4>
+    <div class="activity-desc">Ortigia island old town is absolute magic at night — wander baroque streets, find a waterfront restaurant, eat fresh seafood, gelato afterwards, listen to buskers. THE evening experience of the holiday.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">Free to wander (dinner €15-25pp)</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-south">🏖️ South-East</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Ortigia,+Syracuse/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card" data-area="syracuse" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="41" data-lat="37.0830" data-lng="15.2940">
+  <div class="activity-num azur-num">41</div>
+  <div class="activity-content">
+    <h4>Ortigia — Piazza Duomo & Temple of Athena</h4>
+    <div class="activity-desc">Breathtaking baroque square — the cathedral was literally built INTO a 5th-century BC Greek temple. You can still see the original Doric columns embedded in the walls. Mind-blowing history.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">Free (cathedral €2)</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-south">🏖️ South-East</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Piazza+Duomo,+Syracuse/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card" data-area="syracuse" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="42" data-lat="37.0650" data-lng="15.2980">
+  <div class="activity-num azur-num">42</div>
+  <div class="activity-content">
+    <h4>Fonte Aretusa — Freshwater Spring</h4>
+    <div class="activity-desc">Ancient freshwater spring with papyrus plants, right by the sea in Ortigia. One of the few places in Europe where papyrus grows wild. Mythology says the nymph Arethusa was turned into this spring.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-south">🏖️ South-East</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Fonte+Aretusa/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card" data-area="syracuse" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="43" data-lat="37.0680" data-lng="15.3020">
+  <div class="activity-num azur-num">43</div>
+  <div class="activity-content">
+    <h4>Ortigia — Temple of Apollo</h4>
+    <div class="activity-desc">Ruins of the oldest Doric temple in Sicily (6th century BC), right in the centre of Ortigia. Free to see from the street. A powerful reminder that Syracuse was once the most powerful city in the Greek world.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-south">🏖️ South-East</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Tempio+di+Apollo/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card" data-area="syracuse" data-type="culture" data-tom="yes" data-teens="ok" data-cost="budget" data-num="44" data-lat="37.0710" data-lng="15.3060">
+  <div class="activity-num azur-num">44</div>
+  <div class="activity-content">
+    <h4>Ortigia — Boat Tour Around the Island</h4>
+    <div class="activity-desc">Short boat trip around Ortigia island — see the sea caves, Castello Maniace, the waterfront from the water. Often includes a swim stop. Different perspective on this incredible island.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">€15-25pp</span>
+      <span class="tag cost-budget">&lt; €25pp</span>
+      <span class="tag week-south">🏖️ South-East</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.viator.com/Syracuse-tours/Sailing/d22462-g6-c62" target="_blank">Book →</a></div>
+</div>
+
+<div class="activity-card" data-area="syracuse" data-type="culture" data-tom="yes" data-teens="ok" data-cost="budget" data-num="45" data-lat="37.0740" data-lng="15.2900">
+  <div class="activity-num azur-num">45</div>
+  <div class="activity-content">
+    <h4>Ortigia — Puppet Theatre (Opera dei Pupi)</h4>
+    <div class="activity-desc">Traditional Sicilian puppet shows — UNESCO Intangible Heritage. Marionettes act out stories of knights, battles and Saracen invasions. Unique cultural experience, performances in summer.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">€8-12</span>
+      <span class="tag cost-budget">&lt; €25pp</span>
+      <span class="tag week-south">🏖️ South-East</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/search?q=opera+dei+pupi+syracuse+sicily" target="_blank">Info →</a></div>
+</div>
+
+
+<!-- BEACHES (SOUTH) -->
+<div class="category-header" data-cat-type="water" data-cat-week="south">
+  <span class="cat-icon">🏖️</span>
+  <h3>Beaches</h3>
+  <span class="cat-count">6 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="south-beaches" data-type="water" data-tom="yes" data-teens="love" data-cost="free" data-num="46" data-lat="37.5300" data-lng="14.9360" data-mustdo="true">
+  <div class="activity-num azur-num">46</div>
+  <div class="activity-content">
+    <h4>Calamosche Beach — Hidden Cove</h4>
+    <div class="activity-desc">Breathtaking hidden cove inside the Vendicari nature reserve. Short walk through Mediterranean scrubland to reach it. Sheltered, crystal-clear, feels completely wild. One of Sicily's most beautiful beaches.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-south">🏖️ South-East</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Spiaggia+di+Calamosche/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card" data-area="south-beaches" data-type="water" data-tom="yes" data-teens="ok" data-cost="free" data-num="47" data-lat="37.5350" data-lng="14.9420">
+  <div class="activity-num azur-num">47</div>
+  <div class="activity-content">
+    <h4>Fontane Bianche Beach</h4>
+    <div class="activity-desc">White sand, turquoise water, shallow for ages — Tom's paradise. Just 8km south of Syracuse. All facilities, beach bars, restaurants. Perfect for lazy full beach days.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">Free (lido ~€15)</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-south">🏖️ South-East</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Fontane+Bianche/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card" data-area="south-beaches" data-type="water" data-tom="yes" data-teens="love" data-cost="free" data-num="48" data-lat="37.5400" data-lng="14.9000">
+  <div class="activity-num azur-num">48</div>
+  <div class="activity-content">
+    <h4>San Lorenzo Beach (Marzamemi)</h4>
+    <div class="activity-desc">Stunning wild beach near Marzamemi — crystal-clear water, fine sand, feels remote and unspoilt. One of the best beaches in Sicily. Combine with a visit to Marzamemi village for lunch.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-south">🏖️ South-East</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Spiaggia+di+San+Lorenzo/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card" data-area="south-beaches" data-type="water" data-tom="yes" data-teens="love" data-cost="free" data-num="49" data-lat="37.5450" data-lng="14.9060">
+  <div class="activity-num azur-num">49</div>
+  <div class="activity-content">
+    <h4>Isola delle Correnti — Where Two Seas Meet</h4>
+    <div class="activity-desc">Sicily's southernmost point — a tiny island where the Ionian and Mediterranean seas collide. You can wade or swim to the island. Windy, wild, dramatic. Amazing for photos and a real "edge of the world" feeling.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-south">🏖️ South-East</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Isola+delle+Correnti/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card" data-area="south-beaches" data-type="water" data-tom="yes" data-teens="ok" data-cost="free" data-num="50" data-lat="37.5000" data-lng="14.9120">
+  <div class="activity-num azur-num">50</div>
+  <div class="activity-content">
+    <h4>Vendicari Beach</h4>
+    <div class="activity-desc">Wild, pristine beach inside the nature reserve. No facilities, no buildings — just sand, sea and nature. Sometimes spot flamingos from the beach! Bring water and snacks. True paradise.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-south">🏖️ South-East</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Riserva+Naturale+di+Vendicari/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card" data-area="south-beaches" data-type="water" data-tom="yes" data-teens="ok" data-cost="free" data-num="51" data-lat="37.5050" data-lng="14.9180">
+  <div class="activity-num azur-num">51</div>
+  <div class="activity-content">
+    <h4>Avola Beach</h4>
+    <div class="activity-desc">Long sandy beach between Syracuse and Noto. Good facilities, less touristy than Fontane Bianche. Famous for Nero d'Avola wine — the adults can enjoy a glass while the kids swim.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-south">🏖️ South-East</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Avola/" target="_blank">Map →</a></div>
+</div>
+
+
+<!-- TOWNS & VILLAGES (SOUTH) -->
+<div class="category-header" data-cat-type="towns" data-cat-week="south">
+  <span class="cat-icon">🏘️</span>
+  <h3>Towns & Villages</h3>
+  <span class="cat-count">3 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="noto-ragusa" data-type="towns" data-tom="yes" data-teens="ok" data-cost="free" data-num="52" data-lat="37.5100" data-lng="14.9240" data-mustdo="true">
+  <div class="activity-num azur-num">52</div>
+  <div class="activity-content">
+    <h4>Noto — UNESCO Baroque Masterpiece</h4>
+    <div class="activity-desc">"The most beautiful baroque town in Europe." Every building is golden limestone, rebuilt after a 1693 earthquake. Walk Corso Vittorio Emanuele — jaw-droppingly beautiful. Visit in evening for golden hour light.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">Free to wander</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-south">🏖️ South-East</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Noto/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card" data-area="noto-ragusa" data-type="towns" data-tom="yes" data-teens="ok" data-cost="free" data-num="53" data-lat="37.5150" data-lng="14.9300">
+  <div class="activity-num azur-num">53</div>
+  <div class="activity-content">
+    <h4>Ragusa Ibla — Baroque Hilltop Town</h4>
+    <div class="activity-desc">Another UNESCO baroque gem perched on a hilltop. Quieter than Noto, incredibly atmospheric. The "other Ragusa" connected by dramatic stairways. Filming location for Inspector Montalbano — George may know it!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-south">🏖️ South-East</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Ragusa+Ibla/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card highlight" data-area="other" data-type="towns" data-tom="yes" data-teens="ok" data-cost="free" data-num="54" data-lat="37.5200" data-lng="14.9360" data-mustdo="true">
+  <div class="activity-num azur-num">54</div>
+  <div class="activity-content">
+    <h4>Marzamemi Fishing Village</h4>
+    <div class="activity-desc">Tiny, photogenic fishing village — a piazza right on the sea, old tonnara (tuna fishery), colourful boats. One of Sicily's most charming villages. Have a long seafood lunch here and soak it in.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">Free to visit (lunch €12-20pp)</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-south">🏖️ South-East</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Marzamemi/" target="_blank">Map →</a></div>
+</div>
+
+
+<!-- FOOD (SOUTH) -->
+<div class="category-header" data-cat-type="food" data-cat-week="south">
+  <span class="cat-icon">🍝</span>
+  <h3>Food & Markets</h3>
+  <span class="cat-count">6 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="noto-ragusa" data-type="food" data-tom="yes" data-teens="love" data-cost="budget" data-num="55" data-lat="37.5250" data-lng="14.9420" data-mustdo="true">
+  <div class="activity-num azur-num">55</div>
+  <div class="activity-content">
+    <h4><a href="https://www.google.com/maps/place/Caff%C3%A8+Sicilia,+Noto/" target="_blank">Caffè Sicilia — Granita + Cannoli in Noto</a></h4>
+    <div class="activity-desc">Sicily's most famous café — Corrado Assenza is a pastry legend. Almond granita with brioche, fresh cannoli, cassata. Anthony Bourdain called it the best breakfast in Italy. Queue if you must — it's worth it.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€5-8</span>
+      <span class="tag cost-budget">&lt; €25pp</span>
+      <span class="tag week-south">🏖️ South-East</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Caff%C3%A8+Sicilia,+Noto/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card highlight" data-area="noto-ragusa" data-type="food" data-tom="yes" data-teens="love" data-cost="budget" data-num="56" data-lat="37.5300" data-lng="14.9000" data-mustdo="true">
+  <div class="activity-num azur-num">56</div>
+  <div class="activity-content">
+    <h4>Modica Chocolate Factory Visit</h4>
+    <div class="activity-desc">Ancient Aztec-recipe chocolate — grainy, intense, completely unique. Visit Antica Dolceria Bonajuto (est. 1880) or similar. Taste unusual flavours: chilli, vanilla, cinnamon, citrus. Katie will love it. George will eat his weight in it.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€5-8 per bar, tastings often free</span>
+      <span class="tag cost-budget">&lt; €25pp</span>
+      <span class="tag week-south">🏖️ South-East</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.bonajuto.it/" target="_blank">Info →</a></div>
+</div>
+
+<div class="activity-card" data-area="other" data-type="food" data-tom="yes" data-teens="ok" data-cost="budget" data-num="57" data-lat="37.5350" data-lng="14.9060">
+  <div class="activity-num azur-num">57</div>
+  <div class="activity-content">
+    <h4>Marzamemi — Fresh Seafood Lunch</h4>
+    <div class="activity-desc">Eat at one of the restaurants on Marzamemi's piazza — grilled swordfish, tuna tartare, pasta with sea urchin, fresh prawns. Some of the best seafood in Sicily, right by the water.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">€12-20pp</span>
+      <span class="tag cost-budget">&lt; €25pp</span>
+      <span class="tag week-south">🏖️ South-East</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Marzamemi/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card" data-area="syracuse" data-type="food" data-tom="yes" data-teens="ok" data-cost="budget" data-num="58" data-lat="37.0710" data-lng="15.3020">
+  <div class="activity-num azur-num">58</div>
+  <div class="activity-content">
+    <h4>Ortigia Market (Mercato di Ortigia)</h4>
+    <div class="activity-desc">Daily morning market on Ortigia — fresh fish, olives, sundried tomatoes, cheeses, pistachios, lemons. Buy picnic supplies or just enjoy the colourful, fragrant chaos. Smaller than Catania's but equally atmospheric.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">Free to browse</span>
+      <span class="tag cost-budget">&lt; €25pp</span>
+      <span class="tag week-south">🏖️ South-East</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Mercato+di+Ortigia/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card" data-area="syracuse" data-type="food" data-tom="yes" data-teens="love" data-cost="budget" data-num="59" data-lat="37.0740" data-lng="15.3060">
+  <div class="activity-num azur-num">59</div>
+  <div class="activity-content">
+    <h4>Ortigia — Waterfront Dinner & Gelato</h4>
+    <div class="activity-desc">Find a restaurant on Ortigia's lungomare (seafront) — fresh grilled fish, pasta alle vongole, local wine. Then gelato from one of the artisan gelaterias. Evening sea breeze, amber lights. Perfection.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-love">⭐⭐⭐⭐ Teens</span>
+      <span class="tag cost">€15-25pp</span>
+      <span class="tag cost-budget">&lt; €25pp</span>
+      <span class="tag week-south">🏖️ South-East</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Ortigia,+Syracuse/" target="_blank">Map →</a></div>
+</div>
+
+<div class="activity-card" data-area="noto-ragusa" data-type="food" data-tom="yes" data-teens="ok" data-cost="mid" data-num="60" data-lat="37.5000" data-lng="14.9240">
+  <div class="activity-num azur-num">60</div>
+  <div class="activity-content">
+    <h4>Agriturismo Farm Dinner</h4>
+    <div class="activity-desc">Book dinner at a working farm (agriturismo) — multi-course meal made from their own produce. Olive oil, fresh pasta, grilled meats, local wine. Tom can see the animals. Incredible value and authenticity.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">€25-35pp all-in</span>
+      <span class="tag cost-mid">€25-60pp</span>
+      <span class="tag week-south">🏖️ South-East</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.agriturismo.it/en/farmhouses/sicily/siracusa" target="_blank">Info →</a></div>
+</div>
+
+
+<!-- SCENIC (SOUTH) -->
+<div class="category-header" data-cat-type="scenic" data-cat-week="south">
+  <span class="cat-icon">🚗</span>
+  <h3>Scenic & Transport</h3>
+  <span class="cat-count">2 activities</span>
+</div>
+
+<div class="activity-card" data-area="noto-ragusa" data-type="scenic" data-tom="yes" data-teens="ok" data-cost="free" data-num="61" data-lat="37.5050" data-lng="14.9300">
+  <div class="activity-num azur-num">61</div>
+  <div class="activity-content">
+    <h4>Baroque Towns Road Trip — Noto → Modica → Ragusa</h4>
+    <div class="activity-desc">Drive through the UNESCO Val di Noto — three stunning baroque towns in one day. Rolling countryside, ancient stone walls, olive groves. Stop for chocolate in Modica, lunch in Ragusa Ibla. A perfect day out.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">Free (+ fuel)</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-south">🏖️ South-East</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/dir/Noto/Modica/Ragusa+Ibla/" target="_blank">Route →</a></div>
+</div>
+
+<div class="activity-card" data-area="south-beaches" data-type="scenic" data-tom="yes" data-teens="ok" data-cost="free" data-num="62" data-lat="37.5100" data-lng="14.9360">
+  <div class="activity-num azur-num">62</div>
+  <div class="activity-content">
+    <h4>Drive to Sicily's Southernmost Point</h4>
+    <div class="activity-desc">Road trip to Isola delle Correnti — Sicily's (and almost Italy's) most southerly point. Stop at Marzamemi for lunch, San Lorenzo beach, then the dramatic tip where two seas clash. Closer to Africa than Rome!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom ⭐⭐⭐⭐</span>
+      <span class="tag teen-ok">✅ Teens</span>
+      <span class="tag cost">Free (+ fuel)</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-south">🏖️ South-East</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.google.com/maps/place/Isola+delle+Correnti/" target="_blank">Map →</a></div>
+</div>
+
+</div><!-- end south section -->
+
+
+<div class="footer">
+  <p>Created for the Sheldrake family holiday planning · Summer 2026</p>
+  <p>Sicily, Italy · Fly Jet2 LBA → Catania · 29 Jul – 12 Aug 2026</p>
+</div>
+
+</div><!-- end container -->
+</div><!-- end main-content -->
+</div><!-- end page-layout -->
+
+<script>
+(function() {
+  const cards = document.querySelectorAll('.activity-card');
+  const checkboxes = document.querySelectorAll('.filter-sidebar input[type="checkbox"]');
+  const countEl = document.getElementById('visibleCount');
+  const TOTAL = 62;
+
+  function getCheckedValues(filterName) {
+    const vals = [];
+    checkboxes.forEach(cb => {
+      if (cb.dataset.filter === filterName && cb.checked) vals.push(cb.value);
+    });
+    return vals;
+  }
+
+  
+
+function toggleAccom(show) {
+  if (!window.accomMarkers) return;
+  window.accomMarkers.forEach(function(m) {
+    if (show) m.addTo(window.activityMap);
+    else window.activityMap.removeLayer(m);
+  });
+}
+
+function updateMap() {
+  if (!window.activityMarkers) return;
+  var bounds = [];
+  var tableBody = document.getElementById('map-table-body');
+  if (tableBody) tableBody.innerHTML = '';
+  var visibleCount = 0;
+  document.querySelectorAll('.activity-card').forEach(function(card, i) {
+    var marker = window.activityMarkers[i];
+    if (!marker) return;
+    var lat = parseFloat(card.dataset.lat);
+    var lng = parseFloat(card.dataset.lng);
+    if (!lat || !lng) return;
+    var isVisible = !card.classList.contains('hidden-by-filter') && card.style.display !== 'none';
+    if (isVisible) {
+      marker.addTo(window.activityMap);
+      bounds.push([lat, lng]);
+      visibleCount++;
+      if (tableBody) {
+        var num = card.dataset.num || '';
+        var title = card.querySelector('h4') ? card.querySelector('h4').textContent.trim() : '';
+        var link = card.querySelector('h4 a');
+        var href = link ? link.href : '';
+        var isMustDo = card.dataset.mustdo === 'true';
+        var tr = document.createElement('tr');
+        tr.style.borderBottom = '1px solid #e0e0e0';
+        if (visibleCount % 2 === 0) tr.style.background = '#f0f3f9';
+        tr.innerHTML = '<td style="padding:5px 8px;color:#1B3C8F;font-weight:700;">' + num + '</td><td style="padding:5px 8px;">' + (isMustDo ? '\u2b50 ' : '') + title + '</td><td style="padding:5px 8px;text-align:right;">' + (href ? '<a href="'+href+'" target="_blank" style="color:#1B3C8F;margin-right:10px;">More Info</a>' : '') + '<a href="https://www.google.com/maps?q='+lat+','+lng+'" target="_blank" style="color:#888;">\ud83d\udccd Map</a></td>';
+        tableBody.appendChild(tr);
+      }
+    } else {
+      window.activityMap.removeLayer(marker);
+    }
+  });
+  var countEl2 = document.getElementById('map-count');
+  if (countEl2) countEl2.textContent = visibleCount + ' activities shown';
+  if (bounds.length > 0) window.activityMap.fitBounds(bounds, {padding: [30, 30], maxZoom: 12});
+}
+
+function applyFilters() {
+    const areaFilters = getCheckedValues('area');
+    const typeFilters = getCheckedValues('type');
+    const tomFilters = getCheckedValues('tom');
+    const teenFilters = getCheckedValues('teens');
+    const familyFilters = getCheckedValues('family');
+    const costFilters = getCheckedValues('cost');
+    const mustdoFilters = getCheckedValues('mustdo');
+
+    let visible = 0;
+
+    cards.forEach(card => {
+      let show = true;
+
+      if (areaFilters.length > 0 && !areaFilters.includes(card.dataset.area)) show = false;
+      if (typeFilters.length > 0 && !typeFilters.includes(card.dataset.type)) show = false;
+      if (tomFilters.length > 0 && card.dataset.tom !== 'yes') show = false;
+      if (teenFilters.length > 0 && card.dataset.teens !== 'love') show = false;
+      if (familyFilters.length > 0 && card.dataset.tom !== 'yes') show = false;
+      if (costFilters.length > 0 && !costFilters.includes(card.dataset.cost)) show = false;
+      if (mustdoFilters.length > 0 && card.dataset.mustdo !== 'true') show = false;
+
+      if (show) {
+        card.classList.remove('hidden-by-filter');
+        visible++;
+      } else {
+        card.classList.add('hidden-by-filter');
+      }
+    });
+
+    countEl.textContent = visible;
+
+    // Hide section headers if all their activities are hidden
+    document.querySelectorAll('.section-header[data-section]').forEach(header => {
+      const sectionId = header.dataset.section;
+      const wrap = document.querySelector('[data-section-wrap="' + sectionId + '"]');
+      if (wrap) {
+        const visibleCards = wrap.querySelectorAll('.activity-card:not(.hidden-by-filter)');
+        header.classList.toggle('hidden-by-filter', visibleCards.length === 0);
+        wrap.style.display = visibleCards.length === 0 ? 'none' : '';
+      }
+    });
+
+    // Hide category headers if all their activities are hidden
+    document.querySelectorAll('.category-header[data-cat-type]').forEach(catHeader => {
+      let sibling = catHeader.nextElementSibling;
+      let hasVisible = false;
+      while (sibling && !sibling.classList.contains('category-header') && !sibling.classList.contains('section-header')) {
+        if (sibling.classList.contains('activity-card') && !sibling.classList.contains('hidden-by-filter')) {
+          hasVisible = true;
+          break;
+        }
+        sibling = sibling.nextElementSibling;
+      }
+      catHeader.classList.toggle('hidden-by-filter', !hasVisible);
+    });
+  updateMap();
+}
+
+  checkboxes.forEach(cb => cb.addEventListener('change', applyFilters));
+
+  window.clearFilters = function() {
+    checkboxes.forEach(cb => cb.checked = false);
+    applyFilters();
+  };
+
+  window.toggleFilters = function() {
+    const sidebar = document.getElementById('filterSidebar');
+    const overlay = document.getElementById('filterOverlay');
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('open');
+  };
+
+// Accommodation overlay
+window.accomMarkers = [];
+var accomData = [
+  [37.8300, 15.2600, "Camping San Leo", "Independent", "https://www.campingsanleo.it/en/", "Family campsite near Taormina, pool, sea views, shuttle to beaches."],
+  [37.5200, 15.1000, "Camping Jonio", "Independent", "https://www.campingjonio.com/en/", "Catania coast, direct beach access, pool, playground."],
+  [36.8200, 15.1200, "Camping El Bahira", "Independent", "https://www.elbahira.it/en/", "Near Syracuse, pools, sandy beach, kids\u2019 animation."],
+  [36.9500, 14.5200, "Costa Ponente Village", "Independent", "https://www.villaggiocostamente.it/en/", "Near Agrigento, beach club, pools, family activities."]
+];
+var accomIcon = function(){ return L.divIcon({
+  className:'',
+  html:'<div style="background:#2d9a2d;color:#fff;width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;cursor:pointer;">&#127965;</div>',
+  iconSize:[30,30], iconAnchor:[15,15]
+}); };
+accomData.forEach(function(a){
+  var marker = L.marker([a[0],a[1]], {icon: accomIcon()})
+    .bindPopup('<div style="min-width:220px;"><b style="color:#2d9a2d;font-size:0.95rem;">&#127965; '+a[2]+'</b><br><span style="color:#888;font-size:0.8rem;">'+a[3]+'</span><br><span style="color:#555;font-size:0.85rem;">'+a[5]+'</span><br><a href="'+a[4]+'" target="_blank" style="color:#2d9a2d;font-size:0.85rem;">View on '+a[3]+' \u2192</a></div>');
+  marker.addTo(window.activityMap);
+  window.accomMarkers.push(marker);
+});
+})();
+
+
+// Country navbar show on scroll
+(function(){
+  var nav = document.getElementById('countryNav');
+  if (!nav) return;
+  var hero = document.querySelector('.hero');
+  if (!hero) { nav.classList.add('visible'); return; }
+  var observer = new IntersectionObserver(function(entries){
+    nav.classList.toggle('visible', !entries[0].isIntersecting);
+  }, {threshold: 0});
+  observer.observe(hero);
+})();
+
+</script>
+
+</body>
+</html>

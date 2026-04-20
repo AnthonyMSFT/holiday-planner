@@ -1,0 +1,34 @@
+Option,Direction,Out Date,Out From,Out To,Out Airline,Out Depart,Out Arrive,Out Duration,Out Fare (x5),Return Date,Ret From,Ret To,Ret Airline,Ret Depart,Ret Arrive,Ret Duration,Ret Fare (x5),Fares Total,Est Bags (4x23kg each way),Est Seats (5 together each way),Est Extras Total,ALL-IN ESTIMATE,Holiday Days,Matches Time Pref,Notes
+,,,,,,,,,,,,,,,,,,,"4 hold bags x2 legs","5 seated together x2 legs",,,,,
+,,,,,,,,,,,,,,,,,,,RATES USED:,,,,,,
+,,,,,,,,,,,,,,,,,,,Jet2: bags INCLUDED seats ~£5pp/flt,,,,,
+,,,,,,,,,,,,,,,,,,"easyJet: ~£42/bag/flt, seats ~£10pp/flt",,,,,
+,,,,,,,,,,,,,,,,"Ryanair: ~£45/bag(20kg)/flt, seats ~£10pp/flt",,,,,,
+B9b,DBV→SPU,29-Jul,MAN,DBV,easyJet,12:50,16:50,3h00,£495,13-Aug,SPU,MAN,Jet2,12:55,14:55,3h00,"£1,005","£1,500",£168,£75,£243,"£1,743",15,YES - RANK 1,"Best value + time pref. easyJet out (4 bags £168 + 5 seats £50), Jet2 return (bags FREE, 5 seats £25)"
+B16,DBV→SPU,28-Jul,LBA,DBV,Jet2,07:30,11:25,2h55,£820,09-Aug,SPU,MAN,Jet2,13:15,15:15,3h00,"£1,285","£2,105",£0,£50,£50,"£2,155",12,YES - RANK 2,"BOTH Jet2 = bags+cabin FREE! Only pay seats. LBA early + MAN afternoon. Shortest holiday."
+B17b,DBV→SPU,28-Jul,LBA,DBV,Jet2,07:30,11:25,2h55,£820,11-Aug,SPU,MAN,Jet2,12:50,14:50,2h55,"£1,455","£2,275",£0,£50,£50,"£2,325",14,YES - RANK 3,"BOTH Jet2 = bags FREE! LBA early + MAN afternoon. 14 days."
+A17,SPU→DBV,30-Jul,MAN,SPU,easyJet,16:15,20:05,2h50,"£1,050",13-Aug,DBV,LBA,Jet2,20:10,22:25,3h15,£785,"£1,835",£168,£75,£243,"£2,078",14,YES - RANK 4,"easyJet out (4 bags £168 + 5 seats £50), Jet2 return (bags FREE, 5 seats £25). MAN pm out + LBA late return."
+A14,SPU→DBV,30-Jul,MAN,SPU,easyJet,16:15,20:05,2h50,"£1,050",12-Aug,DBV,MAN,Ryanair,15:55,18:00,3h05,£585,"£1,635",£348,£100,£448,"£2,083",13,YES,"easyJet+Ryanair = pay all bags+seats both ways. MAN afternoon both."
+A12,SPU→DBV,29-Jul,MAN,SPU,easyJet,16:30,20:20,2h50,"£1,175",13-Aug,DBV,LBA,Jet2,20:10,22:25,3h15,£785,"£1,960",£168,£75,£243,"£2,203",15,YES,"easyJet out (bags £168 + seats £50), Jet2 return (FREE bags, seats £25). 15 days. MAN pm + LBA late."
+A9,SPU→DBV,29-Jul,MAN,SPU,easyJet,16:30,20:20,2h50,"£1,175",12-Aug,DBV,MAN,Ryanair,15:55,18:00,3h05,£585,"£1,760",£348,£100,£448,"£2,208",14,YES,"easyJet+Ryanair both ways = max extras. MAN afternoon both."
+B15,DBV→SPU,31-Jul,MAN,DBV,Ryanair,18:25,22:20,2h55,£440,13-Aug,SPU,MAN,Jet2,12:55,14:55,3h00,"£1,005","£1,445",£180,£75,£255,"£1,700",13,YES (borderline),"Cheapest all-in but MAN evening outbound. Ryanair out (4 bags £180 + seats £50), Jet2 return (FREE, seats £25)."
+A10,SPU→DBV,29-Jul,MAN,SPU,easyJet,16:30,20:20,2h50,"£1,175",13-Aug,DBV,MAN,Jet2,12:20,14:35,3h15,£960,"£2,135",£168,£75,£243,"£2,378",15,YES,"easyJet out + Jet2 return. MAN afternoon both. 15 days."
+A16,SPU→DBV,30-Jul,MAN,SPU,easyJet,16:15,20:05,2h50,"£1,050",14-Aug,DBV,MAN,Ryanair,15:55,18:00,3h05,£740,"£1,790",£348,£100,£448,"£2,238",15,YES,"easyJet+Ryanair = max extras. MAN afternoon both. 15 days."
+A15,SPU→DBV,30-Jul,MAN,SPU,easyJet,16:15,20:05,2h50,"£1,050",13-Aug,DBV,MAN,Jet2,12:20,14:35,3h15,£960,"£2,010",£168,£75,£243,"£2,253",14,YES,"easyJet out + Jet2 return. MAN afternoon both."
+B17c,DBV→SPU,28-Jul,LBA,DBV,Jet2,07:30,11:25,2h55,£820,13-Aug,SPU,MAN,Jet2,12:55,14:55,3h00,"£1,005","£1,825",£0,£50,£50,"£1,875",16,YES (16 days),"BOTH Jet2 = bags FREE! LBA early + MAN afternoon. 1 day over max."
+,,,,,,,,,,,,,,,,,,,,,,,,
+EXTRAS BREAKDOWN,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+Airline Combo,Bags Cost Per Leg,Seats Cost Per Leg,Total Extras Both Ways,,,,,,,,,,,,,,,,,,,,,,
+Jet2 + Jet2,"£0 (5x22kg bags + 5x10kg cabin INCLUDED)","~£25 (5 x £5)","~£50",,,,,,,,,,,,,,,,,,,,,
+easyJet + Jet2,"Out: ~£168 (4 bags x £42) | Ret: £0","Out: ~£50 (5 x £10) | Ret: ~£25 (5 x £5)","~£243",,,,,,,,,,,,,,,,,,,,,
+Ryanair + Jet2,"Out: ~£180 (4 bags x £45) | Ret: £0","Out: ~£50 (5 x £10) | Ret: ~£25 (5 x £5)","~£255",,,,,,,,,,,,,,,,,,,,,
+easyJet + Ryanair,"Out: ~£168 (4 bags x £42) | Ret: ~£180 (4 bags x £45)","Out: ~£50 (5 x £10) | Ret: ~£50 (5 x £10)","~£448",,,,,,,,,,,,,,,,,,,,,
+easyJet + easyJet,"Out: ~£168 (4 bags x £42) | Ret: ~£168 (4 bags x £42)","Out: ~£50 (5 x £10) | Ret: ~£50 (5 x £10)","~£436",,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+NOTES,,,,,,,,,,,,,,,,,,,,,,,,
+"Bag estimates based on summer peak online booking prices: easyJet 23kg ~£42/bag/flight, Ryanair 20kg ~£45/bag/flight. Actual prices vary by date/demand.",,,,,,,,,,,,,,,,,,,,,,,,,
+"Seat estimates: easyJet standard ~£10pp/flight, Ryanair standard ~£10pp/flight, Jet2 pre-select ~£5pp/flight.",,,,,,,,,,,,,,,,,,,,,,,,,
+"Jet2 INCLUDES per person: 22kg hold bag + 10kg cabin bag + standard cabin bag. With 5 passengers that gives you 5 included hold bags (you only need 4).",,,,,,,,,,,,,,,,,,,,,,,,,
+"Ryanair: Under-12s (Tom, age 8) - family seating is mandatory and charged at £4.50-£13.50pp/flt. Factored into seat estimate.",,,,,,,,,,,,,,,,,,,,,,,,,
+"All cabin bags (small under-seat) are FREE on all 3 airlines.",,,,,,,,,,,,,,,,,,,,,,,,,

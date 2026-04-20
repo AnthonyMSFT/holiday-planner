@@ -1,0 +1,2317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Japan: Tokyo • Kyoto • Osaka — 90 Family Activities</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+  :root {
+    --primary: #1B3C8F;
+    --dark: #0F2557;
+    --primary-light: #e8edf7;
+    --dark-light: #f0f0f0;
+    --accent: #e67e22;
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #0F2557;
+    --muted: #4a6bb5;
+    --border: #e0e0e0;
+    --sidebar-width: 280px;
+    --accent-orange: #FF6B35;
+  }
+
+  /* ── Country Navbar ─────────────────────────────────── */
+  .country-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(15, 37, 87, 0.95);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    transform: translateY(-100%); transition: transform 0.3s ease;
+  }
+  .country-nav.visible { transform: translateY(0); }
+  .country-nav__inner {
+    max-width: 1400px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 1rem; height: 48px;
+  }
+  .country-nav__label {
+    font-family: 'Playfair Display', serif; font-size: 0.8rem;
+    color: rgba(255,255,255,0.7); white-space: nowrap; margin-right: 0.5rem;
+  }
+  .country-nav__links {
+    display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .country-nav__link {
+    display: flex; align-items: center; gap: 5px;
+    padding: 12px 12px; color: rgba(255,255,255,0.8);
+    font-size: 0.78rem; font-weight: 500; white-space: nowrap;
+    transition: all 0.2s; border-bottom: 2px solid transparent; text-decoration: none;
+  }
+  .country-nav__link:hover { color: #fff; background: rgba(255,255,255,0.08); border-bottom-color: #FF6B35; }
+  .country-nav__link .nav-icon { width: 16px; height: 16px; flex-shrink: 0; opacity: 0.85; }
+  .country-nav__link:hover .nav-icon { opacity: 1; }
+  .country-nav__link--accent { color: #FF6B35; }
+  .country-nav__link--accent:hover { color: #fff; border-bottom-color: #FF6B35; }
+  @media (max-width: 768px) {
+    .country-nav__label { display: none; }
+    .country-nav__link { padding: 12px 8px; font-size: 0.72rem; }
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Montserrat', 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #0F2557 0%, #1B3C8F 100%);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    margin-bottom: 10px;
+  }
+  .hero .subtitle { font-size: 1.1rem; opacity: 0.9; margin-bottom: 8px; }
+  .hero .count {
+    display: inline-block;
+    background: #FF6B35;
+    padding: 8px 24px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-top: 12px;
+  }
+  .hero .family {
+    margin-top: 16px;
+    font-size: 0.95rem;
+    opacity: 0.85;
+  }
+  .hero .flight-info {
+    margin-top: 12px;
+    font-size: 0.88rem;
+    opacity: 0.8;
+  }
+  .hero .currency-note {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    opacity: 0.75;
+    font-style: italic;
+  }
+
+  /* ========= LAYOUT: sidebar + main ========= */
+  .page-layout {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* ========= FILTER SIDEBAR ========= */
+  .filter-sidebar {
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: #0F2557;
+    color: #fff;
+    padding: 20px 16px;
+    z-index: 100;
+    scrollbar-width: thin;
+    scrollbar-color: #4a6bb5 #0F2557;
+  }
+  .filter-sidebar::-webkit-scrollbar { width: 6px; }
+  .filter-sidebar::-webkit-scrollbar-track { background: #0F2557; }
+  .filter-sidebar::-webkit-scrollbar-thumb { background: #4a6bb5; border-radius: 3px; }
+
+  .filter-sidebar h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .filter-sidebar h3::before {
+    content: '⚙️';
+  }
+
+  .filter-count {
+    background: #1B3C8F;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+  .filter-count span { font-size: 1.3rem; }
+
+  .filter-group {
+    margin-bottom: 18px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 14px;
+  }
+  .filter-group:last-child { border-bottom: none; }
+  .filter-group-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #aaa;
+    margin-bottom: 8px;
+  }
+  .filter-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: color 0.15s;
+    font-family: 'Inter', sans-serif;
+  }
+  .filter-group label:hover { color: #93b5ff; }
+
+  .filter-group input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #4a6bb5;
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .filter-group input[type="checkbox"]:checked {
+    background: #1B3C8F;
+    border-color: #1B3C8F;
+  }
+  .filter-group input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: -1px;
+    left: 2px;
+    font-size: 13px;
+    color: white;
+    font-weight: bold;
+  }
+
+  .clear-filters {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    color: #93b5ff;
+    border: 2px solid #93b5ff;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+  }
+  .clear-filters:hover {
+    background: #1B3C8F;
+    color: white;
+  }
+
+  /* Mobile filter toggle */
+  .filter-toggle {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 200;
+    background: #1B3C8F;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  /* ========= MAIN CONTENT ========= */
+  .main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 0 20px;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 30px 0;
+  }
+  .summary-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+  .summary-card .big-num { font-size: 2.5rem; font-weight: 700; color: #1B3C8F; }
+  .summary-card .label { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+
+  .section-header {
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 16px;
+    margin: 40px 0 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .section-header.area-tokyo { background: linear-gradient(135deg, #1B3C8F, #142f6e); color: white; }
+  .section-header.area-kyoto { background: linear-gradient(135deg, #0F2557, #1B3C8F); color: white; }
+  .section-header.area-osaka { background: linear-gradient(135deg, #1B3C8F, #0F2557); color: white; }
+  .section-header.area-daytrips { background: linear-gradient(135deg, #142f6e, #1B3C8F); color: white; }
+  .section-header.area-unique { background: linear-gradient(135deg, #0F2557, #142f6e); color: white; }
+  .section-header .icon { font-size: 3rem; margin-bottom: 8px; }
+  .section-header h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+  }
+  .section-header p { opacity: 0.9; margin-top: 6px; font-size: 0.95rem; }
+  .section-header.hidden-by-filter { display: none; }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 32px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--border);
+  }
+  .category-header .cat-icon { font-size: 1.6rem; }
+  .category-header h3 { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; }
+  .category-header .cat-count {
+    background: var(--primary-light);
+    color: var(--primary);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .category-header.hidden-by-filter { display: none; }
+
+  .activity-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 12px;
+    align-items: start;
+    transition: box-shadow 0.2s, opacity 0.2s;
+  }
+  .activity-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .activity-card.highlight { border-left: 4px solid var(--accent); }
+  .activity-card.hidden-by-filter { display: none; }
+
+  .activity-num {
+    background: var(--primary);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .activity-content h4 { font-size: 1rem; margin-bottom: 4px; }
+  .activity-desc { font-size: 0.88rem; color: var(--muted); margin-bottom: 8px; }
+
+  .activity-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .tag.tom-yes { background: #d1fae5; color: #065f46; }
+  .tag.tom-no { background: #fee2e2; color: #991b1b; }
+  .tag.teen-love { background: #ede9fe; color: #5b21b6; }
+  .tag.teen-ok { background: #f3f4f6; color: #4b5563; }
+
+  /* Cost badges */
+  .tag.cost-free { background: #d1fae5; color: #065f46; font-weight: 600; }
+  .tag.cost-budget { background: #dbeafe; color: #1e40af; font-weight: 600; }
+  .tag.cost-mid { background: #bfdbfe; color: #1e3a8a; font-weight: 600; }
+  .tag.cost-premium { background: #c4b5fd; color: #3b0764; font-weight: 600; }
+
+  /* Area badges */
+  .tag.area-tag { background: #e8edf7; color: #1B3C8F; font-weight: 600; }
+
+  .footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  /* ========= RESPONSIVE ========= */
+  @media (max-width: 900px) {
+    .filter-sidebar {
+      position: fixed;
+      left: -300px;
+      top: 0;
+      height: 100vh;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+    .filter-sidebar.open { left: 0; }
+    .filter-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+    }
+    .filter-overlay.open { display: block; }
+    .filter-toggle { display: flex; align-items: center; justify-content: center; }
+    .main-content { padding: 0 12px; }
+    .page-layout { display: block; }
+  }
+
+  @media (max-width: 640px) {
+    .activity-card { grid-template-columns: 32px 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="country-nav" id="countryNav">
+  <div class="country-nav__inner">
+    <span class="country-nav__label">Explore:</span>
+    <div class="country-nav__links">
+      <a href="showcase/index.html" class="country-nav__link country-nav__link--accent"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg> Home</a>
+      <a href="France_Verdon_CotedAzur_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h6v18H3V3zm12 0h6v18h-6V3zM9 3h6v18H9V3z" opacity="0.8"/></svg> France</a>
+      <a href="Germany_Bavaria_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L8.5 8.5 2 9.5l5 4.5L5.5 21 12 17.5 18.5 21 17 14l5-4.5-6.5-1L12 2z"/></svg> Germany</a>
+      <a href="Croatia_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20v4H2zm0 6h4v4H6v-2H4v4h4v-2h2v4H8v-2H4v4h20V10H2zm6 0h4v2h-2v2H8v-4zm6 0h4v2h-2v2h-2v-4z"/></svg> Croatia</a>
+      <a href="Sicily_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c3.31 0 6-2.69 6-6 0-4.96-4.49-9-10-9z"/></svg> Sicily</a>
+      <a href="Egypt_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 21h18L12 3 3 21zm9-3l-4.5-9h9L12 18z"/></svg> Egypt</a>
+      <a href="Austria_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z"/></svg> Austria</a>
+      <a href="Bulgaria_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 2.84L18 11v7h-2v-6H8v6H6v-7l6-5.16z"/></svg> Bulgaria</a>
+      <a href="Japan_Activities_2026.html" class="country-nav__link" style="border-bottom-color:#FF6B35;color:#fff;"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg> Japan</a>
+      <a href="Spain_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg> Spain</a>
+      <a href="CostaRica_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.71c.76.34 1.59.54 2.46.59L9 20c.5-4 4.17-8 9-8V8z"/></svg> Costa Rica</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" style="position:relative; overflow:hidden; min-height: 340px;">
+  <div style="position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1920&q=80') center/cover no-repeat;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,37,87,.72) 0%, rgba(15,37,87,.88) 100%);"></div>
+  <div style="position:relative; z-index:2;">
+    <h1>🇯🇵 Japan: Tokyo • Kyoto • Osaka</h1>
+    <div class="subtitle">The Golden Route + Day Trips &amp; Unique Experiences</div>
+    <div class="count">🎯 90 Activities Found</div>
+    <div class="family">👨‍👩‍👧‍👦 Researched for 2 adults + Katie (17) + George (15) + Tom (8)</div>
+    <div class="flight-info">✈️ No direct flights from LBA/MAN — connect via London Heathrow (BA/ANA/JAL). ~11-12hrs. Tokyo Narita or Osaka Kansai.</div>
+    <div class="currency-note">💱 ¥1,000 ≈ £5.20 / $6.50 (prices shown in ¥ with £ equivalent)</div>
+  </div>
+</div>
+
+<!-- ═══ Weather Summary ═══ -->
+<div class="weather-section" style="background: linear-gradient(135deg, #f0f4ff 0%, #e8edf7 100%); padding: 2rem 0;">
+  <div style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
+    <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 16px; font-size: 1.2rem;">
+      ☀️ August Weather — What to Expect
+    </h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 12px;">
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">🌡️</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">31-35°C</div>
+        <div style="font-size: 0.75rem; color: #666;">Avg. High</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">🌙</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">24-27°C</div>
+        <div style="font-size: 0.75rem; color: #666;">Avg. Low</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">☀️</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">5-7</div>
+        <div style="font-size: 0.75rem; color: #666;">Sun hrs/day</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">🌧️</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">9-12 days</div>
+        <div style="font-size: 0.75rem; color: #666;">Rainy Days</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">⚠️</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">Typhoon Risk</div>
+        <div style="font-size: 0.75rem; color: #666;">Watch forecasts</div>
+      </div>
+    </div>
+    <p style="font-size: 0.82rem; color: #555; line-height: 1.6; margin: 0;">
+      🥵 <strong>Hot, humid, and unpredictable.</strong> August in Japan is VERY hot and sticky (75-80% humidity). Rain is common and typhoons are a real risk — monitor forecasts and have indoor backup plans. That said, this is peak festival (matsuri) season! Carry a small towel, stay hydrated, and plan outdoor activities for morning/evening. Air-conditioned trains, malls, and museums are your midday friends. Kyoto is the hottest city.
+    </p>
+  </div>
+</div>
+<!-- MOBILE FILTER TOGGLE -->
+<button class="filter-toggle" onclick="toggleFilters()" aria-label="Toggle filters">⚙️</button>
+<div class="filter-overlay" id="filterOverlay" onclick="toggleFilters()"></div>
+
+<div class="page-layout">
+
+<!-- FILTER SIDEBAR -->
+<aside class="filter-sidebar" id="filterSidebar">
+  <h3>Filters</h3>
+  <div class="filter-count">Showing <span id="visibleCount">90</span> of 90 activities</div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Area</div>
+    <label><input type="checkbox" data-filter="area" value="tokyo"> 🗼 Tokyo</label>
+    <label><input type="checkbox" data-filter="area" value="kyoto"> ⛩️ Kyoto</label>
+    <label><input type="checkbox" data-filter="area" value="osaka"> 🏯 Osaka</label>
+    <label><input type="checkbox" data-filter="area" value="daytrips"> 🚅 Day Trips</label>
+    <label><input type="checkbox" data-filter="area" value="unique"> ✨ Unique Experiences</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Activity Type</div>
+    <label><input type="checkbox" data-filter="type" value="themeparks"> 🎢 Theme Parks &amp; Fun</label>
+    <label><input type="checkbox" data-filter="type" value="beach"> 🏖️ Beach &amp; Water</label>
+    <label><input type="checkbox" data-filter="type" value="adventure"> 🚀 Adventure &amp; Outdoors</label>
+    <label><input type="checkbox" data-filter="type" value="culture"> 🏛️ Culture &amp; History</label>
+    <label><input type="checkbox" data-filter="type" value="food"> 🍕 Food &amp; Drink</label>
+    <label><input type="checkbox" data-filter="type" value="shopping"> 🛍️ Shopping &amp; Leisure</label>
+    <label><input type="checkbox" data-filter="type" value="nature"> 🌿 Nature &amp; Wildlife</label>
+    <label><input type="checkbox" data-filter="type" value="entertainment"> 🎭 Entertainment</label>
+    <label><input type="checkbox" data-filter="type" value="gaming"> 🎮 Gaming &amp; Tech</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Tom-Friendly</div>
+    <label><input type="checkbox" data-filter="tom" value="yes"> ✅ Tom-friendly (age 8)</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Teen-Friendly</div>
+    <label><input type="checkbox" data-filter="teens" value="yes"> ⭐ Teen-approved</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Cost</div>
+    <label><input type="checkbox" data-filter="cost" value="free"> Free</label>
+    <label><input type="checkbox" data-filter="cost" value="budget"> £ Budget</label>
+    <label><input type="checkbox" data-filter="cost" value="mid"> ££ Mid-range</label>
+    <label><input type="checkbox" data-filter="cost" value="premium"> £££ Premium</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Must-Do</div>
+    <label><input type="checkbox" data-filter="mustdo" value="true"> ⭐ Must-do highlights only</label>
+  </div>
+
+  <button class="clear-filters" onclick="clearFilters()">Clear all filters</button>
+</aside>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+<div class="container">
+
+<!-- SUMMARY STATS -->
+<div class="summary-grid">
+  <div class="summary-card"><div class="big-num">90</div><div class="label">Total Activities</div></div>
+  <div class="summary-card"><div class="big-num">35</div><div class="label">Tokyo</div></div>
+  <div class="summary-card"><div class="big-num">17</div><div class="label">Kyoto</div></div>
+  <div class="summary-card"><div class="big-num">15</div><div class="label">Osaka</div></div>
+  <div class="summary-card"><div class="big-num">12</div><div class="label">Day Trips</div></div>
+  <div class="summary-card"><div class="big-num">11</div><div class="label">Unique Experiences</div></div>
+  <div class="summary-card"><div class="big-num">24</div><div class="label">Must-Do Highlights</div></div>
+</div>
+
+<!-- ═══ Must-Do Map ═══ -->
+<div style="margin: 2rem auto; max-width: 1100px; padding: 0 20px;">
+  <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 4px; font-size: 1.3rem;">📍 Activity Map</h3>
+  <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">
+    <span id="map-count">90 activities shown</span> — 
+    <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#FF6B35;vertical-align:middle;"></span> Must-do
+    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#1B3C8F;vertical-align:middle;margin-left:8px;"></span> Other activities.
+    Use the filters to narrow down.
+    <label style="display:inline-flex;align-items:center;gap:4px;margin-left:12px;font-size:0.85rem;color:#2d9a2d;cursor:pointer;">
+      <input type="checkbox" id="accom-toggle" checked onchange="toggleAccom(this.checked)" style="accent-color:#2d9a2d;"> &#127965; Accommodation
+    </label>
+  </p>
+  <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.12); border: 2px solid #1B3C8F;">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <div id="mustdo-map" style="width:100%; height:500px;"></div>
+    <div style="padding: 12px 16px; background: #f8f9fa; max-height: 350px; overflow-y: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: 'Inter', sans-serif;">
+        <thead>
+          <tr style="border-bottom: 2px solid #1B3C8F; color: #0F2557; position: sticky; top: 0; background: #f8f9fa;">
+            <th style="text-align: left; padding: 5px 8px; width: 40px;">#</th>
+            <th style="text-align: left; padding: 5px 8px;">Activity</th>
+            <th style="text-align: right; padding: 5px 8px; width: 140px;">Links</th>
+          </tr>
+        </thead>
+        <tbody id="map-table-body">
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== TOKYO ==================== -->
+<div class="section-header area-tokyo" data-section="tokyo">
+  <div class="icon">🗼</div>
+  <h2>Tokyo</h2>
+  <p>Capital city — theme parks, culture, gaming &amp; neon lights</p>
+</div>
+
+<div data-section-wrap="tokyo">
+
+<!-- Theme Parks & Fun -->
+<div class="category-header" data-cat-type="themeparks" data-cat-area="tokyo">
+  <span class="cat-icon">🎢</span>
+  <h3>Theme Parks &amp; Fun</h3>
+  <span class="cat-count">7 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="tokyo" data-type="themeparks" data-tom="yes" data-teens="yes" data-cost="premium" data-mustdo="true" data-lat="35.6329" data-lng="139.8804">
+  <div class="activity-num">1</div>
+  <div class="activity-content">
+    <h4>Tokyo Disneyland</h4>
+    <div class="activity-desc">Classic Disney park, parades, rides for all ages. Japan's most-visited theme park with unique Japanese touches.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-premium">£££ Adults ¥7,900-10,900 (£41-57)</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card highlight" data-area="tokyo" data-type="themeparks" data-tom="yes" data-teens="yes" data-cost="premium" data-mustdo="true" data-lat="35.6267" data-lng="139.8850">
+  <div class="activity-num">2</div>
+  <div class="activity-content">
+    <h4>Tokyo DisneySea</h4>
+    <div class="activity-desc">Unique to Japan, adventure-themed, more thrilling rides. Seven themed ports with world-class attractions. Often rated the world's best theme park.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-premium">£££ Adults ¥7,900-10,900 (£41-57)</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card highlight" data-area="tokyo" data-type="themeparks" data-tom="yes" data-teens="yes" data-cost="mid" data-mustdo="true" data-lat="35.7400" data-lng="139.3400">
+  <div class="activity-num">5</div>
+  <div class="activity-content">
+    <h4>Tokyo Summerland</h4>
+    <div class="activity-desc">Huge water park with outdoor pools, slides, lazy river, wave pool + amusement rides. Perfect for a hot summer day.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Adults ¥2,600 (£14), Child ¥1,500 (£8)</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="tokyo" data-type="themeparks" data-tom="yes" data-teens="yes" data-cost="mid" data-mustdo="false" data-lat="35.6267" data-lng="139.7750">
+  <div class="activity-num">16</div>
+  <div class="activity-content">
+    <h4>Odaiba</h4>
+    <div class="activity-desc">Waterfront entertainment district: Giant life-size Gundam statue, Joypolis indoor theme park, shopping malls, and rainbow bridge views.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Various prices</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="tokyo" data-type="themeparks" data-tom="yes" data-teens="yes" data-cost="mid" data-mustdo="false" data-lat="35.6250" data-lng="139.7740">
+  <div class="activity-num">17</div>
+  <div class="activity-content">
+    <h4>Tokyo Joypolis (Odaiba)</h4>
+    <div class="activity-desc">SEGA indoor amusement park with VR rides, arcade games, and digital attractions. George's dream day out.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ ¥4,500 (£23) passport</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card highlight" data-area="tokyo" data-type="themeparks" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="true" data-lat="35.6962" data-lng="139.5704">
+  <div class="activity-num">18</div>
+  <div class="activity-content">
+    <h4>Ghibli Museum (Mitaka)</h4>
+    <div class="activity-desc">Studio Ghibli world brought to life — must book months ahead. Exclusive short films, Catbus room, rooftop robot soldier. Magical.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Adults ¥1,000 (£5), Child ¥100-400</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="tokyo" data-type="themeparks" data-tom="yes" data-teens="yes" data-cost="mid" data-mustdo="false" data-lat="35.1800" data-lng="137.0900">
+  <div class="activity-num">19</div>
+  <div class="activity-content">
+    <h4>Ghibli Park (Nagakute)</h4>
+    <div class="activity-desc">Newer, larger Ghibli experience near Nagoya. Walk through life-sized recreations of Ghibli film worlds.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ ¥3,500 (£18)</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<!-- Culture & History - Tokyo -->
+<div class="category-header" data-cat-type="culture" data-cat-area="tokyo">
+  <span class="cat-icon">🏛️</span>
+  <h3>Culture &amp; History</h3>
+  <span class="cat-count">7 activities</span>
+</div>
+
+<div class="activity-card" data-area="tokyo" data-type="culture" data-tom="no" data-teens="yes" data-cost="free" data-mustdo="false" data-lat="35.6595" data-lng="139.7004">
+  <div class="activity-num">6</div>
+  <div class="activity-content">
+    <h4>Shibuya Crossing</h4>
+    <div class="activity-desc">World's busiest pedestrian crossing — iconic photo spot from Shibuya Sky or the Starbucks above. Katie's Instagram dream. 📸</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="tokyo" data-type="culture" data-tom="no" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="35.6584" data-lng="139.7022">
+  <div class="activity-num">7</div>
+  <div class="activity-content">
+    <h4>Shibuya Sky</h4>
+    <div class="activity-desc">Observation deck 230m up with stunning open-air rooftop and panoramic city views. Incredible at sunset. 📸</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ ¥2,000 (£10)</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="tokyo" data-type="culture" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="35.7101" data-lng="139.8107">
+  <div class="activity-num">8</div>
+  <div class="activity-content">
+    <h4>Tokyo Skytree</h4>
+    <div class="activity-desc">634m tall tower — Japan's tallest structure. Observation decks at 350m and 450m with breathtaking views across the city.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ ¥2,100-3,400 (£11-18)</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="tokyo" data-type="culture" data-tom="yes" data-teens="yes" data-cost="free" data-mustdo="false" data-lat="35.6764" data-lng="139.6993">
+  <div class="activity-num">13</div>
+  <div class="activity-content">
+    <h4>Meiji Shrine</h4>
+    <div class="activity-desc">Serene forest shrine in the heart of Tokyo. Write wishes on ema boards, walk through the towering torii gate in a peaceful forest.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card highlight" data-area="tokyo" data-type="culture" data-tom="yes" data-teens="yes" data-cost="free" data-mustdo="true" data-lat="35.7148" data-lng="139.7967">
+  <div class="activity-num">14</div>
+  <div class="activity-content">
+    <h4>Senso-ji Temple (Asakusa)</h4>
+    <div class="activity-desc">Tokyo's oldest temple — Thunder Gate (Kaminarimon), giant red lantern, Nakamise shopping street with traditional snacks and souvenirs.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="tokyo" data-type="culture" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="35.6586" data-lng="139.7454">
+  <div class="activity-num">15</div>
+  <div class="activity-content">
+    <h4>Tokyo Tower</h4>
+    <div class="activity-desc">Classic 333m red-and-white tower with observation deck and One Piece anime attraction inside.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ ¥1,200 (£6)</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="tokyo" data-type="culture" data-tom="no" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="35.7189" data-lng="139.7766">
+  <div class="activity-num">32</div>
+  <div class="activity-content">
+    <h4>Tokyo National Museum</h4>
+    <div class="activity-desc">Japan's largest museum — samurai armour, ancient art, swords, ceramics. Under 18s free.</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Adults ¥1,000 (£5), under 18 free</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<!-- Entertainment - Tokyo -->
+<div class="category-header" data-cat-type="entertainment" data-cat-area="tokyo">
+  <span class="cat-icon">🎭</span>
+  <h3>Entertainment</h3>
+  <span class="cat-count">4 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="tokyo" data-type="entertainment" data-tom="yes" data-teens="yes" data-cost="mid" data-mustdo="true" data-lat="35.6435" data-lng="139.7780">
+  <div class="activity-num">3</div>
+  <div class="activity-content">
+    <h4>teamLab Planets</h4>
+    <div class="activity-desc">Immersive digital art — walk barefoot through water and light installations. Mind-blowing sensory experience the whole family will love. 📸</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Adults ¥3,800-4,500 (£20-23), Child ¥1,500 (£8)</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="tokyo" data-type="entertainment" data-tom="no" data-teens="yes" data-cost="mid" data-mustdo="false" data-lat="35.6250" data-lng="139.7750">
+  <div class="activity-num">4</div>
+  <div class="activity-content">
+    <h4>teamLab Borderless</h4>
+    <div class="activity-desc">Mind-bending digital art museum — no boundaries between rooms. Art moves, flows and reacts to you. Katie's Instagram goldmine. 📸</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Similar pricing to Planets</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="tokyo" data-type="entertainment" data-tom="no" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="35.7015" data-lng="139.7735">
+  <div class="activity-num">11</div>
+  <div class="activity-content">
+    <h4>Maid Café Experience</h4>
+    <div class="activity-desc">Unique Akihabara cultural experience — themed food and performances. Only-in-Japan quirky fun.</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ ¥1,500-2,800 (£8-15) pp</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="tokyo" data-type="entertainment" data-tom="no" data-teens="yes" data-cost="premium" data-mustdo="false" data-lat="35.6938" data-lng="139.7034">
+  <div class="activity-num">24</div>
+  <div class="activity-content">
+    <h4>Robot Restaurant (Shinjuku)</h4>
+    <div class="activity-desc">Wild neon robot cabaret show — giant robots, lasers, dancers, total sensory overload. Check availability for 2026.</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-premium">£££ ¥8,000-10,000 (£42-52) pp</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<!-- Gaming & Tech - Tokyo -->
+<div class="category-header" data-cat-type="gaming" data-cat-area="tokyo">
+  <span class="cat-icon">🎮</span>
+  <h3>Gaming &amp; Tech</h3>
+  <span class="cat-count">5 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="tokyo" data-type="gaming" data-tom="no" data-teens="yes" data-cost="free" data-mustdo="true" data-lat="35.7023" data-lng="139.7745">
+  <div class="activity-num">9</div>
+  <div class="activity-content">
+    <h4>Akihabara Electric Town</h4>
+    <div class="activity-desc">Anime, manga, gaming paradise. Multi-floor arcades, figure shops, themed cafés. George's personal heaven. Free to explore.</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="tokyo" data-type="gaming" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="35.7020" data-lng="139.7740">
+  <div class="activity-num">10</div>
+  <div class="activity-content">
+    <h4>Akihabara Arcades</h4>
+    <div class="activity-desc">Retro and modern gaming centres — claw machines, rhythm games, VR, racing. ¥100-300 (50p-£1.50) per game. Budget-friendly fun for hours.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ ¥100-300 per game</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="tokyo" data-type="gaming" data-tom="yes" data-teens="yes" data-cost="free" data-mustdo="false" data-lat="35.7295" data-lng="139.7164">
+  <div class="activity-num">29</div>
+  <div class="activity-content">
+    <h4>Sunshine City / Pokémon Center</h4>
+    <div class="activity-desc">Huge Pokémon flagship store in Ikebukuro + indoor theme park. Exclusive Pokémon merch you can't get anywhere else.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free to browse</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="tokyo" data-type="gaming" data-tom="yes" data-teens="yes" data-cost="free" data-mustdo="false" data-lat="35.6614" data-lng="139.6983">
+  <div class="activity-num">30</div>
+  <div class="activity-content">
+    <h4>Nintendo Tokyo Store</h4>
+    <div class="activity-desc">Official Nintendo store in Shibuya PARCO — exclusive merchandise, Mario, Zelda, Splatoon gear you can't buy online.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free to browse</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="tokyo" data-type="gaming" data-tom="no" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="35.6967" data-lng="139.7930">
+  <div class="activity-num">25</div>
+  <div class="activity-content">
+    <h4>Sumo Tournament / Practice</h4>
+    <div class="activity-desc">Watch morning practice at a sumo stable or attend a tournament at Ryogoku Kokugikan. George would love the raw power.</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Practice ¥4,000-7,000 (£21-36)</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<!-- Shopping & Leisure - Tokyo -->
+<div class="category-header" data-cat-type="shopping" data-cat-area="tokyo">
+  <span class="cat-icon">🛍️</span>
+  <h3>Shopping &amp; Leisure</h3>
+  <span class="cat-count">4 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="tokyo" data-type="shopping" data-tom="no" data-teens="yes" data-cost="free" data-mustdo="true" data-lat="35.6702" data-lng="139.7027">
+  <div class="activity-num">12</div>
+  <div class="activity-content">
+    <h4>Harajuku &amp; Takeshita Street</h4>
+    <div class="activity-desc">Youth fashion, crêpe stalls, quirky shops, cosplay culture. Katie's ultimate shopping experience. Free to explore. 📸</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free to explore</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="tokyo" data-type="shopping" data-tom="no" data-teens="no" data-cost="free" data-mustdo="false" data-lat="35.7250" data-lng="139.7700">
+  <div class="activity-num">31</div>
+  <div class="activity-content">
+    <h4>Yanaka Old Town</h4>
+    <div class="activity-desc">Traditional Tokyo neighbourhood — retro shopping street, cats everywhere, old-Japan atmosphere. Katie's aesthetic vibes. 📸</div>
+    <div class="activity-tags">
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="tokyo" data-type="shopping" data-tom="no" data-teens="yes" data-cost="mid" data-mustdo="false" data-lat="35.6700" data-lng="139.7020">
+  <div class="activity-num">35</div>
+  <div class="activity-content">
+    <h4>Kawaii Monster Café / Themed Cafés</h4>
+    <div class="activity-desc">Instagram-worthy colourful themed restaurants — wild decor, character food, totally unique dining. Katie will go crazy. 📸</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ ¥2,000-3,000 (£10-16)</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="tokyo" data-type="shopping" data-tom="no" data-teens="yes" data-cost="mid" data-mustdo="false" data-lat="35.6300" data-lng="139.7800">
+  <div class="activity-num">33</div>
+  <div class="activity-content">
+    <h4>Odaiba Oedo Onsen (or alternative)</h4>
+    <div class="activity-desc">Japanese hot spring theme park experience — wear yukata, games, foot baths, relaxation. Edo-period village atmosphere.</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ ¥2,500-3,000 (£13-16)</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<!-- Food & Drink - Tokyo -->
+<div class="category-header" data-cat-type="food" data-cat-area="tokyo">
+  <span class="cat-icon">🍕</span>
+  <h3>Food &amp; Drink</h3>
+  <span class="cat-count">3 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="tokyo" data-type="food" data-tom="yes" data-teens="yes" data-cost="mid" data-mustdo="true" data-lat="35.6650" data-lng="139.7600">
+  <div class="activity-num">21</div>
+  <div class="activity-content">
+    <h4>Sushi Making Class</h4>
+    <div class="activity-desc">Hands-on with English-speaking chef — learn to make nigiri, maki, and eat what you create. Incredible family experience.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ ¥6,000-15,000 (£31-78) pp</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="tokyo" data-type="food" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="35.6654" data-lng="139.7707">
+  <div class="activity-num">22</div>
+  <div class="activity-content">
+    <h4>Tsukiji Outer Market</h4>
+    <div class="activity-desc">Street food heaven — fresh sushi, tamagoyaki (sweet omelette), grilled seafood, fruit skewers. Taste your way through Tokyo.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Budget variable</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="tokyo" data-type="food" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="35.6812" data-lng="139.7671">
+  <div class="activity-num">23</div>
+  <div class="activity-content">
+    <h4>Ramen Street (Tokyo Station)</h4>
+    <div class="activity-desc">8 top ramen shops underground at Tokyo Station — try different regional styles. Tom can slurp to his heart's content (it's polite in Japan!).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ ¥1,000-1,500 (£5-8) per bowl</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<!-- Nature & Wildlife - Tokyo -->
+<div class="category-header" data-cat-type="nature" data-cat-area="tokyo">
+  <span class="cat-icon">🌿</span>
+  <h3>Nature &amp; Wildlife</h3>
+  <span class="cat-count">3 activities</span>
+</div>
+
+<div class="activity-card" data-area="tokyo" data-type="nature" data-tom="yes" data-teens="no" data-cost="budget" data-mustdo="false" data-lat="35.7164" data-lng="139.7713">
+  <div class="activity-num">20</div>
+  <div class="activity-content">
+    <h4>Ueno Zoo</h4>
+    <div class="activity-desc">Tokyo's oldest zoo — pandas, over 2,500 animals, right next to Ueno Park. Under 12s free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag cost-budget">£ Adults ¥600 (£3), under 12 free</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="tokyo" data-type="nature" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="35.6852" data-lng="139.7100">
+  <div class="activity-num">27</div>
+  <div class="activity-content">
+    <h4>Shinjuku Gyoen Garden</h4>
+    <div class="activity-desc">Beautiful park with Japanese, French, and English gardens. Perfect for a peaceful break from the Tokyo buzz.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ ¥500 (£3)</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="tokyo" data-type="nature" data-tom="no" data-teens="yes" data-cost="free" data-mustdo="false" data-lat="35.6852" data-lng="139.7528">
+  <div class="activity-num">28</div>
+  <div class="activity-content">
+    <h4>Imperial Palace East Gardens</h4>
+    <div class="activity-desc">Free gardens in the grounds of the Emperor's palace — moats, stone walls, seasonal flowers in the heart of Tokyo.</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<!-- Adventure & Outdoors - Tokyo -->
+<div class="category-header" data-cat-type="adventure" data-cat-area="tokyo">
+  <span class="cat-icon">🚀</span>
+  <h3>Adventure &amp; Outdoors</h3>
+  <span class="cat-count">1 activity</span>
+</div>
+
+<div class="activity-card" data-area="tokyo" data-type="adventure" data-tom="no" data-teens="no" data-cost="premium" data-mustdo="false" data-lat="35.6600" data-lng="139.7100">
+  <div class="activity-num">26</div>
+  <div class="activity-content">
+    <h4>Go-Kart Through Tokyo Streets</h4>
+    <div class="activity-desc">Mario Kart-style go-karting in costume through actual city streets! Must have international driving permit. Adults only. George would LOVE to watch.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">❌ Adults only</span>
+      <span class="tag cost-premium">£££ ¥8,000-10,000 (£42-52)</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+<!-- Beach & Water - Tokyo -->
+<div class="category-header" data-cat-type="beach" data-cat-area="tokyo">
+  <span class="cat-icon">🏖️</span>
+  <h3>Beach &amp; Water</h3>
+  <span class="cat-count">1 activity</span>
+</div>
+
+<div class="activity-card" data-area="tokyo" data-type="beach" data-tom="yes" data-teens="no" data-cost="budget" data-mustdo="false" data-lat="35.7100" data-lng="139.8100">
+  <div class="activity-num">34</div>
+  <div class="activity-content">
+    <h4>Sumida Aquarium (Skytree)</h4>
+    <div class="activity-desc">Modern aquarium at the base of Tokyo Skytree — penguins, jellyfish, garden eels. Beautifully designed exhibits.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag cost-budget">£ Adults ¥2,500 (£13), Child ¥1,500 (£8)</span>
+      <span class="tag area-tag">🗼 Tokyo</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- end tokyo section wrap -->
+
+
+<!-- ==================== KYOTO ==================== -->
+<div class="section-header area-kyoto" data-section="kyoto">
+  <div class="icon">⛩️</div>
+  <h2>Kyoto</h2>
+  <p>Temples, traditions, bamboo &amp; ancient beauty</p>
+</div>
+
+<div data-section-wrap="kyoto">
+
+<!-- Culture & History - Kyoto -->
+<div class="category-header" data-cat-type="culture" data-cat-area="kyoto">
+  <span class="cat-icon">🏛️</span>
+  <h3>Culture &amp; History</h3>
+  <span class="cat-count">7 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="kyoto" data-type="culture" data-tom="yes" data-teens="yes" data-cost="free" data-mustdo="true" data-lat="34.9671" data-lng="135.7727">
+  <div class="activity-num">36</div>
+  <div class="activity-content">
+    <h4>Fushimi Inari Shrine</h4>
+    <div class="activity-desc">Thousands of vermillion torii gates — iconic hike up the mountain through endless tunnels of orange. Katie's Instagram heaven. 📸</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-tag">⛩️ Kyoto</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="kyoto" data-type="culture" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="35.0394" data-lng="135.7292">
+  <div class="activity-num">39</div>
+  <div class="activity-content">
+    <h4>Kinkaku-ji (Golden Pavilion)</h4>
+    <div class="activity-desc">Iconic gold-leaf temple perfectly reflected in a mirror lake. One of Japan's most photographed buildings. 📸</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ ¥500 (£3)</span>
+      <span class="tag area-tag">⛩️ Kyoto</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="kyoto" data-type="culture" data-tom="no" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="34.9949" data-lng="135.7850">
+  <div class="activity-num">40</div>
+  <div class="activity-content">
+    <h4>Kiyomizu-dera Temple</h4>
+    <div class="activity-desc">Wooden terrace with panoramic city views, love stones for fortune-telling. Stunning at any time of day. Katie will love it. 📸</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ ¥400 (£2)</span>
+      <span class="tag area-tag">⛩️ Kyoto</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="kyoto" data-type="culture" data-tom="no" data-teens="yes" data-cost="mid" data-mustdo="false" data-lat="35.0030" data-lng="135.7700">
+  <div class="activity-num">43</div>
+  <div class="activity-content">
+    <h4>Kimono / Yukata Rental</h4>
+    <div class="activity-desc">Dress in traditional Japanese clothing and explore temples for the most amazing photos. Katie's dream day. 📸</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ ¥3,000-6,000 (£16-31) pp</span>
+      <span class="tag area-tag">⛩️ Kyoto</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="kyoto" data-type="culture" data-tom="no" data-teens="yes" data-cost="mid" data-mustdo="false" data-lat="35.0080" data-lng="135.7550">
+  <div class="activity-num">48</div>
+  <div class="activity-content">
+    <h4>Matcha Tea Ceremony</h4>
+    <div class="activity-desc">Traditional tea ceremony experience in a tatami room — learn the art of Japanese tea preparation.</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ ¥2,000-4,000 (£10-21)</span>
+      <span class="tag area-tag">⛩️ Kyoto</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="kyoto" data-type="culture" data-tom="no" data-teens="yes" data-cost="free" data-mustdo="false" data-lat="35.0036" data-lng="135.7757">
+  <div class="activity-num">49</div>
+  <div class="activity-content">
+    <h4>Gion District Evening Walk</h4>
+    <div class="activity-desc">Geisha spotting in the traditional entertainment district — wooden machiya houses, lantern-lit streets, old Japan atmosphere. 📸</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-tag">⛩️ Kyoto</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="kyoto" data-type="culture" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="34.9878" data-lng="135.7460">
+  <div class="activity-num">50</div>
+  <div class="activity-content">
+    <h4>Kyoto Railway Museum</h4>
+    <div class="activity-desc">Huge collection of trains including shinkansen, steam locomotives, driving simulators. Tom and George will love it.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Adults ¥1,500 (£8), Child ¥500 (£3)</span>
+      <span class="tag area-tag">⛩️ Kyoto</span>
+    </div>
+  </div>
+</div>
+
+<!-- Adventure & Outdoors - Kyoto -->
+<div class="category-header" data-cat-type="adventure" data-cat-area="kyoto">
+  <span class="cat-icon">🚀</span>
+  <h3>Adventure &amp; Outdoors</h3>
+  <span class="cat-count">5 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="kyoto" data-type="adventure" data-tom="yes" data-teens="yes" data-cost="mid" data-mustdo="true" data-lat="35.0050" data-lng="135.7600">
+  <div class="activity-num">41</div>
+  <div class="activity-content">
+    <h4>Ninja Experience</h4>
+    <div class="activity-desc">Dress as a ninja, learn shuriken (throwing star) techniques, sword skills. Tom will be in absolute heaven.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ ¥2,500-5,000 (£13-26) pp</span>
+      <span class="tag area-tag">⛩️ Kyoto</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="kyoto" data-type="adventure" data-tom="no" data-teens="yes" data-cost="mid" data-mustdo="false" data-lat="35.0060" data-lng="135.7610">
+  <div class="activity-num">42</div>
+  <div class="activity-content">
+    <h4>Samurai Sword Lesson</h4>
+    <div class="activity-desc">Learn katana techniques from a real sensei — costume included. George's action-hero moment.</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ ¥4,000-7,000 (£21-36) pp</span>
+      <span class="tag area-tag">⛩️ Kyoto</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="kyoto" data-type="adventure" data-tom="yes" data-teens="yes" data-cost="mid" data-mustdo="false" data-lat="35.0200" data-lng="135.6600">
+  <div class="activity-num">46</div>
+  <div class="activity-content">
+    <h4>Arashiyama Hozugawa River Boat</h4>
+    <div class="activity-desc">Traditional wooden boat ride down rapids through a stunning gorge — 16km, 2 hours of scenery and excitement.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Adult ¥4,100 (£21), Child ¥2,700 (£14)</span>
+      <span class="tag area-tag">⛩️ Kyoto</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="kyoto" data-type="adventure" data-tom="no" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="35.0100" data-lng="135.7500">
+  <div class="activity-num">47</div>
+  <div class="activity-content">
+    <h4>Bike Tour of Kyoto</h4>
+    <div class="activity-desc">Cycle through back streets, temples, the Philosopher's Path. Kyoto is flat and perfect for cycling.</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ ¥1,000-1,500 (£5-8)/day rental</span>
+      <span class="tag area-tag">⛩️ Kyoto</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="kyoto" data-type="adventure" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="35.0200" data-lng="135.6650">
+  <div class="activity-num">51</div>
+  <div class="activity-content">
+    <h4>Sagano Scenic Railway</h4>
+    <div class="activity-desc">Open-air trolley train through the Hozugawa gorge — stunning views of the river, mountains, and forest below.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ ¥880 (£5)</span>
+      <span class="tag area-tag">⛩️ Kyoto</span>
+    </div>
+  </div>
+</div>
+
+<!-- Nature & Wildlife - Kyoto -->
+<div class="category-header" data-cat-type="nature" data-cat-area="kyoto">
+  <span class="cat-icon">🌿</span>
+  <h3>Nature &amp; Wildlife</h3>
+  <span class="cat-count">2 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="kyoto" data-type="nature" data-tom="yes" data-teens="yes" data-cost="free" data-mustdo="true" data-lat="35.0094" data-lng="135.6722">
+  <div class="activity-num">37</div>
+  <div class="activity-content">
+    <h4>Arashiyama Bamboo Grove</h4>
+    <div class="activity-desc">Towering bamboo forest path — magical atmosphere, swaying green cathedral of bamboo. Unforgettable. Katie's top Instagram shot. 📸</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-tag">⛩️ Kyoto</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card highlight" data-area="kyoto" data-type="nature" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="true" data-lat="35.0100" data-lng="135.6750">
+  <div class="activity-num">38</div>
+  <div class="activity-content">
+    <h4>Iwatayama Monkey Park</h4>
+    <div class="activity-desc">120+ wild Japanese macaques on a hilltop — panoramic Kyoto views, feed them from inside a hut while they reach through the wire. Tom will be thrilled.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Adults ¥600 (£3), Child ¥300 (£1.50)</span>
+      <span class="tag area-tag">⛩️ Kyoto</span>
+    </div>
+  </div>
+</div>
+
+<!-- Theme Parks & Fun - Kyoto -->
+<div class="category-header" data-cat-type="themeparks" data-cat-area="kyoto">
+  <span class="cat-icon">🎢</span>
+  <h3>Theme Parks &amp; Fun</h3>
+  <span class="cat-count">1 activity</span>
+</div>
+
+<div class="activity-card" data-area="kyoto" data-type="themeparks" data-tom="yes" data-teens="yes" data-cost="mid" data-mustdo="false" data-lat="35.0150" data-lng="135.7100">
+  <div class="activity-num">45</div>
+  <div class="activity-content">
+    <h4>Toei Kyoto Studio Park</h4>
+    <div class="activity-desc">Movie studio theme park — ninja house, samurai shows, dress-up in period costume, walk through Edo-era streets.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Adults ¥2,400 (£12), Child ¥1,400 (£7)</span>
+      <span class="tag area-tag">⛩️ Kyoto</span>
+    </div>
+  </div>
+</div>
+
+<!-- Food & Drink - Kyoto -->
+<div class="category-header" data-cat-type="food" data-cat-area="kyoto">
+  <span class="cat-icon">🍕</span>
+  <h3>Food &amp; Drink</h3>
+  <span class="cat-count">1 activity</span>
+</div>
+
+<div class="activity-card" data-area="kyoto" data-type="food" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="35.0050" data-lng="135.7650">
+  <div class="activity-num">44</div>
+  <div class="activity-content">
+    <h4>Nishiki Market</h4>
+    <div class="activity-desc">"Kyoto's Kitchen" — 400m of food stalls: pickles, mochi, matcha treats, grilled skewers, fresh tofu. Taste your way through.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Free to explore, food ¥100-500</span>
+      <span class="tag area-tag">⛩️ Kyoto</span>
+    </div>
+  </div>
+</div>
+
+<!-- Beach & Water - Kyoto -->
+<div class="category-header" data-cat-type="beach" data-cat-area="kyoto">
+  <span class="cat-icon">🏖️</span>
+  <h3>Beach &amp; Water</h3>
+  <span class="cat-count">1 activity</span>
+</div>
+
+<div class="activity-card" data-area="kyoto" data-type="beach" data-tom="yes" data-teens="no" data-cost="mid" data-mustdo="false" data-lat="34.9878" data-lng="135.7470">
+  <div class="activity-num">52</div>
+  <div class="activity-content">
+    <h4>Kyoto Aquarium</h4>
+    <div class="activity-desc">Interactive exhibits, penguins, seals, jellyfish wonder zone. A rainy-day backup that Tom will love.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag cost-mid">££ Adults ¥2,400 (£12), Child ¥800 (£4)</span>
+      <span class="tag area-tag">⛩️ Kyoto</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- end kyoto section wrap -->
+
+
+<!-- ==================== OSAKA ==================== -->
+<div class="section-header area-osaka" data-section="osaka">
+  <div class="icon">🏯</div>
+  <h2>Osaka</h2>
+  <p>Street food capital, Universal Studios &amp; neon-lit nights</p>
+</div>
+
+<div data-section-wrap="osaka">
+
+<!-- Theme Parks & Fun - Osaka -->
+<div class="category-header" data-cat-type="themeparks" data-cat-area="osaka">
+  <span class="cat-icon">🎢</span>
+  <h3>Theme Parks &amp; Fun</h3>
+  <span class="cat-count">4 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="osaka" data-type="themeparks" data-tom="yes" data-teens="yes" data-cost="premium" data-mustdo="true" data-lat="34.6654" data-lng="135.4323">
+  <div class="activity-num">53</div>
+  <div class="activity-content">
+    <h4>Universal Studios Japan</h4>
+    <div class="activity-desc">Harry Potter, Super Nintendo World, Minions, Jurassic Park. One of the world's best Universal parks — the kids will go absolutely wild.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-premium">£££ Adults/Teens ¥8,600+ (£45+)</span>
+      <span class="tag area-tag">🏯 Osaka</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card highlight" data-area="osaka" data-type="themeparks" data-tom="yes" data-teens="yes" data-cost="premium" data-mustdo="true" data-lat="34.6660" data-lng="135.4330">
+  <div class="activity-num">54</div>
+  <div class="activity-content">
+    <h4>Super Nintendo World</h4>
+    <div class="activity-desc">Mario Kart ride, Bowser's Castle, interactive Power-Up Band games. It's like stepping into a Nintendo game. Book timed entry ahead! George and Tom's dream.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-premium">£££ Included with USJ ticket</span>
+      <span class="tag area-tag">🏯 Osaka</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="osaka" data-type="themeparks" data-tom="yes" data-teens="yes" data-cost="mid" data-mustdo="false" data-lat="34.8200" data-lng="135.6600">
+  <div class="activity-num">61</div>
+  <div class="activity-content">
+    <h4>Hirakata Park</h4>
+    <div class="activity-desc">Amusement park with rides + summer pool/water park area. Less crowded than the big parks, great for a fun day.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ ¥5,600 (£29)</span>
+      <span class="tag area-tag">🏯 Osaka</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="osaka" data-type="themeparks" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="34.6550" data-lng="135.4280">
+  <div class="activity-num">63</div>
+  <div class="activity-content">
+    <h4>Tempozan Giant Ferris Wheel</h4>
+    <div class="activity-desc">112m wheel next to the aquarium — views over Osaka Bay. Choose a transparent gondola if you dare!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ ¥800 (£4)</span>
+      <span class="tag area-tag">🏯 Osaka</span>
+    </div>
+  </div>
+</div>
+
+<!-- Food & Drink - Osaka -->
+<div class="category-header" data-cat-type="food" data-cat-area="osaka">
+  <span class="cat-icon">🍕</span>
+  <h3>Food &amp; Drink</h3>
+  <span class="cat-count">3 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="osaka" data-type="food" data-tom="yes" data-teens="yes" data-cost="free" data-mustdo="true" data-lat="34.6687" data-lng="135.5013">
+  <div class="activity-num">56</div>
+  <div class="activity-content">
+    <h4>Dotonbori</h4>
+    <div class="activity-desc">Neon-lit street food paradise: takoyaki, okonomiyaki, gyoza, the iconic Glico Running Man sign. Osaka's beating heart. 📸</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free to explore</span>
+      <span class="tag area-tag">🏯 Osaka</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card highlight" data-area="osaka" data-type="food" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="true" data-lat="34.6970" data-lng="135.4900">
+  <div class="activity-num">58</div>
+  <div class="activity-content">
+    <h4>Cup Noodle Museum Osaka</h4>
+    <div class="activity-desc">Design your own instant noodle cup to take home — choose your flavour, toppings, and decorate the cup. Brilliant fun for all ages.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ ¥500 (£3) entry + ¥500 per cup</span>
+      <span class="tag area-tag">🏯 Osaka</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="osaka" data-type="food" data-tom="yes" data-teens="yes" data-cost="mid" data-mustdo="false" data-lat="34.6690" data-lng="135.5020">
+  <div class="activity-num">59</div>
+  <div class="activity-content">
+    <h4>Takoyaki Making Class</h4>
+    <div class="activity-desc">Learn to make Osaka's iconic octopus balls (takoyaki) — hands-on cooking, eat your creations. Delicious fun.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ ¥3,000-5,000 (£16-26)</span>
+      <span class="tag area-tag">🏯 Osaka</span>
+    </div>
+  </div>
+</div>
+
+<!-- Culture & History - Osaka -->
+<div class="category-header" data-cat-type="culture" data-cat-area="osaka">
+  <span class="cat-icon">🏛️</span>
+  <h3>Culture &amp; History</h3>
+  <span class="cat-count">3 activities</span>
+</div>
+
+<div class="activity-card" data-area="osaka" data-type="culture" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="34.6873" data-lng="135.5259">
+  <div class="activity-num">57</div>
+  <div class="activity-content">
+    <h4>Osaka Castle</h4>
+    <div class="activity-desc">Impressive fortress with museum inside and surrounding park. Under 15s free. Great views from the top floor.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ ¥600 (£3), under 15 free</span>
+      <span class="tag area-tag">🏯 Osaka</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="osaka" data-type="culture" data-tom="no" data-teens="yes" data-cost="free" data-mustdo="false" data-lat="34.6525" data-lng="135.5063">
+  <div class="activity-num">62</div>
+  <div class="activity-content">
+    <h4>Shinsekai District</h4>
+    <div class="activity-desc">Retro Osaka neighbourhood — Tsutenkaku Tower, kushikatsu (deep-fried skewer) restaurants, neon signs, old-school charm.</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free to explore</span>
+      <span class="tag area-tag">🏯 Osaka</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="osaka" data-type="culture" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="34.6914" data-lng="135.4914">
+  <div class="activity-num">65</div>
+  <div class="activity-content">
+    <h4>Osaka Science Museum</h4>
+    <div class="activity-desc">Planetarium, hands-on science exhibits. Under 18s free. Tom and George will enjoy the interactive displays.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Adults ¥400 (£2), under 18 free</span>
+      <span class="tag area-tag">🏯 Osaka</span>
+    </div>
+  </div>
+</div>
+
+<!-- Beach & Water - Osaka -->
+<div class="category-header" data-cat-type="beach" data-cat-area="osaka">
+  <span class="cat-icon">🏖️</span>
+  <h3>Beach &amp; Water</h3>
+  <span class="cat-count">2 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="osaka" data-type="beach" data-tom="yes" data-teens="yes" data-cost="mid" data-mustdo="true" data-lat="34.6545" data-lng="135.4290">
+  <div class="activity-num">55</div>
+  <div class="activity-content">
+    <h4>Osaka Aquarium Kaiyukan</h4>
+    <div class="activity-desc">One of the world's largest aquariums — whale sharks, manta rays, interactive touch pools. Incredible walk-through tanks.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Adults ¥2,700 (£14), Child ¥1,400 (£7)</span>
+      <span class="tag area-tag">🏯 Osaka</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="osaka" data-type="beach" data-tom="yes" data-teens="yes" data-cost="mid" data-mustdo="false" data-lat="34.6520" data-lng="135.5060">
+  <div class="activity-num">60</div>
+  <div class="activity-content">
+    <h4>Spa World Osaka</h4>
+    <div class="activity-desc">Massive indoor/outdoor water park and themed bath complex — pools from around the world. Slides, wave pool, relaxation zones.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ ¥1,500-2,500 (£8-13)</span>
+      <span class="tag area-tag">🏯 Osaka</span>
+    </div>
+  </div>
+</div>
+
+<!-- Gaming & Tech - Osaka -->
+<div class="category-header" data-cat-type="gaming" data-cat-area="osaka">
+  <span class="cat-icon">🎮</span>
+  <h3>Gaming &amp; Tech</h3>
+  <span class="cat-count">1 activity</span>
+</div>
+
+<div class="activity-card" data-area="osaka" data-type="gaming" data-tom="no" data-teens="yes" data-cost="free" data-mustdo="false" data-lat="34.6600" data-lng="135.5050">
+  <div class="activity-num">64</div>
+  <div class="activity-content">
+    <h4>Den Den Town</h4>
+    <div class="activity-desc">Osaka's answer to Akihabara — anime, manga, retro games, figures, arcades. George's second gaming paradise.</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free to browse</span>
+      <span class="tag area-tag">🏯 Osaka</span>
+    </div>
+  </div>
+</div>
+
+<!-- Entertainment - Osaka -->
+<div class="category-header" data-cat-type="entertainment" data-cat-area="osaka">
+  <span class="cat-icon">🎭</span>
+  <h3>Entertainment</h3>
+  <span class="cat-count">1 activity</span>
+</div>
+
+<div class="activity-card" data-area="osaka" data-type="entertainment" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="34.6700" data-lng="135.5030">
+  <div class="activity-num">66</div>
+  <div class="activity-content">
+    <h4>River Cruise Osaka</h4>
+    <div class="activity-desc">Evening boat cruise through Dotonbori canal — lit-up neon reflections, a gorgeous way to see the city at night.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ ¥1,500 (£8)</span>
+      <span class="tag area-tag">🏯 Osaka</span>
+    </div>
+  </div>
+</div>
+
+<!-- Nature & Wildlife - Osaka -->
+<div class="category-header" data-cat-type="nature" data-cat-area="osaka">
+  <span class="cat-icon">🌿</span>
+  <h3>Nature &amp; Wildlife</h3>
+  <span class="cat-count">1 activity</span>
+</div>
+
+<div class="activity-card" data-area="osaka" data-type="nature" data-tom="yes" data-teens="yes" data-cost="free" data-mustdo="false" data-lat="34.8500" data-lng="135.4700">
+  <div class="activity-num">67</div>
+  <div class="activity-content">
+    <h4>Minoh Waterfall</h4>
+    <div class="activity-desc">Easy family hike (40min walk) to a beautiful 33m waterfall through forest — wild monkeys on the trail. Free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag area-tag">🏯 Osaka</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- end osaka section wrap -->
+
+
+<!-- ==================== DAY TRIPS ==================== -->
+<div class="section-header area-daytrips" data-section="daytrips">
+  <div class="icon">🚅</div>
+  <h2>Day Trips</h2>
+  <p>Hakone, Mt Fuji, Nara, Nikko &amp; Hiroshima</p>
+</div>
+
+<div data-section-wrap="daytrips">
+
+<!-- Nature & Wildlife - Day Trips -->
+<div class="category-header" data-cat-type="nature" data-cat-area="daytrips">
+  <span class="cat-icon">🌿</span>
+  <h3>Nature &amp; Wildlife</h3>
+  <span class="cat-count">3 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="daytrips" data-type="nature" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="true" data-lat="34.6851" data-lng="135.8430">
+  <div class="activity-num">68</div>
+  <div class="activity-content">
+    <h4>Nara Deer Park</h4>
+    <div class="activity-desc">Hundreds of friendly wild deer you can feed, pet, and bow to (they bow back!). Tom will be in heaven. Deer crackers ¥200.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Free entry, crackers ¥200 (£1)</span>
+      <span class="tag area-tag">🚅 Day Trip</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="daytrips" data-type="nature" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="35.2434" data-lng="139.0213">
+  <div class="activity-num">73</div>
+  <div class="activity-content">
+    <h4>Owakudani Volcanic Valley</h4>
+    <div class="activity-desc">Steaming sulphur vents, volcanic landscape — eat the famous black eggs said to extend your life by 7 years. Dramatic scenery.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Free to visit</span>
+      <span class="tag area-tag">🚅 Day Trip</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="daytrips" data-type="nature" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="36.7380" data-lng="139.4970">
+  <div class="activity-num">78</div>
+  <div class="activity-content">
+    <h4>Kegon Falls (Nikko)</h4>
+    <div class="activity-desc">97m waterfall with an elevator down to a dramatic viewing platform at the base. Tom-friendly and stunning.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Adults ¥570 (£3), Child ¥340 (£2)</span>
+      <span class="tag area-tag">🚅 Day Trip</span>
+    </div>
+  </div>
+</div>
+
+<!-- Adventure & Outdoors - Day Trips -->
+<div class="category-header" data-cat-type="adventure" data-cat-area="daytrips">
+  <span class="cat-icon">🚀</span>
+  <h3>Adventure &amp; Outdoors</h3>
+  <span class="cat-count">5 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="daytrips" data-type="adventure" data-tom="yes" data-teens="yes" data-cost="mid" data-mustdo="true" data-lat="35.2326" data-lng="139.1070">
+  <div class="activity-num">70</div>
+  <div class="activity-content">
+    <h4>Hakone Day Trip</h4>
+    <div class="activity-desc">Hot springs, Lake Ashi pirate ship, volcanic valley, Mt Fuji views. Full day of varied adventure — the Hakone Free Pass covers everything.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Hakone Free Pass ¥6,100 (£32) adult</span>
+      <span class="tag area-tag">🚅 Day Trip</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="daytrips" data-type="adventure" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="35.2010" data-lng="139.0220">
+  <div class="activity-num">71</div>
+  <div class="activity-content">
+    <h4>Lake Ashi Pirate Ship</h4>
+    <div class="activity-desc">Cruise across the lake on a pirate ship with views of Mt Fuji on clear days. Tom will love the ship; Katie will love the scenery. 📸</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ ¥1,200 (£6) one way</span>
+      <span class="tag area-tag">🚅 Day Trip</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="daytrips" data-type="adventure" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="35.2434" data-lng="139.0213">
+  <div class="activity-num">72</div>
+  <div class="activity-content">
+    <h4>Hakone Ropeway</h4>
+    <div class="activity-desc">Cable car ride over the volcanic Owakudani valley — steaming vents below, Mt Fuji in the distance. Thrilling views.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ ¥1,550 (£8) one way</span>
+      <span class="tag area-tag">🚅 Day Trip</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card highlight" data-area="daytrips" data-type="adventure" data-tom="no" data-teens="yes" data-cost="mid" data-mustdo="true" data-lat="35.3606" data-lng="138.7274">
+  <div class="activity-num">74</div>
+  <div class="activity-content">
+    <h4>Mt Fuji 5th Station</h4>
+    <div class="activity-desc">Drive or bus up to 2,300m on Japan's most iconic mountain. Above the clouds on a clear day. Unforgettable. 📸</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Bus ¥2,500 (£13) return</span>
+      <span class="tag area-tag">🚅 Day Trip</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="daytrips" data-type="adventure" data-tom="no" data-teens="yes" data-cost="premium" data-mustdo="false" data-lat="35.4861" data-lng="138.7778">
+  <div class="activity-num">75</div>
+  <div class="activity-content">
+    <h4>Fuji-Q Highland</h4>
+    <div class="activity-desc">Record-breaking roller coasters near Mt Fuji — includes one of the world's steepest drops. George's adrenaline fix.</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-premium">£££ Adults ¥7,800 (£41), Child ¥5,000 (£26)</span>
+      <span class="tag area-tag">🚅 Day Trip</span>
+    </div>
+  </div>
+</div>
+
+<!-- Culture & History - Day Trips -->
+<div class="category-header" data-cat-type="culture" data-cat-area="daytrips">
+  <span class="cat-icon">🏛️</span>
+  <h3>Culture &amp; History</h3>
+  <span class="cat-count">4 activities</span>
+</div>
+
+<div class="activity-card" data-area="daytrips" data-type="culture" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="34.6889" data-lng="135.8398">
+  <div class="activity-num">69</div>
+  <div class="activity-content">
+    <h4>Todai-ji Temple (Nara)</h4>
+    <div class="activity-desc">World's largest wooden building containing a giant 15m bronze Buddha. Kids can crawl through a pillar hole for good luck!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Adults ¥600 (£3), Child ¥300 (£1.50)</span>
+      <span class="tag area-tag">🚅 Day Trip</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="daytrips" data-type="culture" data-tom="no" data-teens="yes" data-cost="mid" data-mustdo="false" data-lat="36.7581" data-lng="139.5994">
+  <div class="activity-num">76</div>
+  <div class="activity-content">
+    <h4>Nikko Day Trip</h4>
+    <div class="activity-desc">UNESCO shrines in ancient cedar forest — ornate Toshogu Shrine, stunning nature, Kegon Falls. A full day of beauty.</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ Pass ¥2,040 (£11)</span>
+      <span class="tag area-tag">🚅 Day Trip</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="daytrips" data-type="culture" data-tom="no" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="36.7581" data-lng="139.5994">
+  <div class="activity-num">77</div>
+  <div class="activity-content">
+    <h4>Nikko Toshogu Shrine</h4>
+    <div class="activity-desc">One of Japan's most lavishly decorated shrines — famous "see no evil, hear no evil, speak no evil" monkeys carved here.</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ Adults ¥1,300 (£7), Child ¥450 (£2)</span>
+      <span class="tag area-tag">🚅 Day Trip</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="daytrips" data-type="culture" data-tom="no" data-teens="yes" data-cost="premium" data-mustdo="false" data-lat="34.3955" data-lng="132.4536">
+  <div class="activity-num">79</div>
+  <div class="activity-content">
+    <h4>Hiroshima &amp; Miyajima Island</h4>
+    <div class="activity-desc">Peace Memorial Museum, floating torii gate on Miyajima Island. Powerful, moving day trip from Osaka by shinkansen.</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-premium">£££ JR Pass or ¥20,000 (£104) return</span>
+      <span class="tag area-tag">🚅 Day Trip</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- end daytrips section wrap -->
+
+
+<!-- ==================== UNIQUE EXPERIENCES ==================== -->
+<div class="section-header area-unique" data-section="unique">
+  <div class="icon">✨</div>
+  <h2>Unique Japanese Experiences</h2>
+  <p>Only-in-Japan moments the whole family will remember forever</p>
+</div>
+
+<div data-section-wrap="unique">
+
+<!-- Entertainment - Unique -->
+<div class="category-header" data-cat-type="entertainment" data-cat-area="unique">
+  <span class="cat-icon">🎭</span>
+  <h3>Entertainment &amp; Experiences</h3>
+  <span class="cat-count">6 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="unique" data-type="entertainment" data-tom="yes" data-teens="yes" data-cost="premium" data-mustdo="true" data-lat="35.6812" data-lng="139.7671">
+  <div class="activity-num">80</div>
+  <div class="activity-content">
+    <h4>Shinkansen Bullet Train</h4>
+    <div class="activity-desc">Ride the 320km/h bullet train between cities — an experience in itself! Perfectly smooth, perfectly on time, perfectly Japanese.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-premium">£££ JR Pass 7-day ¥50,000 (£260) adult</span>
+      <span class="tag area-tag">✨ Unique</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="unique" data-type="entertainment" data-tom="no" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="35.2326" data-lng="139.1070">
+  <div class="activity-num">81</div>
+  <div class="activity-content">
+    <h4>Japanese Onsen (Hot Spring)</h4>
+    <div class="activity-desc">Traditional bathing experience in mineral-rich hot spring waters. A cultural must-try — deeply relaxing.</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ ¥1,000-2,500 (£5-13)</span>
+      <span class="tag area-tag">✨ Unique</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="unique" data-type="entertainment" data-tom="no" data-teens="yes" data-cost="mid" data-mustdo="false" data-lat="35.6900" data-lng="139.7000">
+  <div class="activity-num">82</div>
+  <div class="activity-content">
+    <h4>Capsule Hotel Experience</h4>
+    <div class="activity-desc">Sleep in a pod! Fun novelty for one night — high-tech sleeping capsules with TV and controls. Only in Japan.</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ ¥3,000-5,000 (£16-26) pp</span>
+      <span class="tag area-tag">✨ Unique</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card highlight" data-area="unique" data-type="entertainment" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="true" data-lat="35.6940" data-lng="139.7040">
+  <div class="activity-num">83</div>
+  <div class="activity-content">
+    <h4>Karaoke (Karaoke Kan)</h4>
+    <div class="activity-desc">Private room karaoke — huge English song selection, food and drinks delivered to your room. Family singalong! Tom will steal the mic.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ ¥500-1,000 (£3-5)/hr pp</span>
+      <span class="tag area-tag">✨ Unique</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="unique" data-type="entertainment" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="35.6600" data-lng="139.7000">
+  <div class="activity-num">84</div>
+  <div class="activity-content">
+    <h4>Purikura Photo Booths</h4>
+    <div class="activity-desc">Japanese photo booths with wild filters, stickers, sparkles — found everywhere in game centres. Katie and Tom will love these. 📸</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ ¥400-600 (£2-3)</span>
+      <span class="tag area-tag">✨ Unique</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card highlight" data-area="unique" data-type="entertainment" data-tom="yes" data-teens="yes" data-cost="free" data-mustdo="true" data-lat="35.7150" data-lng="139.7970">
+  <div class="activity-num">87</div>
+  <div class="activity-content">
+    <h4>Japanese Festival (Matsuri)</h4>
+    <div class="activity-desc">Summer festivals with food stalls, fireworks, yukata, taiko drums, dancing. The atmosphere is electric. Check dates for local matsuri!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-free">Free to attend</span>
+      <span class="tag area-tag">✨ Unique</span>
+    </div>
+  </div>
+</div>
+
+<!-- Nature & Wildlife - Unique -->
+<div class="category-header" data-cat-type="nature" data-cat-area="unique">
+  <span class="cat-icon">🌿</span>
+  <h3>Nature &amp; Wildlife</h3>
+  <span class="cat-count">1 activity</span>
+</div>
+
+<div class="activity-card" data-area="unique" data-type="nature" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="35.6580" data-lng="139.7020">
+  <div class="activity-num">85</div>
+  <div class="activity-content">
+    <h4>Cat Café / Animal Café</h4>
+    <div class="activity-desc">Spend time with cats, owls, hedgehogs, or bunnies while drinking coffee. Tom and Katie will fight over who gets more cuddle time.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ ¥1,000-1,500 (£5-8)/hr</span>
+      <span class="tag area-tag">✨ Unique</span>
+    </div>
+  </div>
+</div>
+
+<!-- Food & Drink - Unique -->
+<div class="category-header" data-cat-type="food" data-cat-area="unique">
+  <span class="cat-icon">🍕</span>
+  <h3>Food &amp; Drink</h3>
+  <span class="cat-count">2 activities</span>
+</div>
+
+<div class="activity-card" data-area="unique" data-type="food" data-tom="yes" data-teens="yes" data-cost="mid" data-mustdo="false" data-lat="35.6970" data-lng="139.7940">
+  <div class="activity-num">86</div>
+  <div class="activity-content">
+    <h4>Sumo Experience / Chanko Nabe</h4>
+    <div class="activity-desc">Eat the hearty sumo wrestler stew (chanko nabe) at a sumo restaurant — big portions, rich flavour, a fun cultural dining experience.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-mid">££ ¥3,000-5,000 (£16-26) pp</span>
+      <span class="tag area-tag">✨ Unique</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="unique" data-type="food" data-tom="yes" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="35.6800" data-lng="139.7500">
+  <div class="activity-num">88</div>
+  <div class="activity-content">
+    <h4>Konbini Culture (Convenience Stores)</h4>
+    <div class="activity-desc">7-Eleven, Lawson, FamilyMart are an experience — onigiri, egg sandwiches, fried chicken, mochi. Seriously good food for pennies.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ ¥100-500 (50p-£3)</span>
+      <span class="tag area-tag">✨ Unique</span>
+    </div>
+  </div>
+</div>
+
+<!-- Gaming & Tech - Unique -->
+<div class="category-header" data-cat-type="gaming" data-cat-area="unique">
+  <span class="cat-icon">🎮</span>
+  <h3>Gaming &amp; Tech</h3>
+  <span class="cat-count">2 activities</span>
+</div>
+
+<div class="activity-card" data-area="unique" data-type="gaming" data-tom="no" data-teens="yes" data-cost="budget" data-mustdo="false" data-lat="35.7020" data-lng="139.7730">
+  <div class="activity-num">89</div>
+  <div class="activity-content">
+    <h4>Manga Café</h4>
+    <div class="activity-desc">All-you-can-read manga, drinks, snacks, private booths with gaming PCs. George's idea of paradise — he won't want to leave.</div>
+    <div class="activity-tags">
+      <span class="tag teen-love">⭐ Teen-approved</span>
+      <span class="tag cost-budget">£ ¥500-800 (£3-4)/hr</span>
+      <span class="tag area-tag">✨ Unique</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="unique" data-type="gaming" data-tom="yes" data-teens="no" data-cost="budget" data-mustdo="false" data-lat="35.6700" data-lng="139.7600">
+  <div class="activity-num">90</div>
+  <div class="activity-content">
+    <h4>Vending Machine Culture</h4>
+    <div class="activity-desc">5.5 million vending machines across Japan — try hot/cold drinks, soup, ice cream, even fresh eggs. Tom will want to try every button.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">✅ Tom-friendly</span>
+      <span class="tag cost-budget">£ ¥100-200 (50p-£1)</span>
+      <span class="tag area-tag">✨ Unique</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- end unique section wrap -->
+
+
+</div><!-- container -->
+</div><!-- main-content -->
+</div><!-- page-layout -->
+
+<div class="footer">
+  <p>🇯🇵 Japan Family Holiday Planner — Summer 2026</p>
+  <p>Researched for 2 adults + Katie (17) + George (15) + Tom (8)</p>
+</div>
+
+<script>
+(function() {
+  const cards = document.querySelectorAll('.activity-card');
+  const checkboxes = document.querySelectorAll('.filter-sidebar input[type="checkbox"]');
+  const countEl = document.getElementById('visibleCount');
+  const TOTAL = 90;
+
+  function getCheckedValues(filterName) {
+    const vals = [];
+    checkboxes.forEach(cb => {
+      if (cb.dataset.filter === filterName && cb.checked) vals.push(cb.value);
+    });
+    return vals;
+  }
+
+  function applyFilters() {
+    const areaFilters = getCheckedValues('area');
+    const typeFilters = getCheckedValues('type');
+    const tomFilters = getCheckedValues('tom');
+    const teenFilters = getCheckedValues('teens');
+    const costFilters = getCheckedValues('cost');
+    const mustdoFilters = getCheckedValues('mustdo');
+
+    let visible = 0;
+
+    cards.forEach(card => {
+      let show = true;
+
+      // Area filter (OR within group)
+      if (areaFilters.length > 0 && !areaFilters.includes(card.dataset.area)) show = false;
+
+      // Type filter (OR within group)
+      if (typeFilters.length > 0 && !typeFilters.includes(card.dataset.type)) show = false;
+
+      // Tom filter
+      if (tomFilters.length > 0 && card.dataset.tom !== 'yes') show = false;
+
+      // Teens filter
+      if (teenFilters.length > 0 && card.dataset.teens !== 'yes') show = false;
+
+      // Cost filter (OR within group)
+      if (costFilters.length > 0 && !costFilters.includes(card.dataset.cost)) show = false;
+
+      // Must-do filter
+      if (mustdoFilters.length > 0 && card.dataset.mustdo !== 'true') show = false;
+
+      if (show) {
+        card.classList.remove('hidden-by-filter');
+        visible++;
+      } else {
+        card.classList.add('hidden-by-filter');
+      }
+    });
+
+    countEl.textContent = visible;
+
+    // Hide section headers if all their activities are hidden
+    document.querySelectorAll('.section-header[data-section]').forEach(header => {
+      const sectionId = header.dataset.section;
+      const wrap = document.querySelector('[data-section-wrap="' + sectionId + '"]');
+      if (wrap) {
+        const visibleCards = wrap.querySelectorAll('.activity-card:not(.hidden-by-filter)');
+        header.classList.toggle('hidden-by-filter', visibleCards.length === 0);
+        wrap.style.display = visibleCards.length === 0 ? 'none' : '';
+      }
+    });
+
+    // Hide category headers if all their activities are hidden
+    document.querySelectorAll('.category-header[data-cat-type]').forEach(catHeader => {
+      let sibling = catHeader.nextElementSibling;
+      let hasVisible = false;
+      while (sibling && !sibling.classList.contains('category-header') && !sibling.classList.contains('section-header')) {
+        if (sibling.classList.contains('activity-card') && !sibling.classList.contains('hidden-by-filter')) {
+          hasVisible = true;
+          break;
+        }
+        sibling = sibling.nextElementSibling;
+      }
+      catHeader.classList.toggle('hidden-by-filter', !hasVisible);
+    });
+    if (typeof updateMap === 'function') updateMap();
+  }
+
+  checkboxes.forEach(cb => cb.addEventListener('change', applyFilters));
+
+  window.clearFilters = function() {
+    checkboxes.forEach(cb => cb.checked = false);
+    applyFilters();
+  };
+
+  window.toggleFilters = function() {
+    const sidebar = document.getElementById('filterSidebar');
+    const overlay = document.getElementById('filterOverlay');
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('open');
+  };
+})();
+</script>
+
+<script>
+
+function toggleAccom(show) {
+  if (!window.accomMarkers) return;
+  window.accomMarkers.forEach(function(m) {
+    if (show) m.addTo(window.activityMap);
+    else window.activityMap.removeLayer(m);
+  });
+}
+
+// Dynamic activity map
+function updateMap() {
+  if (!window.activityMarkers) return;
+  var bounds = [];
+  var tableBody = document.getElementById('map-table-body');
+  if (tableBody) tableBody.innerHTML = '';
+  var visibleCount = 0;
+  
+  document.querySelectorAll('.activity-card').forEach(function(card, i) {
+    var marker = window.activityMarkers[i];
+    if (!marker) return;
+    var lat = parseFloat(card.dataset.lat);
+    var lng = parseFloat(card.dataset.lng);
+    if (!lat || !lng) return;
+    
+    var isVisible = !card.classList.contains('hidden-by-filter');
+    if (isVisible) {
+      marker.addTo(window.activityMap);
+      bounds.push([lat, lng]);
+      visibleCount++;
+      if (tableBody) {
+        var num = card.dataset.num;
+        var title = card.querySelector('h4').textContent.trim();
+        var link = card.querySelector('h4 a');
+        var href = link ? link.href : '';
+        var isMustDo = card.dataset.mustdo === 'true';
+        var tr = document.createElement('tr');
+        tr.style.borderBottom = '1px solid #e0e0e0';
+        if (visibleCount % 2 === 0) tr.style.background = '#f0f3f9';
+        tr.innerHTML = '<td style="padding:5px 8px;color:#1B3C8F;font-weight:700;">' + num + '</td>' +
+          '<td style="padding:5px 8px;">' + (isMustDo ? '\u2B50 ' : '') + title + '</td>' +
+          '<td style="padding:5px 8px;text-align:right;">' + 
+          (href ? '<a href="'+href+'" target="_blank" style="color:#1B3C8F;margin-right:10px;">More Info</a>' : '') +
+          '<a href="https://www.google.com/maps?q='+lat+','+lng+'" target="_blank" style="color:#888;">\uD83D\uDCCD Map</a></td>';
+        tableBody.appendChild(tr);
+      }
+    } else {
+      window.activityMap.removeLayer(marker);
+    }
+  });
+  
+  var countEl = document.getElementById('map-count');
+  if (countEl) countEl.textContent = visibleCount + ' activities shown';
+  
+  if (bounds.length > 0) {
+    window.activityMap.fitBounds(bounds, {padding: [30, 30], maxZoom: 12});
+  }
+}
+
+(function(){
+  window.activityMap = L.map('mustdo-map', {scrollWheelZoom: false}).setView([35.5, 136.5], 6);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; CARTO &copy; OSM', maxZoom: 18
+  }).addTo(window.activityMap);
+  
+  window.activityMarkers = [];
+  
+  document.querySelectorAll('.activity-card').forEach(function(card) {
+    var lat = parseFloat(card.dataset.lat);
+    var lng = parseFloat(card.dataset.lng);
+    if (!lat || !lng) { window.activityMarkers.push(null); return; }
+    
+    var num = card.dataset.num;
+    var isMustDo = card.dataset.mustdo === 'true';
+    var title = card.querySelector('h4').textContent.trim();
+    var desc = card.querySelector('.activity-desc');
+    var descText = desc ? desc.textContent.trim().substring(0, 100) + '...' : '';
+    
+    var size = isMustDo ? 28 : 22;
+    var bg = isMustDo ? '#FF6B35' : '#1B3C8F';
+    var fontSize = isMustDo ? '12px' : '10px';
+    
+    var icon = L.divIcon({
+      className: '',
+      html: '<div style="background:'+bg+';color:#fff;width:'+size+'px;height:'+size+'px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:'+fontSize+';font-family:Montserrat,sans-serif;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;cursor:pointer;">'+num+'</div>',
+      iconSize: [size, size],
+      iconAnchor: [size/2, size/2]
+    });
+    
+    var marker = L.marker([lat, lng], {icon: icon})
+      .bindPopup('<div style="min-width:200px;"><b style="color:#0F2557;font-size:0.95rem;">' + (isMustDo ? '\u2B50 ' : '') + title + '</b><br><span style="color:#555;font-size:0.85rem;">' + descText + '</span></div>');
+    
+    marker.addTo(window.activityMap);
+    window.activityMarkers.push(marker);
+  });
+  
+  updateMap();
+
+// Accommodation overlay
+window.accomMarkers = [];
+var accomData = [
+  [35.6300, 139.8800, "Hilton Tokyo Bay", "Hilton", "https://www.hilton.com/en/hotels/tyotbtw-hilton-tokyo-bay/", "Disney Resort area, family rooms, pool, Happy Magic Suites for kids."],
+  [35.6700, 139.7100, "Shinjuku Washington Hotel", "Independent", "https://www.booking.com/hotel/jp/shinjuku-washington.html", "Central Tokyo, family rooms, near Shinjuku station."],
+  [35.0100, 135.7700, "Hotel Granvia Kyoto", "JR Hotels", "https://www.granvia-kyoto.co.jp/english/", "Connected to Kyoto Station, family-friendly, pool."],
+  [34.6700, 135.5000, "Hotel Universal Port", "Independent", "https://www.booking.com/hotel/jp/universal-port.html", "USJ official hotel, Minions rooms, harbour views, Osaka."],
+  [35.2300, 139.1100, "Hakone Kowakien Yunessun", "Independent", "https://www.yunessun.com/en/", "Hot spring theme park + hotel, fun baths, family friendly."]
+];
+var accomIcon = function(){ return L.divIcon({
+  className:'',
+  html:'<div style="background:#2d9a2d;color:#fff;width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;cursor:pointer;">&#127965;</div>',
+  iconSize:[30,30], iconAnchor:[15,15]
+}); };
+accomData.forEach(function(a){
+  var marker = L.marker([a[0],a[1]], {icon: accomIcon()})
+    .bindPopup('<div style="min-width:220px;"><b style="color:#2d9a2d;font-size:0.95rem;">&#127965; '+a[2]+'</b><br><span style="color:#888;font-size:0.8rem;">'+a[3]+'</span><br><span style="color:#555;font-size:0.85rem;">'+a[5]+'</span><br><a href="'+a[4]+'" target="_blank" style="color:#2d9a2d;font-size:0.85rem;">View on '+a[3]+' \u2192</a></div>');
+  marker.addTo(window.activityMap);
+  window.accomMarkers.push(marker);
+});
+})();
+</script>
+
+<script>
+// Country navbar show on scroll
+(function(){
+  var nav = document.getElementById('countryNav');
+  if (!nav) return;
+  var hero = document.querySelector('.hero');
+  if (!hero) { nav.classList.add('visible'); return; }
+  var observer = new IntersectionObserver(function(entries){
+    nav.classList.toggle('visible', !entries[0].isIntersecting);
+  }, {threshold: 0});
+  observer.observe(hero);
+})();
+</script>
+
+</body>
+</html>
