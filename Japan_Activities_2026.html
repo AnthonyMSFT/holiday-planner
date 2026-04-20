@@ -42,12 +42,7 @@
 }
 .country-nav__home .nav-icon { width: 16px; height: 16px; }
 .country-nav__home:hover { color: #fff; }
-.country-nav__current {
-  font-family: 'Playfair Display', serif;
-  font-size: 0.9rem; color: #fff; font-weight: 600;
-  position: absolute; left: 50%; transform: translateX(-50%);
-  white-space: nowrap;
-}
+.country-nav__current { display: none; }
 .country-nav__dropdown-wrap { position: relative; }
 .country-nav__toggle {
   display: flex; align-items: center; gap: 6px;
@@ -432,7 +427,7 @@
     <a href="showcase/index.html" class="country-nav__home">
       <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg> Home
     </a>
-    <span class="country-nav__current">🇯🇵 Japan — Tokyo • Kyoto • Osaka</span>
+    <a href="blog/index.html" class="country-nav__home" style="color:rgba(255,255,255,0.8);">&#x1F4DD; Blog</a>
     <div class="country-nav__dropdown-wrap">
       <button class="country-nav__toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
         🌍 Destinations <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
@@ -451,7 +446,6 @@
 
       </div>
     </div>
-    <a href="blog/index.html" class="country-nav__home" style="color:#fff;margin-left:12px;">📝 Blog</a>
   </div>
 </nav>
 
