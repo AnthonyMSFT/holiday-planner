@@ -1,1 +1,2059 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zambia: Victoria Falls &amp; Safari — 65 Family Activities</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap');
 
+  :root {
+    --verdon: #1B3C8F;
+    --verdon-light: #e8edf7;
+    --azur: #0F2557;
+    --azur-light: #f0f0f0;
+    --accent: #1B3C8F;
+    --gold: #1B3C8F;
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #0F2557;
+    --muted: #4a6bb5555;
+    --border: #e0e0e0;
+    --sidebar-width: 280px;
+    --accent-orange: #FF6B35;
+  }
+
+  /* Country Navbar */
+.country-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(15, 37, 87, 0.97);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  height: 44px;
+}
+.country-nav__inner {
+  max-width: 1400px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 1.2rem; height: 44px;
+}
+.country-nav__home {
+  display: flex; align-items: center; gap: 6px;
+  color: #FF6B35; font-size: 0.82rem; font-weight: 600;
+  text-decoration: none; white-space: nowrap;
+}
+.country-nav__home .nav-icon { width: 16px; height: 16px; }
+.country-nav__home:hover { color: #fff; }
+.country-nav__current { display: none; }
+.country-nav__dropdown-wrap { position: relative; }
+.country-nav__toggle {
+  display: flex; align-items: center; gap: 6px;
+  background: #FF6B35; border: none; box-shadow: 0 2px 12px rgba(255,107,53,0.35); letter-spacing: 0.02em;
+  color: #fff; padding: 8px 18px; border-radius: 8px;
+  font-size: 0.85rem; font-weight: 600; cursor: pointer;
+  font-family: 'Inter', sans-serif; transition: all 0.2s;
+}
+.country-nav__toggle:hover { background: #e85d2a; box-shadow: 0 4px 18px rgba(255,107,53,0.5); transform: translateY(-1px); }
+.country-nav__toggle svg { width: 14px; height: 14px; transition: transform 0.2s; }
+.country-nav__toggle.open svg { transform: rotate(180deg); }
+.country-nav__menu {
+  display: none; position: absolute; right: 0; top: calc(100% + 8px);
+  background: #0F2557; border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px; padding: 6px 0; min-width: 220px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  animation: navDropIn 0.15s ease-out;
+}
+@keyframes navDropIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+.country-nav__menu.open { display: block; }
+.country-nav__menu a {
+  display: flex; align-items: center; gap: 8px;
+  padding: 9px 16px; color: rgba(255,255,255,0.8);
+  font-size: 0.82rem; font-weight: 500; text-decoration: none;
+  transition: all 0.15s;
+}
+.country-nav__menu a:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.country-nav__menu a.active { color: #FF6B35; font-weight: 600; }
+.country-nav__menu a .nav-icon { width: 16px; height: 16px; opacity: 0.7; flex-shrink: 0; }
+.country-nav__menu a:hover .nav-icon { opacity: 1; }
+.country-nav__menu-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 4px 0; }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Montserrat', 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding-top: 44px;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #0F2557 0%, #1B3C8F 100%);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    margin-bottom: 10px;
+  }
+  .hero .subtitle { font-size: 1.1rem; opacity: 0.9; margin-bottom: 8px; }
+  .hero .count {
+    display: inline-block;
+    background: #FF6B35;
+    padding: 8px 24px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-top: 12px;
+  }
+  .hero .family {
+    margin-top: 16px;
+    font-size: 0.95rem;
+    opacity: 0.85;
+  }
+
+  .page-layout {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .filter-sidebar {
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: #0F2557;
+    color: #fff;
+    padding: 20px 16px;
+    z-index: 100;
+    scrollbar-width: thin;
+    scrollbar-color: #4a6bb5 #0F2557;
+  }
+  .filter-sidebar::-webkit-scrollbar { width: 6px; }
+  .filter-sidebar::-webkit-scrollbar-track { background: #0F2557; }
+  .filter-sidebar::-webkit-scrollbar-thumb { background: #4a6bb5; border-radius: 3px; }
+
+  .filter-sidebar h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: #1B3C8F;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .filter-sidebar h3::before { content: '\2699\FE0F'; }
+
+  .filter-count {
+    background: #1B3C8F;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+  .filter-count span { font-size: 1.3rem; }
+
+  .filter-group {
+    margin-bottom: 18px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 14px;
+  }
+  .filter-group:last-child { border-bottom: none; }
+  .filter-group-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #aaa;
+    margin-bottom: 8px;
+  }
+  .filter-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: color 0.15s;
+    font-family: 'Inter', sans-serif;
+  }
+  .filter-group label:hover { color: #1B3C8F; }
+
+  .filter-group input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #4a6bb5;
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .filter-group input[type="checkbox"]:checked {
+    background: #1B3C8F;
+    border-color: #1B3C8F;
+  }
+  .filter-group input[type="checkbox"]:checked::after {
+    content: '\2713';
+    position: absolute;
+    top: -1px;
+    left: 2px;
+    font-size: 13px;
+    color: white;
+    font-weight: bold;
+  }
+
+  .clear-filters {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    color: #1B3C8F;
+    border: 2px solid #1B3C8F;
+    border-radius: 8px;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+  }
+  .clear-filters:hover {
+    background: #1B3C8F;
+    color: white;
+  }
+
+  .filter-toggle {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 200;
+    background: #1B3C8F;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  .main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 0 20px;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .top10 {
+    background: linear-gradient(135deg, #e8edf7, #e0e8f5);
+    border: 2px solid var(--gold);
+    border-radius: 16px;
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 800px;
+  }
+  .top10 h2 { font-family: 'Playfair Display', serif; color: #1B3C8F; margin-bottom: 16px; font-size: 1.5rem; }
+  .top10 ol { padding-left: 24px; }
+  .top10 li { margin-bottom: 8px; font-size: 0.95rem; }
+  .top10 li strong { color: #0F2557; }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 30px 0;
+  }
+  .summary-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+  .summary-card .big-num { font-size: 2.5rem; font-weight: 700; color: #1B3C8F; }
+  .summary-card .label { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+
+  .section-header {
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 16px;
+    margin: 40px 0 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .section-header.verdon { background: linear-gradient(135deg, #1B3C8F, #142f6e); color: white; }
+  .section-header.azur { background: linear-gradient(135deg, #0F2557, #1B3C8F); color: white; }
+  .section-header .icon { font-size: 3rem; margin-bottom: 8px; }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+  }
+  .section-header p { opacity: 0.9; margin-top: 6px; font-size: 0.95rem; }
+  .section-header.hidden-by-filter { display: none; }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 32px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--border);
+  }
+  .category-header .cat-icon { font-size: 1.6rem; }
+  .category-header h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; }
+  .category-header .cat-count {
+    background: var(--verdon-light);
+    color: var(--verdon);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .category-header.hidden-by-filter { display: none; }
+
+  .activity-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    gap: 12px;
+    align-items: start;
+    transition: box-shadow 0.2s, opacity 0.2s;
+  }
+  .activity-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .activity-card.highlight { border-left: 4px solid var(--accent-orange); }
+  .activity-card.hidden-by-filter { display: none; }
+
+  .activity-num {
+    background: var(--verdon);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .activity-content h4 { font-size: 1rem; margin-bottom: 4px; }
+  .activity-content h4 a { color: inherit; text-decoration: none; }
+  .activity-content h4 a:hover { color: var(--accent); text-decoration: underline; }
+  .activity-desc { font-size: 0.88rem; color: var(--muted); margin-bottom: 8px; }
+
+  .activity-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .tag.tom-yes { background: #d1fae5; color: #065f46; }
+  .tag.tom-no { background: #fee2e2; color: #991b1b; }
+  .tag.tom-check { background: #fef3c7; color: #92400e; }
+  .tag.teen-love { background: #ede9fe; color: #5b21b6; }
+  .tag.teen-ok { background: #f3f4f6; color: #4b5563; }
+  .tag.cost { background: #e0f2fe; color: #075985; }
+  .tag.free { background: #d1fae5; color: #065f46; }
+
+  .tag.cost-free { background: #d1fae5; color: #065f46; font-weight: 600; }
+  .tag.cost-budget { background: #dbeafe; color: #1e40af; font-weight: 600; }
+  .tag.cost-mid { background: #bfdbfe; color: #1e3a8a; font-weight: 600; }
+  .tag.cost-premium { background: #c4b5fd; color: #3b0764; font-weight: 600; }
+
+  .tag.week-area { background: #e8edf7; color: #1B3C8F; font-weight: 600; }
+
+  .activity-link {
+    flex-shrink: 0;
+    align-self: center;
+  }
+  .activity-link a {
+    display: inline-block;
+    background: var(--verdon);
+    color: white;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+  .activity-link a:hover { background: #0a1b3f; }
+
+  .footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 900px) {
+    .filter-sidebar {
+      position: fixed;
+      left: -300px;
+      top: 0;
+      height: 100vh;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+    .filter-sidebar.open { left: 0; }
+    .filter-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+    }
+    .filter-overlay.open { display: block; }
+    .filter-toggle { display: flex; align-items: center; justify-content: center; }
+    .main-content { padding: 0 12px; }
+    .page-layout { display: block; }
+  }
+
+  @media (max-width: 640px) {
+    .activity-card { grid-template-columns: 32px 1fr; }
+    .activity-link { grid-column: 1 / -1; }
+    .activity-link a { width: 100%; text-align: center; }
+  }
+  #activitiesToggle:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(15,37,87,0.35); }
+</style>
+</head>
+<body>
+
+<nav class="country-nav" id="countryNav">
+  <div class="country-nav__inner">
+    <a href="showcase/index.html" class="country-nav__home">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg> Home
+    </a>
+    <a href="blog/index.html" class="country-nav__home" style="color:rgba(255,255,255,0.8);">&#x1F4DD; Blog</a>
+    <div class="country-nav__dropdown-wrap">
+      <button class="country-nav__toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+        &#127758; Destinations <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
+      </button>
+      <div class="country-nav__menu" id="navMenu">
+        <a href="France_Verdon_CotedAzur_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h6v18H3V3zm12 0h6v18h-6V3zM9 3h6v18H9V3z" opacity="0.8"/></svg> France</a>
+        <a href="Germany_Bavaria_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L8.5 8.5 2 9.5l5 4.5L5.5 21 12 17.5 18.5 21 17 14l5-4.5-6.5-1L12 2z"/></svg> Germany</a>
+        <a href="Croatia_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20v4H2zm0 6h4v4H6v-2H4v4h4v-2h2v4H8v-2H4v4h20V10H2zm6 0h4v2h-2v2H8v-4zm6 0h4v2h-2v2h-2v-4z"/></svg> Croatia</a>
+        <a href="Sicily_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c3.31 0 6-2.69 6-6 0-4.96-4.49-9-10-9z"/></svg> Sicily</a>
+        <a href="Egypt_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 21h18L12 3 3 21zm9-3l-4.5-9h9L12 18z"/></svg> Egypt</a>
+        <a href="Austria_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z"/></svg> Austria</a>
+        <a href="Bulgaria_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 2.84L18 11v7h-2v-6H8v6H6v-7l6-5.16z"/></svg> Bulgaria</a>
+        <a href="Japan_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg> Japan</a>
+        <a href="Spain_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg> Spain</a>
+        <a href="CostaRica_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.71c.76.34 1.59.54 2.46.59L9 20c.5-4 4.17-8 9-8V8z"/></svg> Costa Rica</a>
+        <a href="Zambia_Activities_2026.html" class="active"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg> Zambia</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" style="position:relative; overflow:hidden;">
+  <div class="hero__bg" style="position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1920&q=80') center/cover no-repeat;"></div>
+  <div class="hero__overlay" style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,37,87,.75) 0%, rgba(15,37,87,.9) 100%);"></div>
+  <div style="position:relative; z-index:2;">
+  <h1>&#127487;&#127474; Zambia: Victoria Falls &amp; Safari</h1>
+  <div class="subtitle">The adventure of a lifetime &#8212; waterfalls, wildlife &amp; wilderness</div>
+  <div class="count">&#127919; 65 Activities Found</div>
+  <div class="family">&#128104;&#8205;&#128105;&#8205;&#128103;&#8205;&#128102; Researched for 2 adults + Katie (17) + George (15) + Tom (8)</div>
+  <div style="margin-top:14px;font-size:0.88rem;opacity:0.85;">&#9992;&#65039; No direct from LBA/MAN &#8212; connect via Johannesburg (BA/SAA), Dubai (Emirates), or Addis Ababa (Ethiopian). ~14-18hrs to Livingstone (LVI). ~&#163;650-900pp return.</div>
+  <div style="margin-top:6px;font-size:0.85rem;opacity:0.8;">&#128663; Livingstone airport &#8594; Victoria Falls: Just 20 minutes. Safari parks require domestic flights (~1hr).</div>
+  <div style="margin-top:6px;font-size:0.82rem;opacity:0.75;">&#128176; Prices in USD ($). Most activities priced in US dollars.</div>
+  </div>
+</div>
+
+<!-- Holiday Synopsis -->
+<div style="background: #fff; padding: 2.5rem 0; border-bottom: 1px solid #e8edf7;">
+  <div style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
+    <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; font-size: 1.4rem; margin-bottom: 12px;">&#127487;&#127474; The Holiday at a Glance</h3>
+    <p style="font-size: 0.95rem; color: #444; line-height: 1.8; margin-bottom: 12px;">This isn&#8217;t a beach holiday &#8212; this is the adventure of a lifetime. Stand on the edge of the world&#8217;s largest waterfall. Take a helicopter flight over the thundering Zambezi. Raft Grade 5 white water through Batoka Gorge. Then fly into the African bush for game drives where you&#8217;ll see elephants, lions, leopards, and hippos from an open-top Land Cruiser. Zambia is raw, real, and utterly unforgettable &#8212; and August is the perfect time to go (dry season = best wildlife + Devil&#8217;s Pool is open).</p>
+    <p style="font-size: 0.95rem; color: #444; line-height: 1.8; margin-bottom: 12px;">George will be counting down to the bungee jump off Victoria Falls Bridge &#8212; 111 metres above the Zambezi. Tom will be speechless watching elephants drink at sunset from your lodge deck. Katie will photograph the rainbow mist over the Falls and the Milky Way from a bush camp with zero light pollution. And the whole family will never forget a canoe safari past hippos, or a night drive spotting leopards by spotlight. This is a &#8220;once in a lifetime&#8221; that&#8217;s actually achievable.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px;">
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#127754; Victoria Falls</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#129409; Big Five Safari</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#128641; Helicopter Flights</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#127754; White Water Rafting</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#127946; Devil&#8217;s Pool</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#129435; Canoe Safaris</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#127749; Sunset Cruises</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#129423; Rhino Tracking</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#127748; Stargazing</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#129534; Bungee Jumping</span>
+    </div>
+  </div>
+</div>
+
+<!-- Weather Summary -->
+<div class="weather-section" style="background: linear-gradient(135deg, #f0f4ff 0%, #e8edf7 100%); padding: 2rem 0;">
+  <div style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
+    <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 16px; font-size: 1.2rem;">
+      &#9728;&#65039; August Weather &#8212; What to Expect
+    </h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 12px;">
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">&#127777;&#65039;</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">25-28&#176;C</div>
+        <div style="font-size: 0.75rem; color: #666;">Avg. High</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">&#127769;</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">8-12&#176;C</div>
+        <div style="font-size: 0.75rem; color: #666;">Avg. Low</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">&#9728;&#65039;</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">9-10</div>
+        <div style="font-size: 0.75rem; color: #666;">Sun hrs/day</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">&#9728;&#65039;</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">0 days</div>
+        <div style="font-size: 0.75rem; color: #666;">Rainy Days</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">&#9728;&#65039;</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">Dry Season</div>
+        <div style="font-size: 0.75rem; color: #666;">Perfect conditions</div>
+      </div>
+    </div>
+    <p style="font-size: 0.82rem; color: #555; line-height: 1.6; margin: 0;">
+      &#9728;&#65039; <strong>Peak dry season &#8212; the best time to visit.</strong> Zero rain, warm sunny days (25-28&#176;C), and cool mornings/evenings (pack layers for dawn game drives!). Wildlife congregates around water sources making spotting easy. Victoria Falls has lower water = clearer views + Devil&#8217;s Pool is open + rafting season. Mosquitoes are minimal but still take malaria prophylaxis. Stunning clear skies for stargazing from the bush.
+    </p>
+  </div>
+</div>
+
+<!-- Activities Accordion -->
+<div style="max-width: 1100px; margin: 2rem auto; padding: 0 20px;">
+  <button id="activitiesToggle" onclick="toggleActivities()" style="
+    width: 100%;
+    padding: 18px 24px;
+    background: linear-gradient(135deg, #0F2557 0%, #1B3C8F 100%);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 4px 20px rgba(15,37,87,0.25);
+    transition: all 0.3s;
+  ">
+    <span id="activitiesToggleIcon">&#9660;</span>
+    <span id="activitiesToggleText">Show All Activities &amp; Filters</span>
+    <span style="background: #FF6B35; padding: 3px 12px; border-radius: 20px; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600;">65</span>
+  </button>
+</div>
+<div id="activitiesSection" style="display: none; overflow: hidden;">
+<button class="filter-toggle" onclick="toggleFilters()" aria-label="Toggle filters">&#9881;&#65039;</button>
+<div class="filter-overlay" id="filterOverlay" onclick="toggleFilters()"></div>
+
+<div class="page-layout">
+
+<!-- FILTER SIDEBAR -->
+<aside class="filter-sidebar" id="filterSidebar">
+  <h3>Filters</h3>
+  <div class="filter-count">Showing <span id="visibleCount">65</span> of 65 activities</div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Area</div>
+    <label><input type="checkbox" data-filter="area" value="falls"> &#127754; Victoria Falls</label>
+    <label><input type="checkbox" data-filter="area" value="zambezi"> &#127758; Zambezi River</label>
+    <label><input type="checkbox" data-filter="area" value="livingstone"> &#127961;&#65039; Livingstone Town</label>
+    <label><input type="checkbox" data-filter="area" value="mosioatunya"> &#129409; Mosi-oa-Tunya NP</label>
+    <label><input type="checkbox" data-filter="area" value="safari"> &#127757; Safari (South Luangwa / Lower Zambezi)</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Activity Type</div>
+    <label><input type="checkbox" data-filter="type" value="water"> &#127754; Waterfalls &amp; Water</label>
+    <label><input type="checkbox" data-filter="type" value="adventure"> &#128640; Adventure &amp; Adrenaline</label>
+    <label><input type="checkbox" data-filter="type" value="safari"> &#129409; Safari &amp; Wildlife</label>
+    <label><input type="checkbox" data-filter="type" value="culture"> &#127963;&#65039; Culture &amp; History</label>
+    <label><input type="checkbox" data-filter="type" value="scenic"> &#127749; Scenic &amp; Relaxation</label>
+    <label><input type="checkbox" data-filter="type" value="food"> &#127829; Food &amp; Drink</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Suitable for</div>
+    <label><input type="checkbox" data-filter="tom" value="yes"> &#9989; Tom (8)</label>
+    <label><input type="checkbox" data-filter="teens" value="love"> &#11088; Teens love it</label>
+    <label><input type="checkbox" data-filter="family" value="yes"> &#128104;&#8205;&#128105;&#8205;&#128103;&#8205;&#128102; Whole family</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Cost</div>
+    <label><input type="checkbox" data-filter="cost" value="free"> Free</label>
+    <label><input type="checkbox" data-filter="cost" value="budget"> Budget (under $50pp)</label>
+    <label><input type="checkbox" data-filter="cost" value="mid"> Mid-range ($50-150pp)</label>
+    <label><input type="checkbox" data-filter="cost" value="premium"> Premium ($150+pp)</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Special</div>
+    <label><input type="checkbox" data-filter="mustdo" value="true"> &#11088; Must-do highlights only</label>
+  </div>
+
+  <button class="clear-filters" onclick="clearFilters()">Clear all filters</button>
+</aside>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+<div class="container">
+
+<!-- TOP 10 -->
+<div class="top10">
+  <h2>&#11088; The Unmissable 10</h2>
+  <ol>
+    <li>&#127754; <strong>Victoria Falls Walk</strong> &#8212; stand at the edge of the world&#8217;s largest curtain of falling water</li>
+    <li>&#128641; <strong>Helicopter &#8220;Flight of Angels&#8221;</strong> &#8212; soar over the thundering falls and Batoka Gorge</li>
+    <li>&#127946; <strong>Devil&#8217;s Pool</strong> &#8212; swim at the very edge of Victoria Falls, looking 100m straight down</li>
+    <li>&#129534; <strong>Bungee Jump (111m)</strong> &#8212; freefall off Victoria Falls Bridge into the gorge</li>
+    <li>&#127754; <strong>White Water Rafting</strong> &#8212; Grade 5 rapids through Batoka Gorge, the ride of your life</li>
+    <li>&#127749; <strong>Sunset Zambezi Cruise</strong> &#8212; hippos, elephants, and a blazing African sunset with a cold drink</li>
+    <li>&#129435; <strong>Upper Zambezi Canoeing</strong> &#8212; paddle past hippos, crocodiles, and elephants on the riverbank</li>
+    <li>&#129409; <strong>South Luangwa Game Drive</strong> &#8212; open-vehicle safari through Big Five territory</li>
+    <li>&#127748; <strong>Stargazing from the Bush</strong> &#8212; zero light pollution, the Milky Way like you&#8217;ve never seen it</li>
+    <li>&#129423; <strong>Rhino Tracking on Foot</strong> &#8212; walk with an armed ranger to find white rhinos in the wild</li>
+  </ol>
+</div>
+
+<!-- SUMMARY STATS -->
+<div class="summary-grid">
+  <div class="summary-card"><div class="big-num">65</div><div class="label">Total Activities</div></div>
+  <div class="summary-card"><div class="big-num">15</div><div class="label">Victoria Falls</div></div>
+  <div class="summary-card"><div class="big-num">13</div><div class="label">Zambezi River</div></div>
+  <div class="summary-card"><div class="big-num">10</div><div class="label">Livingstone Town</div></div>
+  <div class="summary-card"><div class="big-num">10</div><div class="label">Mosi-oa-Tunya NP</div></div>
+  <div class="summary-card"><div class="big-num">17</div><div class="label">Safari</div></div>
+  <div class="summary-card"><div class="big-num">20</div><div class="label">Must-Do Highlights</div></div>
+</div>
+
+<!-- Activity Map -->
+<div style="margin: 2rem auto; max-width: 1100px; padding: 0 20px;">
+  <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 4px; font-size: 1.3rem;">&#128205; Activity Map</h3>
+  <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">
+    <span id="map-count">65 activities shown</span> &#8212;
+    <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#FF6B35;vertical-align:middle;"></span> Must-do
+    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#1B3C8F;vertical-align:middle;margin-left:8px;"></span> Other activities.
+    Use the filters to narrow down.
+    <label style="display:inline-flex;align-items:center;gap:4px;margin-left:12px;font-size:0.85rem;color:#2d9a2d;cursor:pointer;">
+      <input type="checkbox" id="accom-toggle" checked onchange="toggleAccom(this.checked)" style="accent-color:#2d9a2d;"> &#127965; Accommodation
+    </label>
+  </p>
+  <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.12); border: 2px solid #1B3C8F;">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <div id="mustdo-map" style="width:100%; height:500px;"></div>
+    <div style="padding: 12px 16px; background: #f8f9fa; max-height: 350px; overflow-y: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: 'Inter', sans-serif;">
+        <thead>
+          <tr style="border-bottom: 2px solid #1B3C8F; color: #0F2557; position: sticky; top: 0; background: #f8f9fa;">
+            <th style="text-align: left; padding: 5px 8px; width: 40px;">#</th>
+            <th style="text-align: left; padding: 5px 8px;">Activity</th>
+            <th style="text-align: right; padding: 5px 8px; width: 140px;">Links</th>
+          </tr>
+        </thead>
+        <tbody id="map-table-body">
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- ═══ VICTORIA FALLS ═══ -->
+<div class="section-header verdon" data-section="falls">
+  <div class="icon">&#127754;</div>
+  <h2>Victoria Falls</h2>
+  <p>The Falls, bridge activities &amp; Batoka Gorge</p>
+</div>
+
+<div data-section-wrap="falls">
+
+<div class="category-header" data-cat-type="water" data-cat-area="falls">
+  <span class="cat-icon">&#127754;</span>
+  <h3>Victoria Falls</h3>
+  <span class="cat-count">15 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="falls" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="1" data-mustdo="true" data-lat="-17.9243" data-lng="25.8572">
+  <div class="activity-num">1</div>
+  <div class="activity-content">
+    <h4>Victoria Falls Walk</h4>
+    <div class="activity-desc">Walk the knife-edge trail, 16 viewpoints of the 1.7km-wide falls. $20 park entry. The most spectacular waterfall on Earth. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens &#10084;</span>
+      <span class="tag cost">$20pp park entry</span>
+      <span class="tag cost-budget">&lt; $50pp</span>
+      <span class="tag week-area">&#127754; Victoria Falls</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="falls" data-type="scenic" data-tom="yes" data-teens="love" data-cost="premium" data-num="2" data-mustdo="true" data-lat="-17.9200" data-lng="25.8600">
+  <div class="activity-num">2</div>
+  <div class="activity-content">
+    <h4>Helicopter "Flight of Angels" (12min)</h4>
+    <div class="activity-desc">Aerial views of the falls and gorge. $130-174pp + $15 park fee. Utterly breathtaking from above. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens &#10084;</span>
+      <span class="tag cost">$130-174pp</span>
+      <span class="tag cost-premium">$150+pp</span>
+      <span class="tag week-area">&#127754; Victoria Falls</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="falls" data-type="scenic" data-tom="yes" data-teens="love" data-cost="premium" data-num="3" data-lat="-17.9200" data-lng="25.8600">
+  <div class="activity-num">3</div>
+  <div class="activity-content">
+    <h4>Helicopter Zambezi Spectacular (25min)</h4>
+    <div class="activity-desc">Extended flight over falls, gorge, and river. $256-329pp. The premium aerial experience for those who want more.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag cost">$256-329pp</span>
+      <span class="tag cost-premium">$150+pp</span>
+      <span class="tag week-area">&#127754; Victoria Falls</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="falls" data-type="adventure" data-tom="no" data-teens="love" data-cost="premium" data-num="4" data-lat="-17.9180" data-lng="25.8580">
+  <div class="activity-num">4</div>
+  <div class="activity-content">
+    <h4>Microlight Flight</h4>
+    <div class="activity-desc">Open cockpit ultralight over the falls. $165-220pp. Feel the spray on your face as you fly. Teens 14+.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (14+)</span>
+      <span class="tag teen-love">&#11088; George &#10084;</span>
+      <span class="tag cost">$165-220pp</span>
+      <span class="tag cost-premium">$150+pp</span>
+      <span class="tag week-area">&#127754; Victoria Falls</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="falls" data-type="water" data-tom="no" data-teens="love" data-cost="premium" data-num="5" data-mustdo="true" data-lat="-17.9240" data-lng="25.8550">
+  <div class="activity-num">5</div>
+  <div class="activity-content">
+    <h4>Devil's Pool (Livingstone Island)</h4>
+    <div class="activity-desc">Swim at the EDGE of Victoria Falls! Breakfast/lunch included. $149-199pp. The most thrilling swim on Earth. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (12+)</span>
+      <span class="tag teen-love">&#11088; George &#10084; Katie &#10084;</span>
+      <span class="tag cost">$149-199pp</span>
+      <span class="tag cost-premium">$150+pp</span>
+      <span class="tag week-area">&#127754; Victoria Falls</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="falls" data-type="adventure" data-tom="no" data-teens="love" data-cost="premium" data-num="6" data-mustdo="true" data-lat="-17.9280" data-lng="25.8610">
+  <div class="activity-num">6</div>
+  <div class="activity-content">
+    <h4>Bungee Jump</h4>
+    <div class="activity-desc">111m off Victoria Falls Bridge between Zambia and Zimbabwe. $194pp. George's ultimate adrenaline hit. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (14+)</span>
+      <span class="tag teen-love">&#11088; George &#10084;</span>
+      <span class="tag cost">$194pp</span>
+      <span class="tag cost-premium">$150+pp</span>
+      <span class="tag week-area">&#127754; Victoria Falls</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="falls" data-type="adventure" data-tom="no" data-teens="love" data-cost="mid" data-num="7" data-lat="-17.9280" data-lng="25.8610">
+  <div class="activity-num">7</div>
+  <div class="activity-content">
+    <h4>Bridge Swing</h4>
+    <div class="activity-desc">80m freefall arc swing from the bridge. $137pp solo, $201 tandem. An 80-metre pendulum over the Zambezi.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (14+)</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag cost">$137pp</span>
+      <span class="tag cost-mid">$50-150pp</span>
+      <span class="tag week-area">&#127754; Victoria Falls</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="falls" data-type="adventure" data-tom="no" data-teens="love" data-cost="mid" data-num="8" data-lat="-17.9280" data-lng="25.8620">
+  <div class="activity-num">8</div>
+  <div class="activity-content">
+    <h4>Gorge Swing</h4>
+    <div class="activity-desc">Massive swing over Batoka Gorge. $94pp. Swing out over the abyss with the river far below.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (14+)</span>
+      <span class="tag teen-love">&#11088; George &#10084;</span>
+      <span class="tag cost">$94pp</span>
+      <span class="tag cost-mid">$50-150pp</span>
+      <span class="tag week-area">&#127754; Victoria Falls</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="falls" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="9" data-mustdo="true" data-lat="-17.9300" data-lng="25.8630">
+  <div class="activity-num">9</div>
+  <div class="activity-content">
+    <h4>Zip Line (Batoka Gorge)</h4>
+    <div class="activity-desc">Soar across the gorge. $83 solo, $162 tandem. Ages 6+. The whole family can fly over the gorge together. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom (6+)</span>
+      <span class="tag teen-love">&#11088; Teens &#10084;</span>
+      <span class="tag cost">$83pp</span>
+      <span class="tag cost-mid">$50-150pp</span>
+      <span class="tag week-area">&#127754; Victoria Falls</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="falls" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="10" data-lat="-17.9310" data-lng="25.8625">
+  <div class="activity-num">10</div>
+  <div class="activity-content">
+    <h4>Canopy Tour</h4>
+    <div class="activity-desc">Slide between platforms through the gorge forest. $80pp. Glide through the canopy above the rapids.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag cost">$80pp</span>
+      <span class="tag cost-mid">$50-150pp</span>
+      <span class="tag week-area">&#127754; Victoria Falls</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="falls" data-type="culture" data-tom="yes" data-teens="love" data-cost="mid" data-num="11" data-lat="-17.9280" data-lng="25.8615">
+  <div class="activity-num">11</div>
+  <div class="activity-content">
+    <h4>Bridge Tour (Walk the Bridge)</h4>
+    <div class="activity-desc">Walk the historic bridge, learn the history, stand on the Zimbabwe border. $70pp. Tom &#10004;, Teens &#10004;.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag cost">$70pp</span>
+      <span class="tag cost-mid">$50-150pp</span>
+      <span class="tag week-area">&#127754; Victoria Falls</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="falls" data-type="water" data-tom="no" data-teens="love" data-cost="budget" data-num="12" data-mustdo="true" data-lat="-17.9243" data-lng="25.8572">
+  <div class="activity-num">12</div>
+  <div class="activity-content">
+    <h4>Lunar Rainbow ("Moonbow")</h4>
+    <div class="activity-desc">Full moon nights, the spray creates a rainbow at night. Park entry $20. One of nature's rarest spectacles. MUST-DO (if timing works).</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (late night)</span>
+      <span class="tag teen-love">&#11088; Katie &#10084;</span>
+      <span class="tag cost">$20 park entry</span>
+      <span class="tag cost-budget">&lt; $50pp</span>
+      <span class="tag week-area">&#127754; Victoria Falls</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="falls" data-type="adventure" data-tom="yes" data-teens="love" data-cost="budget" data-num="13" data-lat="-17.9100" data-lng="25.8500">
+  <div class="activity-num">13</div>
+  <div class="activity-content">
+    <h4>Zambezi Bike Ride</h4>
+    <div class="activity-desc">Cycle through bush and villages near the falls. $45pp. A different way to see the African landscape.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag cost">$45pp</span>
+      <span class="tag cost-budget">&lt; $50pp</span>
+      <span class="tag week-area">&#127754; Victoria Falls</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="falls" data-type="food" data-tom="no" data-teens="ok" data-cost="mid" data-num="14" data-lat="-17.9260" data-lng="25.8590">
+  <div class="activity-num">14</div>
+  <div class="activity-content">
+    <h4>Falls by Night Dinner</h4>
+    <div class="activity-desc">Dining experience overlooking the gorge. $80-120pp. Candlelit dinner with the roar of the falls as your soundtrack.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (evening)</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$80-120pp</span>
+      <span class="tag cost-mid">$50-150pp</span>
+      <span class="tag week-area">&#127754; Victoria Falls</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="falls" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="15" data-lat="-17.9250" data-lng="25.8575">
+  <div class="activity-num">15</div>
+  <div class="activity-content">
+    <h4>Victoria Falls Museum</h4>
+    <div class="activity-desc">Small museum at the falls entrance, history and geology. Included in park entry. A perfect introduction before the walk.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Included in park entry</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127754; Victoria Falls</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+</div><!-- end falls section -->
+
+<!-- ═══ ZAMBEZI RIVER ═══ -->
+<div class="section-header azur" data-section="zambezi">
+  <div class="icon">&#127758;</div>
+  <h2>Zambezi River</h2>
+  <p>Cruises, canoeing, rafting, fishing &amp; river adventures</p>
+</div>
+
+<div data-section-wrap="zambezi">
+
+<div class="category-header" data-cat-type="water" data-cat-area="zambezi">
+  <span class="cat-icon">&#127758;</span>
+  <h3>Zambezi River</h3>
+  <span class="cat-count">13 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="zambezi" data-type="scenic" data-tom="yes" data-teens="love" data-cost="mid" data-num="16" data-mustdo="true" data-lat="-17.8900" data-lng="25.8400">
+  <div class="activity-num">16</div>
+  <div class="activity-content">
+    <h4>Sunset Zambezi Cruise</h4>
+    <div class="activity-desc">Boat cruise with drinks, snacks, hippos, elephants on the banks, spectacular sunset. $60-75pp. The African sunset you've dreamed about. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens &#10084;</span>
+      <span class="tag cost">$60-75pp</span>
+      <span class="tag cost-mid">$50-150pp</span>
+      <span class="tag week-area">&#127758; Zambezi River</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="zambezi" data-type="adventure" data-tom="no" data-teens="love" data-cost="mid" data-num="17" data-mustdo="true" data-lat="-17.9350" data-lng="25.8650">
+  <div class="activity-num">17</div>
+  <div class="activity-content">
+    <h4>White Water Rafting (Full Day)</h4>
+    <div class="activity-desc">Grade 3-5 rapids through Batoka Gorge. $140-150pp (includes lunch). Some of the wildest commercially-rafted rapids on Earth. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (15+)</span>
+      <span class="tag teen-love">&#11088; George &#10084;</span>
+      <span class="tag cost">$140-150pp</span>
+      <span class="tag cost-mid">$50-150pp</span>
+      <span class="tag week-area">&#127758; Zambezi River</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="zambezi" data-type="adventure" data-tom="no" data-teens="love" data-cost="mid" data-num="18" data-lat="-17.9320" data-lng="25.8640">
+  <div class="activity-num">18</div>
+  <div class="activity-content">
+    <h4>White Water Rafting (Half Day)</h4>
+    <div class="activity-desc">Gentler section, Grade 2-3 rapids. $100pp. A more accessible taste of the Zambezi's power. Teens 12+.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (12+)</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag cost">$100pp</span>
+      <span class="tag cost-mid">$50-150pp</span>
+      <span class="tag week-area">&#127758; Zambezi River</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="zambezi" data-type="water" data-tom="yes" data-teens="love" data-cost="mid" data-num="19" data-lat="-17.9300" data-lng="25.8635">
+  <div class="activity-num">19</div>
+  <div class="activity-content">
+    <h4>Raft Float (Gentle)</h4>
+    <div class="activity-desc">Calm float through the gorge, no rapids. $130pp includes meals. Perfect for the whole family to enjoy the gorge scenery.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag cost">$130pp</span>
+      <span class="tag cost-mid">$50-150pp</span>
+      <span class="tag week-area">&#127758; Zambezi River</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="zambezi" data-type="safari" data-tom="yes" data-teens="love" data-cost="mid" data-num="20" data-mustdo="true" data-lat="-17.8700" data-lng="25.8200">
+  <div class="activity-num">20</div>
+  <div class="activity-content">
+    <h4>Upper Zambezi Canoeing</h4>
+    <div class="activity-desc">Paddle past hippos, crocodiles, elephants. Half day $90, full day $140. The quintessential African canoe experience. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom (8+ with guide)</span>
+      <span class="tag teen-love">&#11088; Teens &#10084;</span>
+      <span class="tag cost">$90-140pp</span>
+      <span class="tag cost-mid">$50-150pp</span>
+      <span class="tag week-area">&#127758; Zambezi River</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="zambezi" data-type="adventure" data-tom="no" data-teens="love" data-cost="mid" data-num="21" data-lat="-17.9340" data-lng="25.8645">
+  <div class="activity-num">21</div>
+  <div class="activity-content">
+    <h4>Jet Boat</h4>
+    <div class="activity-desc">High-speed boat ride through the gorge. $100pp. Adrenaline on the water &#8212; George's kind of ride.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (teens)</span>
+      <span class="tag teen-love">&#11088; George &#10084;</span>
+      <span class="tag cost">$100pp</span>
+      <span class="tag cost-mid">$50-150pp</span>
+      <span class="tag week-area">&#127758; Zambezi River</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="zambezi" data-type="water" data-tom="no" data-teens="ok" data-cost="premium" data-num="22" data-lat="-17.8800" data-lng="25.8300">
+  <div class="activity-num">22</div>
+  <div class="activity-content">
+    <h4>Zambezi River Fishing (Tiger Fish)</h4>
+    <div class="activity-desc">Catch-and-release tiger fish, one of the world's great game fish. $200-300pp half day. A legendary angling experience.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$200-300pp</span>
+      <span class="tag cost-premium">$150+pp</span>
+      <span class="tag week-area">&#127758; Zambezi River</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="zambezi" data-type="food" data-tom="no" data-teens="ok" data-cost="mid" data-num="23" data-lat="-17.8850" data-lng="25.8350">
+  <div class="activity-num">23</div>
+  <div class="activity-content">
+    <h4>Zambezi River Dinner Cruise</h4>
+    <div class="activity-desc">Evening cruise with 3-course dinner, cocktails, sunset. $85-120pp. Fine dining on the Zambezi under the stars.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (evening)</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$85-120pp</span>
+      <span class="tag cost-mid">$50-150pp</span>
+      <span class="tag week-area">&#127758; Zambezi River</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="zambezi" data-type="water" data-tom="no" data-teens="love" data-cost="mid" data-num="24" data-lat="-17.8750" data-lng="25.8250">
+  <div class="activity-num">24</div>
+  <div class="activity-content">
+    <h4>Kayaking on the Zambezi</h4>
+    <div class="activity-desc">Guided kayak trip on the upper river. $75-95pp. Paddle through hippo territory with an expert guide.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag cost">$75-95pp</span>
+      <span class="tag cost-mid">$50-150pp</span>
+      <span class="tag week-area">&#127758; Zambezi River</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="zambezi" data-type="water" data-tom="no" data-teens="love" data-cost="mid" data-num="25" data-lat="-17.8650" data-lng="25.8150">
+  <div class="activity-num">25</div>
+  <div class="activity-content">
+    <h4>Stand-Up Paddleboarding</h4>
+    <div class="activity-desc">SUP on calm sections above the falls. $55-70pp. Katie's perfect photo opportunity on the glassy Zambezi.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom</span>
+      <span class="tag teen-love">&#11088; Katie &#10084;</span>
+      <span class="tag cost">$55-70pp</span>
+      <span class="tag cost-mid">$50-150pp</span>
+      <span class="tag week-area">&#127758; Zambezi River</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="zambezi" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="26" data-lat="-17.8600" data-lng="25.8100">
+  <div class="activity-num">26</div>
+  <div class="activity-content">
+    <h4>Swimming in the Zambezi</h4>
+    <div class="activity-desc">Safe swimming spots above the falls (guided only!). $30pp. Yes, you can swim in the Zambezi &#8212; safely!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag cost">$30pp</span>
+      <span class="tag cost-budget">&lt; $50pp</span>
+      <span class="tag week-area">&#127758; Zambezi River</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="zambezi" data-type="adventure" data-tom="no" data-teens="love" data-cost="mid" data-num="27" data-lat="-17.9350" data-lng="25.8655">
+  <div class="activity-num">27</div>
+  <div class="activity-content">
+    <h4>Riverboard Surfing</h4>
+    <div class="activity-desc">Bodyboard the rapids. $150pp. Teens 15+. Face-first through Batoka Gorge &#8212; pure insanity.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (15+)</span>
+      <span class="tag teen-love">&#11088; George &#10084;</span>
+      <span class="tag cost">$150pp</span>
+      <span class="tag cost-mid">$50-150pp</span>
+      <span class="tag week-area">&#127758; Zambezi River</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="zambezi" data-type="safari" data-tom="yes" data-teens="love" data-cost="mid" data-num="28" data-lat="-17.8900" data-lng="25.8400">
+  <div class="activity-num">28</div>
+  <div class="activity-content">
+    <h4>Sunrise Boat Safari</h4>
+    <div class="activity-desc">Dawn cruise spotting birds, hippos, crocodiles. $55-70pp. The river comes alive at first light.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag cost">$55-70pp</span>
+      <span class="tag cost-mid">$50-150pp</span>
+      <span class="tag week-area">&#127758; Zambezi River</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+</div><!-- end zambezi section -->
+<!-- ═══ LIVINGSTONE TOWN ═══ -->
+<div class="section-header verdon" data-section="livingstone">
+  <div class="icon">&#127961;&#65039;</div>
+  <h2>Livingstone Town</h2>
+  <p>Culture, museums, markets &amp; local experiences</p>
+</div>
+
+<div data-section-wrap="livingstone">
+
+<div class="category-header" data-cat-type="culture" data-cat-area="livingstone">
+  <span class="cat-icon">&#127961;&#65039;</span>
+  <h3>Livingstone Town</h3>
+  <span class="cat-count">10 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="livingstone" data-type="culture" data-tom="yes" data-teens="love" data-cost="budget" data-num="29" data-mustdo="true" data-lat="-17.9400" data-lng="25.8800">
+  <div class="activity-num">29</div>
+  <div class="activity-content">
+    <h4>Mukuni Cultural Village</h4>
+    <div class="activity-desc">700-year-old village, traditional life, crafts, dancing. $30-50pp. Step into Zambia's living history. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens &#10084;</span>
+      <span class="tag cost">$30-50pp</span>
+      <span class="tag cost-budget">&lt; $50pp</span>
+      <span class="tag week-area">&#127961;&#65039; Livingstone</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="livingstone" data-type="culture" data-tom="yes" data-teens="ok" data-cost="budget" data-num="30" data-lat="-17.8500" data-lng="25.8550">
+  <div class="activity-num">30</div>
+  <div class="activity-content">
+    <h4>Livingstone Museum</h4>
+    <div class="activity-desc">Zambia's oldest museum, Dr Livingstone history, archaeology. $5 adult, $3 child. A fascinating window into the past.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$5 adult, $3 child</span>
+      <span class="tag cost-budget">&lt; $50pp</span>
+      <span class="tag week-area">&#127961;&#65039; Livingstone</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="livingstone" data-type="culture" data-tom="yes" data-teens="ok" data-cost="budget" data-num="31" data-lat="-17.8520" data-lng="25.8540">
+  <div class="activity-num">31</div>
+  <div class="activity-content">
+    <h4>Railway Museum</h4>
+    <div class="activity-desc">Historic trains, colonial-era railway heritage. $5pp. Tom will love climbing on the old steam engines.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$5pp</span>
+      <span class="tag cost-budget">&lt; $50pp</span>
+      <span class="tag week-area">&#127961;&#65039; Livingstone</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="livingstone" data-type="culture" data-tom="no" data-teens="love" data-cost="free" data-num="32" data-lat="-17.8600" data-lng="25.8600">
+  <div class="activity-num">32</div>
+  <div class="activity-content">
+    <h4>Maramba Market</h4>
+    <div class="activity-desc">Colourful local market, crafts, textiles, street food. Free entry. The real Africa &#8212; vibrant, noisy, unforgettable.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (busy)</span>
+      <span class="tag teen-love">&#11088; Katie &#10084;</span>
+      <span class="tag free">Free entry</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127961;&#65039; Livingstone</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="livingstone" data-type="culture" data-tom="no" data-teens="love" data-cost="free" data-num="33" data-lat="-17.8530" data-lng="25.8560">
+  <div class="activity-num">33</div>
+  <div class="activity-content">
+    <h4>Mukuni Curio Market</h4>
+    <div class="activity-desc">Handcrafted souvenirs, jewellery, art. Free to browse. Katie will fill a suitcase.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom</span>
+      <span class="tag teen-love">&#11088; Katie &#10084;</span>
+      <span class="tag free">Free to browse</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127961;&#65039; Livingstone</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="livingstone" data-type="culture" data-tom="yes" data-teens="love" data-cost="budget" data-num="34" data-lat="-17.8550" data-lng="25.8570">
+  <div class="activity-num">34</div>
+  <div class="activity-content">
+    <h4>Drumming Workshop</h4>
+    <div class="activity-desc">Learn traditional Zambian drumming rhythms. $25-40pp. Everyone finds their rhythm &#8212; even Dad.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens &#10084;</span>
+      <span class="tag cost">$25-40pp</span>
+      <span class="tag cost-budget">&lt; $50pp</span>
+      <span class="tag week-area">&#127961;&#65039; Livingstone</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="livingstone" data-type="food" data-tom="no" data-teens="love" data-cost="budget" data-num="35" data-lat="-17.8510" data-lng="25.8545">
+  <div class="activity-num">35</div>
+  <div class="activity-content">
+    <h4>Cooking Class (Zambian Cuisine)</h4>
+    <div class="activity-desc">Learn to make nshima, village chicken, relish. $40-60pp. Cook like a Zambian, eat like a king.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag cost">$40-60pp</span>
+      <span class="tag cost-budget">&lt; $50pp</span>
+      <span class="tag week-area">&#127961;&#65039; Livingstone</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="livingstone" data-type="culture" data-tom="no" data-teens="ok" data-cost="budget" data-num="36" data-lat="-17.8500" data-lng="25.8550">
+  <div class="activity-num">36</div>
+  <div class="activity-content">
+    <h4>Livingstone Town Walking Tour</h4>
+    <div class="activity-desc">Guided walk through colonial-era town, churches, monuments. $20-35pp. Trace the footsteps of Dr Livingstone himself.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (long walk)</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$20-35pp</span>
+      <span class="tag cost-budget">&lt; $50pp</span>
+      <span class="tag week-area">&#127961;&#65039; Livingstone</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="livingstone" data-type="scenic" data-tom="yes" data-teens="love" data-cost="budget" data-num="37" data-lat="-17.8750" data-lng="25.8350">
+  <div class="activity-num">37</div>
+  <div class="activity-content">
+    <h4>Sunset at the Royal Livingstone</h4>
+    <div class="activity-desc">Drinks on the terrace watching elephants on the river. $20-30 for drinks. Pure African elegance at golden hour.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Katie &#10084;</span>
+      <span class="tag cost">$20-30</span>
+      <span class="tag cost-budget">&lt; $50pp</span>
+      <span class="tag week-area">&#127961;&#65039; Livingstone</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="livingstone" data-type="culture" data-tom="yes" data-teens="love" data-cost="free" data-num="38" data-lat="-17.8580" data-lng="25.8590">
+  <div class="activity-num">38</div>
+  <div class="activity-content">
+    <h4>Local School Visit</h4>
+    <div class="activity-desc">Visit a community school, interact with children (pre-arranged). Donation-based. A humbling, joyful experience for the whole family.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens &#10084;</span>
+      <span class="tag free">Donation-based</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127961;&#65039; Livingstone</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+</div><!-- end livingstone section -->
+
+<!-- ═══ MOSI-OA-TUNYA NATIONAL PARK ═══ -->
+<div class="section-header azur" data-section="mosioatunya">
+  <div class="icon">&#129409;</div>
+  <h2>Mosi-oa-Tunya National Park</h2>
+  <p>Local game drives, rhino tracking &amp; wildlife encounters</p>
+</div>
+
+<div data-section-wrap="mosioatunya">
+
+<div class="category-header" data-cat-type="safari" data-cat-area="mosioatunya">
+  <span class="cat-icon">&#129409;</span>
+  <h3>Mosi-oa-Tunya National Park</h3>
+  <span class="cat-count">10 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="mosioatunya" data-type="safari" data-tom="yes" data-teens="love" data-cost="mid" data-num="39" data-mustdo="true" data-lat="-17.8800" data-lng="25.8200">
+  <div class="activity-num">39</div>
+  <div class="activity-content">
+    <h4>Game Drive</h4>
+    <div class="activity-desc">Spot elephants, giraffes, zebras, buffalo, antelope in open-top vehicle. $50-80pp. Your first taste of African safari. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;</span>
+      <span class="tag teen-love">&#11088; Teens &#10084;</span>
+      <span class="tag cost">$50-80pp</span>
+      <span class="tag cost-mid">$50-150pp</span>
+      <span class="tag week-area">&#129409; Mosi-oa-Tunya</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="mosioatunya" data-type="safari" data-tom="no" data-teens="love" data-cost="mid" data-num="40" data-mustdo="true" data-lat="-17.8750" data-lng="25.8150">
+  <div class="activity-num">40</div>
+  <div class="activity-content">
+    <h4>Rhino Tracking on Foot</h4>
+    <div class="activity-desc">Walk with an armed ranger to track white rhinos. $80-120pp. Heart-pounding, up-close encounter on foot. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (12+)</span>
+      <span class="tag teen-love">&#11088; George &#10084;</span>
+      <span class="tag cost">$80-120pp</span>
+      <span class="tag cost-mid">$50-150pp</span>
+      <span class="tag week-area">&#129409; Mosi-oa-Tunya</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="mosioatunya" data-type="safari" data-tom="no" data-teens="love" data-cost="mid" data-num="41" data-lat="-17.8700" data-lng="25.8100">
+  <div class="activity-num">41</div>
+  <div class="activity-content">
+    <h4>Walking Safari</h4>
+    <div class="activity-desc">Guided bush walk, track animals, learn bushcraft. $60-85pp. On foot in the African bush &#8212; every sense alive. Teens 12+.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (12+)</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag cost">$60-85pp</span>
+      <span class="tag cost-mid">$50-150pp</span>
+      <span class="tag week-area">&#129409; Mosi-oa-Tunya</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="mosioatunya" data-type="safari" data-tom="no" data-teens="love" data-cost="mid" data-num="42" data-lat="-17.8820" data-lng="25.8220">
+  <div class="activity-num">42</div>
+  <div class="activity-content">
+    <h4>Horseback Safari</h4>
+    <div class="activity-desc">Ride through the park, encounter wildlife on horseback. $80-120pp. See Africa from the saddle.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag cost">$80-120pp</span>
+      <span class="tag cost-mid">$50-150pp</span>
+      <span class="tag week-area">&#129409; Mosi-oa-Tunya</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="mosioatunya" data-type="safari" data-tom="yes" data-teens="love" data-cost="mid" data-num="43" data-lat="-17.8850" data-lng="25.8250">
+  <div class="activity-num">43</div>
+  <div class="activity-content">
+    <h4>Elephant Interaction</h4>
+    <div class="activity-desc">Ethical elephant experience, learn about conservation. $100-150pp. Touch, feed, and learn about these gentle giants.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088; Teens &#10084;</span>
+      <span class="tag cost">$100-150pp</span>
+      <span class="tag cost-mid">$50-150pp</span>
+      <span class="tag week-area">&#129409; Mosi-oa-Tunya</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="mosioatunya" data-type="safari" data-tom="yes" data-teens="love" data-cost="mid" data-num="44" data-lat="-17.8780" data-lng="25.8180">
+  <div class="activity-num">44</div>
+  <div class="activity-content">
+    <h4>Night Game Drive</h4>
+    <div class="activity-desc">Spotlight safari, spot nocturnal animals. $65-90pp. The bush transforms after dark &#8212; hyenas, genets, owls appear.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens &#10084;</span>
+      <span class="tag cost">$65-90pp</span>
+      <span class="tag cost-mid">$50-150pp</span>
+      <span class="tag week-area">&#129409; Mosi-oa-Tunya</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="mosioatunya" data-type="safari" data-tom="no" data-teens="ok" data-cost="budget" data-num="45" data-lat="-17.8830" data-lng="25.8230">
+  <div class="activity-num">45</div>
+  <div class="activity-content">
+    <h4>Birdwatching Walk</h4>
+    <div class="activity-desc">Guided birding, 470+ species in Zambia. $30-45pp. Lilac-breasted rollers, fish eagles, carmine bee-eaters.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$30-45pp</span>
+      <span class="tag cost-budget">&lt; $50pp</span>
+      <span class="tag week-area">&#129409; Mosi-oa-Tunya</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="mosioatunya" data-type="scenic" data-tom="yes" data-teens="love" data-cost="mid" data-num="46" data-lat="-17.8810" data-lng="25.8210">
+  <div class="activity-num">46</div>
+  <div class="activity-content">
+    <h4>Bush Breakfast</h4>
+    <div class="activity-desc">Game drive followed by breakfast in the bush. $75-100pp. Bacon and eggs with elephants for company.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag cost">$75-100pp</span>
+      <span class="tag cost-mid">$50-150pp</span>
+      <span class="tag week-area">&#129409; Mosi-oa-Tunya</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="mosioatunya" data-type="scenic" data-tom="yes" data-teens="love" data-cost="mid" data-num="47" data-mustdo="true" data-lat="-17.8790" data-lng="25.8190">
+  <div class="activity-num">47</div>
+  <div class="activity-content">
+    <h4>Sundowner Drive</h4>
+    <div class="activity-desc">Late afternoon drive, stop for drinks at sunset. $55-75pp. Cold G&amp;T, blazing sunset, Africa at its finest. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Katie &#10084;</span>
+      <span class="tag cost">$55-75pp</span>
+      <span class="tag cost-mid">$50-150pp</span>
+      <span class="tag week-area">&#129409; Mosi-oa-Tunya</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="mosioatunya" data-type="safari" data-tom="no" data-teens="love" data-cost="mid" data-num="48" data-lat="-17.8760" data-lng="25.8160">
+  <div class="activity-num">48</div>
+  <div class="activity-content">
+    <h4>Photography Safari</h4>
+    <div class="activity-desc">Specialist photo guide, tips for wildlife photography. $100-150pp. Katie will come home with portfolio-quality shots.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom</span>
+      <span class="tag teen-love">&#11088; Katie &#10084;</span>
+      <span class="tag cost">$100-150pp</span>
+      <span class="tag cost-mid">$50-150pp</span>
+      <span class="tag week-area">&#129409; Mosi-oa-Tunya</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+</div><!-- end mosioatunya section -->
+<!-- ═══ SAFARI — SOUTH LUANGWA / LOWER ZAMBEZI ═══ -->
+<div class="section-header verdon" data-section="safari">
+  <div class="icon">&#127757;</div>
+  <h2>Safari &#8212; South Luangwa / Lower Zambezi</h2>
+  <p>Big Five territory, bush camps, walking safaris &amp; wilderness</p>
+</div>
+
+<div data-section-wrap="safari">
+
+<div class="category-header" data-cat-type="safari" data-cat-area="safari">
+  <span class="cat-icon">&#127757;</span>
+  <h3>Safari &#8212; South Luangwa / Lower Zambezi</h3>
+  <span class="cat-count">17 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="safari" data-type="safari" data-tom="yes" data-teens="love" data-cost="free" data-num="49" data-mustdo="true" data-lat="-13.0700" data-lng="31.5500">
+  <div class="activity-num">49</div>
+  <div class="activity-content">
+    <h4>South Luangwa Game Drive</h4>
+    <div class="activity-desc">Open-vehicle safari, Big Five territory. Included in lodge stay. The real deal &#8212; leopards, lions, elephants around every bend. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088; Teens &#10084;</span>
+      <span class="tag free">Included in lodge</span>
+      <span class="tag cost-free">Included</span>
+      <span class="tag week-area">&#127757; Safari</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="safari" data-type="safari" data-tom="yes" data-teens="love" data-cost="free" data-num="50" data-mustdo="true" data-lat="-13.0700" data-lng="31.5500">
+  <div class="activity-num">50</div>
+  <div class="activity-content">
+    <h4>Night Game Drive (South Luangwa)</h4>
+    <div class="activity-desc">Spotlight leopards, hyenas, genets, owls. Included. The Luangwa is famous for its night drives &#8212; and its leopards. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088; Teens &#10084;</span>
+      <span class="tag free">Included in lodge</span>
+      <span class="tag cost-free">Included</span>
+      <span class="tag week-area">&#127757; Safari</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="safari" data-type="safari" data-tom="no" data-teens="love" data-cost="free" data-num="51" data-mustdo="true" data-lat="-13.0800" data-lng="31.5600">
+  <div class="activity-num">51</div>
+  <div class="activity-content">
+    <h4>Walking Safari (South Luangwa)</h4>
+    <div class="activity-desc">Birthplace of the walking safari, trek with armed ranger. Included (12+). Walk where the wild things are. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (12+)</span>
+      <span class="tag teen-love">&#11088; Teens &#10084;</span>
+      <span class="tag free">Included in lodge</span>
+      <span class="tag cost-free">Included</span>
+      <span class="tag week-area">&#127757; Safari</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="safari" data-type="safari" data-tom="no" data-teens="love" data-cost="free" data-num="52" data-lat="-13.0650" data-lng="31.5450">
+  <div class="activity-num">52</div>
+  <div class="activity-content">
+    <h4>Leopard Spotting</h4>
+    <div class="activity-desc">South Luangwa is one of the best places in Africa for leopards. Included in drives. You WILL see leopards here.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (night drives)</span>
+      <span class="tag teen-love">&#11088; Teens &#10084;</span>
+      <span class="tag free">Included</span>
+      <span class="tag cost-free">Included</span>
+      <span class="tag week-area">&#127757; Safari</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="safari" data-type="safari" data-tom="yes" data-teens="love" data-cost="free" data-num="53" data-lat="-13.0600" data-lng="31.5400">
+  <div class="activity-num">53</div>
+  <div class="activity-content">
+    <h4>Hippo Pool Visit</h4>
+    <div class="activity-desc">Watch pods of hippos from the riverbank. Free/included. Tom will be mesmerised by the grunting, yawning chaos.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag free">Included</span>
+      <span class="tag cost-free">Included</span>
+      <span class="tag week-area">&#127757; Safari</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="safari" data-type="safari" data-tom="no" data-teens="love" data-cost="premium" data-num="54" data-mustdo="true" data-lat="-13.1000" data-lng="31.5800">
+  <div class="activity-num">54</div>
+  <div class="activity-content">
+    <h4>Bush Camp Overnight</h4>
+    <div class="activity-desc">Sleep in a simple fly camp in the wilderness, campfire under the stars. $200-400pp. Fall asleep to hyena calls and wake to birdsong. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (remote)</span>
+      <span class="tag teen-love">&#11088; Teens &#10084;</span>
+      <span class="tag cost">$200-400pp</span>
+      <span class="tag cost-premium">$150+pp</span>
+      <span class="tag week-area">&#127757; Safari</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="safari" data-type="water" data-tom="no" data-teens="love" data-cost="premium" data-num="55" data-lat="-15.3500" data-lng="29.3500">
+  <div class="activity-num">55</div>
+  <div class="activity-content">
+    <h4>Lower Zambezi Canoe Safari</h4>
+    <div class="activity-desc">Multi-day canoe trip down the Zambezi, camp on islands. $250-400pp/day. Paddle through elephant country &#8212; pure wilderness.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom</span>
+      <span class="tag teen-love">&#11088; Teens &#10084;</span>
+      <span class="tag cost">$250-400pp/day</span>
+      <span class="tag cost-premium">$150+pp</span>
+      <span class="tag week-area">&#127757; Safari</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="safari" data-type="safari" data-tom="yes" data-teens="love" data-cost="free" data-num="56" data-lat="-15.3600" data-lng="29.3600">
+  <div class="activity-num">56</div>
+  <div class="activity-content">
+    <h4>Lower Zambezi Boat Safari</h4>
+    <div class="activity-desc">Motor boat safari, spot elephants swimming, fishing eagles. Included in lodge. Watch elephants wade through the river beside you.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088; Teens &#10084;</span>
+      <span class="tag free">Included in lodge</span>
+      <span class="tag cost-free">Included</span>
+      <span class="tag week-area">&#127757; Safari</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="safari" data-type="water" data-tom="no" data-teens="ok" data-cost="mid" data-num="57" data-lat="-15.3700" data-lng="29.3700">
+  <div class="activity-num">57</div>
+  <div class="activity-content">
+    <h4>Tiger Fishing (Lower Zambezi)</h4>
+    <div class="activity-desc">World-class catch-and-release fishing on the Zambezi. $100-200pp. Battle a tiger fish &#8212; Africa's most ferocious freshwater fighter.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">$100-200pp</span>
+      <span class="tag cost-mid">$50-150pp</span>
+      <span class="tag week-area">&#127757; Safari</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="safari" data-type="safari" data-tom="yes" data-teens="love" data-cost="free" data-num="58" data-lat="-13.0750" data-lng="31.5550">
+  <div class="activity-num">58</div>
+  <div class="activity-content">
+    <h4>Bush Craft Session</h4>
+    <div class="activity-desc">Track animals, identify droppings, read the bush with a guide. Included. Learn to read the African landscape like a ranger.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088; Teens &#10084;</span>
+      <span class="tag free">Included</span>
+      <span class="tag cost-free">Included</span>
+      <span class="tag week-area">&#127757; Safari</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="safari" data-type="scenic" data-tom="yes" data-teens="love" data-cost="free" data-num="59" data-mustdo="true" data-lat="-13.0700" data-lng="31.5500">
+  <div class="activity-num">59</div>
+  <div class="activity-content">
+    <h4>Stargazing from the Bush</h4>
+    <div class="activity-desc">Zero light pollution, Milky Way overhead, guided constellation tour. Free/included. The sky you've never seen &#8212; until now. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088; Katie &#10084;</span>
+      <span class="tag free">Included</span>
+      <span class="tag cost-free">Included</span>
+      <span class="tag week-area">&#127757; Safari</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="safari" data-type="food" data-tom="yes" data-teens="love" data-cost="free" data-num="60" data-mustdo="true" data-lat="-13.0700" data-lng="31.5500">
+  <div class="activity-num">60</div>
+  <div class="activity-content">
+    <h4>African Bush Dinner</h4>
+    <div class="activity-desc">Dine under the stars by a campfire in the wilderness. Included in lodge. Candles, campfire, a thousand stars, and the distant roar of a lion. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens &#10084;</span>
+      <span class="tag free">Included in lodge</span>
+      <span class="tag cost-free">Included</span>
+      <span class="tag week-area">&#127757; Safari</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="safari" data-type="culture" data-tom="yes" data-teens="love" data-cost="free" data-num="61" data-lat="-13.0500" data-lng="31.5300">
+  <div class="activity-num">61</div>
+  <div class="activity-content">
+    <h4>Community Project Visit</h4>
+    <div class="activity-desc">Visit local schools or community projects supported by your lodge. Donation. See the real impact of responsible tourism.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens &#10084;</span>
+      <span class="tag free">Donation-based</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127757; Safari</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="safari" data-type="safari" data-tom="no" data-teens="love" data-cost="free" data-num="62" data-lat="-13.0900" data-lng="31.5700">
+  <div class="activity-num">62</div>
+  <div class="activity-content">
+    <h4>Photography Hide</h4>
+    <div class="activity-desc">Sit in a hide by a waterhole, photograph animals at close range. Included. Katie's paradise &#8212; eye-level with drinking elephants.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (patience)</span>
+      <span class="tag teen-love">&#11088; Katie &#10084;</span>
+      <span class="tag free">Included</span>
+      <span class="tag cost-free">Included</span>
+      <span class="tag week-area">&#127757; Safari</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="safari" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="63" data-lat="-15.3400" data-lng="29.3400">
+  <div class="activity-num">63</div>
+  <div class="activity-content">
+    <h4>Mokoro (Traditional Canoe)</h4>
+    <div class="activity-desc">Paddle a traditional dugout canoe on lagoons. $30-50pp. Glide silently through the waterways in a hand-carved boat.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag cost">$30-50pp</span>
+      <span class="tag cost-budget">&lt; $50pp</span>
+      <span class="tag week-area">&#127757; Safari</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="safari" data-type="safari" data-tom="yes" data-teens="ok" data-cost="free" data-num="64" data-lat="-13.0700" data-lng="31.5500">
+  <div class="activity-num">64</div>
+  <div class="activity-content">
+    <h4>Kids' Bush School</h4>
+    <div class="activity-desc">Children's bush activities: tracking, craft, baking, storytelling. Included at family lodges. Tom's own safari academy.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;&#11088;&#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Included at family lodges</span>
+      <span class="tag cost-free">Included</span>
+      <span class="tag week-area">&#127757; Safari</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="safari" data-type="scenic" data-tom="yes" data-teens="love" data-cost="premium" data-num="65" data-mustdo="true" data-lat="-13.0700" data-lng="31.5500">
+  <div class="activity-num">65</div>
+  <div class="activity-content">
+    <h4>Scenic Flight (Bush to Falls)</h4>
+    <div class="activity-desc">Light aircraft between safari and Vic Falls, see the landscape from the air. $250-400pp. The journey IS the adventure. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;</span>
+      <span class="tag teen-love">&#11088; Teens &#10084;</span>
+      <span class="tag cost">$250-400pp</span>
+      <span class="tag cost-premium">$150+pp</span>
+      <span class="tag week-area">&#127757; Safari</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+</div><!-- end safari section -->
+
+
+</div><!-- end container -->
+</div><!-- end main-content -->
+</div><!-- end page-layout -->
+</div><!-- end activitiesSection -->
+<script>
+function toggleActivities() {
+  var section = document.getElementById('activitiesSection');
+  var icon = document.getElementById('activitiesToggleIcon');
+  var text = document.getElementById('activitiesToggleText');
+  var btn = document.getElementById('activitiesToggle');
+  if (section.style.display === 'none') {
+    section.style.display = 'block';
+    icon.textContent = '\u25B2';
+    text.textContent = 'Hide Activities & Filters';
+    btn.style.background = 'linear-gradient(135deg, #1B3C8F 0%, #2a4fa3 100%)';
+    setTimeout(function(){ section.scrollIntoView({behavior: 'smooth', block: 'start'}); }, 100);
+    if (window.activityMap) setTimeout(function(){ window.activityMap.invalidateSize(); }, 300);
+  } else {
+    section.style.display = 'none';
+    icon.textContent = '\u25BC';
+    text.textContent = 'Show All Activities & Filters';
+    btn.style.background = 'linear-gradient(135deg, #0F2557 0%, #1B3C8F 100%)';
+    btn.scrollIntoView({behavior: 'smooth', block: 'center'});
+  }
+}
+</script>
+
+<div class="footer">
+  <p>Created for the Sheldrake family holiday planning &#183; Summer 2026</p>
+  <p>Zambia: Victoria Falls &amp; Safari &#183; The adventure of a lifetime &#183; via Johannesburg / Dubai / Addis Ababa</p>
+</div>
+
+<script>
+(function() {
+  var cards = document.querySelectorAll('.activity-card');
+  var checkboxes = document.querySelectorAll('.filter-sidebar input[type="checkbox"]');
+  var countEl = document.getElementById('visibleCount');
+  var TOTAL = 65;
+
+  function getCheckedValues(filterName) {
+    var vals = [];
+    checkboxes.forEach(function(cb) {
+      if (cb.dataset.filter === filterName && cb.checked) vals.push(cb.value);
+    });
+    return vals;
+  }
+
+  function applyFilters() {
+    var areaFilters = getCheckedValues('area');
+    var typeFilters = getCheckedValues('type');
+    var tomFilters = getCheckedValues('tom');
+    var teenFilters = getCheckedValues('teens');
+    var familyFilters = getCheckedValues('family');
+    var costFilters = getCheckedValues('cost');
+    var mustdoFilters = getCheckedValues('mustdo');
+
+    var visible = 0;
+
+    cards.forEach(function(card) {
+      var show = true;
+
+      if (areaFilters.length > 0 && !areaFilters.includes(card.dataset.area)) show = false;
+      if (typeFilters.length > 0 && !typeFilters.includes(card.dataset.type)) show = false;
+      if (tomFilters.length > 0 && card.dataset.tom !== 'yes') show = false;
+      if (teenFilters.length > 0 && card.dataset.teens !== 'love') show = false;
+      if (familyFilters.length > 0 && card.dataset.tom !== 'yes') show = false;
+      if (costFilters.length > 0 && !costFilters.includes(card.dataset.cost)) show = false;
+      if (mustdoFilters.length > 0 && card.dataset.mustdo !== 'true') show = false;
+
+      if (show) {
+        card.classList.remove('hidden-by-filter');
+        visible++;
+      } else {
+        card.classList.add('hidden-by-filter');
+      }
+    });
+
+    countEl.textContent = visible;
+
+    document.querySelectorAll('.section-header[data-section]').forEach(function(header) {
+      var sectionId = header.dataset.section;
+      var wrap = document.querySelector('[data-section-wrap="' + sectionId + '"]');
+      if (wrap) {
+        var visibleCards = wrap.querySelectorAll('.activity-card:not(.hidden-by-filter)');
+        header.classList.toggle('hidden-by-filter', visibleCards.length === 0);
+        wrap.style.display = visibleCards.length === 0 ? 'none' : '';
+      }
+    });
+
+    document.querySelectorAll('.category-header[data-cat-type]').forEach(function(catHeader) {
+      var sibling = catHeader.nextElementSibling;
+      var hasVisible = false;
+      while (sibling && !sibling.classList.contains('category-header') && !sibling.classList.contains('section-header')) {
+        if (sibling.classList.contains('activity-card') && !sibling.classList.contains('hidden-by-filter')) {
+          hasVisible = true;
+          break;
+        }
+        sibling = sibling.nextElementSibling;
+      }
+      catHeader.classList.toggle('hidden-by-filter', !hasVisible);
+    });
+    if (typeof updateMap === 'function') updateMap();
+  }
+
+  checkboxes.forEach(function(cb) { cb.addEventListener('change', applyFilters); });
+
+  window.clearFilters = function() {
+    checkboxes.forEach(function(cb) { cb.checked = false; });
+    applyFilters();
+  };
+
+  window.toggleFilters = function() {
+    var sidebar = document.getElementById('filterSidebar');
+    var overlay = document.getElementById('filterOverlay');
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('open');
+  };
+})();
+
+function toggleAccom(show) {
+  if (!window.accomMarkers) return;
+  window.accomMarkers.forEach(function(m) {
+    if (show) m.addTo(window.activityMap);
+    else window.activityMap.removeLayer(m);
+  });
+}
+
+function updateMap() {
+  if (!window.activityMarkers) return;
+  var bounds = [];
+  var tableBody = document.getElementById('map-table-body');
+  if (tableBody) tableBody.innerHTML = '';
+  var visibleCount = 0;
+  
+  document.querySelectorAll('.activity-card').forEach(function(card, i) {
+    var marker = window.activityMarkers[i];
+    if (!marker) return;
+    var lat = parseFloat(card.dataset.lat);
+    var lng = parseFloat(card.dataset.lng);
+    if (!lat || !lng) return;
+    
+    var isVisible = !card.classList.contains('hidden-by-filter');
+    if (isVisible) {
+      marker.addTo(window.activityMap);
+      bounds.push([lat, lng]);
+      visibleCount++;
+      if (tableBody) {
+        var num = card.dataset.num;
+        var title = card.querySelector('h4').textContent.trim();
+        var link = card.querySelector('h4 a');
+        var href = link ? link.href : '';
+        var isMustDo = card.dataset.mustdo === 'true';
+        var tr = document.createElement('tr');
+        tr.style.borderBottom = '1px solid #e0e0e0';
+        if (visibleCount % 2 === 0) tr.style.background = '#f0f3f9';
+        tr.innerHTML = '<td style="padding:5px 8px;color:#1B3C8F;font-weight:700;">' + num + '</td>' +
+          '<td style="padding:5px 8px;">' + (isMustDo ? '\u2B50 ' : '') + title + '</td>' +
+          '<td style="padding:5px 8px;text-align:right;">' + 
+          (href ? '<a href="'+href+'" target="_blank" style="color:#1B3C8F;margin-right:10px;">More Info</a>' : '') +
+          '<a href="https://www.google.com/maps?q='+lat+','+lng+'" target="_blank" style="color:#888;">\uD83D\uDCCD Map</a></td>';
+        tableBody.appendChild(tr);
+      }
+    } else {
+      window.activityMap.removeLayer(marker);
+    }
+  });
+  
+  var countEl = document.getElementById('map-count');
+  if (countEl) countEl.textContent = visibleCount + ' activities shown';
+  
+  if (bounds.length > 0) {
+    window.activityMap.fitBounds(bounds, {padding: [30, 30], maxZoom: 12});
+  }
+}
+
+(function(){
+  window.activityMap = L.map('mustdo-map', {scrollWheelZoom: false}).setView([-15.5, 28.5], 6);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; CARTO &copy; OSM', maxZoom: 18
+  }).addTo(window.activityMap);
+  
+  window.activityMarkers = [];
+  
+  document.querySelectorAll('.activity-card').forEach(function(card) {
+    var lat = parseFloat(card.dataset.lat);
+    var lng = parseFloat(card.dataset.lng);
+    if (!lat || !lng) { window.activityMarkers.push(null); return; }
+    
+    var num = card.dataset.num;
+    var isMustDo = card.dataset.mustdo === 'true';
+    var title = card.querySelector('h4').textContent.trim();
+    var desc = card.querySelector('.activity-desc');
+    var descText = desc ? desc.textContent.trim().substring(0, 100) + '...' : '';
+    
+    var size = isMustDo ? 28 : 22;
+    var bg = isMustDo ? '#FF6B35' : '#1B3C8F';
+    var fontSize = isMustDo ? '12px' : '10px';
+    
+    var icon = L.divIcon({
+      className: '',
+      html: '<div style="background:'+bg+';color:#fff;width:'+size+'px;height:'+size+'px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:'+fontSize+';font-family:Montserrat,sans-serif;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;cursor:pointer;">'+num+'</div>',
+      iconSize: [size, size],
+      iconAnchor: [size/2, size/2]
+    });
+    
+    var marker = L.marker([lat, lng], {icon: icon})
+      .bindPopup('<div style="min-width:200px;"><b style="color:#0F2557;font-size:0.95rem;">' + (isMustDo ? '\u2B50 ' : '') + title + '</b><br><span style="color:#555;font-size:0.85rem;">' + descText + '</span></div>');
+    
+    marker.addTo(window.activityMap);
+    window.activityMarkers.push(marker);
+  });
+  
+  updateMap();
+
+  // Accommodation overlay
+  window.accomMarkers = [];
+  var accomData = [
+    [-17.8750, 25.8350, "Royal Livingstone by Anantara", "Luxury Hotel", "https://www.anantara.com/en/royal-livingstone", "5-star on the Zambezi, elephants on lawn, pool, fine dining, 10min to falls. From $500/night."],
+    [-17.8800, 25.8280, "Avani Victoria Falls Resort", "Resort", "https://www.avanihotels.com/en/victoria-falls", "4-star, family rooms, pool, gardens, near the falls. From $200/night."],
+    [-17.9100, 25.8500, "Tongabezi Lodge", "Luxury Lodge", "https://www.tongabezi.com/", "Boutique riverside lodge, tree houses, sampan suites, family cottages. From $650/night."],
+    [-17.8950, 25.8400, "Islands of Siankaba", "Eco-Lodge", "https://www.siankaba.net/", "Private island lodge on the Zambezi, chalets, canoe transfers. From $400/night."],
+    [-13.0700, 31.5500, "Mfuwe Lodge", "Safari Lodge", "https://www.bushcampcompany.com/mfuwe-lodge/", "Award-winning, family suites, elephants walk through lobby! From $385/night."],
+    [-13.0800, 31.5600, "Flatdogs Camp", "Safari Camp", "https://www.flatdogscamp.com/", "Affordable family camp, large chalets, pool, flexible for kids. From $200/night."],
+    [-15.3500, 29.3500, "Royal Zambezi Lodge", "Safari Lodge", "https://www.royalzambezilodge.com/", "Family suites, pools, canoe safaris, fishing, Lower Zambezi. From $700/night."],
+    [-15.3600, 29.3600, "Chiawa Camp", "Luxury Camp", "https://www.chiawa.com/", "Premium safari camp, family suite, Lower Zambezi, game drives + canoe. From $900/night."]
+  ];
+  var accomIcon = function(){ return L.divIcon({
+    className:'',
+    html:'<div style="background:#2d9a2d;color:#fff;width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;cursor:pointer;">&#127965;</div>',
+    iconSize:[30,30], iconAnchor:[15,15]
+  }); };
+  accomData.forEach(function(a){
+    var marker = L.marker([a[0],a[1]], {icon: accomIcon()})
+      .bindPopup('<div style="min-width:220px;"><b style="color:#2d9a2d;font-size:0.95rem;">&#127965; '+a[2]+'</b><br><span style="color:#888;font-size:0.8rem;">'+a[3]+'</span><br><span style="color:#555;font-size:0.85rem;">'+a[5]+'</span><br><a href="'+a[4]+'" target="_blank" style="color:#2d9a2d;font-size:0.85rem;">View on '+a[3]+' \u2192</a></div>');
+    marker.addTo(window.activityMap);
+    window.accomMarkers.push(marker);
+  });
+})();
+
+document.addEventListener('click', function(e) {
+  var wrap = document.querySelector('.country-nav__dropdown-wrap');
+  if (wrap && !wrap.contains(e.target)) {
+    var btn = wrap.querySelector('.country-nav__toggle');
+    var menu = wrap.querySelector('.country-nav__menu');
+    if (btn) btn.classList.remove('open');
+    if (menu) menu.classList.remove('open');
+  }
+});
+</script>
+
+</body>
+</html>
