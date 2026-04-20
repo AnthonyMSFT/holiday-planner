@@ -10,7 +10,10 @@ An interactive HTML report with:
 - Filterable by activity type, cost, child age suitability, and more
 - Cost estimates for each activity
 - "Must-do" highlights marked
-- Hosted via a shareable link with a QR code
+- Dynamic map with pins for every activity (filter-synced!) and accommodation overlay
+- Weather summary for your travel month
+- Country navigation bar linking all your destination reports
+- Permanently hosted on GitHub Pages — free, shareable URL
 - Themed in your favourite colours
 
 ---
@@ -130,19 +133,51 @@ check their website at [URL] for the exact colours and fonts.
 
 ---
 
-## Step 6: Host It and Share
+## Step 6: Add a Map, Weather & Accommodation
 
-Make your report accessible to family members on any device.
+Enhance the report with geographic context and practical info.
 
 ### Example Prompt:
 ```
-Host this using devtunnel so I can share it with my family.
+Add a dynamic interactive map showing every activity as a pin. 
+Must-do activities should be orange, others blue. The map should 
+respond to the sidebar filters — when I filter by "free", only 
+free activities show on the map. Add a scrollable table below 
+the map with "More Info" and "Map" links for each activity.
+
+Also overlay accommodation markers (Eurocamp, eco-lodges, resorts) 
+in green, with a toggle to show/hide them.
+
+Add a weather summary section showing typical August conditions: 
+temperature, sunshine hours, rainy days, sea temperature, and 
+any warnings (hurricanes, typhoons, rainy season, extreme heat).
 ```
 
-Then to create a QR code for easy mobile access:
+---
+
+## Step 7: Host on GitHub Pages (Free & Permanent)
+
+Push your reports to a GitHub repo and enable GitHub Pages for a free, permanent URL.
+
+### Example Prompt:
 ```
-Generate a QR code that links to the hosted report. 
-Use the colours of [COUNTRY FLAG / TEAM].
+Set up a GitHub repository for this project. Push all the HTML 
+reports, images, and assets. Enable GitHub Pages so the site 
+is hosted at [USERNAME].github.io/[REPO-NAME]/
+
+Update all internal links to work with the GitHub Pages URL.
+```
+
+### To update after changes:
+```
+Push the latest changes to the GitHub repo so the live site updates.
+```
+
+### Alternative: Quick sharing with devtunnel
+If you just need a temporary link for a demo or presentation:
+```
+Host this locally and create a devtunnel link so I can share it 
+temporarily. Generate a QR code for the link.
 ```
 
 ---

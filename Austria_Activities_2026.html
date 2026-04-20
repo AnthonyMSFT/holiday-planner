@@ -22,42 +22,63 @@
     --accent-orange: #FF6B35;
   }
 
-  /* ── Country Navbar ─────────────────────────────────── */
-  .country-nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    background: rgba(15, 37, 87, 0.95);
-    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    transform: translateY(-100%); transition: transform 0.3s ease;
-  }
-  .country-nav.visible { transform: translateY(0); }
-  .country-nav__inner {
-    max-width: 1400px; margin: 0 auto;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 1rem; height: 48px;
-  }
-  .country-nav__label {
-    font-family: 'Playfair Display', serif; font-size: 0.8rem;
-    color: rgba(255,255,255,0.7); white-space: nowrap; margin-right: 0.5rem;
-  }
-  .country-nav__links {
-    display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch;
-  }
-  .country-nav__link {
-    display: flex; align-items: center; gap: 5px;
-    padding: 12px 12px; color: rgba(255,255,255,0.8);
-    font-size: 0.78rem; font-weight: 500; white-space: nowrap;
-    transition: all 0.2s; border-bottom: 2px solid transparent; text-decoration: none;
-  }
-  .country-nav__link:hover { color: #fff; background: rgba(255,255,255,0.08); border-bottom-color: #FF6B35; }
-  .country-nav__link .nav-icon { width: 16px; height: 16px; flex-shrink: 0; opacity: 0.85; }
-  .country-nav__link:hover .nav-icon { opacity: 1; }
-  .country-nav__link--accent { color: #FF6B35; }
-  .country-nav__link--accent:hover { color: #fff; border-bottom-color: #FF6B35; }
-  @media (max-width: 768px) {
-    .country-nav__label { display: none; }
-    .country-nav__link { padding: 12px 8px; font-size: 0.72rem; }
-  }
+  /* ── Country Navbar ───────────────────────────────────────── */
+.country-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(15, 37, 87, 0.97);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  height: 44px;
+}
+.country-nav__inner {
+  max-width: 1400px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 1.2rem; height: 44px;
+}
+.country-nav__home {
+  display: flex; align-items: center; gap: 6px;
+  color: #FF6B35; font-size: 0.82rem; font-weight: 600;
+  text-decoration: none; white-space: nowrap;
+}
+.country-nav__home .nav-icon { width: 16px; height: 16px; }
+.country-nav__home:hover { color: #fff; }
+.country-nav__current {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem; color: #fff; font-weight: 600;
+  position: absolute; left: 50%; transform: translateX(-50%);
+  white-space: nowrap;
+}
+.country-nav__dropdown-wrap { position: relative; }
+.country-nav__toggle {
+  display: flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  color: #fff; padding: 6px 14px; border-radius: 6px;
+  font-size: 0.78rem; font-weight: 500; cursor: pointer;
+  font-family: 'Inter', sans-serif; transition: all 0.2s;
+}
+.country-nav__toggle:hover { background: rgba(255,255,255,0.18); }
+.country-nav__toggle svg { width: 14px; height: 14px; transition: transform 0.2s; }
+.country-nav__toggle.open svg { transform: rotate(180deg); }
+.country-nav__menu {
+  display: none; position: absolute; right: 0; top: calc(100% + 8px);
+  background: #0F2557; border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px; padding: 6px 0; min-width: 220px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  animation: navDropIn 0.15s ease-out;
+}
+@keyframes navDropIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+.country-nav__menu.open { display: block; }
+.country-nav__menu a {
+  display: flex; align-items: center; gap: 8px;
+  padding: 9px 16px; color: rgba(255,255,255,0.8);
+  font-size: 0.82rem; font-weight: 500; text-decoration: none;
+  transition: all 0.15s;
+}
+.country-nav__menu a:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.country-nav__menu a.active { color: #FF6B35; font-weight: 600; }
+.country-nav__menu a .nav-icon { width: 16px; height: 16px; opacity: 0.7; flex-shrink: 0; }
+.country-nav__menu a:hover .nav-icon { opacity: 1; }
+.country-nav__menu-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 4px 0; }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -66,7 +87,8 @@
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
-  }
+  padding-top: 44px;
+}
 
   .hero {
     background: linear-gradient(135deg, #0F2557 0%, #1B3C8F 100%);
@@ -449,19 +471,28 @@
 
 <nav class="country-nav" id="countryNav">
   <div class="country-nav__inner">
-    <span class="country-nav__label">Explore:</span>
-    <div class="country-nav__links">
-      <a href="showcase/index.html" class="country-nav__link country-nav__link--accent"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg> Home</a>
-      <a href="France_Verdon_CotedAzur_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h6v18H3V3zm12 0h6v18h-6V3zM9 3h6v18H9V3z" opacity="0.8"/></svg> France</a>
-      <a href="Germany_Bavaria_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L8.5 8.5 2 9.5l5 4.5L5.5 21 12 17.5 18.5 21 17 14l5-4.5-6.5-1L12 2z"/></svg> Germany</a>
-      <a href="Croatia_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20v4H2zm0 6h4v4H6v-2H4v4h4v-2h2v4H8v-2H4v4h20V10H2zm6 0h4v2h-2v2H8v-4zm6 0h4v2h-2v2h-2v-4z"/></svg> Croatia</a>
-      <a href="Sicily_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c3.31 0 6-2.69 6-6 0-4.96-4.49-9-10-9z"/></svg> Sicily</a>
-      <a href="Egypt_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 21h18L12 3 3 21zm9-3l-4.5-9h9L12 18z"/></svg> Egypt</a>
-      <a href="Austria_Activities_2026.html" class="country-nav__link" style="border-bottom-color:#FF6B35;color:#fff;"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z"/></svg> Austria</a>
-      <a href="Bulgaria_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 2.84L18 11v7h-2v-6H8v6H6v-7l6-5.16z"/></svg> Bulgaria</a>
-      <a href="Japan_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg> Japan</a>
-      <a href="Spain_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg> Spain</a>
-      <a href="CostaRica_Activities_2026.html" class="country-nav__link"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.71c.76.34 1.59.54 2.46.59L9 20c.5-4 4.17-8 9-8V8z"/></svg> Costa Rica</a>
+    <a href="showcase/index.html" class="country-nav__home">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg> Home
+    </a>
+    <span class="country-nav__current">🇦🇹 Austria — Alps & Lake Como</span>
+    <div class="country-nav__dropdown-wrap">
+      <button class="country-nav__toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+        🌍 Destinations <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
+      </button>
+      <div class="country-nav__menu" id="navMenu">
+        <a href="France_Verdon_CotedAzur_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h6v18H3V3zm12 0h6v18h-6V3zM9 3h6v18H9V3z" opacity="0.8"/></svg> France</a>
+        <a href="Germany_Bavaria_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L8.5 8.5 2 9.5l5 4.5L5.5 21 12 17.5 18.5 21 17 14l5-4.5-6.5-1L12 2z"/></svg> Germany</a>
+        <a href="Croatia_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20v4H2zm0 6h4v4H6v-2H4v4h4v-2h2v4H8v-2H4v4h20V10H2zm6 0h4v2h-2v2H8v-4zm6 0h4v2h-2v2h-2v-4z"/></svg> Croatia</a>
+        <a href="Sicily_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c3.31 0 6-2.69 6-6 0-4.96-4.49-9-10-9z"/></svg> Sicily</a>
+        <a href="Egypt_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 21h18L12 3 3 21zm9-3l-4.5-9h9L12 18z"/></svg> Egypt</a>
+        <a href="Austria_Activities_2026.html" class="active"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z"/></svg> Austria</a>
+        <a href="Bulgaria_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 2.84L18 11v7h-2v-6H8v6H6v-7l6-5.16z"/></svg> Bulgaria</a>
+        <a href="Japan_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg> Japan</a>
+        <a href="Spain_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg> Spain</a>
+        <a href="CostaRica_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.71c.76.34 1.59.54 2.46.59L9 20c.5-4 4.17-8 9-8V8z"/></svg> Costa Rica</a>
+        <div class="country-nav__menu-divider"></div>
+        <a href="blog/index.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4.86 8.86l-3 3.87L9 13.14 6 17h12l-3.86-5.14z"/></svg> Blog</a>
+      </div>
     </div>
   </div>
 </nav>
@@ -1939,17 +1970,16 @@ accomData.forEach(function(a){
 </script>
 
 <script>
-// Country navbar show on scroll
-(function(){
-  var nav = document.getElementById('countryNav');
-  if (!nav) return;
-  var hero = document.querySelector('.hero');
-  if (!hero) { nav.classList.add('visible'); return; }
-  var observer = new IntersectionObserver(function(entries){
-    nav.classList.toggle('visible', !entries[0].isIntersecting);
-  }, {threshold: 0});
-  observer.observe(hero);
-})();
+
+document.addEventListener('click', function(e) {
+  var wrap = document.querySelector('.country-nav__dropdown-wrap');
+  if (wrap && !wrap.contains(e.target)) {
+    var btn = wrap.querySelector('.country-nav__toggle');
+    var menu = wrap.querySelector('.country-nav__menu');
+    if (btn) btn.classList.remove('open');
+    if (menu) menu.classList.remove('open');
+  }
+});
 </script>
 
 </body>
