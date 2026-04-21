@@ -2235,6 +2235,8 @@ function updateMap() {
       if (tableBody) {
         var num = card.dataset.num;
         var title = card.querySelector('h4').textContent.trim();
+        var link = card.querySelector('h4 a');
+        var href = link ? link.href : '';
         var isMustDo = card.dataset.mustdo === 'true';
         var tr = document.createElement('tr');
         tr.style.borderBottom = '1px solid #e0e0e0';
@@ -2242,6 +2244,7 @@ function updateMap() {
         tr.innerHTML = '<td style="padding:5px 8px;color:#1B3C8F;font-weight:700;">' + num + '</td>' +
           '<td style="padding:5px 8px;">' + (isMustDo ? '\u2B50 ' : '') + title + '</td>' +
           '<td style="padding:5px 8px;text-align:right;">' + 
+          (href ? '<a href="'+href+'" target="_blank" style="color:#1B3C8F;margin-right:10px;">More Info</a>' : '') +
           '<a href="https://www.google.com/maps?q='+lat+','+lng+'" target="_blank" style="color:#888;">\uD83D\uDCCD Map</a></td>';
         tableBody.appendChild(tr);
       }
