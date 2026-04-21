@@ -540,6 +540,51 @@
   </div>
 </div>
 
+
+<!-- SUMMARY STATS -->
+<div class="summary-grid">
+  <div class="summary-card"><div class="big-num">65</div><div class="label">Total Activities</div></div>
+  <div class="summary-card"><div class="big-num">15</div><div class="label">Victoria Falls</div></div>
+  <div class="summary-card"><div class="big-num">13</div><div class="label">Zambezi River</div></div>
+  <div class="summary-card"><div class="big-num">10</div><div class="label">Livingstone Town</div></div>
+  <div class="summary-card"><div class="big-num">10</div><div class="label">Mosi-oa-Tunya NP</div></div>
+  <div class="summary-card"><div class="big-num">17</div><div class="label">Safari</div></div>
+  <div class="summary-card"><div class="big-num">20</div><div class="label">Must-Do Highlights</div></div>
+</div>
+
+<!-- Activity Map -->
+<div style="margin: 2rem auto; max-width: 1100px; padding: 0 20px;">
+  <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 4px; font-size: 1.3rem;">&#128205; Activity Map</h3>
+  <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">
+    <span id="map-count">65 activities shown</span> &#8212;
+    <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#FF6B35;vertical-align:middle;"></span> Must-do
+    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#1B3C8F;vertical-align:middle;margin-left:8px;"></span> Other activities.
+    Use the filters to narrow down.
+    <label style="display:inline-flex;align-items:center;gap:4px;margin-left:12px;font-size:0.85rem;color:#2d9a2d;cursor:pointer;">
+      <input type="checkbox" id="accom-toggle" checked onchange="toggleAccom(this.checked)" style="accent-color:#2d9a2d;"> &#127965; Accommodation
+    </label>
+  </p>
+  <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.12); border: 2px solid #1B3C8F;">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <div id="mustdo-map" style="width:100%; height:500px;"></div>
+    <div style="padding: 12px 16px; background: #f8f9fa; max-height: 350px; overflow-y: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: 'Inter', sans-serif;">
+        <thead>
+          <tr style="border-bottom: 2px solid #1B3C8F; color: #0F2557; position: sticky; top: 0; background: #f8f9fa;">
+            <th style="text-align: left; padding: 5px 8px; width: 40px;">#</th>
+            <th style="text-align: left; padding: 5px 8px;">Activity</th>
+            <th style="text-align: right; padding: 5px 8px; width: 140px;">Links</th>
+          </tr>
+        </thead>
+        <tbody id="map-table-body">
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ Activities Accordion ═══ -->
 <!-- Activities Accordion -->
 <div style="max-width: 1100px; margin: 2rem auto; padding: 0 20px;">
   <button id="activitiesToggle" onclick="toggleActivities()" style="
@@ -637,49 +682,6 @@
     <li>&#127748; <strong>Stargazing from the Bush</strong> &#8212; zero light pollution, the Milky Way like you&#8217;ve never seen it</li>
     <li>&#129423; <strong>Rhino Tracking on Foot</strong> &#8212; walk with an armed ranger to find white rhinos in the wild</li>
   </ol>
-</div>
-
-<!-- SUMMARY STATS -->
-<div class="summary-grid">
-  <div class="summary-card"><div class="big-num">65</div><div class="label">Total Activities</div></div>
-  <div class="summary-card"><div class="big-num">15</div><div class="label">Victoria Falls</div></div>
-  <div class="summary-card"><div class="big-num">13</div><div class="label">Zambezi River</div></div>
-  <div class="summary-card"><div class="big-num">10</div><div class="label">Livingstone Town</div></div>
-  <div class="summary-card"><div class="big-num">10</div><div class="label">Mosi-oa-Tunya NP</div></div>
-  <div class="summary-card"><div class="big-num">17</div><div class="label">Safari</div></div>
-  <div class="summary-card"><div class="big-num">20</div><div class="label">Must-Do Highlights</div></div>
-</div>
-
-<!-- Activity Map -->
-<div style="margin: 2rem auto; max-width: 1100px; padding: 0 20px;">
-  <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 4px; font-size: 1.3rem;">&#128205; Activity Map</h3>
-  <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">
-    <span id="map-count">65 activities shown</span> &#8212;
-    <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#FF6B35;vertical-align:middle;"></span> Must-do
-    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#1B3C8F;vertical-align:middle;margin-left:8px;"></span> Other activities.
-    Use the filters to narrow down.
-    <label style="display:inline-flex;align-items:center;gap:4px;margin-left:12px;font-size:0.85rem;color:#2d9a2d;cursor:pointer;">
-      <input type="checkbox" id="accom-toggle" checked onchange="toggleAccom(this.checked)" style="accent-color:#2d9a2d;"> &#127965; Accommodation
-    </label>
-  </p>
-  <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.12); border: 2px solid #1B3C8F;">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <div id="mustdo-map" style="width:100%; height:500px;"></div>
-    <div style="padding: 12px 16px; background: #f8f9fa; max-height: 350px; overflow-y: auto;">
-      <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: 'Inter', sans-serif;">
-        <thead>
-          <tr style="border-bottom: 2px solid #1B3C8F; color: #0F2557; position: sticky; top: 0; background: #f8f9fa;">
-            <th style="text-align: left; padding: 5px 8px; width: 40px;">#</th>
-            <th style="text-align: left; padding: 5px 8px;">Activity</th>
-            <th style="text-align: right; padding: 5px 8px; width: 140px;">Links</th>
-          </tr>
-        </thead>
-        <tbody id="map-table-body">
-        </tbody>
-      </table>
-    </div>
-  </div>
 </div>
 <!-- ═══ VICTORIA FALLS ═══ -->
 <div class="section-header verdon" data-section="falls">

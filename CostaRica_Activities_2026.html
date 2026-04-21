@@ -555,7 +555,87 @@
   </div>
 </div>
 
-<!-- MOBILE FILTER TOGGLE -->
+
+<!-- SUMMARY STATS -->
+<div class="summary-grid">
+  <div class="summary-card"><div class="big-num">85</div><div class="label">Total Activities</div></div>
+  <div class="summary-card"><div class="big-num">25</div><div class="label">Adventure & Outdoors</div></div>
+  <div class="summary-card"><div class="big-num">20</div><div class="label">Nature & Wildlife</div></div>
+  <div class="summary-card"><div class="big-num">18</div><div class="label">Beach & Water</div></div>
+  <div class="summary-card"><div class="big-num">7</div><div class="label">Culture & History</div></div>
+  <div class="summary-card"><div class="big-num">8</div><div class="label">Food & Drink</div></div>
+  <div class="summary-card"><div class="big-num">25</div><div class="label">Must-Do Highlights</div></div>
+  <div class="summary-card"><div class="big-num">5</div><div class="label">Areas to Explore</div></div>
+</div>
+
+<!-- ═══ Rainy Season Reality Guide ═══ -->
+<div style="background: #fff; padding: 2rem 0; border-bottom: 1px solid #e8edf7;">
+  <div style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
+    <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; font-size: 1.3rem; margin-bottom: 14px;">🌧️ Rainy Season — What It's Actually Like</h3>
+    <p style="font-size: 0.92rem; color: #444; line-height: 1.8; margin-bottom: 14px;">August is <strong>"green season"</strong> — but don't panic. Here's the reality:</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 16px;">
+      <div style="background: #f0f4ff; border-radius: 10px; padding: 16px; border-left: 4px solid #FF6B35;">
+        <div style="font-weight: 700; color: #0F2557; margin-bottom: 4px;">☀️ Mornings (7am–1pm)</div>
+        <div style="font-size: 0.85rem; color: #555;">Almost always sunny and dry. This is when you do all outdoor activities — hikes, zip lines, rafting, beach, waterfall trips.</div>
+      </div>
+      <div style="background: #f0f4ff; border-radius: 10px; padding: 16px; border-left: 4px solid #1B3C8F;">
+        <div style="font-weight: 700; color: #0F2557; margin-bottom: 4px;">🌧️ Afternoons (1–4pm)</div>
+        <div style="font-size: 0.85rem; color: #555;">Heavy tropical downpour — dramatic but usually only 1-2 hours. Not drizzle — proper rain. Then it clears.</div>
+      </div>
+      <div style="background: #f0f4ff; border-radius: 10px; padding: 16px; border-left: 4px solid #2d9a2d;">
+        <div style="font-weight: 700; color: #0F2557; margin-bottom: 4px;">🌅 Evenings (5pm+)</div>
+        <div style="font-size: 0.85rem; color: #555;">Rain usually stops. Sunsets can be spectacular. Perfect for dinner, sunset cruises, or hot springs.</div>
+      </div>
+    </div>
+    <div style="background: #f8f9fa; border-radius: 10px; padding: 16px; margin-bottom: 14px;">
+      <div style="font-weight: 700; color: #0F2557; margin-bottom: 8px;">Does anything close?</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; font-size: 0.85rem; color: #555;">
+        <div>🏨 <strong>Hotels</strong> — All open, covered pools & spa</div>
+        <div>🎯 <strong>Tours</strong> — Run rain or shine (guides are used to it)</div>
+        <div>🏪 <strong>Shops</strong> — Open as normal</div>
+        <div>🌿 <strong>National Parks</strong> — Open as normal</div>
+        <div>🍽️ <strong>Restaurants</strong> — All open</div>
+        <div>♨️ <strong>Hot springs</strong> — Even BETTER in the rain!</div>
+      </div>
+    </div>
+    <p style="font-size: 0.85rem; color: #555; line-height: 1.7; margin: 0;">
+      <strong>The rhythm:</strong> Adventure mornings → chill afternoons (hot springs, chocolate tours, spa, cooking classes) → clear evenings. The rain makes rafting better (higher rivers), wildlife more active (frogs!), and hot springs more atmospheric. Pack a lightweight rain jacket and quick-dry clothes. <strong>The upside?</strong> Fewer tourists, lower prices, lush green landscapes, and baby turtle nesting season. 🐢
+    </p>
+  </div>
+</div>
+
+<!-- ═══ Activity Map ═══ -->
+<div style="margin: 2rem auto; max-width: 1100px; padding: 0 20px;">
+  <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 4px; font-size: 1.3rem;">📍 Activity Map</h3>
+  <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">
+    <span id="map-count">85 activities shown</span> —
+    <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#FF6B35;vertical-align:middle;"></span> Must-do
+    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#1B3C8F;vertical-align:middle;margin-left:8px;"></span> Other activities.
+    Use the filters to narrow down.
+    <label style="display:inline-flex;align-items:center;gap:4px;margin-left:12px;font-size:0.85rem;color:#2d9a2d;cursor:pointer;">
+      <input type="checkbox" id="accom-toggle" checked onchange="toggleAccom(this.checked)" style="accent-color:#2d9a2d;"> &#127965; Accommodation
+    </label>
+  </p>
+  <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.12); border: 2px solid #1B3C8F;">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <div id="mustdo-map" style="width:100%; height:500px;"></div>
+    <div style="padding: 12px 16px; background: #f8f9fa; max-height: 350px; overflow-y: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: 'Inter', sans-serif;">
+        <thead>
+          <tr style="border-bottom: 2px solid #1B3C8F; color: #0F2557; position: sticky; top: 0; background: #f8f9fa;">
+            <th style="text-align: left; padding: 5px 8px; width: 40px;">#</th>
+            <th style="text-align: left; padding: 5px 8px;">Activity</th>
+            <th style="text-align: right; padding: 5px 8px; width: 140px;">Links</th>
+          </tr>
+        </thead>
+        <tbody id="map-table-body">
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
 <!-- ═══ Activities Accordion ═══ -->
 <div style="max-width: 1100px; margin: 2rem auto; padding: 0 20px;">
   <button id="activitiesToggle" onclick="toggleActivities()" style="
@@ -655,87 +735,6 @@
     <li>🐢 <strong>Tortuguero National Park</strong> — canals by boat, green turtle nesting, incredible wildlife</li>
   </ol>
 </div>
-
-<!-- SUMMARY STATS -->
-<div class="summary-grid">
-  <div class="summary-card"><div class="big-num">85</div><div class="label">Total Activities</div></div>
-  <div class="summary-card"><div class="big-num">25</div><div class="label">Adventure & Outdoors</div></div>
-  <div class="summary-card"><div class="big-num">20</div><div class="label">Nature & Wildlife</div></div>
-  <div class="summary-card"><div class="big-num">18</div><div class="label">Beach & Water</div></div>
-  <div class="summary-card"><div class="big-num">7</div><div class="label">Culture & History</div></div>
-  <div class="summary-card"><div class="big-num">8</div><div class="label">Food & Drink</div></div>
-  <div class="summary-card"><div class="big-num">25</div><div class="label">Must-Do Highlights</div></div>
-  <div class="summary-card"><div class="big-num">5</div><div class="label">Areas to Explore</div></div>
-</div>
-
-<!-- ═══ Rainy Season Reality Guide ═══ -->
-<div style="background: #fff; padding: 2rem 0; border-bottom: 1px solid #e8edf7;">
-  <div style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
-    <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; font-size: 1.3rem; margin-bottom: 14px;">🌧️ Rainy Season — What It's Actually Like</h3>
-    <p style="font-size: 0.92rem; color: #444; line-height: 1.8; margin-bottom: 14px;">August is <strong>"green season"</strong> — but don't panic. Here's the reality:</p>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 16px;">
-      <div style="background: #f0f4ff; border-radius: 10px; padding: 16px; border-left: 4px solid #FF6B35;">
-        <div style="font-weight: 700; color: #0F2557; margin-bottom: 4px;">☀️ Mornings (7am–1pm)</div>
-        <div style="font-size: 0.85rem; color: #555;">Almost always sunny and dry. This is when you do all outdoor activities — hikes, zip lines, rafting, beach, waterfall trips.</div>
-      </div>
-      <div style="background: #f0f4ff; border-radius: 10px; padding: 16px; border-left: 4px solid #1B3C8F;">
-        <div style="font-weight: 700; color: #0F2557; margin-bottom: 4px;">🌧️ Afternoons (1–4pm)</div>
-        <div style="font-size: 0.85rem; color: #555;">Heavy tropical downpour — dramatic but usually only 1-2 hours. Not drizzle — proper rain. Then it clears.</div>
-      </div>
-      <div style="background: #f0f4ff; border-radius: 10px; padding: 16px; border-left: 4px solid #2d9a2d;">
-        <div style="font-weight: 700; color: #0F2557; margin-bottom: 4px;">🌅 Evenings (5pm+)</div>
-        <div style="font-size: 0.85rem; color: #555;">Rain usually stops. Sunsets can be spectacular. Perfect for dinner, sunset cruises, or hot springs.</div>
-      </div>
-    </div>
-    <div style="background: #f8f9fa; border-radius: 10px; padding: 16px; margin-bottom: 14px;">
-      <div style="font-weight: 700; color: #0F2557; margin-bottom: 8px;">Does anything close?</div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; font-size: 0.85rem; color: #555;">
-        <div>🏨 <strong>Hotels</strong> — All open, covered pools & spa</div>
-        <div>🎯 <strong>Tours</strong> — Run rain or shine (guides are used to it)</div>
-        <div>🏪 <strong>Shops</strong> — Open as normal</div>
-        <div>🌿 <strong>National Parks</strong> — Open as normal</div>
-        <div>🍽️ <strong>Restaurants</strong> — All open</div>
-        <div>♨️ <strong>Hot springs</strong> — Even BETTER in the rain!</div>
-      </div>
-    </div>
-    <p style="font-size: 0.85rem; color: #555; line-height: 1.7; margin: 0;">
-      <strong>The rhythm:</strong> Adventure mornings → chill afternoons (hot springs, chocolate tours, spa, cooking classes) → clear evenings. The rain makes rafting better (higher rivers), wildlife more active (frogs!), and hot springs more atmospheric. Pack a lightweight rain jacket and quick-dry clothes. <strong>The upside?</strong> Fewer tourists, lower prices, lush green landscapes, and baby turtle nesting season. 🐢
-    </p>
-  </div>
-</div>
-
-<!-- ═══ Activity Map ═══ -->
-<div style="margin: 2rem auto; max-width: 1100px; padding: 0 20px;">
-  <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 4px; font-size: 1.3rem;">📍 Activity Map</h3>
-  <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">
-    <span id="map-count">85 activities shown</span> —
-    <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#FF6B35;vertical-align:middle;"></span> Must-do
-    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#1B3C8F;vertical-align:middle;margin-left:8px;"></span> Other activities.
-    Use the filters to narrow down.
-    <label style="display:inline-flex;align-items:center;gap:4px;margin-left:12px;font-size:0.85rem;color:#2d9a2d;cursor:pointer;">
-      <input type="checkbox" id="accom-toggle" checked onchange="toggleAccom(this.checked)" style="accent-color:#2d9a2d;"> &#127965; Accommodation
-    </label>
-  </p>
-  <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.12); border: 2px solid #1B3C8F;">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <div id="mustdo-map" style="width:100%; height:500px;"></div>
-    <div style="padding: 12px 16px; background: #f8f9fa; max-height: 350px; overflow-y: auto;">
-      <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: 'Inter', sans-serif;">
-        <thead>
-          <tr style="border-bottom: 2px solid #1B3C8F; color: #0F2557; position: sticky; top: 0; background: #f8f9fa;">
-            <th style="text-align: left; padding: 5px 8px; width: 40px;">#</th>
-            <th style="text-align: left; padding: 5px 8px;">Activity</th>
-            <th style="text-align: right; padding: 5px 8px; width: 140px;">Links</th>
-          </tr>
-        </thead>
-        <tbody id="map-table-body">
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
 <!-- ═══════════════════════ ARENAL / LA FORTUNA ═══════════════════════ -->
 <div class="section-header verdon" data-section="arenal">
   <div class="icon">🌋</div>
