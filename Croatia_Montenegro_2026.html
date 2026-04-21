@@ -1,0 +1,2300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Croatia & Montenegro: Dubrovnik to the Adriatic Riviera — 80 Family Activities</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+  :root {
+    --verdon: #1B3C8F;
+    --verdon-light: #e8edf7;
+    --azur: #0F2557;
+    --azur-light: #f0f0f0;
+    --accent: #1B3C8F;
+    --gold: #1B3C8F;
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #0F2557;
+    --muted: #4a6bb5555;
+    --border: #e0e0e0;
+    --sidebar-width: 280px;
+    --accent-orange: #FF6B35;
+  }
+
+  /* Country Navbar */
+.country-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(15, 37, 87, 0.97);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  height: 44px;
+}
+.country-nav__inner {
+  max-width: 1400px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 1.2rem; height: 44px;
+}
+.country-nav__home {
+  display: flex; align-items: center; gap: 6px;
+  color: #FF6B35; font-size: 0.82rem; font-weight: 600;
+  text-decoration: none; white-space: nowrap;
+}
+.country-nav__home .nav-icon { width: 16px; height: 16px; }
+.country-nav__home:hover { color: #fff; }
+.country-nav__current { display: none; }
+.country-nav__dropdown-wrap { position: relative; }
+.country-nav__toggle {
+  display: flex; align-items: center; gap: 6px;
+  background: #FF6B35; border: none; box-shadow: 0 2px 12px rgba(255,107,53,0.35); letter-spacing: 0.02em;
+  color: #fff; padding: 8px 18px; border-radius: 8px;
+  font-size: 0.85rem; font-weight: 600; cursor: pointer;
+  font-family: 'Inter', sans-serif; transition: all 0.2s;
+}
+.country-nav__toggle:hover { background: #e85d2a; box-shadow: 0 4px 18px rgba(255,107,53,0.5); transform: translateY(-1px); }
+.country-nav__toggle svg { width: 14px; height: 14px; transition: transform 0.2s; }
+.country-nav__toggle.open svg { transform: rotate(180deg); }
+.country-nav__menu {
+  display: none; position: absolute; right: 0; top: calc(100% + 8px);
+  background: #0F2557; border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px; padding: 6px 0; min-width: 220px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  animation: navDropIn 0.15s ease-out;
+}
+@keyframes navDropIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+.country-nav__menu.open { display: block; }
+.country-nav__menu a {
+  display: flex; align-items: center; gap: 8px;
+  padding: 9px 16px; color: rgba(255,255,255,0.8);
+  font-size: 0.82rem; font-weight: 500; text-decoration: none;
+  transition: all 0.15s;
+}
+.country-nav__menu a:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.country-nav__menu a.active { color: #FF6B35; font-weight: 600; }
+.country-nav__menu a .nav-icon { width: 16px; height: 16px; opacity: 0.7; flex-shrink: 0; }
+.country-nav__menu a:hover .nav-icon { opacity: 1; }
+.country-nav__menu-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 4px 0; }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Montserrat', 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding-top: 44px;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #0F2557 0%, #1B3C8F 100%);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    margin-bottom: 10px;
+  }
+  .hero .subtitle { font-size: 1.1rem; opacity: 0.9; margin-bottom: 8px; }
+  .hero .count {
+    display: inline-block;
+    background: #FF6B35;
+    padding: 8px 24px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-top: 12px;
+  }
+  .hero .family {
+    margin-top: 16px;
+    font-size: 0.95rem;
+    opacity: 0.85;
+  }
+
+  .page-layout {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .filter-sidebar {
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: #0F2557;
+    color: #fff;
+    padding: 20px 16px;
+    z-index: 100;
+    scrollbar-width: thin;
+    scrollbar-color: #4a6bb5 #0F2557;
+  }
+  .filter-sidebar::-webkit-scrollbar { width: 6px; }
+  .filter-sidebar::-webkit-scrollbar-track { background: #0F2557; }
+  .filter-sidebar::-webkit-scrollbar-thumb { background: #4a6bb5; border-radius: 3px; }
+
+  .filter-sidebar h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: #1B3C8F;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .filter-sidebar h3::before { content: '\2699\FE0F'; }
+
+  .filter-count {
+    background: #1B3C8F;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+  .filter-count span { font-size: 1.3rem; }
+
+  .filter-group {
+    margin-bottom: 18px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 14px;
+  }
+  .filter-group:last-child { border-bottom: none; }
+  .filter-group-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #aaa;
+    margin-bottom: 8px;
+  }
+  .filter-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: color 0.15s;
+    font-family: 'Inter', sans-serif;
+  }
+  .filter-group label:hover { color: #1B3C8F; }
+
+  .filter-group input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #4a6bb5;
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .filter-group input[type="checkbox"]:checked {
+    background: #1B3C8F;
+    border-color: #1B3C8F;
+  }
+  .filter-group input[type="checkbox"]:checked::after {
+    content: '\2713';
+    position: absolute;
+    top: -1px;
+    left: 2px;
+    font-size: 13px;
+    color: white;
+    font-weight: bold;
+  }
+
+  .clear-filters {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    color: #1B3C8F;
+    border: 2px solid #1B3C8F;
+    border-radius: 8px;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+  }
+  .clear-filters:hover {
+    background: #1B3C8F;
+    color: white;
+  }
+
+  .filter-toggle {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 200;
+    background: #1B3C8F;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  .main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 0 20px;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .top10 {
+    background: linear-gradient(135deg, #e8edf7, #e0e8f5);
+    border: 2px solid var(--gold);
+    border-radius: 16px;
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 800px;
+  }
+  .top10 h2 { font-family: 'Playfair Display', serif; color: #1B3C8F; margin-bottom: 16px; font-size: 1.5rem; }
+  .top10 ol { padding-left: 24px; }
+  .top10 li { margin-bottom: 8px; font-size: 0.95rem; }
+  .top10 li strong { color: #0F2557; }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 30px 0;
+  }
+  .summary-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+  .summary-card .big-num { font-size: 2.5rem; font-weight: 700; color: #1B3C8F; }
+  .summary-card .label { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+
+  .section-header {
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 16px;
+    margin: 40px 0 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .section-header.verdon { background: linear-gradient(135deg, #1B3C8F, #142f6e); color: white; }
+  .section-header.azur { background: linear-gradient(135deg, #0F2557, #1B3C8F); color: white; }
+  .section-header .icon { font-size: 3rem; margin-bottom: 8px; }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+  }
+  .section-header p { opacity: 0.9; margin-top: 6px; font-size: 0.95rem; }
+  .section-header.hidden-by-filter { display: none; }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 32px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--border);
+  }
+  .category-header .cat-icon { font-size: 1.6rem; }
+  .category-header h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; }
+  .category-header .cat-count {
+    background: var(--verdon-light);
+    color: var(--verdon);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .category-header.hidden-by-filter { display: none; }
+
+  .activity-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    gap: 12px;
+    align-items: start;
+    transition: box-shadow 0.2s, opacity 0.2s;
+  }
+  .activity-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .activity-card.highlight { border-left: 4px solid var(--accent-orange); }
+  .activity-card.hidden-by-filter { display: none; }
+
+  .activity-num {
+    background: var(--verdon);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .activity-content h4 { font-size: 1rem; margin-bottom: 4px; }
+  .activity-content h4 a { color: inherit; text-decoration: none; }
+  .activity-content h4 a:hover { color: var(--accent); text-decoration: underline; }
+  .activity-desc { font-size: 0.88rem; color: var(--muted); margin-bottom: 8px; }
+
+  .activity-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .tag.tom-yes { background: #d1fae5; color: #065f46; }
+  .tag.tom-no { background: #fee2e2; color: #991b1b; }
+  .tag.tom-check { background: #fef3c7; color: #92400e; }
+  .tag.teen-love { background: #ede9fe; color: #5b21b6; }
+  .tag.teen-ok { background: #f3f4f6; color: #4b5563; }
+  .tag.cost { background: #e0f2fe; color: #075985; }
+  .tag.free { background: #d1fae5; color: #065f46; }
+
+  .tag.cost-free { background: #d1fae5; color: #065f46; font-weight: 600; }
+  .tag.cost-budget { background: #dbeafe; color: #1e40af; font-weight: 600; }
+  .tag.cost-mid { background: #bfdbfe; color: #1e3a8a; font-weight: 600; }
+  .tag.cost-premium { background: #c4b5fd; color: #3b0764; font-weight: 600; }
+
+  .tag.week-area { background: #e8edf7; color: #1B3C8F; font-weight: 600; }
+
+  .activity-link {
+    flex-shrink: 0;
+    align-self: center;
+  }
+  .activity-link a {
+    display: inline-block;
+    background: var(--verdon);
+    color: white;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+  .activity-link a:hover { background: #0a1b3f; }
+
+  .footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 900px) {
+    .filter-sidebar {
+      position: fixed;
+      left: -300px;
+      top: 0;
+      height: 100vh;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+    .filter-sidebar.open { left: 0; }
+    .filter-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+    }
+    .filter-overlay.open { display: block; }
+    .filter-toggle { display: flex; align-items: center; justify-content: center; }
+    .main-content { padding: 0 12px; }
+    .page-layout { display: block; }
+  }
+
+  @media (max-width: 640px) {
+    .activity-card { grid-template-columns: 32px 1fr; }
+    .activity-link { grid-column: 1 / -1; }
+    .activity-link a { width: 100%; text-align: center; }
+  }
+  #activitiesToggle:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(15,37,87,0.35); }
+</style>
+</head>
+<body>
+
+<nav class="country-nav" id="countryNav">
+  <div class="country-nav__inner">
+    <a href="showcase/index.html" class="country-nav__home">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg> Home
+    </a>
+    <a href="blog/index.html" class="country-nav__home" style="color:rgba(255,255,255,0.8);">&#x1F4DD; Blog</a>
+    <div class="country-nav__dropdown-wrap">
+      <button class="country-nav__toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+        &#127758; Destinations <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
+      </button>
+      <div class="country-nav__menu" id="navMenu">
+        <a href="France_Verdon_CotedAzur_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h6v18H3V3zm12 0h6v18h-6V3zM9 3h6v18H9V3z" opacity="0.8"/></svg> France</a>
+        <a href="Germany_Bavaria_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L8.5 8.5 2 9.5l5 4.5L5.5 21 12 17.5 18.5 21 17 14l5-4.5-6.5-1L12 2z"/></svg> Germany</a>
+        <a href="Croatia_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20v4H2zm0 6h4v4H6v-2H4v4h4v-2h2v4H8v-2H4v4h20V10H2zm6 0h4v2h-2v2H8v-4zm6 0h4v2h-2v2h-2v-4z"/></svg> Croatia</a>
+        <a href="Croatia_Montenegro_2026.html" class="active"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg> Croatia &amp; Montenegro</a>
+        <a href="Sicily_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c3.31 0 6-2.69 6-6 0-4.96-4.49-9-10-9z"/></svg> Sicily</a>
+        <a href="Egypt_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 21h18L12 3 3 21zm9-3l-4.5-9h9L12 18z"/></svg> Egypt</a>
+        <a href="Austria_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z"/></svg> Austria</a>
+        <a href="Bulgaria_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 2.84L18 11v7h-2v-6H8v6H6v-7l6-5.16z"/></svg> Bulgaria</a>
+        <a href="Japan_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg> Japan</a>
+        <a href="Spain_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg> Spain</a>
+        <a href="CostaRica_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.71c.76.34 1.59.54 2.46.59L9 20c.5-4 4.17-8 9-8V8z"/></svg> Costa Rica</a>
+        <a href="Zambia_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg> Zambia</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" style="position:relative; overflow:hidden;">
+  <div class="hero__bg" style="position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1555990793-da11153b2473?w=1920&q=80') center/cover no-repeat;"></div>
+  <div class="hero__overlay" style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,37,87,.75) 0%, rgba(15,37,87,.9) 100%);"></div>
+  <div style="position:relative; z-index:2;">
+  <h1>&#127469;&#127479;&#127474;&#127466; Croatia &amp; Montenegro: Dubrovnik to the Adriatic Riviera</h1>
+  <div class="subtitle">Fly into Dubrovnik, drive through Montenegro, fly home from Tivat</div>
+  <div class="count">&#127919; 80 Activities Found</div>
+  <div class="family">&#128104;&#8205;&#128105;&#8205;&#128103;&#8205;&#128102; Researched for 2 adults + Katie (17) + George (15) + Tom (8)</div>
+  <div style="margin-top:14px;font-size:0.88rem;opacity:0.85;">&#9992;&#65039; Fly in: LBA/MAN &#8594; Dubrovnik (Jet2 direct, 2hr45). Fly home: Tivat &#8594; MAN (Jet2/easyJet direct, 3hr15). Open-jaw = no backtracking!</div>
+  <div style="margin-top:6px;font-size:0.88rem;opacity:0.85;">&#128663; Dubrovnik &#8594; Kotor: 2hrs (inc. border crossing). Kotor &#8594; Budva: 40min. Budva &#8594; Tivat Airport: 10min!</div>
+  <div style="margin-top:6px;font-size:0.82rem;opacity:0.75;">&#128176; Croatia: &#8364; (Euro). Montenegro: &#8364; (Euro). Same currency, easy!</div>
+  </div>
+</div>
+
+<!-- Holiday Synopsis -->
+<div style="background: #fff; padding: 2.5rem 0; border-bottom: 1px solid #e8edf7;">
+  <div style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
+    <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; font-size: 1.4rem; margin-bottom: 12px;">&#127469;&#127479;&#127474;&#127466; The Holiday at a Glance</h3>
+    <p style="font-size: 0.95rem; color: #444; line-height: 1.8; margin-bottom: 12px;">The ultimate Adriatic road trip &#8212; fly into Dubrovnik&#8217;s medieval fortress city, explore Game of Thrones filming locations and kayak under the city walls. Then drive across the border into Montenegro&#8217;s Bay of Kotor &#8212; a fjord-like inlet ringed by mountains, medieval towns, and tiny island churches. Finish on the Budva Riviera&#8217;s golden beaches and the iconic island of Sveti Stefan. Fly home from Tivat &#8212; just 10 minutes from your hotel. Two countries, one currency (Euro!), zero backtracking.</p>
+    <p style="font-size: 0.95rem; color: #444; line-height: 1.8; margin-bottom: 12px;">George will be buzzing after kayaking under Dubrovnik&#8217;s fortress walls and the Blue Cave speedboat tour. Tom will love the boat ride to Our Lady of the Rocks and the beaches of Jaz and Mogren. Katie will fill her phone at Sveti Stefan (Montenegro&#8217;s most photographed spot), Kotor&#8217;s cat-filled alleys, and Dubrovnik&#8217;s sunset from Sr&#273;. And the Tara River Canyon &#8212; Europe&#8217;s deepest &#8212; offers world-class rafting if you fancy a day trip inland. This holiday ticks history, beaches, adventure, and two countries in under two weeks.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px;">
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#127984; Dubrovnik Walls</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#9973; Bay of Kotor</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#127958;&#65039; Adriatic Beaches</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#128675; Kayaking</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#127754; Blue Cave</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#9962; Island Churches</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#127956;&#65039; Fjord Mountains</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#127946; Water Sports</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#127861; Seafood &amp; Wine</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#128248; Sveti Stefan</span>
+    </div>
+  </div>
+</div>
+
+<!-- Weather Summary -->
+<div class="weather-section" style="background: linear-gradient(135deg, #f0f4ff 0%, #e8edf7 100%); padding: 2rem 0;">
+  <div style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
+    <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 16px; font-size: 1.2rem;">
+      &#9728;&#65039; August Weather &#8212; What to Expect
+    </h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 12px;">
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">&#127777;&#65039;</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">29-32&#176;C</div>
+        <div style="font-size: 0.75rem; color: #666;">Avg. High</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">&#127769;</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">19-22&#176;C</div>
+        <div style="font-size: 0.75rem; color: #666;">Avg. Low</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">&#9728;&#65039;</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">10-12</div>
+        <div style="font-size: 0.75rem; color: #666;">Sun hrs/day</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">&#127783;&#65039;</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">4-6 days</div>
+        <div style="font-size: 0.75rem; color: #666;">Rainy Days</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">&#127946;</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">25-26&#176;C</div>
+        <div style="font-size: 0.75rem; color: #666;">Sea Temp</div>
+      </div>
+    </div>
+    <p style="font-size: 0.82rem; color: #555; line-height: 1.6; margin: 0;">
+      &#9728;&#65039; <strong>Hot, sunny, and perfect for the Adriatic.</strong> August is peak summer &#8212; blazing sunshine, warm seas (25-26&#176;C), and very little rain. Any showers are brief. Both Dubrovnik and the Montenegro coast share the same Mediterranean climate. UV is very high &#8212; factor 50 essential. Evenings are warm enough for outdoor dining in t-shirts. It&#8217;s peak season so book everything in advance &#8212; especially Dubrovnik city walls (morning slots sell out) and Kotor boat tours.
+    </p>
+  </div>
+</div>
+
+
+<!-- SUMMARY STATS -->
+<div class="summary-grid">
+  <div class="summary-card"><div class="big-num">80</div><div class="label">Total Activities</div></div>
+  <div class="summary-card"><div class="big-num">20</div><div class="label">Dubrovnik</div></div>
+  <div class="summary-card"><div class="big-num">18</div><div class="label">Bay of Kotor</div></div>
+  <div class="summary-card"><div class="big-num">22</div><div class="label">Budva &amp; Beaches</div></div>
+  <div class="summary-card"><div class="big-num">8</div><div class="label">Water Adventures</div></div>
+  <div class="summary-card"><div class="big-num">12</div><div class="label">Day Trips &amp; Culture</div></div>
+  <div class="summary-card"><div class="big-num">20</div><div class="label">Must-Do Highlights</div></div>
+</div>
+
+<div style="margin: 2rem auto; max-width: 1100px; padding: 0 20px;">
+  <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 4px; font-size: 1.3rem;">&#128205; Activity Map</h3>
+  <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">
+    <span id="map-count">80 activities shown</span> &#8212;
+    <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#FF6B35;vertical-align:middle;"></span> Must-do
+    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#1B3C8F;vertical-align:middle;margin-left:8px;"></span> Other activities.
+    Use the filters to narrow down.
+    <label style="display:inline-flex;align-items:center;gap:4px;margin-left:12px;font-size:0.85rem;color:#2d9a2d;cursor:pointer;">
+      <input type="checkbox" id="accom-toggle" checked onchange="toggleAccom(this.checked)" style="accent-color:#2d9a2d;"> &#127965; Accommodation
+    </label>
+  </p>
+  <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.12); border: 2px solid #1B3C8F;">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <div id="mustdo-map" style="width:100%; height:500px;"></div>
+    <div style="padding: 12px 16px; background: #f8f9fa; max-height: 350px; overflow-y: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: 'Inter', sans-serif;">
+        <thead>
+          <tr style="border-bottom: 2px solid #1B3C8F; color: #0F2557; position: sticky; top: 0; background: #f8f9fa;">
+            <th style="text-align: left; padding: 5px 8px; width: 40px;">#</th>
+            <th style="text-align: left; padding: 5px 8px;">Activity</th>
+            <th style="text-align: right; padding: 5px 8px; width: 140px;">Links</th>
+          </tr>
+        </thead>
+        <tbody id="map-table-body">
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Activities Accordion -->
+<div style="max-width: 1100px; margin: 2rem auto; padding: 0 20px;">
+  <button id="activitiesToggle" onclick="toggleActivities()" style="
+    width: 100%;
+    padding: 18px 24px;
+    background: linear-gradient(135deg, #0F2557 0%, #1B3C8F 100%);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 4px 20px rgba(15,37,87,0.25);
+    transition: all 0.3s;
+  ">
+    <span id="activitiesToggleIcon">&#9660;</span>
+    <span id="activitiesToggleText">Show All Activities &amp; Filters</span>
+    <span style="background: #FF6B35; padding: 3px 12px; border-radius: 20px; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600;">80</span>
+  </button>
+</div>
+<div id="activitiesSection" style="display: none; overflow: hidden;">
+<button class="filter-toggle" onclick="toggleFilters()" aria-label="Toggle filters">&#9881;&#65039;</button>
+<div class="filter-overlay" id="filterOverlay" onclick="toggleFilters()"></div>
+
+<div class="page-layout">
+
+<!-- FILTER SIDEBAR -->
+<aside class="filter-sidebar" id="filterSidebar">
+  <h3>Filters</h3>
+  <div class="filter-count">Showing <span id="visibleCount">80</span> of 80 activities</div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Area</div>
+    <label><input type="checkbox" data-filter="area" value="dubrovnik"> &#127984; Dubrovnik</label>
+    <label><input type="checkbox" data-filter="area" value="kotor"> &#9973; Bay of Kotor</label>
+    <label><input type="checkbox" data-filter="area" value="budva"> &#127958;&#65039; Budva &amp; Beaches</label>
+    <label><input type="checkbox" data-filter="area" value="water"> &#127754; Water Adventures</label>
+    <label><input type="checkbox" data-filter="area" value="daytrip"> &#128663; Day Trips &amp; Culture</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Activity Type</div>
+    <label><input type="checkbox" data-filter="type" value="history"> &#127984; History &amp; Culture</label>
+    <label><input type="checkbox" data-filter="type" value="beach"> &#127958;&#65039; Beach &amp; Swimming</label>
+    <label><input type="checkbox" data-filter="type" value="adventure"> &#128640; Adventure &amp; Outdoors</label>
+    <label><input type="checkbox" data-filter="type" value="boat"> &#9973; Boat Trips</label>
+    <label><input type="checkbox" data-filter="type" value="food"> &#127829; Food &amp; Drink</label>
+    <label><input type="checkbox" data-filter="type" value="scenic"> &#128248; Scenic &amp; Photography</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Suitable for</div>
+    <label><input type="checkbox" data-filter="tom" value="yes"> &#9989; Tom (8)</label>
+    <label><input type="checkbox" data-filter="teens" value="love"> &#11088; Teens love it</label>
+    <label><input type="checkbox" data-filter="family" value="yes"> &#128104;&#8205;&#128105;&#8205;&#128103;&#8205;&#128102; Whole family</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Cost</div>
+    <label><input type="checkbox" data-filter="cost" value="free"> Free</label>
+    <label><input type="checkbox" data-filter="cost" value="budget"> Budget (under &#8364;25pp)</label>
+    <label><input type="checkbox" data-filter="cost" value="mid"> Mid-range (&#8364;25-60pp)</label>
+    <label><input type="checkbox" data-filter="cost" value="premium"> Premium (&#8364;60+pp)</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Special</div>
+    <label><input type="checkbox" data-filter="mustdo" value="true"> &#11088; Must-do highlights only</label>
+  </div>
+
+  <button class="clear-filters" onclick="clearFilters()">Clear all filters</button>
+</aside>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+<div class="container">
+
+<!-- TOP 10 -->
+<div class="top10">
+  <h2>&#11088; The Unmissable 10</h2>
+  <ol>
+    <li>&#127984; <strong>Walk Dubrovnik's City Walls</strong> &#8212; 2km circuit above the terracotta rooftops, unforgettable</li>
+    <li>&#128675; <strong>Kayaking Around Dubrovnik's Walls</strong> &#8212; paddle under the fortress at sunset</li>
+    <li>&#9973; <strong>Bay of Kotor Blue Cave Speedboat</strong> &#8212; Blue Cave swimming, submarine tunnels, island churches</li>
+    <li>&#127956;&#65039; <strong>Climb to Kotor Fortress</strong> &#8212; 1,350 steps to jaw-dropping bay views</li>
+    <li>&#9962; <strong>Our Lady of the Rocks</strong> &#8212; tiny man-made island church in the bay</li>
+    <li>&#127958;&#65039; <strong>Jaz Beach</strong> &#8212; huge sandy beach with water sports and mountain backdrop</li>
+    <li>&#128248; <strong>Sveti Stefan</strong> &#8212; Montenegro's most photographed spot</li>
+    <li>&#127754; <strong>White Water Rafting, Tara Canyon</strong> &#8212; Europe's deepest canyon, Grade III-IV rapids</li>
+    <li>&#127749; <strong>Sunset from Mount Sr&#273;</strong> &#8212; Dubrovnik lit up below at golden hour</li>
+    <li>&#127956;&#65039; <strong>Lov&#263;en National Park</strong> &#8212; mountain-top mausoleum with 360&#176; views</li>
+  </ol>
+</div>
+
+<!-- ═══ DUBROVNIK ═══ -->
+<div class="section-header verdon" data-section="dubrovnik">
+  <div class="icon">&#127984;</div>
+  <h2>Dubrovnik</h2>
+  <p>Old Town, walls, beaches, islands &amp; Game of Thrones</p>
+</div>
+
+<div data-section-wrap="dubrovnik">
+
+<div class="category-header" data-cat-type="history" data-cat-area="dubrovnik">
+  <span class="cat-icon">&#127984;</span>
+  <h3>Dubrovnik</h3>
+  <span class="cat-count">20 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="dubrovnik" data-type="history" data-tom="yes" data-teens="love" data-cost="mid" data-num="1" data-mustdo="true" data-lat="42.6407" data-lng="18.1083">
+  <div class="activity-num">1</div>
+  <div class="activity-content">
+    <h4>Walk Dubrovnik's City Walls</h4>
+    <div class="activity-desc">Complete 2km circuit of the medieval walls, stunning views over terracotta rooftops and the Adriatic. &#8364;35 adult, under 18 free. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens &amp; Katie</span>
+      <span class="tag cost">&#8364;35 adult, u18 free</span>
+      <span class="tag cost-mid">&#8364;25-60pp</span>
+      <span class="tag week-area">&#127984; Dubrovnik</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="dubrovnik" data-type="scenic" data-tom="yes" data-teens="love" data-cost="mid" data-num="2" data-mustdo="true" data-lat="42.6500" data-lng="18.1083">
+  <div class="activity-num">2</div>
+  <div class="activity-content">
+    <h4>Cable Car to Mount Sr&#273;</h4>
+    <div class="activity-desc">Panoramic views over old town, islands, and the Montenegro coast. &#8364;27 return. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens &amp; Katie</span>
+      <span class="tag cost">&#8364;27 return</span>
+      <span class="tag cost-mid">&#8364;25-60pp</span>
+      <span class="tag week-area">&#127984; Dubrovnik</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="dubrovnik" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="3" data-mustdo="true" data-lat="42.6390" data-lng="18.1050">
+  <div class="activity-num">3</div>
+  <div class="activity-content">
+    <h4>Kayaking Around the City Walls</h4>
+    <div class="activity-desc">Sea kayak under the fortress at sunset. Tom in tandem with parent. &#8364;35-45pp. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom (tandem)</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag cost">&#8364;35-45pp</span>
+      <span class="tag cost-mid">&#8364;25-60pp</span>
+      <span class="tag week-area">&#127984; Dubrovnik</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="dubrovnik" data-type="boat" data-tom="yes" data-teens="love" data-cost="budget" data-num="4" data-lat="42.6267" data-lng="18.1200">
+  <div class="activity-num">4</div>
+  <div class="activity-content">
+    <h4>Lokrum Island</h4>
+    <div class="activity-desc">Ferry to botanical garden island with peacocks, Dead Sea lake, and Game of Thrones Iron Throne. &#8364;20 return.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag cost">&#8364;20 return</span>
+      <span class="tag cost-budget">&lt; &#8364;25pp</span>
+      <span class="tag week-area">&#127984; Dubrovnik</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="dubrovnik" data-type="history" data-tom="no" data-teens="love" data-cost="mid" data-num="5" data-lat="42.6400" data-lng="18.1070">
+  <div class="activity-num">5</div>
+  <div class="activity-content">
+    <h4>Game of Thrones Walking Tour</h4>
+    <div class="activity-desc">Visit all filming locations in the old town. &#8364;25-35pp. Katie will love this.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (long walk)</span>
+      <span class="tag teen-love">&#11088; Teens &amp; Katie</span>
+      <span class="tag cost">&#8364;25-35pp</span>
+      <span class="tag cost-mid">&#8364;25-60pp</span>
+      <span class="tag week-area">&#127984; Dubrovnik</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="dubrovnik" data-type="history" data-tom="yes" data-teens="ok" data-cost="free" data-num="6" data-lat="42.6410" data-lng="18.1095">
+  <div class="activity-num">6</div>
+  <div class="activity-content">
+    <h4>Stradun &amp; Old Town Walk</h4>
+    <div class="activity-desc">Walk the marble main street, fountains, churches, gelato. Free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127984; Dubrovnik</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="dubrovnik" data-type="history" data-tom="no" data-teens="love" data-cost="free" data-num="7" data-lat="42.6417" data-lng="18.1033">
+  <div class="activity-num">7</div>
+  <div class="activity-content">
+    <h4>Fort Lovrijenac</h4>
+    <div class="activity-desc">"Gibraltar of Dubrovnik", incredible views, Game of Thrones Red Keep. Included with walls ticket.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (steep)</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag free">Inc. with walls</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127984; Dubrovnik</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="dubrovnik" data-type="adventure" data-tom="no" data-teens="love" data-cost="budget" data-num="8" data-mustdo="true" data-lat="42.6380" data-lng="18.1090">
+  <div class="activity-num">8</div>
+  <div class="activity-content">
+    <h4>Bu&#382;a Bar</h4>
+    <div class="activity-desc">Cliff-edge bar, jump into the crystal sea from rocks. Drinks &#8364;5-10. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (cliff jumps)</span>
+      <span class="tag teen-love">&#11088; Teens &amp; Katie</span>
+      <span class="tag cost">&#8364;5-10</span>
+      <span class="tag cost-budget">&lt; &#8364;25pp</span>
+      <span class="tag week-area">&#127984; Dubrovnik</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="dubrovnik" data-type="beach" data-tom="yes" data-teens="ok" data-cost="free" data-num="9" data-lat="42.6450" data-lng="18.1120">
+  <div class="activity-num">9</div>
+  <div class="activity-content">
+    <h4>Banje Beach</h4>
+    <div class="activity-desc">Main beach below the old town, volleyball, kayak rental. Free (sunbed &#8364;15-20).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Free (sunbed extra)</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127984; Dubrovnik</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="dubrovnik" data-type="scenic" data-tom="no" data-teens="love" data-cost="free" data-num="10" data-mustdo="true" data-lat="42.6500" data-lng="18.1090">
+  <div class="activity-num">10</div>
+  <div class="activity-content">
+    <h4>Sunset from Sr&#273;</h4>
+    <div class="activity-desc">Watch sunset from the hilltop, old town lit up below. Free (or cable car &#8364;27). Katie's dream shot. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (late)</span>
+      <span class="tag teen-love">&#11088; Katie &#10084;</span>
+      <span class="tag free">Free (or cable car)</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127984; Dubrovnik</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="dubrovnik" data-type="history" data-tom="no" data-teens="love" data-cost="budget" data-num="11" data-lat="42.6413" data-lng="18.1093">
+  <div class="activity-num">11</div>
+  <div class="activity-content">
+    <h4>War Photo Limited</h4>
+    <div class="activity-desc">Powerful photo exhibition, eye-opening for teens. &#8364;8.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (mature content)</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag cost">&#8364;8</span>
+      <span class="tag cost-budget">&lt; &#8364;25pp</span>
+      <span class="tag week-area">&#127984; Dubrovnik</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="dubrovnik" data-type="history" data-tom="yes" data-teens="ok" data-cost="budget" data-num="12" data-lat="42.6397" data-lng="18.1117">
+  <div class="activity-num">12</div>
+  <div class="activity-content">
+    <h4>Dubrovnik Aquarium</h4>
+    <div class="activity-desc">Small but beautiful aquarium in St John's Fortress. &#8364;7 adult, &#8364;3 child.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">&#8364;7 adult, &#8364;3 child</span>
+      <span class="tag cost-budget">&lt; &#8364;25pp</span>
+      <span class="tag week-area">&#127984; Dubrovnik</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="dubrovnik" data-type="history" data-tom="no" data-teens="ok" data-cost="budget" data-num="13" data-lat="42.6410" data-lng="18.1110">
+  <div class="activity-num">13</div>
+  <div class="activity-content">
+    <h4>Rector's Palace &amp; Museum</h4>
+    <div class="activity-desc">Gothic-Renaissance palace, history museum. &#8364;15 adult, under 18 free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (museum)</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">&#8364;15 adult, u18 free</span>
+      <span class="tag cost-budget">&lt; &#8364;25pp</span>
+      <span class="tag week-area">&#127984; Dubrovnik</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="dubrovnik" data-type="boat" data-tom="yes" data-teens="love" data-cost="mid" data-num="14" data-lat="42.6700" data-lng="17.9500">
+  <div class="activity-num">14</div>
+  <div class="activity-content">
+    <h4>Elafiti Islands Day Trip</h4>
+    <div class="activity-desc">Three Green Islands boat trip, swimming, lunch, wine. &#8364;40-55pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag cost">&#8364;40-55pp</span>
+      <span class="tag cost-mid">&#8364;25-60pp</span>
+      <span class="tag week-area">&#127984; Dubrovnik</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="dubrovnik" data-type="boat" data-tom="no" data-teens="love" data-cost="mid" data-num="15" data-mustdo="true" data-lat="42.6380" data-lng="18.1050">
+  <div class="activity-num">15</div>
+  <div class="activity-content">
+    <h4>Sunset Sailing</h4>
+    <div class="activity-desc">2hr sunset cruise, Prosecco, snacks, old town views from the sea. &#8364;45-65pp. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (late)</span>
+      <span class="tag teen-love">&#11088; Katie &amp; Teens</span>
+      <span class="tag cost">&#8364;45-65pp</span>
+      <span class="tag cost-mid">&#8364;25-60pp</span>
+      <span class="tag week-area">&#127984; Dubrovnik</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="dubrovnik" data-type="adventure" data-tom="yes" data-teens="ok" data-cost="mid" data-num="16" data-lat="42.6350" data-lng="18.1100">
+  <div class="activity-num">16</div>
+  <div class="activity-content">
+    <h4>Snorkelling Tour</h4>
+    <div class="activity-desc">Guided snorkelling around Lokrum and the city walls. &#8364;30-40pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">&#8364;30-40pp</span>
+      <span class="tag cost-mid">&#8364;25-60pp</span>
+      <span class="tag week-area">&#127984; Dubrovnik</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="dubrovnik" data-type="beach" data-tom="yes" data-teens="ok" data-cost="free" data-num="17" data-lat="42.6630" data-lng="18.0780">
+  <div class="activity-num">17</div>
+  <div class="activity-content">
+    <h4>Copacabana Beach</h4>
+    <div class="activity-desc">Sandy beach, paddleboard rental, family-friendly. Free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127984; Dubrovnik</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="dubrovnik" data-type="adventure" data-tom="no" data-teens="love" data-cost="premium" data-num="18" data-lat="42.6430" data-lng="18.1100">
+  <div class="activity-num">18</div>
+  <div class="activity-content">
+    <h4>Jet Ski</h4>
+    <div class="activity-desc">Speed along the coast with old town backdrop. &#8364;60-80/30min. 16+ or with adult.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (16+)</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag cost">&#8364;60-80/30min</span>
+      <span class="tag cost-premium">&#8364;60+pp</span>
+      <span class="tag week-area">&#127984; Dubrovnik</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="dubrovnik" data-type="food" data-tom="yes" data-teens="ok" data-cost="budget" data-num="19" data-lat="42.6412" data-lng="18.1090">
+  <div class="activity-num">19</div>
+  <div class="activity-content">
+    <h4>Ice Cream on Stradun</h4>
+    <div class="activity-desc">Famous Dubrovnik gelato shops, try the local lavender flavour. &#8364;3-5.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;</span>
+      <span class="tag teen-ok">&#9989; All ages</span>
+      <span class="tag cost">&#8364;3-5</span>
+      <span class="tag cost-budget">&lt; &#8364;25pp</span>
+      <span class="tag week-area">&#127984; Dubrovnik</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="dubrovnik" data-type="scenic" data-tom="yes" data-teens="ok" data-cost="free" data-num="20" data-lat="42.4900" data-lng="18.4500">
+  <div class="activity-num">20</div>
+  <div class="activity-content">
+    <h4>Montenegro Border Crossing</h4>
+    <div class="activity-desc">Drive from Dubrovnik to Kotor (2hrs), allow 30-60min extra for border in Aug. Have passports ready, go early!</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; All ages</span>
+      <span class="tag free">Free (just drive!)</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127984; Dubrovnik</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+</div><!-- end dubrovnik section -->
+
+<!-- ═══ BAY OF KOTOR ═══ -->
+<div class="section-header azur" data-section="kotor">
+  <div class="icon">&#9973;</div>
+  <h2>Bay of Kotor</h2>
+  <p>Kotor, Perast, boat trips, Our Lady of the Rocks &amp; fjord-like scenery</p>
+</div>
+
+<div data-section-wrap="kotor">
+
+<div class="category-header" data-cat-type="history" data-cat-area="kotor">
+  <span class="cat-icon">&#9973;</span>
+  <h3>Bay of Kotor</h3>
+  <span class="cat-count">18 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="kotor" data-type="history" data-tom="yes" data-teens="love" data-cost="free" data-num="21" data-mustdo="true" data-lat="42.4247" data-lng="18.7712">
+  <div class="activity-num">21</div>
+  <div class="activity-content">
+    <h4>Kotor Old Town Walk</h4>
+    <div class="activity-desc">UNESCO walled medieval town, cats everywhere, narrow alleys, piazzas. Free. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens &amp; Katie</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#9973; Bay of Kotor</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="kotor" data-type="adventure" data-tom="no" data-teens="love" data-cost="budget" data-num="22" data-mustdo="true" data-lat="42.4270" data-lng="18.7720">
+  <div class="activity-num">22</div>
+  <div class="activity-content">
+    <h4>Climb to Kotor Fortress</h4>
+    <div class="activity-desc">1,350 steps to San Giovanni fortress, incredible bay views. &#8364;8 adult, under 8 free. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (1,350 steps!)</span>
+      <span class="tag teen-love">&#11088; George &amp; Katie</span>
+      <span class="tag cost">&#8364;8</span>
+      <span class="tag cost-budget">&lt; &#8364;25pp</span>
+      <span class="tag week-area">&#9973; Bay of Kotor</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="kotor" data-type="boat" data-tom="yes" data-teens="love" data-cost="mid" data-num="23" data-mustdo="true" data-lat="42.3900" data-lng="18.6900">
+  <div class="activity-num">23</div>
+  <div class="activity-content">
+    <h4>Blue Cave Speedboat Tour</h4>
+    <div class="activity-desc">3hr boat trip: Blue Cave swimming, submarine tunnels, Lady of the Rocks, Perast. &#8364;45-54pp (private &#8364;240/boat for 6). MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens &#11088;&#11088;&#11088;</span>
+      <span class="tag cost">&#8364;45-54pp</span>
+      <span class="tag cost-mid">&#8364;25-60pp</span>
+      <span class="tag week-area">&#9973; Bay of Kotor</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="kotor" data-type="boat" data-tom="yes" data-teens="love" data-cost="budget" data-num="24" data-mustdo="true" data-lat="42.4867" data-lng="18.6908">
+  <div class="activity-num">24</div>
+  <div class="activity-content">
+    <h4>Our Lady of the Rocks</h4>
+    <div class="activity-desc">Tiny man-made island church in the bay, boat from Perast. &#8364;5 boat + &#8364;3 museum. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag cost">&#8364;5 boat + &#8364;3 museum</span>
+      <span class="tag cost-budget">&lt; &#8364;25pp</span>
+      <span class="tag week-area">&#9973; Bay of Kotor</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="kotor" data-type="scenic" data-tom="yes" data-teens="love" data-cost="free" data-num="25" data-mustdo="true" data-lat="42.4868" data-lng="18.6978">
+  <div class="activity-num">25</div>
+  <div class="activity-content">
+    <h4>Perast</h4>
+    <div class="activity-desc">Gorgeous baroque village, two island churches visible, cafes on the waterfront. Free to explore. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Katie &amp; Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#9973; Bay of Kotor</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="kotor" data-type="history" data-tom="yes" data-teens="ok" data-cost="budget" data-num="26" data-lat="42.4245" data-lng="18.7710">
+  <div class="activity-num">26</div>
+  <div class="activity-content">
+    <h4>Kotor Cats Museum</h4>
+    <div class="activity-desc">Quirky museum dedicated to Kotor's famous cats. &#8364;2. Tom will love it.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">&#8364;2</span>
+      <span class="tag cost-budget">&lt; &#8364;25pp</span>
+      <span class="tag week-area">&#9973; Bay of Kotor</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="kotor" data-type="adventure" data-tom="yes" data-teens="ok" data-cost="mid" data-num="27" data-lat="42.4250" data-lng="18.7700">
+  <div class="activity-num">27</div>
+  <div class="activity-content">
+    <h4>Kotor Bay Kayaking</h4>
+    <div class="activity-desc">Paddle across the bay to island monasteries. &#8364;35-50pp. Tom in tandem.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom (tandem)</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">&#8364;35-50pp</span>
+      <span class="tag cost-mid">&#8364;25-60pp</span>
+      <span class="tag week-area">&#9973; Bay of Kotor</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="kotor" data-type="history" data-tom="no" data-teens="ok" data-cost="budget" data-num="28" data-lat="42.4250" data-lng="18.7715">
+  <div class="activity-num">28</div>
+  <div class="activity-content">
+    <h4>Maritime Museum Kotor</h4>
+    <div class="activity-desc">Nautical history, ship models, naval battles. &#8364;4 adult, &#8364;1 child.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (museum)</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">&#8364;4 adult</span>
+      <span class="tag cost-budget">&lt; &#8364;25pp</span>
+      <span class="tag week-area">&#9973; Bay of Kotor</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="kotor" data-type="beach" data-tom="yes" data-teens="ok" data-cost="free" data-num="29" data-lat="42.4230" data-lng="18.7690">
+  <div class="activity-num">29</div>
+  <div class="activity-content">
+    <h4>Swimming from Kotor Town Beach</h4>
+    <div class="activity-desc">Pebble beach right by the old town. Free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#9973; Bay of Kotor</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="kotor" data-type="history" data-tom="no" data-teens="ok" data-cost="budget" data-num="30" data-lat="42.5150" data-lng="18.6933">
+  <div class="activity-num">30</div>
+  <div class="activity-content">
+    <h4>Risan Roman Mosaics</h4>
+    <div class="activity-desc">2,000yr old Roman floor mosaics, one of Montenegro's hidden gems. &#8364;3.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">&#8364;3</span>
+      <span class="tag cost-budget">&lt; &#8364;25pp</span>
+      <span class="tag week-area">&#9973; Bay of Kotor</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="kotor" data-type="scenic" data-tom="yes" data-teens="love" data-cost="free" data-num="31" data-lat="42.4350" data-lng="18.6900">
+  <div class="activity-num">31</div>
+  <div class="activity-content">
+    <h4>Tivat Porto Montenegro</h4>
+    <div class="activity-desc">Luxury marina village, waterfront restaurants, swimming, yacht-spotting. Free to walk.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Katie &amp; Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#9973; Bay of Kotor</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="kotor" data-type="beach" data-tom="yes" data-teens="ok" data-cost="mid" data-num="32" data-lat="42.3800" data-lng="18.6300">
+  <div class="activity-num">32</div>
+  <div class="activity-content">
+    <h4>Lustica Bay Beach Club</h4>
+    <div class="activity-desc">Modern resort beach, infinity pool, water sports. Day pass &#8364;30-50.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">&#8364;30-50</span>
+      <span class="tag cost-mid">&#8364;25-60pp</span>
+      <span class="tag week-area">&#9973; Bay of Kotor</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="kotor" data-type="boat" data-tom="yes" data-teens="love" data-cost="mid" data-num="33" data-lat="42.4250" data-lng="18.7700">
+  <div class="activity-num">33</div>
+  <div class="activity-content">
+    <h4>Sunset Bay Cruise</h4>
+    <div class="activity-desc">Evening boat cruise around the bay, drinks included. &#8364;35-55pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Katie</span>
+      <span class="tag cost">&#8364;35-55pp</span>
+      <span class="tag cost-mid">&#8364;25-60pp</span>
+      <span class="tag week-area">&#9973; Bay of Kotor</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="kotor" data-type="scenic" data-tom="yes" data-teens="ok" data-cost="free" data-num="34" data-lat="42.4400" data-lng="18.7650">
+  <div class="activity-num">34</div>
+  <div class="activity-content">
+    <h4>Dobrota Waterfront Walk</h4>
+    <div class="activity-desc">Scenic promenade north of Kotor, old stone houses, quiet swimming. Free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; All ages</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#9973; Bay of Kotor</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="kotor" data-type="food" data-tom="yes" data-teens="ok" data-cost="free" data-num="35" data-lat="42.4247" data-lng="18.7712">
+  <div class="activity-num">35</div>
+  <div class="activity-content">
+    <h4>Kotor Night Walk</h4>
+    <div class="activity-desc">Old town lit up at night, live music in the piazzas, gelato. Free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; All ages</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#9973; Bay of Kotor</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="kotor" data-type="scenic" data-tom="yes" data-teens="ok" data-cost="free" data-num="36" data-lat="42.4550" data-lng="18.7350">
+  <div class="activity-num">36</div>
+  <div class="activity-content">
+    <h4>Stoliv Olive Groves Walk</h4>
+    <div class="activity-desc">Easy family walk through ancient olive groves with bay views. Free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#9973; Bay of Kotor</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="kotor" data-type="food" data-tom="yes" data-teens="ok" data-cost="free" data-num="37" data-lat="42.4260" data-lng="18.7700">
+  <div class="activity-num">37</div>
+  <div class="activity-content">
+    <h4>Kotor Farmer's Market</h4>
+    <div class="activity-desc">Fresh fruit, local cheese, smoked ham, honey. Free to browse.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#9973; Bay of Kotor</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="kotor" data-type="adventure" data-tom="yes" data-teens="ok" data-cost="budget" data-num="38" data-lat="42.4300" data-lng="18.7680">
+  <div class="activity-num">38</div>
+  <div class="activity-content">
+    <h4>Bay of Kotor Cycling</h4>
+    <div class="activity-desc">Rent bikes, ride the waterfront promenade. &#8364;10-15/day.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">&#8364;10-15/day</span>
+      <span class="tag cost-budget">&lt; &#8364;25pp</span>
+      <span class="tag week-area">&#9973; Bay of Kotor</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+</div><!-- end kotor section -->
+
+<!-- ═══ BUDVA & BEACHES ═══ -->
+<div class="section-header verdon" data-section="budva">
+  <div class="icon">&#127958;&#65039;</div>
+  <h2>Budva &amp; Beaches</h2>
+  <p>Budva Old Town, Sveti Stefan, Jaz, Mogren &amp; the Adriatic Riviera</p>
+</div>
+
+<div data-section-wrap="budva">
+
+<div class="category-header" data-cat-type="beach" data-cat-area="budva">
+  <span class="cat-icon">&#127958;&#65039;</span>
+  <h3>Budva &amp; Beaches</h3>
+  <span class="cat-count">22 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="budva" data-type="history" data-tom="yes" data-teens="love" data-cost="budget" data-num="39" data-mustdo="true" data-lat="42.2889" data-lng="18.8378">
+  <div class="activity-num">39</div>
+  <div class="activity-content">
+    <h4>Budva Old Town (Stari Grad)</h4>
+    <div class="activity-desc">Tiny walled medieval town, citadel, churches, cafes. Free (citadel &#8364;3.50). MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens &amp; Katie</span>
+      <span class="tag cost">Free (citadel &#8364;3.50)</span>
+      <span class="tag cost-budget">&lt; &#8364;25pp</span>
+      <span class="tag week-area">&#127958;&#65039; Budva</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="budva" data-type="scenic" data-tom="yes" data-teens="love" data-cost="free" data-num="40" data-mustdo="true" data-lat="42.2550" data-lng="18.8900">
+  <div class="activity-num">40</div>
+  <div class="activity-content">
+    <h4>Sveti Stefan Photo Stop</h4>
+    <div class="activity-desc">Montenegro's most iconic view: the island hotel connected by a causeway. Free public viewpoint. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Katie &#10084;&#10084;&#10084;</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127958;&#65039; Budva</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="budva" data-type="beach" data-tom="yes" data-teens="love" data-cost="free" data-num="41" data-mustdo="true" data-lat="42.2950" data-lng="18.8050">
+  <div class="activity-num">41</div>
+  <div class="activity-content">
+    <h4>Jaz Beach</h4>
+    <div class="activity-desc">Large sandy/pebble beach, water sports, bars, spacious. Free (sunbed &#8364;10-15). MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag free">Free (sunbed extra)</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127958;&#65039; Budva</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="budva" data-type="beach" data-tom="yes" data-teens="love" data-cost="free" data-num="42" data-lat="42.2900" data-lng="18.8300">
+  <div class="activity-num">42</div>
+  <div class="activity-content">
+    <h4>Mogren Beach</h4>
+    <div class="activity-desc">Beautiful twin cove beaches, tunnel connecting them, crystal water. Free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Katie &amp; Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127958;&#65039; Budva</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="budva" data-type="beach" data-tom="yes" data-teens="ok" data-cost="free" data-num="43" data-lat="42.2870" data-lng="18.8400">
+  <div class="activity-num">43</div>
+  <div class="activity-content">
+    <h4>Slovenska Pla&#382;a</h4>
+    <div class="activity-desc">Main Budva beach, long sandy stretch, all amenities. Free (sunbed &#8364;10).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Free (sunbed extra)</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127958;&#65039; Budva</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="budva" data-type="beach" data-tom="yes" data-teens="ok" data-cost="free" data-num="44" data-lat="42.2700" data-lng="18.8650">
+  <div class="activity-num">44</div>
+  <div class="activity-content">
+    <h4>Kamenovo Beach</h4>
+    <div class="activity-desc">Quieter family beach, shallow water, beach bar. Free (sunbed &#8364;8-12).</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127958;&#65039; Budva</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="budva" data-type="boat" data-tom="yes" data-teens="ok" data-cost="budget" data-num="45" data-lat="42.2800" data-lng="18.8600">
+  <div class="activity-num">45</div>
+  <div class="activity-content">
+    <h4>Sveti Nikola Island Boat Trip</h4>
+    <div class="activity-desc">Boat to "Hawaii" island off Budva, beaches, hiking, deer. &#8364;5-10 return.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">&#8364;5-10</span>
+      <span class="tag cost-budget">&lt; &#8364;25pp</span>
+      <span class="tag week-area">&#127958;&#65039; Budva</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="budva" data-type="adventure" data-tom="no" data-teens="love" data-cost="mid" data-num="46" data-lat="42.2870" data-lng="18.8410">
+  <div class="activity-num">46</div>
+  <div class="activity-content">
+    <h4>Parasailing</h4>
+    <div class="activity-desc">Fly above the Budva coast, spectacular views. &#8364;40-60pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (age limit)</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag cost">&#8364;40-60pp</span>
+      <span class="tag cost-mid">&#8364;25-60pp</span>
+      <span class="tag week-area">&#127958;&#65039; Budva</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="budva" data-type="adventure" data-tom="no" data-teens="love" data-cost="mid" data-num="47" data-lat="42.2880" data-lng="18.8420">
+  <div class="activity-num">47</div>
+  <div class="activity-content">
+    <h4>Jet Ski (Budva)</h4>
+    <div class="activity-desc">Speed along the Riviera coastline. &#8364;50-70/30min. 16+ or with adult. George will love this.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (16+)</span>
+      <span class="tag teen-love">&#11088; George &#10084;</span>
+      <span class="tag cost">&#8364;50-70/30min</span>
+      <span class="tag cost-mid">&#8364;25-60pp</span>
+      <span class="tag week-area">&#127958;&#65039; Budva</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="budva" data-type="adventure" data-tom="no" data-teens="love" data-cost="budget" data-num="48" data-lat="42.2860" data-lng="18.8390">
+  <div class="activity-num">48</div>
+  <div class="activity-content">
+    <h4>Stand-Up Paddleboarding</h4>
+    <div class="activity-desc">SUP along the coast, calm morning water. &#8364;15-25/hr.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (balance)</span>
+      <span class="tag teen-love">&#11088; Katie &amp; Teens</span>
+      <span class="tag cost">&#8364;15-25/hr</span>
+      <span class="tag cost-budget">&lt; &#8364;25pp</span>
+      <span class="tag week-area">&#127958;&#65039; Budva</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="budva" data-type="adventure" data-tom="yes" data-teens="ok" data-cost="budget" data-num="49" data-lat="42.2870" data-lng="18.8400">
+  <div class="activity-num">49</div>
+  <div class="activity-content">
+    <h4>Banana Boat &amp; Tube Rides</h4>
+    <div class="activity-desc">Classic beach fun, towed behind speedboat. &#8364;10-15pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">&#8364;10-15pp</span>
+      <span class="tag cost-budget">&lt; &#8364;25pp</span>
+      <span class="tag week-area">&#127958;&#65039; Budva</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="budva" data-type="adventure" data-tom="no" data-teens="love" data-cost="mid" data-num="50" data-lat="42.2900" data-lng="18.8320">
+  <div class="activity-num">50</div>
+  <div class="activity-content">
+    <h4>Scuba Diving Intro</h4>
+    <div class="activity-desc">Discover scuba in the clear Adriatic. &#8364;50-70pp. Age 10+.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (age 10+)</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag cost">&#8364;50-70pp</span>
+      <span class="tag cost-mid">&#8364;25-60pp</span>
+      <span class="tag week-area">&#127958;&#65039; Budva</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="budva" data-type="history" data-tom="yes" data-teens="ok" data-cost="budget" data-num="51" data-lat="42.2887" data-lng="18.8395">
+  <div class="activity-num">51</div>
+  <div class="activity-content">
+    <h4>Budva Citadel</h4>
+    <div class="activity-desc">Small fortress at the tip of old town, museum, sea views. &#8364;3.50.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">&#8364;3.50</span>
+      <span class="tag cost-budget">&lt; &#8364;25pp</span>
+      <span class="tag week-area">&#127958;&#65039; Budva</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="budva" data-type="adventure" data-tom="no" data-teens="ok" data-cost="free" data-num="52" data-lat="42.2960" data-lng="18.8060">
+  <div class="activity-num">52</div>
+  <div class="activity-content">
+    <h4>Beach Volleyball</h4>
+    <div class="activity-desc">Free courts at Jaz and Slovenska beaches. Free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (too tall!)</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127958;&#65039; Budva</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="budva" data-type="scenic" data-tom="yes" data-teens="love" data-cost="free" data-num="53" data-lat="42.2600" data-lng="18.8850">
+  <div class="activity-num">53</div>
+  <div class="activity-content">
+    <h4>Milo&#269;er Park &amp; Royal Beach</h4>
+    <div class="activity-desc">Beautiful park, Queen's and King's beaches nearby. Free to walk.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Katie &amp; Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127958;&#65039; Budva</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="budva" data-type="scenic" data-tom="yes" data-teens="love" data-cost="budget" data-num="54" data-mustdo="true" data-lat="42.2889" data-lng="18.8380">
+  <div class="activity-num">54</div>
+  <div class="activity-content">
+    <h4>Sunset from Budva Old Town Walls</h4>
+    <div class="activity-desc">Walk the walls at golden hour, incredible photo ops. Included with citadel entry. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Katie &#10084;</span>
+      <span class="tag cost">Inc. with citadel</span>
+      <span class="tag cost-budget">&lt; &#8364;25pp</span>
+      <span class="tag week-area">&#127958;&#65039; Budva</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="budva" data-type="food" data-tom="yes" data-teens="ok" data-cost="mid" data-num="55" data-lat="42.2885" data-lng="18.8370">
+  <div class="activity-num">55</div>
+  <div class="activity-content">
+    <h4>Seafood Dinner on the Harbour</h4>
+    <div class="activity-desc">Fresh Adriatic catch, dine by the boats in Budva. &#8364;15-30pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; All ages</span>
+      <span class="tag cost">&#8364;15-30pp</span>
+      <span class="tag cost-mid">&#8364;25-60pp</span>
+      <span class="tag week-area">&#127958;&#65039; Budva</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="budva" data-type="food" data-tom="yes" data-teens="ok" data-cost="free" data-num="56" data-lat="42.2880" data-lng="18.8390">
+  <div class="activity-num">56</div>
+  <div class="activity-content">
+    <h4>Night Market Budva</h4>
+    <div class="activity-desc">Summer evening market, crafts, souvenirs, street food. Free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; All ages</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127958;&#65039; Budva</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="budva" data-type="adventure" data-tom="yes" data-teens="love" data-cost="budget" data-num="57" data-lat="42.3000" data-lng="18.8200">
+  <div class="activity-num">57</div>
+  <div class="activity-content">
+    <h4>Go-Karting</h4>
+    <div class="activity-desc">Outdoor karting track near Budva. &#8364;15-25pp. Junior karts available.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom (junior)</span>
+      <span class="tag teen-love">&#11088; George &#10084;</span>
+      <span class="tag cost">&#8364;15-25pp</span>
+      <span class="tag cost-budget">&lt; &#8364;25pp</span>
+      <span class="tag week-area">&#127958;&#65039; Budva</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="budva" data-type="adventure" data-tom="yes" data-teens="ok" data-cost="budget" data-num="58" data-lat="42.2950" data-lng="18.8350">
+  <div class="activity-num">58</div>
+  <div class="activity-content">
+    <h4>Mini Golf</h4>
+    <div class="activity-desc">Tropical-themed mini golf. &#8364;5-10pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">&#8364;5-10pp</span>
+      <span class="tag cost-budget">&lt; &#8364;25pp</span>
+      <span class="tag week-area">&#127958;&#65039; Budva</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="budva" data-type="adventure" data-tom="yes" data-teens="ok" data-cost="budget" data-num="59" data-lat="42.2870" data-lng="18.8410">
+  <div class="activity-num">59</div>
+  <div class="activity-content">
+    <h4>Aqua Park Budva</h4>
+    <div class="activity-desc">Floating inflatable obstacle course on the sea. &#8364;10-15/hr.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom &#11088;&#11088;&#11088;</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">&#8364;10-15/hr</span>
+      <span class="tag cost-budget">&lt; &#8364;25pp</span>
+      <span class="tag week-area">&#127958;&#65039; Budva</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="budva" data-type="beach" data-tom="yes" data-teens="ok" data-cost="budget" data-num="60" data-lat="42.2950" data-lng="18.8060">
+  <div class="activity-num">60</div>
+  <div class="activity-content">
+    <h4>Beach Bonfire Evening</h4>
+    <div class="activity-desc">Arranged bonfire on quiet beach, stars over the Adriatic. &#8364;15-25pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; All ages</span>
+      <span class="tag cost">&#8364;15-25pp</span>
+      <span class="tag cost-budget">&lt; &#8364;25pp</span>
+      <span class="tag week-area">&#127958;&#65039; Budva</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+</div><!-- end budva section -->
+
+<!-- ═══ WATER ADVENTURES ═══ -->
+<div class="section-header azur" data-section="water">
+  <div class="icon">&#127754;</div>
+  <h2>Water Adventures</h2>
+  <p>Kayaking, snorkelling, boat tours, rafting &amp; canyon adventures</p>
+</div>
+
+<div data-section-wrap="water">
+
+<div class="category-header" data-cat-type="adventure" data-cat-area="water">
+  <span class="cat-icon">&#127754;</span>
+  <h3>Water Adventures</h3>
+  <span class="cat-count">8 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="water" data-type="adventure" data-tom="no" data-teens="love" data-cost="premium" data-num="61" data-mustdo="true" data-lat="43.3500" data-lng="19.3300">
+  <div class="activity-num">61</div>
+  <div class="activity-content">
+    <h4>White Water Rafting &#8212; Tara Canyon</h4>
+    <div class="activity-desc">Europe's deepest canyon, Grade III-IV rapids. Full day &#8364;75pp from coast. Age 12+. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (12+)</span>
+      <span class="tag teen-love">&#11088; George &#10084;&#10084;&#10084;</span>
+      <span class="tag cost">&#8364;75pp</span>
+      <span class="tag cost-premium">&#8364;60+pp</span>
+      <span class="tag week-area">&#127754; Water Adventures</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="water" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="62" data-mustdo="true" data-lat="43.1500" data-lng="19.2800">
+  <div class="activity-num">62</div>
+  <div class="activity-content">
+    <h4>Tara Canyon Zip Line</h4>
+    <div class="activity-desc">1,050m zip line across Europe's deepest canyon. &#8364;45pp. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">&#9888;&#65039; Tom (weight check)</span>
+      <span class="tag teen-love">&#11088; George &#10084;&#10084;&#10084;</span>
+      <span class="tag cost">&#8364;45pp</span>
+      <span class="tag cost-mid">&#8364;25-60pp</span>
+      <span class="tag week-area">&#127754; Water Adventures</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="water" data-type="adventure" data-tom="no" data-teens="love" data-cost="premium" data-num="63" data-lat="43.0800" data-lng="19.0500">
+  <div class="activity-num">63</div>
+  <div class="activity-content">
+    <h4>Canyoning &#8212; Nevidio Canyon</h4>
+    <div class="activity-desc">Wade, swim, and scramble through a narrow canyon. &#8364;80-100pp. Age 14+.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (14+)</span>
+      <span class="tag teen-love">&#11088; George &#10084;</span>
+      <span class="tag cost">&#8364;80-100pp</span>
+      <span class="tag cost-premium">&#8364;60+pp</span>
+      <span class="tag week-area">&#127754; Water Adventures</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="water" data-type="adventure" data-tom="yes" data-teens="ok" data-cost="free" data-num="64" data-lat="42.3900" data-lng="18.6850">
+  <div class="activity-num">64</div>
+  <div class="activity-content">
+    <h4>Blue Cave Swimming</h4>
+    <div class="activity-desc">Swim in the glowing blue cave during boat tour. Included in Blue Cave tour.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Inc. in boat tour</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127754; Water Adventures</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="water" data-type="adventure" data-tom="yes" data-teens="love" data-cost="free" data-num="65" data-lat="42.4000" data-lng="18.6800">
+  <div class="activity-num">65</div>
+  <div class="activity-content">
+    <h4>Submarine Tunnel Exploration</h4>
+    <div class="activity-desc">Explore abandoned Yugoslav submarine tunnels by boat. Included in Blue Cave tour. George will love this.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; George &#10084;</span>
+      <span class="tag free">Inc. in boat tour</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127754; Water Adventures</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="water" data-type="adventure" data-tom="no" data-teens="love" data-cost="free" data-num="66" data-lat="42.2895" data-lng="18.8360">
+  <div class="activity-num">66</div>
+  <div class="activity-content">
+    <h4>Cliff Jumping (Budva)</h4>
+    <div class="activity-desc">Local spots for jumping off rocks into the sea. Free. At own risk.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (too young)</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#127754; Water Adventures</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="water" data-type="adventure" data-tom="yes" data-teens="ok" data-cost="budget" data-num="67" data-lat="42.2900" data-lng="18.8350">
+  <div class="activity-num">67</div>
+  <div class="activity-content">
+    <h4>Snorkelling Budva Coast</h4>
+    <div class="activity-desc">Hire gear and explore the underwater world. &#8364;10-15 gear hire.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">&#8364;10-15</span>
+      <span class="tag cost-budget">&lt; &#8364;25pp</span>
+      <span class="tag week-area">&#127754; Water Adventures</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="water" data-type="adventure" data-tom="no" data-teens="love" data-cost="mid" data-num="68" data-lat="42.4250" data-lng="18.7700">
+  <div class="activity-num">68</div>
+  <div class="activity-content">
+    <h4>Sailing Lesson</h4>
+    <div class="activity-desc">Learn to sail a dinghy in the bay. &#8364;50-70pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag cost">&#8364;50-70pp</span>
+      <span class="tag cost-mid">&#8364;25-60pp</span>
+      <span class="tag week-area">&#127754; Water Adventures</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+</div><!-- end water section -->
+
+<!-- ═══ DAY TRIPS & CULTURE ═══ -->
+<div class="section-header verdon" data-section="daytrip">
+  <div class="icon">&#128663;</div>
+  <h2>Day Trips &amp; Culture</h2>
+  <p>Tara Canyon, Lov&#263;en, Cetinje, Ostrog &amp; beyond</p>
+</div>
+
+<div data-section-wrap="daytrip">
+
+<div class="category-header" data-cat-type="history" data-cat-area="daytrip">
+  <span class="cat-icon">&#128663;</span>
+  <h3>Day Trips &amp; Culture</h3>
+  <span class="cat-count">12 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="daytrip" data-type="adventure" data-tom="no" data-teens="love" data-cost="premium" data-num="69" data-mustdo="true" data-lat="43.1500" data-lng="19.2800">
+  <div class="activity-num">69</div>
+  <div class="activity-content">
+    <h4>Tara River Canyon Day Trip</h4>
+    <div class="activity-desc">Drive inland to Europe's deepest canyon (1,300m!), &#272;ur&#273;evi&#263;a Bridge, rafting + zip line combo. &#8364;120-150pp full day. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (12+)</span>
+      <span class="tag teen-love">&#11088; Teens &#11088;&#11088;&#11088;</span>
+      <span class="tag cost">&#8364;120-150pp</span>
+      <span class="tag cost-premium">&#8364;60+pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="daytrip" data-type="scenic" data-tom="yes" data-teens="love" data-cost="budget" data-num="70" data-mustdo="true" data-lat="42.3950" data-lng="18.8350">
+  <div class="activity-num">70</div>
+  <div class="activity-content">
+    <h4>Lov&#263;en National Park</h4>
+    <div class="activity-desc">Drive to the mausoleum at the summit, 360&#176; mountain views. &#8364;5 entry + transport. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag cost">&#8364;5 entry</span>
+      <span class="tag cost-budget">&lt; &#8364;25pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="history" data-tom="no" data-teens="ok" data-cost="free" data-num="71" data-lat="42.3908" data-lng="18.9267">
+  <div class="activity-num">71</div>
+  <div class="activity-content">
+    <h4>Cetinje</h4>
+    <div class="activity-desc">Old Royal Capital, monasteries, museums, quiet mountain town. Free to explore.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (quiet town)</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card highlight" data-area="daytrip" data-type="history" data-tom="yes" data-teens="love" data-cost="free" data-num="72" data-mustdo="true" data-lat="42.6750" data-lng="19.0300">
+  <div class="activity-num">72</div>
+  <div class="activity-content">
+    <h4>Ostrog Monastery</h4>
+    <div class="activity-desc">Dramatic monastery carved into a cliff face, important pilgrimage site. Free (donation). MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Teens</span>
+      <span class="tag free">Free (donation)</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="boat" data-tom="yes" data-teens="ok" data-cost="mid" data-num="73" data-lat="42.2500" data-lng="19.1000">
+  <div class="activity-num">73</div>
+  <div class="activity-content">
+    <h4>Skadar Lake Boat Tour</h4>
+    <div class="activity-desc">Largest lake in the Balkans, birds, water lilies, monasteries on islands. &#8364;15-30pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">&#8364;15-30pp</span>
+      <span class="tag cost-mid">&#8364;25-60pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="food" data-tom="no" data-teens="ok" data-cost="mid" data-num="74" data-lat="42.9200" data-lng="17.4200">
+  <div class="activity-num">74</div>
+  <div class="activity-content">
+    <h4>Dubrovnik Wine Tasting</h4>
+    <div class="activity-desc">Visit Pelješac peninsula wineries, taste local Plavac Mali. &#8364;40-60pp. Adults/teens.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom</span>
+      <span class="tag teen-ok">&#9989; Adults/Teens</span>
+      <span class="tag cost">&#8364;40-60pp</span>
+      <span class="tag cost-mid">&#8364;25-60pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="food" data-tom="no" data-teens="ok" data-cost="mid" data-num="75" data-lat="42.8400" data-lng="17.6900">
+  <div class="activity-num">75</div>
+  <div class="activity-content">
+    <h4>Ston Oyster Tasting</h4>
+    <div class="activity-desc">Taste fresh oysters at Europe's oldest oyster farm. &#8364;25-40pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">&#8364;25-40pp</span>
+      <span class="tag cost-mid">&#8364;25-60pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="scenic" data-tom="yes" data-teens="ok" data-cost="budget" data-num="76" data-lat="42.5850" data-lng="18.2167">
+  <div class="activity-num">76</div>
+  <div class="activity-content">
+    <h4>Cavtat</h4>
+    <div class="activity-desc">Charming harbour town south of Dubrovnik, quieter alternative, boat trip. &#8364;10-15 boat.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">&#8364;10-15</span>
+      <span class="tag cost-budget">&lt; &#8364;25pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="food" data-tom="yes" data-teens="ok" data-cost="mid" data-num="77" data-lat="42.4250" data-lng="18.7700">
+  <div class="activity-num">77</div>
+  <div class="activity-content">
+    <h4>Cooking Class (Montenegrin)</h4>
+    <div class="activity-desc">Learn to make &#263;evapi, burek, Njeguški steak, cheese. &#8364;40-60pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag cost">&#8364;40-60pp</span>
+      <span class="tag cost-mid">&#8364;25-60pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="food" data-tom="no" data-teens="ok" data-cost="mid" data-num="78" data-lat="42.3700" data-lng="19.1800">
+  <div class="activity-num">78</div>
+  <div class="activity-content">
+    <h4>Wine Tasting Montenegro</h4>
+    <div class="activity-desc">Visit Planta&#382;e vineyards near Podgorica, taste Vranac. &#8364;30-50pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom</span>
+      <span class="tag teen-ok">&#9989; Adults/Teens</span>
+      <span class="tag cost">&#8364;30-50pp</span>
+      <span class="tag cost-mid">&#8364;25-60pp</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="history" data-tom="no" data-teens="ok" data-cost="free" data-num="79" data-lat="42.4800" data-lng="18.7100">
+  <div class="activity-num">79</div>
+  <div class="activity-content">
+    <h4>Lipci Prehistoric Rock Carvings</h4>
+    <div class="activity-desc">3,000yr old deer carvings above the bay. Free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-no">&#10060; Tom (hiking)</span>
+      <span class="tag teen-ok">&#9989; Teens</span>
+      <span class="tag free">Free!</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+<div class="activity-card" data-area="daytrip" data-type="food" data-tom="yes" data-teens="love" data-cost="free" data-num="80" data-lat="42.4260" data-lng="18.7700">
+  <div class="activity-num">80</div>
+  <div class="activity-content">
+    <h4>Local Market Shopping</h4>
+    <div class="activity-desc">Kotor and Budva markets, buy lavender, honey, rakija, olive oil. Variable.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#9989; Tom</span>
+      <span class="tag teen-love">&#11088; Katie</span>
+      <span class="tag free">Free to browse</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-area">&#128663; Day Trip</span>
+    </div>
+  </div>
+  <div class="activity-link"></div>
+</div>
+
+</div><!-- end daytrip section -->
+
+
+</div><!-- end container -->
+</div><!-- end main-content -->
+</div><!-- end page-layout -->
+</div><!-- end activitiesSection -->
+<script>
+function toggleActivities() {
+  var section = document.getElementById('activitiesSection');
+  var icon = document.getElementById('activitiesToggleIcon');
+  var text = document.getElementById('activitiesToggleText');
+  var btn = document.getElementById('activitiesToggle');
+  if (section.style.display === 'none') {
+    section.style.display = 'block';
+    icon.textContent = '\u25B2';
+    text.textContent = 'Hide Activities & Filters';
+    btn.style.background = 'linear-gradient(135deg, #1B3C8F 0%, #2a4fa3 100%)';
+    setTimeout(function(){ section.scrollIntoView({behavior: 'smooth', block: 'start'}); }, 100);
+    if (window.activityMap) setTimeout(function(){ window.activityMap.invalidateSize(); }, 300);
+  } else {
+    section.style.display = 'none';
+    icon.textContent = '\u25BC';
+    text.textContent = 'Show All Activities & Filters';
+    btn.style.background = 'linear-gradient(135deg, #0F2557 0%, #1B3C8F 100%)';
+    btn.scrollIntoView({behavior: 'smooth', block: 'center'});
+  }
+}
+</script>
+
+<div class="footer">
+  <p>Created for the Sheldrake family holiday planning &#183; Summer 2026</p>
+  <p>Croatia &amp; Montenegro: Dubrovnik to the Adriatic Riviera &#183; 12 nights &#183; Open-jaw: Fly in DBV, fly out TIV</p>
+</div>
+
+<script>
+(function() {
+  var cards = document.querySelectorAll('.activity-card');
+  var checkboxes = document.querySelectorAll('.filter-sidebar input[type="checkbox"]');
+  var countEl = document.getElementById('visibleCount');
+  var TOTAL = 80;
+
+  function getCheckedValues(filterName) {
+    var vals = [];
+    checkboxes.forEach(function(cb) {
+      if (cb.dataset.filter === filterName && cb.checked) vals.push(cb.value);
+    });
+    return vals;
+  }
+
+  function applyFilters() {
+    var areaFilters = getCheckedValues('area');
+    var typeFilters = getCheckedValues('type');
+    var tomFilters = getCheckedValues('tom');
+    var teenFilters = getCheckedValues('teens');
+    var familyFilters = getCheckedValues('family');
+    var costFilters = getCheckedValues('cost');
+    var mustdoFilters = getCheckedValues('mustdo');
+
+    var visible = 0;
+
+    cards.forEach(function(card) {
+      var show = true;
+
+      if (areaFilters.length > 0 && !areaFilters.includes(card.dataset.area)) show = false;
+      if (typeFilters.length > 0 && !typeFilters.includes(card.dataset.type)) show = false;
+      if (tomFilters.length > 0 && card.dataset.tom !== 'yes') show = false;
+      if (teenFilters.length > 0 && card.dataset.teens !== 'love') show = false;
+      if (familyFilters.length > 0 && card.dataset.tom !== 'yes') show = false;
+      if (costFilters.length > 0 && !costFilters.includes(card.dataset.cost)) show = false;
+      if (mustdoFilters.length > 0 && card.dataset.mustdo !== 'true') show = false;
+
+      if (show) {
+        card.classList.remove('hidden-by-filter');
+        visible++;
+      } else {
+        card.classList.add('hidden-by-filter');
+      }
+    });
+
+    countEl.textContent = visible;
+
+    document.querySelectorAll('.section-header[data-section]').forEach(function(header) {
+      var sectionId = header.dataset.section;
+      var wrap = document.querySelector('[data-section-wrap="' + sectionId + '"]');
+      if (wrap) {
+        var visibleCards = wrap.querySelectorAll('.activity-card:not(.hidden-by-filter)');
+        header.classList.toggle('hidden-by-filter', visibleCards.length === 0);
+        wrap.style.display = visibleCards.length === 0 ? 'none' : '';
+      }
+    });
+
+    document.querySelectorAll('.category-header[data-cat-type]').forEach(function(catHeader) {
+      var sibling = catHeader.nextElementSibling;
+      var hasVisible = false;
+      while (sibling && !sibling.classList.contains('category-header') && !sibling.classList.contains('section-header')) {
+        if (sibling.classList.contains('activity-card') && !sibling.classList.contains('hidden-by-filter')) {
+          hasVisible = true;
+          break;
+        }
+        sibling = sibling.nextElementSibling;
+      }
+      catHeader.classList.toggle('hidden-by-filter', !hasVisible);
+    });
+    if (typeof updateMap === 'function') updateMap();
+  }
+
+  checkboxes.forEach(function(cb) { cb.addEventListener('change', applyFilters); });
+
+  window.clearFilters = function() {
+    checkboxes.forEach(function(cb) { cb.checked = false; });
+    applyFilters();
+  };
+
+  window.toggleFilters = function() {
+    var sidebar = document.getElementById('filterSidebar');
+    var overlay = document.getElementById('filterOverlay');
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('open');
+  };
+})();
+
+function toggleAccom(show) {
+  if (!window.accomMarkers) return;
+  window.accomMarkers.forEach(function(m) {
+    if (show) m.addTo(window.activityMap);
+    else window.activityMap.removeLayer(m);
+  });
+}
+
+function updateMap() {
+  if (!window.activityMarkers) return;
+  var bounds = [];
+  var tableBody = document.getElementById('map-table-body');
+  if (tableBody) tableBody.innerHTML = '';
+  var visibleCount = 0;
+  
+  document.querySelectorAll('.activity-card').forEach(function(card, i) {
+    var marker = window.activityMarkers[i];
+    if (!marker) return;
+    var lat = parseFloat(card.dataset.lat);
+    var lng = parseFloat(card.dataset.lng);
+    if (!lat || !lng) return;
+    
+    var isVisible = !card.classList.contains('hidden-by-filter');
+    if (isVisible) {
+      marker.addTo(window.activityMap);
+      bounds.push([lat, lng]);
+      visibleCount++;
+      if (tableBody) {
+        var num = card.dataset.num;
+        var title = card.querySelector('h4').textContent.trim();
+        var isMustDo = card.dataset.mustdo === 'true';
+        var tr = document.createElement('tr');
+        tr.style.borderBottom = '1px solid #e0e0e0';
+        if (visibleCount % 2 === 0) tr.style.background = '#f0f3f9';
+        tr.innerHTML = '<td style="padding:5px 8px;color:#1B3C8F;font-weight:700;">' + num + '</td>' +
+          '<td style="padding:5px 8px;">' + (isMustDo ? '\u2B50 ' : '') + title + '</td>' +
+          '<td style="padding:5px 8px;text-align:right;">' + 
+          '<a href="https://www.google.com/maps?q='+lat+','+lng+'" target="_blank" style="color:#888;">\uD83D\uDCCD Map</a></td>';
+        tableBody.appendChild(tr);
+      }
+    } else {
+      window.activityMap.removeLayer(marker);
+    }
+  });
+  
+  var countEl = document.getElementById('map-count');
+  if (countEl) countEl.textContent = visibleCount + ' activities shown';
+  
+  if (bounds.length > 0) {
+    window.activityMap.fitBounds(bounds, {padding: [30, 30], maxZoom: 12});
+  }
+}
+
+(function(){
+  window.activityMap = L.map('mustdo-map', {scrollWheelZoom: false}).setView([42.45, 18.75], 9);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; CARTO &copy; OSM', maxZoom: 18
+  }).addTo(window.activityMap);
+  
+  window.activityMarkers = [];
+  
+  document.querySelectorAll('.activity-card').forEach(function(card) {
+    var lat = parseFloat(card.dataset.lat);
+    var lng = parseFloat(card.dataset.lng);
+    if (!lat || !lng) { window.activityMarkers.push(null); return; }
+    
+    var num = card.dataset.num;
+    var isMustDo = card.dataset.mustdo === 'true';
+    var title = card.querySelector('h4').textContent.trim();
+    var desc = card.querySelector('.activity-desc');
+    var descText = desc ? desc.textContent.trim().substring(0, 100) + '...' : '';
+    
+    var size = isMustDo ? 28 : 22;
+    var bg = isMustDo ? '#FF6B35' : '#1B3C8F';
+    var fontSize = isMustDo ? '12px' : '10px';
+    
+    var icon = L.divIcon({
+      className: '',
+      html: '<div style="background:'+bg+';color:#fff;width:'+size+'px;height:'+size+'px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:'+fontSize+';font-family:Montserrat,sans-serif;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;cursor:pointer;">'+num+'</div>',
+      iconSize: [size, size],
+      iconAnchor: [size/2, size/2]
+    });
+    
+    var marker = L.marker([lat, lng], {icon: icon})
+      .bindPopup('<div style="min-width:200px;"><b style="color:#0F2557;font-size:0.95rem;">' + (isMustDo ? '\u2B50 ' : '') + title + '</b><br><span style="color:#555;font-size:0.85rem;">' + descText + '</span></div>');
+    
+    marker.addTo(window.activityMap);
+    window.activityMarkers.push(marker);
+  });
+  
+  updateMap();
+
+  // Accommodation overlay
+  window.accomMarkers = [];
+  var accomData = [
+    [42.6530, 18.0850, "Hotel Dubrovnik Palace", "Hotel", "https://www.adriaticluxuryhotels.com/dubrovnik-palace", "5-star, cliffside, infinity pool, beach, Dubrovnik views. From \u20AC250/night."],
+    [42.6630, 18.0780, "Sheraton Dubrovnik Riviera", "Resort", "https://www.marriott.com/en-us/hotels/dbvsi-sheraton-dubrovnik-riviera-hotel/", "Family resort, pools, sandy beach, 15min from old town. From \u20AC180/night."],
+    [42.4250, 18.7710, "Hotel Vardar Kotor", "Hotel", "https://www.hotelvardar.com/", "Heart of Kotor old town, family rooms, excellent location. From \u20AC120/night."],
+    [42.4350, 18.6900, "Regent Porto Montenegro", "Luxury", "https://www.regenthotels.com/regent-porto-montenegro", "Luxury marina hotel, pool, family suites, Tivat. From \u20AC300/night."],
+    [42.2889, 18.8400, "Hotel Slovenska Plaza", "Resort", "https://www.montenegrostars.com/", "AI resort, multiple pools, beachfront, kids activities, Budva. From \u20AC100/night."],
+    [42.2750, 18.8700, "Dukley Hotel & Resort", "Luxury", "https://www.dukley.com/", "Luxury villas, private beach, gardens, near Sveti Stefan. From \u20AC200/night."],
+    [42.2600, 18.8850, "Aman Sveti Stefan", "Ultra-Luxury", "https://www.aman.com/hotels/aman-sveti-stefan", "The iconic island hotel. Once-in-a-lifetime. From \u20AC1,000/night."],
+    [42.3800, 18.6300, "Chedi Lustica Bay", "Luxury", "https://www.thechedilusticabay.com/", "Modern resort, infinity pool, private beach, near Tivat airport. From \u20AC250/night."]
+  ];
+  var accomIcon = function(){ return L.divIcon({
+    className:'',
+    html:'<div style="background:#2d9a2d;color:#fff;width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;cursor:pointer;">&#127965;</div>',
+    iconSize:[30,30], iconAnchor:[15,15]
+  }); };
+  accomData.forEach(function(a){
+    var marker = L.marker([a[0],a[1]], {icon: accomIcon()})
+      .bindPopup('<div style="min-width:220px;"><b style="color:#2d9a2d;font-size:0.95rem;">&#127965; '+a[2]+'</b><br><span style="color:#888;font-size:0.8rem;">'+a[3]+'</span><br><span style="color:#555;font-size:0.85rem;">'+a[5]+'</span><br><a href="'+a[4]+'" target="_blank" style="color:#2d9a2d;font-size:0.85rem;">View on '+a[3]+' \u2192</a></div>');
+    marker.addTo(window.activityMap);
+    window.accomMarkers.push(marker);
+  });
+})();
+
+document.addEventListener('click', function(e) {
+  var wrap = document.querySelector('.country-nav__dropdown-wrap');
+  if (wrap && !wrap.contains(e.target)) {
+    var btn = wrap.querySelector('.country-nav__toggle');
+    var menu = wrap.querySelector('.country-nav__menu');
+    if (btn) btn.classList.remove('open');
+    if (menu) menu.classList.remove('open');
+  }
+});
+</script>
+
+</body>
+</html>
