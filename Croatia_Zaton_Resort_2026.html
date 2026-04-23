@@ -1,0 +1,2339 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Croatia: Zaton Holiday Resort &mdash; 75 Family Activities</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+  :root {
+    --verdon: #1B3C8F;
+    --verdon-light: #e8edf7;
+    --azur: #0F2557;
+    --azur-light: #f0f0f0;
+    --accent: #1B3C8F;
+    --gold: #1B3C8F;
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #0F2557;
+    --muted: #4a6bb5;
+    --border: #e0e0e0;
+    --sidebar-width: 280px;
+    --accent-orange: #FF6B35;
+  }
+
+  /* ── Country Navbar ───────────────────────────────────────── */
+.country-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(15, 37, 87, 0.97);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  height: 44px;
+}
+.country-nav__inner {
+  max-width: 1400px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 1.2rem; height: 44px;
+}
+.country-nav__home {
+  display: flex; align-items: center; gap: 6px;
+  color: #FF6B35; font-size: 0.82rem; font-weight: 600;
+  text-decoration: none; white-space: nowrap;
+}
+.country-nav__home .nav-icon { width: 16px; height: 16px; }
+.country-nav__home:hover { color: #fff; }
+.country-nav__current { display: none; }
+.country-nav__dropdown-wrap { position: relative; }
+.country-nav__toggle {
+  display: flex; align-items: center; gap: 6px;
+  background: #FF6B35; border: none; box-shadow: 0 2px 12px rgba(255,107,53,0.35); letter-spacing: 0.02em;
+  color: #fff; padding: 8px 18px; border-radius: 8px;
+  font-size: 0.85rem; font-weight: 600; cursor: pointer;
+  font-family: 'Inter', sans-serif; transition: all 0.2s;
+}
+.country-nav__toggle:hover { background: #e85d2a; box-shadow: 0 4px 18px rgba(255,107,53,0.5); transform: translateY(-1px); }
+.country-nav__toggle svg { width: 14px; height: 14px; transition: transform 0.2s; }
+.country-nav__toggle.open svg { transform: rotate(180deg); }
+.country-nav__menu {
+  display: none; position: absolute; right: 0; top: calc(100% + 8px);
+  background: #0F2557; border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px; padding: 6px 0; min-width: 220px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  animation: navDropIn 0.15s ease-out;
+}
+@keyframes navDropIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+.country-nav__menu.open { display: block; }
+.country-nav__menu a {
+  display: flex; align-items: center; gap: 8px;
+  padding: 9px 16px; color: rgba(255,255,255,0.8);
+  font-size: 0.82rem; font-weight: 500; text-decoration: none;
+  transition: all 0.15s;
+}
+.country-nav__menu a:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.country-nav__menu a.active { color: #FF6B35; font-weight: 600; }
+.country-nav__menu a .nav-icon { width: 16px; height: 16px; opacity: 0.7; flex-shrink: 0; }
+.country-nav__menu a:hover .nav-icon { opacity: 1; }
+.country-nav__menu-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 4px 0; }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Montserrat', 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding-top: 44px;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #0F2557 0%, #1B3C8F 100%);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    margin-bottom: 10px;
+  }
+  .hero .subtitle { font-size: 1.1rem; opacity: 0.9; margin-bottom: 8px; }
+  .hero .count {
+    display: inline-block;
+    background: #FF6B35;
+    padding: 8px 24px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-top: 12px;
+  }
+  .hero .family {
+    margin-top: 16px;
+    font-size: 0.95rem;
+    opacity: 0.85;
+  }
+
+  .page-layout {
+    display: block;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .filter-sidebar {
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: #0F2557;
+    color: #fff;
+    padding: 20px 16px;
+    z-index: 100;
+    scrollbar-width: thin;
+    scrollbar-color: #4a6bb5 #0F2557;
+  }
+  .filter-sidebar::-webkit-scrollbar { width: 6px; }
+  .filter-sidebar::-webkit-scrollbar-track { background: #0F2557; }
+  .filter-sidebar::-webkit-scrollbar-thumb { background: #4a6bb5; border-radius: 3px; }
+  .filter-sidebar h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: #1B3C8F;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .filter-sidebar h3::before { content: '\2699\FE0F'; }
+  .filter-count {
+    background: #1B3C8F;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+  .filter-count span { font-size: 1.3rem; }
+  .filter-group {
+    margin-bottom: 18px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 14px;
+  }
+  .filter-group:last-child { border-bottom: none; }
+  .filter-group-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #aaa;
+    margin-bottom: 8px;
+  }
+  .filter-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: color 0.15s;
+    font-family: 'Inter', sans-serif;
+  }
+  .filter-group label:hover { color: #1B3C8F; }
+  .filter-group input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #4a6bb5;
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .filter-group input[type="checkbox"]:checked {
+    background: #1B3C8F;
+    border-color: #1B3C8F;
+  }
+  .filter-group input[type="checkbox"]:checked::after {
+    content: '\2713';
+    position: absolute;
+    top: -1px;
+    left: 2px;
+    font-size: 13px;
+    color: white;
+    font-weight: bold;
+  }
+  .clear-filters {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    color: #1B3C8F;
+    border: 2px solid #1B3C8F;
+    border-radius: 8px;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+  }
+  .clear-filters:hover { background: #1B3C8F; color: white; }
+
+  .filter-toggle {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 200;
+    background: #1B3C8F;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  .main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 0 20px;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .top10 {
+    background: linear-gradient(135deg, #e8edf7, #e0e8f5);
+    border: 2px solid var(--gold);
+    border-radius: 16px;
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 800px;
+  }
+  .top10 h2 { font-family: 'Playfair Display', serif; color: #1B3C8F; margin-bottom: 16px; font-size: 1.5rem; }
+  .top10 ol { padding-left: 24px; }
+  .top10 li { margin-bottom: 8px; font-size: 0.95rem; }
+  .top10 li strong { color: #0F2557; }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 30px 0;
+  }
+  .summary-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+  .summary-card .big-num { font-size: 2.5rem; font-weight: 700; color: #1B3C8F; }
+  .summary-card .label { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+
+  .section-header {
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 16px;
+    margin: 40px 0 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .section-header.verdon { background: linear-gradient(135deg, #1B3C8F, #142f6e); color: white; }
+  .section-header.azur { background: linear-gradient(135deg, #0F2557, #1B3C8F); color: white; }
+  .section-header .icon { font-size: 3rem; margin-bottom: 8px; }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+  }
+  .section-header p { opacity: 0.9; margin-top: 6px; font-size: 0.95rem; }
+  .section-header.hidden-by-filter { display: none; }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 32px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--border);
+  }
+  .category-header .cat-icon { font-size: 1.6rem; }
+  .category-header h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; }
+  .category-header .cat-count {
+    background: var(--verdon-light);
+    color: var(--verdon);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .azur-section .category-header .cat-count { background: var(--azur-light); color: var(--azur); }
+  .category-header.hidden-by-filter { display: none; }
+
+  .activity-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    gap: 12px;
+    align-items: start;
+    transition: box-shadow 0.2s, opacity 0.2s;
+  }
+  .activity-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .activity-card.highlight { border-left: 4px solid var(--accent); }
+  .activity-card.hidden-by-filter { display: none; }
+
+  .activity-num {
+    background: var(--verdon);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .azur-num { background: #0F2557 !important; }
+  .azur-section .activity-num { background: #0F2557; }
+
+  .activity-content h4 { font-size: 1rem; margin-bottom: 4px; }
+  .activity-content h4 a { color: inherit; text-decoration: none; }
+  .activity-content h4 a:hover { color: var(--accent); text-decoration: underline; }
+  .activity-desc { font-size: 0.88rem; color: var(--muted); margin-bottom: 8px; }
+
+  .activity-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .tag.tom-yes { background: #d1fae5; color: #065f46; }
+  .tag.tom-no { background: #fee2e2; color: #991b1b; }
+  .tag.tom-check { background: #fef3c7; color: #92400e; }
+  .tag.teen-love { background: #ede9fe; color: #5b21b6; }
+  .tag.teen-ok { background: #f3f4f6; color: #4b5563; }
+  .tag.cost { background: #e0f2fe; color: #075985; }
+  .tag.free { background: #d1fae5; color: #065f46; }
+  .tag.cost-free { background: #d1fae5; color: #065f46; font-weight: 600; }
+  .tag.cost-budget { background: #dbeafe; color: #1e40af; font-weight: 600; }
+  .tag.cost-mid { background: #bfdbfe; color: #1e3a8a; font-weight: 600; }
+  .tag.cost-premium { background: #c4b5fd; color: #3b0764; font-weight: 600; }
+  .tag.week-verdon { background: #e8edf7; color: #1B3C8F; font-weight: 600; }
+  .tag.week-azur { background: #e5e5e5; color: #0F2557; font-weight: 600; }
+
+  .activity-link { flex-shrink: 0; align-self: center; }
+  .activity-link a {
+    display: inline-block;
+    background: var(--verdon);
+    color: white;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+  .activity-link a:hover { background: #0a1b3f; }
+  .azur-link a { background: #0F2557 !important; }
+  .azur-link a:hover { background: #1B3C8F !important; }
+  .azur-section .activity-link a { background: #0F2557; }
+  .azur-section .activity-link a:hover { background: #1B3C8F; }
+
+  .footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 900px) {
+    .filter-sidebar {
+      position: fixed;
+      left: -300px;
+      top: 0;
+      height: 100vh;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+    .filter-sidebar.open { left: 0; }
+    .filter-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+    }
+    .filter-overlay.open { display: block; }
+    .filter-toggle { display: flex; align-items: center; justify-content: center; }
+    .main-content { padding: 0 12px; }
+    .page-layout { display: block; }
+  }
+
+  @media (max-width: 640px) {
+    .activity-card { grid-template-columns: 32px 1fr; }
+    .activity-link { grid-column: 1 / -1; }
+    .activity-link a { width: 100%; text-align: center; }
+  }
+
+  /* ========= MAP-FILTER LAYOUT ========= */
+  .map-filter-layout {
+    display: flex;
+    max-width: 1200px;
+    margin: 1rem auto;
+    gap: 16px;
+    padding: 0 20px;
+  }
+  .map-filter-layout .filter-sidebar {
+    position: static;
+    height: auto;
+    max-height: 600px;
+    overflow-y: auto;
+    border-radius: 12px;
+    flex-shrink: 0;
+  }
+  .map-filter-layout__map {
+    flex: 1;
+    min-width: 0;
+  }
+  .map-filter-layout .filter-sidebar h3 { color: #fff; }
+  .map-filter-layout .clear-filters { color: #fff; border-color: rgba(255,255,255,0.4); }
+  .map-filter-layout .clear-filters:hover { background: rgba(255,255,255,0.15); }
+  .map-filter-layout .filter-group label:hover { color: #ccc; }
+  @media (max-width: 768px) {
+    .map-filter-layout { flex-direction: column; }
+    .map-filter-layout .filter-sidebar { width: 100%; max-height: 300px; }
+  }
+
+  #activitiesToggle:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(15,37,87,0.35); }
+
+  /* Booking grid */
+  .booking-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+  }
+  .booking-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 18px 14px;
+    text-align: center;
+    transition: box-shadow 0.2s;
+  }
+  .booking-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .booking-card .bc-icon { font-size: 1.8rem; margin-bottom: 6px; }
+  .booking-card .bc-title { font-weight: 700; font-size: 0.88rem; color: #0F2557; margin-bottom: 4px; }
+  .booking-card .bc-desc { font-size: 0.78rem; color: #666; }
+
+  /* Drive times */
+  .drive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+  }
+  .drive-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 12px 16px;
+  }
+  .drive-item .di-icon { font-size: 1.3rem; flex-shrink: 0; }
+  .drive-item .di-name { font-weight: 600; font-size: 0.88rem; color: #0F2557; }
+  .drive-item .di-time { font-size: 0.78rem; color: #666; }
+
+  /* Resort facility cards */
+  .resort-card {
+    background: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+  .resort-card .rc-icon { font-size: 1.6rem; margin-bottom: 4px; }
+  .resort-card .rc-title { font-weight: 700; font-size: 0.85rem; color: #0F2557; margin-bottom: 4px; }
+  .resort-card .rc-desc { font-size: 0.78rem; color: #555; }
+</style>
+</head>
+<body>
+
+<nav class="country-nav" id="countryNav">
+  <div class="country-nav__inner">
+    <a href="showcase/index.html" class="country-nav__home">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg> Home
+    </a>
+    <a href="blog/index.html" class="country-nav__home" style="color:rgba(255,255,255,0.8);">&#x1F4DD; Blog</a>
+    <div class="country-nav__dropdown-wrap">
+      <button class="country-nav__toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+        &#x1F30D; Destinations <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
+      </button>
+      <div class="country-nav__menu" id="navMenu">
+        <a href="Austria_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z"/></svg> Austria</a>
+        <a href="Bulgaria_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 2.84L18 11v7h-2v-6H8v6H6v-7l6-5.16z"/></svg> Bulgaria</a>
+        <a href="CostaRica_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.71c.76.34 1.59.54 2.46.59L9 20c.5-4 4.17-8 9-8V8z"/></svg> Costa Rica</a>
+        <a href="CostaRica_Arenal_SingleBase_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.71c.76.34 1.59.54 2.46.59L9 20c.5-4 4.17-8 9-8V8z"/></svg> CR: Arenal</a>
+        <a href="CostaRica_Guanacaste_SingleBase_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.71c.76.34 1.59.54 2.46.59L9 20c.5-4 4.17-8 9-8V8z"/></svg> CR: Guanacaste</a>
+        <a href="Croatia_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20v4H2zm0 6h4v4H6v-2H4v4h4v-2h2v4H8v-2H4v4h20V10H2zm6 0h4v2h-2v2H8v-4zm6 0h4v2h-2v2h-2v-4z"/></svg> Croatia</a>
+        <a href="Croatia_Sibenik_Jet2Package_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20v4H2zm0 6h4v4H6v-2H4v4h4v-2h2v4H8v-2H4v4h20V10H2zm6 0h4v2h-2v2H8v-4zm6 0h4v2h-2v2h-2v-4z"/></svg> Croatia (Jet2)</a>
+        <a href="Croatia_Montenegro_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20v4H2zm0 6h4v4H6v-2H4v4h4v-2h2v4H8v-2H4v4h20V10H2zm6 0h4v2h-2v2H8v-4zm6 0h4v2h-2v2h-2v-4z"/></svg> DBV+Montenegro</a>
+        <a href="Egypt_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 21h18L12 3 3 21zm9-3l-4.5-9h9L12 18z"/></svg> Egypt</a>
+        <a href="France_Verdon_CotedAzur_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h6v18H3V3zm12 0h6v18h-6V3zM9 3h6v18H9V3z" opacity="0.8"/></svg> France</a>
+        <a href="France_Verdon_Jet2Package_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h6v18H3V3zm12 0h6v18h-6V3zM9 3h6v18H9V3z" opacity="0.8"/></svg> France (Jet2)</a>
+        <a href="Germany_Bavaria_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L8.5 8.5 2 9.5l5 4.5L5.5 21 12 17.5 18.5 21 17 14l5-4.5-6.5-1L12 2z"/></svg> Germany</a>
+        <a href="Japan_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg> Japan</a>
+        <a href="Sicily_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c3.31 0 6-2.69 6-6 0-4.96-4.49-9-10-9z"/></svg> Sicily</a>
+        <a href="Spain_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg> Spain</a>
+        <a href="Zambia_Activities_2026.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 21h18L12 3 3 21zm9-3l-4.5-9h9L12 18z"/></svg> Zambia</a>
+        <a href="Croatia_Zaton_Resort_2026.html" class="active"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20v4H2zm0 6h4v4H6v-2H4v4h4v-2h2v4H8v-2H4v4h20V10H2zm6 0h4v2h-2v2H8v-4zm6 0h4v2h-2v2h-2v-4z"/></svg> Zaton Resort</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" style="position:relative; overflow:hidden;">
+  <div class="hero__bg" style="position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1555990793-da11153b2473?w=1920&q=80') center/cover no-repeat;"></div>
+  <div class="hero__overlay" style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,37,87,.75) 0%, rgba(15,37,87,.9) 100%);"></div>
+  <div style="position:relative; z-index:2;">
+  <h1>&#x1F1ED;&#x1F1F7; Croatia: Zaton Holiday Resort &mdash; 75 Family Activities</h1>
+  <div class="subtitle">14 nights at Croatia&rsquo;s #1 family resort, near Zadar</div>
+  <div class="count">&#x1F3AF; 75 Activities Found</div>
+  <div class="family">&#x1F468;&#x200D;&#x1F469;&#x200D;&#x1F467;&#x200D;&#x1F466; For 2 Adults + Katie (17) + George (15) + Tom (8)</div>
+  <div style="margin-top:14px;font-size:0.88rem;opacity:0.85;">&#x2708;&#xFE0F; Ryanair LBA &rarr; Zadar direct (2hr 35, 2x/week summer) &middot; &#x26A0;&#xFE0F; Bags NOT included (budget ~&pound;360 extra for 4 hold bags return) &middot; OR Jet2 LBA &rarr; Split (2hr 45, bags included) + 2.5hr drive</div>
+  <div style="margin-top:8px;font-size:0.88rem;opacity:0.85;">&#x1F697; Zadar Airport &rarr; Zaton Resort: Just 25 minutes!</div>
+  </div>
+</div>
+
+<!-- ═══ Holiday Synopsis ═══ -->
+<div style="background: #fff; padding: 2.5rem 0; border-bottom: 1px solid #e8edf7;">
+  <div style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
+    <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; font-size: 1.4rem; margin-bottom: 12px;">&#x1F1ED;&#x1F1F7; The Holiday at a Glance</h3>
+    <p style="font-size: 0.95rem; color: #444; line-height: 1.8; margin-bottom: 12px;">Zaton Holiday Resort is the resort that other Croatian campsites wish they were. A 5,000m&sup2; water park with six slides and heated pools. A 1.5km sandy Blue Flag beach with its own inflatable sea aqua park. Twelve tennis courts, horse riding, diving, archery, and kids&rsquo; clubs that run all day. You&rsquo;re 16km from Zadar (with its famous Sea Organ and Sun Salutation), an hour from Krka&rsquo;s swimming waterfalls, and two hours from Plitvice Lakes. Stay in a Eurocamp mobile home with air-con and a terrace, and you&rsquo;ve got the perfect base for two weeks.</p>
+    <p style="font-size: 0.95rem; color: #444; line-height: 1.8; margin-bottom: 12px;">Tom will live between the water park slides and the inflatable sea course. George will be on the tennis courts, the go-karts, and pestering you about the diving course. Katie will photograph Zadar&rsquo;s sunset (Alfred Hitchcock called it &ldquo;the most beautiful in the world&rdquo;) and the Kornati Islands. Add day trips to Plitvice, Krka, and Paklenica Canyon, and you&rsquo;ve got Croatia&rsquo;s greatest hits &mdash; all from one resort. Bookable through Eurocamp, Roan, or direct.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px;">
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#x1F3CA; Water Park (6 slides)</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#x1F3D6;&#xFE0F; 1.5km Sandy Beach</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#x1F3A2; Sea Aqua Park</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#x1F476; Kids&rsquo; Clubs</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#x1F3BE; 12 Tennis Courts</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#x1F3C7; Horse Riding</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#x1F3DE;&#xFE0F; Plitvice &amp; Krka</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#x1F305; Zadar Sunsets</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#x1F3D5;&#xFE0F; Eurocamp Mobile Homes</span>
+      <span style="display:inline-block; background:#e8edf7; color:#0F2557; padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600;">&#x26F5; Kornati Islands</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ Booking Section ═══ -->
+<div style="background: linear-gradient(135deg, #0F2557 0%, #1B3C8F 100%); padding: 2.5rem 0; color: #fff;">
+  <div style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
+    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 16px;">&#x1F4E6; How to Book Zaton Holiday Resort</h3>
+    <div class="booking-grid">
+      <div class="booking-card" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: #fff;">
+        <div class="bc-icon">&#x2708;&#xFE0F;</div>
+        <div class="bc-title" style="color:#fff;">Flights</div>
+        <div class="bc-desc" style="color:rgba(255,255,255,0.8);">Ryanair LBA &rarr; Zadar direct</div>
+      </div>
+      <div class="booking-card" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: #fff;">
+        <div class="bc-icon">&#x1F3D5;&#xFE0F;</div>
+        <div class="bc-title" style="color:#fff;">Accommodation</div>
+        <div class="bc-desc" style="color:rgba(255,255,255,0.8);">Eurocamp mobile home, air-con</div>
+      </div>
+      <div class="booking-card" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: #fff;">
+        <div class="bc-icon">&#x1F697;</div>
+        <div class="bc-title" style="color:#fff;">Hire Car</div>
+        <div class="bc-desc" style="color:rgba(255,255,255,0.8);">Recommended for day trips</div>
+      </div>
+      <div class="booking-card" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: #fff;">
+        <div class="bc-icon">&#x26A0;&#xFE0F;</div>
+        <div class="bc-title" style="color:#fff;">Bags</div>
+        <div class="bc-desc" style="color:rgba(255,255,255,0.8);">Ryanair charges extra (~&pound;360)</div>
+      </div>
+      <div class="booking-card" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: #fff;">
+        <div class="bc-icon">&#x1F6E1;&#xFE0F;</div>
+        <div class="bc-title" style="color:#fff;">ABTA Protected</div>
+        <div class="bc-desc" style="color:rgba(255,255,255,0.8);">Eurocamp is ABTA member</div>
+      </div>
+      <div class="booking-card" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: #fff;">
+        <div class="bc-icon">&#x1F4B0;</div>
+        <div class="bc-title" style="color:#fff;">Low Deposit</div>
+        <div class="bc-desc" style="color:rgba(255,255,255,0.8);">Eurocamp from &pound;99pp</div>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 24px;">
+      <a href="https://www.eurocamp.co.uk/campsites/croatia/dalmatia/zaton-holiday-resort-campsite" target="_blank" style="display:inline-block; background:#FF6B35; color:#fff; padding:14px 36px; border-radius:10px; font-weight:700; font-size:1rem; text-decoration:none; box-shadow:0 4px 16px rgba(255,107,53,0.4); transition: all 0.2s;">Search Eurocamp &rarr; Zaton</a>
+    </div>
+    <p style="text-align:center; margin-top:10px; font-size:0.85rem; opacity:0.9;"><a href="https://www.zaton.hr/en/" target="_blank" style="color:#FF6B35; text-decoration:underline;">Or book direct at Zaton</a></p>
+    <p style="text-align:center; margin-top:14px; font-size:0.82rem; opacity:0.85;">&#x1F4A1; Also available via Roan, Suncamp, and Homair &mdash; compare prices!</p>
+  </div>
+</div>
+
+<!-- ═══ Resort Facilities ═══ -->
+<div style="background: #fff; padding: 2.5rem 0; border-bottom: 1px solid #e8edf7;">
+  <div style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
+    <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; font-size: 1.3rem; margin-bottom: 14px;">&#x1F3D6;&#xFE0F; What&rsquo;s at Zaton Holiday Resort</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+      <div class="resort-card">
+        <div class="rc-icon">&#x1F3CA;</div>
+        <div class="rc-title">Water Park Complex</div>
+        <div class="rc-desc">5,000m&sup2; &mdash; 6 slides, heated pools, splash park, lagoon pools, hydromassage.</div>
+      </div>
+      <div class="resort-card">
+        <div class="rc-icon">&#x1F3D6;&#xFE0F;</div>
+        <div class="rc-title">Sandy Beach &amp; Aqua Park</div>
+        <div class="rc-desc">1.5km Blue Flag beach, inflatable sea aqua park, sunbeds, shallow entry.</div>
+      </div>
+      <div class="resort-card">
+        <div class="rc-icon">&#x1F476;</div>
+        <div class="rc-title">Kids&rsquo; Clubs &amp; Animation</div>
+        <div class="rc-desc">Daily programme all ages, crafts, games, mini-disco, teen activities.</div>
+      </div>
+      <div class="resort-card">
+        <div class="rc-icon">&#x1F3BE;</div>
+        <div class="rc-title">Tennis &amp; Sports</div>
+        <div class="rc-desc">12 clay courts, lessons, tournaments. Plus volleyball, football, basketball.</div>
+      </div>
+      <div class="resort-card">
+        <div class="rc-icon">&#x1F3C7;</div>
+        <div class="rc-title">Horse Riding &amp; Archery</div>
+        <div class="rc-desc">Lessons and beach rides from resort stables. Archery have-a-go sessions.</div>
+      </div>
+      <div class="resort-card">
+        <div class="rc-icon">&#x1F37D;&#xFE0F;</div>
+        <div class="rc-title">Dining &amp; Restaurants</div>
+        <div class="rc-desc">Multiple restaurants, pizzeria, grill, supermarket, self-catering facilities.</div>
+      </div>
+      <div class="resort-card">
+        <div class="rc-icon">&#x1F3AD;</div>
+        <div class="rc-title">Evening Entertainment</div>
+        <div class="rc-desc">700-seat amphitheatre, live shows, themed nights, every evening.</div>
+      </div>
+      <div class="resort-card">
+        <div class="rc-icon">&#x1F52C;</div>
+        <div class="rc-title">Science Park &amp; Food Fun</div>
+        <div class="rc-desc">Interactive exhibits, cooking workshops, learning through play.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ Drive Times / Day Trips ═══ -->
+<div style="background: linear-gradient(135deg, #f0f4ff 0%, #e8edf7 100%); padding: 2rem 0; border-bottom: 1px solid #e0e0e0;">
+  <div style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
+    <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; font-size: 1.2rem; margin-bottom: 14px;">&#x1F697; Drive Times from Zaton</h3>
+    <div class="drive-grid">
+      <div class="drive-item">
+        <div class="di-icon">&#x2708;&#xFE0F;</div>
+        <div><div class="di-name">Zadar Airport</div><div class="di-time">25 min</div></div>
+      </div>
+      <div class="drive-item">
+        <div class="di-icon">&#x1F3DB;&#xFE0F;</div>
+        <div><div class="di-name">Zadar Old Town (Sea Organ)</div><div class="di-time">16km / 20 min</div></div>
+      </div>
+      <div class="drive-item">
+        <div class="di-icon">&#x1F3D6;&#xFE0F;</div>
+        <div><div class="di-name">Nin (saltworks, sandy beach)</div><div class="di-time">5km / 8 min</div></div>
+      </div>
+      <div class="drive-item">
+        <div class="di-icon">&#x1F3D4;&#xFE0F;</div>
+        <div><div class="di-name">Paklenica National Park</div><div class="di-time">45 min</div></div>
+      </div>
+      <div class="drive-item">
+        <div class="di-icon">&#x1F3DE;&#xFE0F;</div>
+        <div><div class="di-name">Krka National Park</div><div class="di-time">1 hr 15 min</div></div>
+      </div>
+      <div class="drive-item">
+        <div class="di-icon">&#x1F3F0;</div>
+        <div><div class="di-name">&Scaron;ibenik Old Town</div><div class="di-time">1 hr 20 min</div></div>
+      </div>
+      <div class="drive-item">
+        <div class="di-icon">&#x1F6A2;</div>
+        <div><div class="di-name">Kornati Islands (boat from Zadar)</div><div class="di-time">Full day trip</div></div>
+      </div>
+      <div class="drive-item">
+        <div class="di-icon">&#x1F4A7;</div>
+        <div><div class="di-name">Plitvice Lakes</div><div class="di-time">2 hrs</div></div>
+      </div>
+      <div class="drive-item">
+        <div class="di-icon">&#x1F3DB;&#xFE0F;</div>
+        <div><div class="di-name">Split</div><div class="di-time">2 hr 30 min</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ Weather Summary ═══ -->
+<div class="weather-section" style="background: linear-gradient(135deg, #f0f4ff 0%, #e8edf7 100%); padding: 2rem 0;">
+  <div style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
+    <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 16px; font-size: 1.2rem;">
+      &#x2600;&#xFE0F; August Weather &mdash; What to Expect
+    </h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 12px;">
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">&#x1F321;&#xFE0F;</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">29-32&deg;C</div>
+        <div style="font-size: 0.75rem; color: #666;">Avg. High</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">&#x1F319;</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">19-22&deg;C</div>
+        <div style="font-size: 0.75rem; color: #666;">Avg. Low</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">&#x2600;&#xFE0F;</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">10-13</div>
+        <div style="font-size: 0.75rem; color: #666;">Sun hrs/day</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">&#x1F327;&#xFE0F;</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">4-5 days</div>
+        <div style="font-size: 0.75rem; color: #666;">Rainy Days</div>
+      </div>
+      <div style="background: white; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <div style="font-size: 1.6rem;">&#x1F3CA;</div>
+        <div style="font-weight: 700; color: #0F2557; font-size: 1.1rem;">24-25&deg;C</div>
+        <div style="font-size: 0.75rem; color: #666;">Sea Temp</div>
+      </div>
+    </div>
+    <p style="font-size: 0.82rem; color: #555; line-height: 1.6; margin: 0;">
+      &#x2600;&#xFE0F; <strong>Hot, sunny, and perfect for the coast.</strong> August is peak season on the Dalmatian coast &mdash; expect blazing sunshine, warm seas, and minimal rain. Any showers are short-lived. The Adriatic is gorgeous for swimming and island-hopping. UV is very high. Book excursions and Krka in advance.
+    </p>
+  </div>
+</div>
+
+<!-- SUMMARY STATS -->
+<div class="summary-grid" style="max-width:1100px; margin:30px auto; padding:0 20px;">
+  <div class="summary-card"><div class="big-num">75</div><div class="label">Total Activities</div></div>
+  <div class="summary-card"><div class="big-num">18</div><div class="label">On-Resort</div></div>
+  <div class="summary-card"><div class="big-num">15</div><div class="label">Zadar &amp; Nearby</div></div>
+  <div class="summary-card"><div class="big-num">12</div><div class="label">National Parks &amp; Nature</div></div>
+  <div class="summary-card"><div class="big-num">12</div><div class="label">Water Adventures</div></div>
+  <div class="summary-card"><div class="big-num">8</div><div class="label">Culture &amp; Food</div></div>
+  <div class="summary-card"><div class="big-num">10</div><div class="label">Adventure</div></div>
+</div>
+<!-- Filters + Activity Map -->
+<div class="map-filter-layout">
+  <aside class="filter-sidebar" id="filterSidebar">
+  <h3>Filters</h3>
+  <div class="filter-count">Showing <span id="visibleCount">75</span> of 75 activities</div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Area</div>
+    <label><input type="checkbox" data-filter="area" value="resort"> &#x1F3D5;&#xFE0F; On-Resort</label>
+    <label><input type="checkbox" data-filter="area" value="zadar"> &#x1F3DB;&#xFE0F; Zadar &amp; Nearby</label>
+    <label><input type="checkbox" data-filter="area" value="nature"> &#x1F3DE;&#xFE0F; National Parks &amp; Nature</label>
+    <label><input type="checkbox" data-filter="area" value="water"> &#x1F30A; Water Adventures</label>
+    <label><input type="checkbox" data-filter="area" value="culture"> &#x1F37D;&#xFE0F; Culture &amp; Food</label>
+    <label><input type="checkbox" data-filter="area" value="adventure"> &#x26A1; Adventure</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Activity Type</div>
+    <label><input type="checkbox" data-filter="type" value="water"> &#x1F30A; Water</label>
+    <label><input type="checkbox" data-filter="type" value="adventure"> &#x26A1; Adventure</label>
+    <label><input type="checkbox" data-filter="type" value="culture"> &#x1F3DB;&#xFE0F; Culture</label>
+    <label><input type="checkbox" data-filter="type" value="beaches"> &#x1F3D6;&#xFE0F; Beaches</label>
+    <label><input type="checkbox" data-filter="type" value="nature"> &#x1F33F; Nature</label>
+    <label><input type="checkbox" data-filter="type" value="food"> &#x1F37D;&#xFE0F; Food &amp; Drink</label>
+    <label><input type="checkbox" data-filter="type" value="parks"> &#x1F3A2; Parks &amp; Fun</label>
+    <label><input type="checkbox" data-filter="type" value="resort"> &#x1F3E8; Resort</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Suitable for</div>
+    <label><input type="checkbox" data-filter="tom" value="yes"> &#x2705; Tom (8)</label>
+    <label><input type="checkbox" data-filter="teens" value="love"> &#x2B50; Teens love it</label>
+    <label><input type="checkbox" data-filter="family" value="yes"> &#x1F468;&#x200D;&#x1F469;&#x200D;&#x1F467;&#x200D;&#x1F466; Whole family</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Cost</div>
+    <label><input type="checkbox" data-filter="cost" value="free"> Free / Included</label>
+    <label><input type="checkbox" data-filter="cost" value="budget"> Budget (under &euro;25pp)</label>
+    <label><input type="checkbox" data-filter="cost" value="mid"> Mid-range (&euro;25-60pp)</label>
+    <label><input type="checkbox" data-filter="cost" value="premium"> Premium (&euro;60+pp)</label>
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-group-title">Special</div>
+    <label><input type="checkbox" data-filter="mustdo" value="true"> &#x2B50; Must-do highlights only</label>
+  </div>
+
+  <button class="clear-filters" onclick="clearFilters()">Clear all filters</button>
+</aside>
+  <div class="map-filter-layout__map">
+
+  <h3 style="font-family: 'Playfair Display', serif; color: #0F2557; margin-bottom: 4px; font-size: 1.3rem;">&#x1F4CD; Activity Map</h3>
+  <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">
+    <span id="map-count">75 activities shown</span> &mdash;
+    <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#FF6B35;vertical-align:middle;"></span> Must-do
+    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#1B3C8F;vertical-align:middle;margin-left:8px;"></span> Other activities.
+    Use the filters to narrow down.
+    <label style="display:inline-flex;align-items:center;gap:4px;margin-left:12px;font-size:0.85rem;color:#2d9a2d;cursor:pointer;">
+      <input type="checkbox" id="accom-toggle" checked onchange="toggleAccom(this.checked)" style="accent-color:#2d9a2d;"> &#127965; Accommodation
+    </label>
+  </p>
+  <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.12); border: 2px solid #1B3C8F;">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <div id="mustdo-map" style="width:100%; height:500px;"></div>
+    <div style="padding: 12px 16px; background: #f8f9fa; max-height: 350px; overflow-y: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: 'Inter', sans-serif;">
+        <thead>
+          <tr style="border-bottom: 2px solid #1B3C8F; color: #0F2557; position: sticky; top: 0; background: #f8f9fa;">
+            <th style="text-align: left; padding: 5px 8px; width: 40px;">#</th>
+            <th style="text-align: left; padding: 5px 8px;">Activity</th>
+            <th style="text-align: right; padding: 5px 8px; width: 140px;">Links</th>
+          </tr>
+        </thead>
+        <tbody id="map-table-body"></tbody>
+      </table>
+    </div>
+  </div>
+  </div>
+</div>
+
+
+<!-- ═══ Activities Accordion ═══ -->
+<div style="max-width: 1100px; margin: 2rem auto; padding: 0 20px;">
+  <button id="activitiesToggle" onclick="toggleActivities()" style="
+    width: 100%;
+    padding: 18px 24px;
+    background: linear-gradient(135deg, #0F2557 0%, #1B3C8F 100%);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 4px 20px rgba(15,37,87,0.25);
+    transition: all 0.3s;
+  ">
+    <span id="activitiesToggleIcon">&#x25BC;</span>
+    <span id="activitiesToggleText">Show All Activities</span>
+    <span style="background: #FF6B35; padding: 3px 12px; border-radius: 20px; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600;">75</span>
+  </button>
+</div>
+<div id="activitiesSection" style="display: none; overflow: hidden;">
+<button class="filter-toggle" onclick="toggleFilters()" aria-label="Toggle filters">&#x2699;&#xFE0F;</button>
+<div class="filter-overlay" id="filterOverlay" onclick="toggleFilters()"></div>
+
+<div class="page-layout">
+<div class="main-content">
+<div class="container">
+
+<!-- TOP 12 MUST-DO -->
+<div class="top10">
+  <h2>&#x2B50; The Unmissable 12</h2>
+  <ol>
+    <li>&#x1F3CA; <strong>Water Park Complex</strong> &mdash; 5,000m&sup2; of slides, heated pools, splash park</li>
+    <li>&#x1F3D6;&#xFE0F; <strong>Sandy Beach</strong> &mdash; 1.5km Blue Flag, gentle shallow entry</li>
+    <li>&#x1F3B5; <strong>Zadar Sea Organ</strong> &mdash; Musical organ played by the sea waves</li>
+    <li>&#x2600;&#xFE0F; <strong>Sun Salutation</strong> &mdash; Solar-powered light installation</li>
+    <li>&#x1F305; <strong>Zadar Sunset</strong> &mdash; Hitchcock&rsquo;s &ldquo;most beautiful sunset in the world&rdquo;</li>
+    <li>&#x1F3D6;&#xFE0F; <strong>Nin (Queen&rsquo;s Beach)</strong> &mdash; Sandy lagoon beach, ancient Croatian town</li>
+    <li>&#x1F4A7; <strong>Plitvice Lakes</strong> &mdash; 16 cascading turquoise lakes</li>
+    <li>&#x1F3DE;&#xFE0F; <strong>Krka National Park</strong> &mdash; Swim at the base of waterfalls</li>
+    <li>&#x1F3D4;&#xFE0F; <strong>Paklenica National Park</strong> &mdash; Dramatic gorge, rock climbing</li>
+    <li>&#x1F6A2; <strong>Kornati Islands Boat Trip</strong> &mdash; 89 island archipelago</li>
+    <li>&#x1F3DD;&#xFE0F; <strong>Dugi Otok (Sakarun Beach)</strong> &mdash; Famous white sand beach</li>
+    <li>&#x1F9D7; <strong>Paklenica Rock Climbing</strong> &mdash; World-class climbing</li>
+  </ol>
+</div><!-- ═══ SECTION 1: ON-RESORT ═══ -->
+<div class="section-header verdon" data-section="resort">
+  <div class="icon">&#x1F3D5;&#xFE0F;</div>
+  <h2>On-Resort &mdash; Zaton Holiday Resort</h2>
+  <p>Everything at your doorstep</p>
+</div>
+<div class="verdon-section" data-section-wrap="resort">
+
+<div class="category-header" data-cat-type="parks" data-cat-area="resort">
+  <span class="cat-icon">&#x1F3CA;</span>
+  <h3>Resort Fun &amp; Facilities</h3>
+  <span class="cat-count">18 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="resort" data-type="parks" data-tom="yes" data-teens="love" data-cost="free" data-num="1" data-lat="44.2200" data-lng="15.1650" data-mustdo="true">
+  <div class="activity-num">1</div>
+  <div class="activity-content">
+    <h4>Water Park Complex</h4>
+    <div class="activity-desc">5,000m&sup2; of pure water fun &mdash; 6 slides, heated lagoon pools, splash park, hydromassage. Included with your stay. Tom will never want to leave.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom &#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">Included</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">&#x1F4CD; On-Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card highlight" data-area="resort" data-type="beaches" data-tom="yes" data-teens="love" data-cost="free" data-num="2" data-lat="44.2210" data-lng="15.1680" data-mustdo="true">
+  <div class="activity-num">2</div>
+  <div class="activity-content">
+    <h4>Sandy Beach (1.5km)</h4>
+    <div class="activity-desc">Blue Flag sandy beach with gentle shallow entry, sunbeds, perfect for families. 1.5km of golden sand. Included.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom &#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag teen-ok">&#x2B50;&#x2B50;&#x2B50; Katie</span>
+      <span class="tag cost">Included</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">&#x1F4CD; On-Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="3" data-lat="44.2215" data-lng="15.1690">
+  <div class="activity-num">3</div>
+  <div class="activity-content">
+    <h4>Sea Aqua Park</h4>
+    <div class="activity-desc">Giant inflatable obstacle course on the sea &mdash; bouncing, climbing, sliding into the Adriatic. ~&euro;15/hr.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom &#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">~&euro;15/hr</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-verdon">&#x1F4CD; On-Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="resort" data-tom="yes" data-teens="ok" data-cost="free" data-num="4" data-lat="44.2200" data-lng="15.1645">
+  <div class="activity-num">4</div>
+  <div class="activity-content">
+    <h4>Kids&rsquo; Club</h4>
+    <div class="activity-desc">Daily supervised programme for all ages &mdash; crafts, games, treasure hunts, mini-disco. Included. Perfect for Tom while teens explore.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom &#x2B50;&#x2B50;&#x2B50;&#x2B50;</span>
+      <span class="tag teen-ok">Teens: N/A</span>
+      <span class="tag cost">Included</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">&#x1F4CD; On-Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="resort" data-tom="yes" data-teens="love" data-cost="free" data-num="5" data-lat="44.2195" data-lng="15.1640">
+  <div class="activity-num">5</div>
+  <div class="activity-content">
+    <h4>Evening Entertainment</h4>
+    <div class="activity-desc">Live shows in the 700-seat amphitheatre, themed nights, Croatian folk evenings, pool parties. Something different every night. Included.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">Included</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">&#x1F4CD; On-Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="adventure" data-tom="check" data-teens="love" data-cost="budget" data-num="6" data-lat="44.2190" data-lng="15.1630">
+  <div class="activity-num">6</div>
+  <div class="activity-content">
+    <h4>Tennis Courts (12 clay)</h4>
+    <div class="activity-desc">12 clay courts with lessons and free play. Tournament weeks in summer. George will organise a family championship. ~&euro;10-15/hr.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">&#x26A0;&#xFE0F; Tom (with parents)</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50; George &#x2764;</span>
+      <span class="tag cost">~&euro;10-15/hr</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-verdon">&#x1F4CD; On-Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="adventure" data-tom="yes" data-teens="love" data-cost="mid" data-num="7" data-lat="44.2180" data-lng="15.1620">
+  <div class="activity-num">7</div>
+  <div class="activity-content">
+    <h4>Horse Riding</h4>
+    <div class="activity-desc">Lessons and beach rides from resort stables. Tom gets a pony ride, teens get proper hacks along the coast. ~&euro;30-50/hr.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom (pony)</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">~&euro;30-50/hr</span>
+      <span class="tag cost-mid">&euro;25-60pp</span>
+      <span class="tag week-verdon">&#x1F4CD; On-Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="water" data-tom="check" data-teens="love" data-cost="premium" data-num="8" data-lat="44.2220" data-lng="15.1700">
+  <div class="activity-num">8</div>
+  <div class="activity-content">
+    <h4>Scuba Diving Centre</h4>
+    <div class="activity-desc">PADI courses and intro dives from the resort. Crystal-clear Adriatic. Discover Scuba for teens (10+). ~&euro;60-90.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">&#x26A0;&#xFE0F; Tom (10+ only)</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">~&euro;60-90</span>
+      <span class="tag cost-premium">&euro;60+pp</span>
+      <span class="tag week-verdon">&#x1F4CD; On-Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="water" data-tom="check" data-teens="love" data-cost="mid" data-num="9" data-lat="44.2225" data-lng="15.1710">
+  <div class="activity-num">9</div>
+  <div class="activity-content">
+    <h4>Windsurfing School</h4>
+    <div class="activity-desc">Learn to windsurf on the bay. George will be attempting tricks by day two. ~&euro;40-60/session.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">&#x26A0;&#xFE0F; Tom (too young)</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50; George &#x2764;</span>
+      <span class="tag cost">~&euro;40-60</span>
+      <span class="tag cost-mid">&euro;25-60pp</span>
+      <span class="tag week-verdon">&#x1F4CD; On-Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="adventure" data-tom="yes" data-teens="love" data-cost="budget" data-num="10" data-lat="44.2185" data-lng="15.1625">
+  <div class="activity-num">10</div>
+  <div class="activity-content">
+    <h4>Archery</h4>
+    <div class="activity-desc">Have-a-go sessions and courses at the resort range. Tom will pretend he&rsquo;s Robin Hood. ~&euro;10-15.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom &#x2B50;&#x2B50;&#x2B50;&#x2B50;</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">~&euro;10-15</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-verdon">&#x1F4CD; On-Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="parks" data-tom="yes" data-teens="love" data-cost="budget" data-num="11" data-lat="44.2192" data-lng="15.1635">
+  <div class="activity-num">11</div>
+  <div class="activity-content">
+    <h4>Mini Golf</h4>
+    <div class="activity-desc">18-hole course within the resort. Evening family competition after dinner. ~&euro;5-8.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom &#x2B50;&#x2B50;&#x2B50;&#x2B50;</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">~&euro;5-8</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-verdon">&#x1F4CD; On-Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="adventure" data-tom="check" data-teens="love" data-cost="budget" data-num="12" data-lat="44.2200" data-lng="15.1650">
+  <div class="activity-num">12</div>
+  <div class="activity-content">
+    <h4>Bike Rental</h4>
+    <div class="activity-desc">Explore the resort and nearby coast by bike. Cycle to Nin or along the shore. ~&euro;10-15/day.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">&#x26A0;&#xFE0F; Tom (with parents)</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">~&euro;10-15/day</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-verdon">&#x1F4CD; On-Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="adventure" data-tom="yes" data-teens="love" data-cost="free" data-num="13" data-lat="44.2212" data-lng="15.1685">
+  <div class="activity-num">13</div>
+  <div class="activity-content">
+    <h4>Beach Volleyball</h4>
+    <div class="activity-desc">Multiple courts right on the beach. George will be organising tournaments by day two. Free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">&#x1F4CD; On-Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="14" data-lat="44.2218" data-lng="15.1695">
+  <div class="activity-num">14</div>
+  <div class="activity-content">
+    <h4>Kayak &amp; SUP Rental</h4>
+    <div class="activity-desc">Paddle along the coast, explore rocky coves. Katie will want her camera in a dry bag. ~&euro;15-25/hr.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom (with adult)</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50; Katie</span>
+      <span class="tag cost">~&euro;15-25/hr</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-verdon">&#x1F4CD; On-Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="parks" data-tom="yes" data-teens="ok" data-cost="free" data-num="15" data-lat="44.2198" data-lng="15.1642">
+  <div class="activity-num">15</div>
+  <div class="activity-content">
+    <h4>Science Park</h4>
+    <div class="activity-desc">Interactive exhibits, experiments, learning through play. Tom will spend hours here on a rainy day. Included.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom &#x2B50;&#x2B50;&#x2B50;&#x2B50;</span>
+      <span class="tag teen-ok">&#x2705; Teens</span>
+      <span class="tag cost">Included</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">&#x1F4CD; On-Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="food" data-tom="yes" data-teens="love" data-cost="budget" data-num="16" data-lat="44.2197" data-lng="15.1643">
+  <div class="activity-num">16</div>
+  <div class="activity-content">
+    <h4>Food &amp; Fun Centre</h4>
+    <div class="activity-desc">Cooking workshops, interactive food exhibits, and hands-on activities. ~&euro;5-10.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">~&euro;5-10</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-verdon">&#x1F4CD; On-Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="resort" data-tom="yes" data-teens="love" data-cost="mid" data-num="17" data-lat="44.2205" data-lng="15.1660">
+  <div class="activity-num">17</div>
+  <div class="activity-content">
+    <h4>Glamping Village (NEW 2026)</h4>
+    <div class="activity-desc">Brand new for 2026 &mdash; premium glamping tents with full resort access. An alternative to mobile homes for the Instagram generation.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">Accommodation</span>
+      <span class="tag cost-mid">&euro;25-60pp</span>
+      <span class="tag week-verdon">&#x1F4CD; On-Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="resort" data-type="food" data-tom="yes" data-teens="love" data-cost="free" data-num="18" data-lat="44.2200" data-lng="15.1648">
+  <div class="activity-num">18</div>
+  <div class="activity-content">
+    <h4>Resort Restaurants &amp; BBQ</h4>
+    <div class="activity-desc">Multiple restaurants, pizzeria, grill areas. Self-catering options from the on-site supermarket. Something for everyone.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">Variable</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">&#x1F4CD; On-Resort</span>
+    </div>
+  </div>
+</div>
+</div>
+<!-- ═══ SECTION 2: ZADAR & NEARBY ═══ -->
+<div class="section-header azur" data-section="zadar">
+  <div class="icon">&#x1F3DB;&#xFE0F;</div>
+  <h2>Zadar &amp; Nearby</h2>
+  <p>Sea Organ, sunsets &amp; ancient streets</p>
+</div>
+<div class="azur-section" data-section-wrap="zadar">
+
+<div class="category-header" data-cat-type="culture" data-cat-area="zadar">
+  <span class="cat-icon">&#x1F3DB;&#xFE0F;</span>
+  <h3>Culture &amp; Sightseeing</h3>
+  <span class="cat-count">15 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="zadar" data-type="culture" data-tom="yes" data-teens="love" data-cost="free" data-num="19" data-lat="44.1194" data-lng="15.2214" data-mustdo="true">
+  <div class="activity-num azur-num">19</div>
+  <div class="activity-content">
+    <h4><a href="https://www.zadar.travel/en/sea-organ" target="_blank">Zadar Sea Organ</a></h4>
+    <div class="activity-desc">Unique musical instrument played by the sea waves beneath the marble steps. Sit, listen, and watch the world go by. Free. MUST-DO.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom &#x2B50;&#x2B50;&#x2B50;&#x2B50;</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50; Katie</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">&#x1F4CD; Zadar</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.zadar.travel/en/sea-organ" target="_blank">Info &rarr;</a></div>
+</div>
+
+<div class="activity-card highlight" data-area="zadar" data-type="culture" data-tom="yes" data-teens="love" data-cost="free" data-num="20" data-lat="44.1190" data-lng="15.2220" data-mustdo="true">
+  <div class="activity-num azur-num">20</div>
+  <div class="activity-content">
+    <h4>Sun Salutation</h4>
+    <div class="activity-desc">22-metre solar-powered light installation that creates a mesmerising light show at sunset. Right next to the Sea Organ. Free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50; Katie</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">&#x1F4CD; Zadar</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="zadar" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="21" data-lat="44.1150" data-lng="15.2250">
+  <div class="activity-num azur-num">21</div>
+  <div class="activity-content">
+    <h4>Zadar Old Town Walk</h4>
+    <div class="activity-desc">Roman forum, medieval churches, narrow streets, and some of the best gelato in Dalmatia. Free to wander.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom</span>
+      <span class="tag teen-ok">&#x2705; Teens</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">&#x1F4CD; Zadar</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card highlight" data-area="zadar" data-type="nature" data-tom="yes" data-teens="love" data-cost="free" data-num="22" data-lat="44.1194" data-lng="15.2210" data-mustdo="true">
+  <div class="activity-num azur-num">22</div>
+  <div class="activity-content">
+    <h4>Zadar Sunset</h4>
+    <div class="activity-desc">Alfred Hitchcock called it &ldquo;the most beautiful sunset in the world.&rdquo; Watch from the Riva promenade with gelato. Free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50; Katie</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">&#x1F4CD; Zadar</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card highlight" data-area="zadar" data-type="beaches" data-tom="yes" data-teens="love" data-cost="free" data-num="23" data-lat="44.2363" data-lng="15.1797" data-mustdo="true">
+  <div class="activity-num azur-num">23</div>
+  <div class="activity-content">
+    <h4>Nin (Queen&rsquo;s Beach)</h4>
+    <div class="activity-desc">Sandy lagoon beach with healing mud, ancient Croatian town, salt museum. Only 5km from Zaton. Free beach.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom &#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">&#x1F4CD; Nin</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="zadar" data-type="culture" data-tom="yes" data-teens="ok" data-cost="budget" data-num="24" data-lat="44.2370" data-lng="15.1850">
+  <div class="activity-num azur-num">24</div>
+  <div class="activity-content">
+    <h4>Nin Saltworks</h4>
+    <div class="activity-desc">See traditional salt harvesting that&rsquo;s been going on for thousands of years. Buy local salt products as souvenirs. ~&euro;5.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom</span>
+      <span class="tag teen-ok">&#x2705; Teens</span>
+      <span class="tag cost">~&euro;5</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-azur">&#x1F4CD; Nin</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="zadar" data-type="culture" data-tom="check" data-teens="love" data-cost="budget" data-num="25" data-lat="44.1160" data-lng="15.2230">
+  <div class="activity-num azur-num">25</div>
+  <div class="activity-content">
+    <h4><a href="https://www.mas-zadar.hr/en/" target="_blank">Museum of Ancient Glass</a></h4>
+    <div class="activity-desc">Beautiful blown glass collection in a restored palace. Watch glass-blowing demonstrations. ~&euro;7. Katie will love it.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">&#x26A0;&#xFE0F; Tom (might be bored)</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50; Katie</span>
+      <span class="tag cost">~&euro;7</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-azur">&#x1F4CD; Zadar</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.mas-zadar.hr/en/" target="_blank">Info &rarr;</a></div>
+</div>
+
+<div class="activity-card" data-area="zadar" data-type="culture" data-tom="yes" data-teens="love" data-cost="free" data-num="26" data-lat="44.1190" data-lng="15.2218">
+  <div class="activity-num azur-num">26</div>
+  <div class="activity-content">
+    <h4>Greeting to the Sun</h4>
+    <div class="activity-desc">Circular solar installation embedded in the promenade, lights up with an LED show at night. Tom will want to run around on it. Free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom &#x2B50;&#x2B50;&#x2B50;&#x2B50;</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">&#x1F4CD; Zadar</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="zadar" data-type="food" data-tom="yes" data-teens="ok" data-cost="free" data-num="27" data-lat="44.1155" data-lng="15.2240">
+  <div class="activity-num azur-num">27</div>
+  <div class="activity-content">
+    <h4>Zadar Food Market</h4>
+    <div class="activity-desc">Fresh produce, cheese, Dalmatian ham, olive oil, figs. Stock up for the mobile home. Free to browse.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom</span>
+      <span class="tag teen-ok">&#x2705; Teens</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">&#x1F4CD; Zadar</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="zadar" data-type="water" data-tom="yes" data-teens="love" data-cost="mid" data-num="28" data-lat="44.1180" data-lng="15.2200">
+  <div class="activity-num azur-num">28</div>
+  <div class="activity-content">
+    <h4>Boat Trip from Zadar</h4>
+    <div class="activity-desc">Harbour cruise, island hopping, or sunset trip from Zadar port. Multiple operators and durations. ~&euro;25-40pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">~&euro;25-40pp</span>
+      <span class="tag cost-mid">&euro;25-60pp</span>
+      <span class="tag week-azur">&#x1F4CD; Zadar</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="zadar" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="29" data-lat="44.1170" data-lng="15.2260">
+  <div class="activity-num azur-num">29</div>
+  <div class="activity-content">
+    <h4>Zadar City Walls Walk</h4>
+    <div class="activity-desc">Walk the medieval fortifications above the harbour. Part of UNESCO Venetian defence works. Free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom</span>
+      <span class="tag teen-ok">&#x2705; Teens</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">&#x1F4CD; Zadar</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="zadar" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="30" data-lat="44.1140" data-lng="15.2270">
+  <div class="activity-num azur-num">30</div>
+  <div class="activity-content">
+    <h4>Land Gate &amp; Five Wells Square</h4>
+    <div class="activity-desc">Historic Renaissance gate, the main entrance to old town. Five Wells Square has a lovely park with views. Free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom</span>
+      <span class="tag teen-ok">&#x2705; Teens</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">&#x1F4CD; Zadar</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="zadar" data-type="culture" data-tom="check" data-teens="ok" data-cost="budget" data-num="31" data-lat="44.1155" data-lng="15.2245">
+  <div class="activity-num azur-num">31</div>
+  <div class="activity-content">
+    <h4>St Donatus Church</h4>
+    <div class="activity-desc">9th century round church, one of Zadar&rsquo;s icons. Summer evening concerts. ~&euro;3-5.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">&#x26A0;&#xFE0F; Tom</span>
+      <span class="tag teen-ok">&#x2705; Teens</span>
+      <span class="tag cost">~&euro;3-5</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-azur">&#x1F4CD; Zadar</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="zadar" data-type="nature" data-tom="yes" data-teens="ok" data-cost="budget" data-num="32" data-lat="43.8950" data-lng="15.5700">
+  <div class="activity-num azur-num">32</div>
+  <div class="activity-content">
+    <h4>Vransko Lake Nature Park</h4>
+    <div class="activity-desc">Largest lake in Croatia, excellent birdwatching, cycling paths. A peaceful day away from the coast. ~&euro;2-5.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom</span>
+      <span class="tag teen-ok">&#x2705; Teens</span>
+      <span class="tag cost">~&euro;2-5</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-azur">&#x1F4CD; 1hr drive</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="zadar" data-type="food" data-tom="check" data-teens="ok" data-cost="budget" data-num="33" data-lat="44.1100" data-lng="15.2100">
+  <div class="activity-num azur-num">33</div>
+  <div class="activity-content">
+    <h4>Olive Oil Tasting</h4>
+    <div class="activity-desc">Visit olive groves in the Zadar region, taste award-winning oils, buy bottles to take home. ~&euro;15-25pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">Tom: juice option</span>
+      <span class="tag teen-ok">&#x2705; Teens</span>
+      <span class="tag cost">~&euro;15-25pp</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-azur">&#x1F4CD; Zadar region</span>
+    </div>
+  </div>
+</div>
+</div>
+<!-- ═══ SECTION 3: NATIONAL PARKS & NATURE ═══ -->
+<div class="section-header verdon" data-section="nature">
+  <div class="icon">&#x1F3DE;&#xFE0F;</div>
+  <h2>National Parks &amp; Nature</h2>
+  <p>Waterfalls, lakes, islands &amp; canyons</p>
+</div>
+<div class="verdon-section" data-section-wrap="nature">
+
+<div class="category-header" data-cat-type="nature" data-cat-area="nature">
+  <span class="cat-icon">&#x1F3DE;&#xFE0F;</span>
+  <h3>Parks &amp; Nature</h3>
+  <span class="cat-count">12 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="nature" data-type="nature" data-tom="yes" data-teens="love" data-cost="mid" data-num="34" data-lat="44.8654" data-lng="15.5821" data-mustdo="true">
+  <div class="activity-num">34</div>
+  <div class="activity-content">
+    <h4><a href="https://np-plitvicka-jezera.hr/en/" target="_blank">Plitvice Lakes</a></h4>
+    <div class="activity-desc">16 cascading turquoise lakes connected by waterfalls, wooden boardwalks, boat ride. One of Europe&rsquo;s most stunning natural wonders. ~&euro;40-47pp guided tour.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom &#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">~&euro;40-47pp</span>
+      <span class="tag cost-mid">&euro;25-60pp</span>
+      <span class="tag week-verdon">&#x1F4CD; 2hr drive</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://np-plitvicka-jezera.hr/en/" target="_blank">Info &rarr;</a></div>
+</div>
+
+<div class="activity-card highlight" data-area="nature" data-type="nature" data-tom="yes" data-teens="love" data-cost="mid" data-num="35" data-lat="43.8017" data-lng="15.9617" data-mustdo="true">
+  <div class="activity-num">35</div>
+  <div class="activity-content">
+    <h4><a href="https://www.np-krka.hr/en/" target="_blank">Krka National Park</a></h4>
+    <div class="activity-desc">Swim at the base of waterfalls! Stunning cascades, boat to Visovac monastery island. The photos don&rsquo;t do it justice. ~&euro;35-47pp guided.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom &#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">~&euro;35-47pp</span>
+      <span class="tag cost-mid">&euro;25-60pp</span>
+      <span class="tag week-verdon">&#x1F4CD; 1hr 15min</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://www.np-krka.hr/en/" target="_blank">Info &rarr;</a></div>
+</div>
+
+<div class="activity-card highlight" data-area="nature" data-type="nature" data-tom="check" data-teens="love" data-cost="budget" data-num="36" data-lat="44.3650" data-lng="15.4350" data-mustdo="true">
+  <div class="activity-num">36</div>
+  <div class="activity-content">
+    <h4><a href="https://np-paklenica.hr/en/" target="_blank">Paklenica National Park</a></h4>
+    <div class="activity-desc">Dramatic gorge, rock climbing, caves, canyon hiking. George will want to climb everything. Park ~&euro;8-10.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">&#x26A0;&#xFE0F; Tom (easier trails)</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50; George &#x2764;</span>
+      <span class="tag cost">~&euro;8-10</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-verdon">&#x1F4CD; 45min</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://np-paklenica.hr/en/" target="_blank">Info &rarr;</a></div>
+</div>
+
+<div class="activity-card highlight" data-area="nature" data-type="water" data-tom="yes" data-teens="love" data-cost="premium" data-num="37" data-lat="43.7833" data-lng="15.3333" data-mustdo="true">
+  <div class="activity-num">37</div>
+  <div class="activity-content">
+    <h4>Kornati Islands Boat Trip</h4>
+    <div class="activity-desc">Full day through 89-island archipelago &mdash; swimming stops, fresh fish lunch on board, crystal-clear sea. ~&euro;75-85pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom &#x2B50;&#x2B50;&#x2B50;&#x2B50;</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">~&euro;75-85pp</span>
+      <span class="tag cost-premium">&euro;60+pp</span>
+      <span class="tag week-verdon">&#x1F4CD; Full day</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="nature" data-type="nature" data-tom="yes" data-teens="love" data-cost="free" data-num="38" data-lat="43.8833" data-lng="15.1667">
+  <div class="activity-num">38</div>
+  <div class="activity-content">
+    <h4>Tela&scaron;&cacute;ica Nature Park</h4>
+    <div class="activity-desc">Salt lake, dramatic cliffs, dolphins. Often combined with Kornati boat trip. Included in Kornati trip.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">Included</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">&#x1F4CD; Kornati trip</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="nature" data-type="adventure" data-tom="check" data-teens="love" data-cost="mid" data-num="39" data-lat="44.2000" data-lng="15.7500">
+  <div class="activity-num">39</div>
+  <div class="activity-content">
+    <h4>Zrmanja River Kayaking</h4>
+    <div class="activity-desc">Paddle through a stunning canyon with crystal-clear water. Winnetou films were shot here. ~&euro;45-65pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">&#x26A0;&#xFE0F; Tom (12+ usually)</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50; George &#x2764;</span>
+      <span class="tag cost">~&euro;45-65pp</span>
+      <span class="tag cost-mid">&euro;25-60pp</span>
+      <span class="tag week-verdon">&#x1F4CD; Day trip</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="nature" data-type="nature" data-tom="yes" data-teens="love" data-cost="budget" data-num="40" data-lat="44.1100" data-lng="15.1200">
+  <div class="activity-num">40</div>
+  <div class="activity-content">
+    <h4>Ugljan Island Day Trip</h4>
+    <div class="activity-desc">Ferry from Zadar (just 15min!), cycling, olive groves, quiet beaches. A relaxed island day. Ferry ~&euro;5 return.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">~&euro;5 ferry</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-verdon">&#x1F4CD; Zadar ferry</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card highlight" data-area="nature" data-type="beaches" data-tom="yes" data-teens="love" data-cost="mid" data-num="41" data-lat="44.0800" data-lng="14.9000" data-mustdo="true">
+  <div class="activity-num">41</div>
+  <div class="activity-content">
+    <h4>Dugi Otok (Sakarun Beach)</h4>
+    <div class="activity-desc">Famous white sand beach and turquoise bay &mdash; Croatia&rsquo;s answer to the Caribbean. Ferry + taxi. ~&euro;20-30pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50; Katie</span>
+      <span class="tag cost">~&euro;20-30pp</span>
+      <span class="tag cost-mid">&euro;25-60pp</span>
+      <span class="tag week-verdon">&#x1F4CD; Ferry day trip</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="nature" data-type="nature" data-tom="yes" data-teens="love" data-cost="budget" data-num="42" data-lat="44.4400" data-lng="14.9600">
+  <div class="activity-num">42</div>
+  <div class="activity-content">
+    <h4>Pag Island</h4>
+    <div class="activity-desc">Famous for Pag cheese, moon-like landscapes, and Zr&cacute;e party beach (for the teens to look at from afar). ~&euro;5 bridge toll.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">~&euro;5</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-verdon">&#x1F4CD; Day trip</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="nature" data-type="nature" data-tom="yes" data-teens="ok" data-cost="free" data-num="43" data-lat="44.3000" data-lng="15.4500">
+  <div class="activity-num">43</div>
+  <div class="activity-content">
+    <h4>Starigrad Paklenica</h4>
+    <div class="activity-desc">Base town for Paklenica &mdash; pleasant beaches, cafes, and a gateway to the gorge. Free to explore.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom</span>
+      <span class="tag teen-ok">&#x2705; Teens</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">&#x1F4CD; 45min</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="nature" data-type="nature" data-tom="check" data-teens="love" data-cost="free" data-num="44" data-lat="44.1800" data-lng="15.8200">
+  <div class="activity-num">44</div>
+  <div class="activity-content">
+    <h4>Krupa River Waterfall</h4>
+    <div class="activity-desc">Hidden waterfall, stunning swimming spot, easy hike through gorgeous scenery. Katie&rsquo;s camera will thank you. Free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">&#x26A0;&#xFE0F; Tom (scrambling)</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50; Katie</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-verdon">&#x1F4CD; Day trip</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="nature" data-type="nature" data-tom="yes" data-teens="love" data-cost="budget" data-num="45" data-lat="44.2700" data-lng="15.5000">
+  <div class="activity-num">45</div>
+  <div class="activity-content">
+    <h4>Modri&ccaron; Cave</h4>
+    <div class="activity-desc">Guided tour of an underground cave system with stunning stalactites and stalagmites. ~&euro;10-15pp. Tom loves caves.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom &#x2B50;&#x2B50;&#x2B50;&#x2B50;</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">~&euro;10-15pp</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-verdon">&#x1F4CD; Near Paklenica</span>
+    </div>
+  </div>
+</div>
+</div>
+<!-- ═══ SECTION 4: WATER ADVENTURES ═══ -->
+<div class="section-header azur" data-section="water">
+  <div class="icon">&#x1F30A;</div>
+  <h2>Water Adventures</h2>
+  <p>Jet skis, parasailing &amp; Adriatic fun</p>
+</div>
+<div class="azur-section" data-section-wrap="water">
+
+<div class="category-header" data-cat-type="water" data-cat-area="water">
+  <span class="cat-icon">&#x1F30A;</span>
+  <h3>Sea &amp; Water Fun</h3>
+  <span class="cat-count">12 activities</span>
+</div>
+
+<div class="activity-card" data-area="water" data-type="water" data-tom="check" data-teens="love" data-cost="premium" data-num="46" data-lat="44.2220" data-lng="15.1700">
+  <div class="activity-num azur-num">46</div>
+  <div class="activity-content">
+    <h4>Jet Ski Rental</h4>
+    <div class="activity-desc">Speed along the coast on a jet ski. Teens must be 16+. George is counting the days. ~&euro;60-80/30min.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">&#x26A0;&#xFE0F; Tom (too young)</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50; George &#x2764;</span>
+      <span class="tag cost">~&euro;60-80</span>
+      <span class="tag cost-premium">&euro;60+pp</span>
+      <span class="tag week-azur">&#x1F4CD; Coast</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="water" data-type="water" data-tom="check" data-teens="love" data-cost="mid" data-num="47" data-lat="44.2215" data-lng="15.1695">
+  <div class="activity-num azur-num">47</div>
+  <div class="activity-content">
+    <h4>Parasailing</h4>
+    <div class="activity-desc">Fly above the Adriatic behind a speedboat. Stunning views of the coast. ~&euro;40-60pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">&#x26A0;&#xFE0F; Tom (with adult)</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">~&euro;40-60pp</span>
+      <span class="tag cost-mid">&euro;25-60pp</span>
+      <span class="tag week-azur">&#x1F4CD; Coast</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="water" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="48" data-lat="44.2213" data-lng="15.1688">
+  <div class="activity-num azur-num">48</div>
+  <div class="activity-content">
+    <h4>Banana Boat</h4>
+    <div class="activity-desc">Towed behind a speedboat &mdash; guaranteed laughs and guaranteed falls. ~&euro;10-15pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom &#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">~&euro;10-15pp</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-azur">&#x1F4CD; Beach</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="water" data-type="water" data-tom="yes" data-teens="love" data-cost="budget" data-num="49" data-lat="44.2220" data-lng="15.1700">
+  <div class="activity-num azur-num">49</div>
+  <div class="activity-content">
+    <h4>Snorkelling</h4>
+    <div class="activity-desc">Hire gear from the resort, explore rocky coves and see Mediterranean sea life. ~&euro;10-15 gear hire.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">~&euro;10-15</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-azur">&#x1F4CD; Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="water" data-type="water" data-tom="check" data-teens="love" data-cost="mid" data-num="50" data-lat="44.2225" data-lng="15.1710">
+  <div class="activity-num azur-num">50</div>
+  <div class="activity-content">
+    <h4>Sailing Lessons</h4>
+    <div class="activity-desc">Learn to sail a dinghy in the bay. Proper instruction, all equipment provided. ~&euro;50-70/session.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">&#x26A0;&#xFE0F; Tom (older kids)</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">~&euro;50-70</span>
+      <span class="tag cost-mid">&euro;25-60pp</span>
+      <span class="tag week-azur">&#x1F4CD; Bay</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="water" data-type="water" data-tom="yes" data-teens="love" data-cost="mid" data-num="51" data-lat="44.1200" data-lng="15.2200">
+  <div class="activity-num azur-num">51</div>
+  <div class="activity-content">
+    <h4>Catamaran Sunset Cruise</h4>
+    <div class="activity-desc">Evening catamaran sail with drinks, watching the sunset over the Zadar coast. ~&euro;50-70pp. Katie will need her camera.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50; Katie</span>
+      <span class="tag cost">~&euro;50-70pp</span>
+      <span class="tag cost-mid">&euro;25-60pp</span>
+      <span class="tag week-azur">&#x1F4CD; Zadar</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="water" data-type="water" data-tom="yes" data-teens="ok" data-cost="mid" data-num="52" data-lat="44.1180" data-lng="15.2190">
+  <div class="activity-num azur-num">52</div>
+  <div class="activity-content">
+    <h4>Fishing Trip</h4>
+    <div class="activity-desc">Half day sea fishing from Zadar. Catch sea bream, mackerel, and more. Some operators cook your catch. ~&euro;50-80pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom (with adult)</span>
+      <span class="tag teen-ok">&#x2705; Teens</span>
+      <span class="tag cost">~&euro;50-80pp</span>
+      <span class="tag cost-mid">&euro;25-60pp</span>
+      <span class="tag week-azur">&#x1F4CD; Zadar</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="water" data-type="water" data-tom="check" data-teens="love" data-cost="mid" data-num="53" data-lat="44.2218" data-lng="15.1695">
+  <div class="activity-num azur-num">53</div>
+  <div class="activity-content">
+    <h4>Wakeboarding</h4>
+    <div class="activity-desc">Towed behind a boat in the bay. George will be up on his first try (or so he&rsquo;ll claim). ~&euro;30-45/session.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">&#x26A0;&#xFE0F; Tom (too young)</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50; George &#x2764;</span>
+      <span class="tag cost">~&euro;30-45</span>
+      <span class="tag cost-mid">&euro;25-60pp</span>
+      <span class="tag week-azur">&#x1F4CD; Bay</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="water" data-type="water" data-tom="yes" data-teens="ok" data-cost="budget" data-num="54" data-lat="44.1190" data-lng="15.2205">
+  <div class="activity-num azur-num">54</div>
+  <div class="activity-content">
+    <h4>Glass-Bottom Boat Tour</h4>
+    <div class="activity-desc">See the seabed without getting wet &mdash; fish, rocks, and maybe an octopus. ~&euro;20-30pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom &#x2B50;&#x2B50;&#x2B50;&#x2B50;</span>
+      <span class="tag teen-ok">&#x2705; Teens</span>
+      <span class="tag cost">~&euro;20-30pp</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-azur">&#x1F4CD; Coast</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="water" data-type="water" data-tom="check" data-teens="love" data-cost="mid" data-num="55" data-lat="44.2230" data-lng="15.1720">
+  <div class="activity-num azur-num">55</div>
+  <div class="activity-content">
+    <h4>Sea Cave Kayaking</h4>
+    <div class="activity-desc">Guided kayak trip exploring coastal caves and hidden coves. Stunning scenery. ~&euro;35-50pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">&#x26A0;&#xFE0F; Tom (12+)</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">~&euro;35-50pp</span>
+      <span class="tag cost-mid">&euro;25-60pp</span>
+      <span class="tag week-azur">&#x1F4CD; Coast</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="water" data-type="adventure" data-tom="check" data-teens="love" data-cost="free" data-num="56" data-lat="44.2240" data-lng="15.1730">
+  <div class="activity-num azur-num">56</div>
+  <div class="activity-content">
+    <h4>Cliff Jumping</h4>
+    <div class="activity-desc">Find supervised cliff jumping spots along the coast. Various heights. George will find the biggest. Free.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">&#x26A0;&#xFE0F; Tom (too dangerous)</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">&#x1F4CD; Coast</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="water" data-type="water" data-tom="yes" data-teens="love" data-cost="free" data-num="57" data-lat="44.2200" data-lng="15.1650">
+  <div class="activity-num azur-num">57</div>
+  <div class="activity-content">
+    <h4>Water Polo</h4>
+    <div class="activity-desc">Resort pool water polo sessions &mdash; join in the fun. Included with your stay.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">Included</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">&#x1F4CD; On-Resort</span>
+    </div>
+  </div>
+</div>
+</div>
+<!-- ═══ SECTION 5: CULTURE & FOOD ═══ -->
+<div class="section-header azur" data-section="culture">
+  <div class="icon">&#x1F37D;&#xFE0F;</div>
+  <h2>Culture &amp; Food Experiences</h2>
+  <p>Cheese, wine, cooking &amp; Dalmatian flavours</p>
+</div>
+<div class="azur-section" data-section-wrap="culture">
+
+<div class="category-header" data-cat-type="food" data-cat-area="culture">
+  <span class="cat-icon">&#x1F37D;&#xFE0F;</span>
+  <h3>Dalmatian Experiences</h3>
+  <span class="cat-count">8 activities</span>
+</div>
+
+<div class="activity-card" data-area="culture" data-type="food" data-tom="yes" data-teens="ok" data-cost="budget" data-num="58" data-lat="44.4400" data-lng="14.9600">
+  <div class="activity-num azur-num">58</div>
+  <div class="activity-content">
+    <h4>Pag Cheese Tasting</h4>
+    <div class="activity-desc">Visit the island famous for its sheep&rsquo;s cheese. Tour the dairy, taste varieties, buy to take home. ~&euro;15-20pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom</span>
+      <span class="tag teen-ok">&#x2705; Teens</span>
+      <span class="tag cost">~&euro;15-20pp</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-azur">&#x1F4CD; Pag Island</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="culture" data-type="food" data-tom="check" data-teens="ok" data-cost="budget" data-num="59" data-lat="44.1155" data-lng="15.2240">
+  <div class="activity-num azur-num">59</div>
+  <div class="activity-content">
+    <h4>Maraschino Cherry Liqueur</h4>
+    <div class="activity-desc">Zadar&rsquo;s famous liqueur, made since 1768. Visit the distillery and taste the original. Adults only for tasting. ~&euro;10-15pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">Adults only</span>
+      <span class="tag teen-ok">&#x2705; Adults</span>
+      <span class="tag cost">~&euro;10-15pp</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-azur">&#x1F4CD; Zadar</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="culture" data-type="food" data-tom="yes" data-teens="love" data-cost="mid" data-num="60" data-lat="44.1150" data-lng="15.2250">
+  <div class="activity-num azur-num">60</div>
+  <div class="activity-content">
+    <h4>Dalmatian Cooking Class</h4>
+    <div class="activity-desc">Learn to make peka (slow-cooked under a bell lid), brudet (fish stew), and octopus salad. Hands-on and delicious. ~&euro;40-60pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom (loves cooking)</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">~&euro;40-60pp</span>
+      <span class="tag cost-mid">&euro;25-60pp</span>
+      <span class="tag week-azur">&#x1F4CD; Zadar</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="culture" data-type="food" data-tom="yes" data-teens="love" data-cost="budget" data-num="61" data-lat="44.1160" data-lng="15.2255">
+  <div class="activity-num azur-num">61</div>
+  <div class="activity-content">
+    <h4>Konoba Dinner</h4>
+    <div class="activity-desc">Traditional Dalmatian tavern &mdash; grilled fish, octopus, local wine. Order the peka 2hrs in advance. The ultimate Croatian meal. ~&euro;15-30pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom &#x2B50;&#x2B50;&#x2B50;&#x2B50;</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">~&euro;15-30pp</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-azur">&#x1F4CD; Local</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="culture" data-type="food" data-tom="check" data-teens="ok" data-cost="mid" data-num="62" data-lat="44.1150" data-lng="15.2260">
+  <div class="activity-num azur-num">62</div>
+  <div class="activity-content">
+    <h4>Zadar Wine Tasting</h4>
+    <div class="activity-desc">Local Dalmatian wines &mdash; Plavac Mali, Mara&scaron;tina, and Debit. Visit a winery with vineyard views. ~&euro;20-35pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">Tom: juice option</span>
+      <span class="tag teen-ok">&#x2705; Teens</span>
+      <span class="tag cost">~&euro;20-35pp</span>
+      <span class="tag cost-mid">&euro;25-60pp</span>
+      <span class="tag week-azur">&#x1F4CD; Zadar region</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="culture" data-type="food" data-tom="yes" data-teens="love" data-cost="free" data-num="63" data-lat="44.2200" data-lng="15.1648">
+  <div class="activity-num azur-num">63</div>
+  <div class="activity-content">
+    <h4>Local Market Shopping</h4>
+    <div class="activity-desc">Souvenirs, lavender bags, olive oil, fig cakes, Pag lace. Katie will fill a bag. Variable costs. Free to browse.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50; Katie</span>
+      <span class="tag cost">Variable</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">&#x1F4CD; Resort/Zadar</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="culture" data-type="culture" data-tom="yes" data-teens="ok" data-cost="budget" data-num="64" data-lat="44.2363" data-lng="15.1797">
+  <div class="activity-num azur-num">64</div>
+  <div class="activity-content">
+    <h4>Ancient Nin Walking Tour</h4>
+    <div class="activity-desc">Smallest cathedral in the world, Croatian kings&rsquo; coronation site, Roman temple ruins. Just 5km away. ~&euro;10-15pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom</span>
+      <span class="tag teen-ok">&#x2705; Teens</span>
+      <span class="tag cost">~&euro;10-15pp</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-azur">&#x1F4CD; Nin</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="culture" data-type="culture" data-tom="yes" data-teens="ok" data-cost="free" data-num="65" data-lat="43.9422" data-lng="15.4425">
+  <div class="activity-num azur-num">65</div>
+  <div class="activity-content">
+    <h4>Biograd na Moru</h4>
+    <div class="activity-desc">Charming coastal town, marina, local restaurants. A pleasant afternoon drive. Free to explore.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom</span>
+      <span class="tag teen-ok">&#x2705; Teens</span>
+      <span class="tag cost">Free</span>
+      <span class="tag cost-free">Free</span>
+      <span class="tag week-azur">&#x1F4CD; 45min drive</span>
+    </div>
+  </div>
+</div>
+</div>
+<!-- ═══ SECTION 6: ADVENTURE ═══ -->
+<div class="section-header verdon" data-section="adventure">
+  <div class="icon">&#x26A1;</div>
+  <h2>Adventure Activities</h2>
+  <p>Climbing, canyoning, zip lines &amp; thrills</p>
+</div>
+<div class="verdon-section" data-section-wrap="adventure">
+
+<div class="category-header" data-cat-type="adventure" data-cat-area="adventure">
+  <span class="cat-icon">&#x26A1;</span>
+  <h3>Adrenaline &amp; Thrills</h3>
+  <span class="cat-count">10 activities</span>
+</div>
+
+<div class="activity-card highlight" data-area="adventure" data-type="adventure" data-tom="check" data-teens="love" data-cost="mid" data-num="66" data-lat="44.3650" data-lng="15.4350" data-mustdo="true">
+  <div class="activity-num">66</div>
+  <div class="activity-content">
+    <h4><a href="https://np-paklenica.hr/en/" target="_blank">Paklenica Rock Climbing</a></h4>
+    <div class="activity-desc">World-class climbing in a national park canyon. Multi-pitch routes, guided sessions for beginners. George&rsquo;s dream day. ~&euro;40-60pp guided.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">&#x26A0;&#xFE0F; Tom (too young)</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50; George &#x2764;</span>
+      <span class="tag cost">~&euro;40-60pp</span>
+      <span class="tag cost-mid">&euro;25-60pp</span>
+      <span class="tag week-verdon">&#x1F4CD; Paklenica</span>
+    </div>
+  </div>
+  <div class="activity-link"><a href="https://np-paklenica.hr/en/" target="_blank">Info &rarr;</a></div>
+</div>
+
+<div class="activity-card" data-area="adventure" data-type="adventure" data-tom="check" data-teens="love" data-cost="mid" data-num="67" data-lat="44.3600" data-lng="15.4300">
+  <div class="activity-num">67</div>
+  <div class="activity-content">
+    <h4>Zip Line (Paklenica area)</h4>
+    <div class="activity-desc">Fly across the canyon on a zip line. Stunning views of the gorge below. ~&euro;25-40pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">&#x26A0;&#xFE0F; Tom (check min age)</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50; George &#x2764;</span>
+      <span class="tag cost">~&euro;25-40pp</span>
+      <span class="tag cost-mid">&euro;25-60pp</span>
+      <span class="tag week-verdon">&#x1F4CD; Paklenica</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="adventure" data-type="adventure" data-tom="check" data-teens="love" data-cost="premium" data-num="68" data-lat="44.2100" data-lng="15.7600">
+  <div class="activity-num">68</div>
+  <div class="activity-content">
+    <h4>Canyoning</h4>
+    <div class="activity-desc">Descend through narrow river canyons &mdash; abseiling, swimming, jumping. Guided groups, 12+ only. ~&euro;60-80pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">&#x26A0;&#xFE0F; Tom (12+)</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50; George &#x2764;</span>
+      <span class="tag cost">~&euro;60-80pp</span>
+      <span class="tag cost-premium">&euro;60+pp</span>
+      <span class="tag week-verdon">&#x1F4CD; Day trip</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="adventure" data-type="adventure" data-tom="check" data-teens="love" data-cost="budget" data-num="69" data-lat="44.2200" data-lng="15.1650">
+  <div class="activity-num">69</div>
+  <div class="activity-content">
+    <h4>Mountain Biking</h4>
+    <div class="activity-desc">Trails through Zadar hinterland and along the coast. Hire bikes at the resort or in Zadar. ~&euro;15-25/day rental.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">&#x26A0;&#xFE0F; Tom (with parents)</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">~&euro;15-25/day</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-verdon">&#x1F4CD; Various</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="adventure" data-type="adventure" data-tom="check" data-teens="love" data-cost="premium" data-num="70" data-lat="44.2000" data-lng="15.2000">
+  <div class="activity-num">70</div>
+  <div class="activity-content">
+    <h4>Quad / ATV Tour</h4>
+    <div class="activity-desc">Off-road through olive groves and countryside. Mud, dust, and big grins. Teens ride their own. ~&euro;60-80pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">&#x26A0;&#xFE0F; Tom (passenger)</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50; George &#x2764;</span>
+      <span class="tag cost">~&euro;60-80pp</span>
+      <span class="tag cost-premium">&euro;60+pp</span>
+      <span class="tag week-verdon">&#x1F4CD; Near Zadar</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="adventure" data-type="adventure" data-tom="check" data-teens="love" data-cost="budget" data-num="71" data-lat="44.1300" data-lng="15.2100">
+  <div class="activity-num">71</div>
+  <div class="activity-content">
+    <h4>Paintball</h4>
+    <div class="activity-desc">Outdoor paintball course near Zadar. Age 12+. George vs Katie &mdash; who&rsquo;s the better shot? ~&euro;20-30pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">&#x26A0;&#xFE0F; Tom (12+)</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">~&euro;20-30pp</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-verdon">&#x1F4CD; Near Zadar</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="adventure" data-type="adventure" data-tom="yes" data-teens="love" data-cost="budget" data-num="72" data-lat="44.1350" data-lng="15.2150">
+  <div class="activity-num">72</div>
+  <div class="activity-content">
+    <h4>Go-Karting</h4>
+    <div class="activity-desc">Outdoor go-kart track near Zadar. Junior karts for Tom, full-speed for George. ~&euro;15-25pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom (junior kart)</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50; George &#x2764;</span>
+      <span class="tag cost">~&euro;15-25pp</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-verdon">&#x1F4CD; Near Zadar</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="adventure" data-type="adventure" data-tom="check" data-teens="love" data-cost="budget" data-num="73" data-lat="44.1160" data-lng="15.2250">
+  <div class="activity-num">73</div>
+  <div class="activity-content">
+    <h4>Escape Room Zadar</h4>
+    <div class="activity-desc">Themed puzzle rooms in Zadar. Family-friendly options available. ~&euro;15-20pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">&#x26A0;&#xFE0F; Tom (some rooms)</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">~&euro;15-20pp</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-verdon">&#x1F4CD; Zadar</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="adventure" data-type="adventure" data-tom="check" data-teens="love" data-cost="budget" data-num="74" data-lat="44.2210" data-lng="15.1680">
+  <div class="activity-num">74</div>
+  <div class="activity-content">
+    <h4>Bungy Catapult</h4>
+    <div class="activity-desc">Human catapult on the beach at Zaton &mdash; launched into the air! George will do it twice. ~&euro;15-25pp.</div>
+    <div class="activity-tags">
+      <span class="tag tom-check">&#x26A0;&#xFE0F; Tom (check weight)</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">~&euro;15-25pp</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-verdon">&#x1F4CD; On-Resort</span>
+    </div>
+  </div>
+</div>
+
+<div class="activity-card" data-area="adventure" data-type="parks" data-tom="yes" data-teens="love" data-cost="budget" data-num="75" data-lat="44.2208" data-lng="15.1675">
+  <div class="activity-num">75</div>
+  <div class="activity-content">
+    <h4>Trampoline Park</h4>
+    <div class="activity-desc">Beachside trampolines &mdash; bounce with the sea as your backdrop. Tom and George will compete for the highest flip. ~&euro;5-10.</div>
+    <div class="activity-tags">
+      <span class="tag tom-yes">&#x2705; Tom &#x2B50;&#x2B50;&#x2B50;&#x2B50;</span>
+      <span class="tag teen-love">&#x2B50;&#x2B50;&#x2B50; Teens</span>
+      <span class="tag cost">~&euro;5-10</span>
+      <span class="tag cost-budget">&lt; &euro;25pp</span>
+      <span class="tag week-verdon">&#x1F4CD; On-Resort</span>
+    </div>
+  </div>
+</div>
+</div>
+
+</div><!-- container -->
+</div><!-- main-content -->
+</div><!-- page-layout -->
+</div><!-- end activitiesSection -->
+<script>
+function toggleActivities() {
+  var section = document.getElementById('activitiesSection');
+  var icon = document.getElementById('activitiesToggleIcon');
+  var text = document.getElementById('activitiesToggleText');
+  var btn = document.getElementById('activitiesToggle');
+  if (section.style.display === 'none') {
+    section.style.display = 'block';
+    icon.textContent = '\u25B2';
+    text.textContent = 'Hide Activities & Filters';
+    btn.style.background = 'linear-gradient(135deg, #1B3C8F 0%, #2a4fa3 100%)';
+    setTimeout(function(){ section.scrollIntoView({behavior: 'smooth', block: 'start'}); }, 100);
+    if (window.activityMap) setTimeout(function(){ window.activityMap.invalidateSize(); }, 300);
+  } else {
+    section.style.display = 'none';
+    icon.textContent = '\u25BC';
+    text.textContent = 'Show All Activities';
+    btn.style.background = 'linear-gradient(135deg, #0F2557 0%, #1B3C8F 100%)';
+    btn.scrollIntoView({behavior: 'smooth', block: 'center'});
+  }
+}
+</script>
+
+<div class="footer">
+  <p>Created for the Sheldrake family holiday planning &middot; Summer 2026</p>
+  <p>Croatia &middot; Zaton Holiday Resort &middot; Eurocamp &middot; Zadar &middot; Dalmatian Coast</p>
+</div>
+
+<script>
+(function() {
+  const cards = document.querySelectorAll('.activity-card');
+  const checkboxes = document.querySelectorAll('.filter-sidebar input[type="checkbox"]');
+  const countEl = document.getElementById('visibleCount');
+  const TOTAL = 75;
+
+  function getCheckedValues(filterName) {
+    const vals = [];
+    checkboxes.forEach(cb => {
+      if (cb.dataset.filter === filterName && cb.checked) vals.push(cb.value);
+    });
+    return vals;
+  }
+
+function toggleAccom(show) {
+  if (!window.accomMarkers) return;
+  window.accomMarkers.forEach(function(m) {
+    if (show) m.addTo(window.activityMap);
+    else window.activityMap.removeLayer(m);
+  });
+}
+
+function updateMap() {
+  if (!window.activityMarkers) return;
+  var bounds = [];
+  var tableBody = document.getElementById('map-table-body');
+  if (tableBody) tableBody.innerHTML = '';
+  var visibleCount = 0;
+  document.querySelectorAll('.activity-card').forEach(function(card, i) {
+    var marker = window.activityMarkers[i];
+    if (!marker) return;
+    var lat = parseFloat(card.dataset.lat);
+    var lng = parseFloat(card.dataset.lng);
+    if (!lat || !lng) return;
+    var isVisible = !card.classList.contains('hidden-by-filter') && card.style.display !== 'none';
+    if (isVisible) {
+      marker.addTo(window.activityMap);
+      bounds.push([lat, lng]);
+      visibleCount++;
+      if (tableBody) {
+        var num = card.dataset.num || '';
+        var title = card.querySelector('h4') ? card.querySelector('h4').textContent.trim() : '';
+        var link = card.querySelector('h4 a');
+        var href = link ? link.href : '';
+        var isMustDo = card.dataset.mustdo === 'true';
+        var tr = document.createElement('tr');
+        tr.style.borderBottom = '1px solid #e0e0e0';
+        if (visibleCount % 2 === 0) tr.style.background = '#f0f3f9';
+        tr.innerHTML = '<td style="padding:5px 8px;color:#1B3C8F;font-weight:700;">' + num + '</td><td style="padding:5px 8px;">' + (isMustDo ? '\u2b50 ' : '') + title + '</td><td style="padding:5px 8px;text-align:right;">' + (href ? '<a href="'+href+'" target="_blank" style="color:#1B3C8F;margin-right:10px;">More Info</a>' : '') + '<a href="https://www.google.com/maps?q='+lat+','+lng+'" target="_blank" style="color:#888;">\ud83d\udccd Map</a></td>';
+        tableBody.appendChild(tr);
+      }
+    } else {
+      window.activityMap.removeLayer(marker);
+    }
+  });
+  var countEl2 = document.getElementById('map-count');
+  if (countEl2) countEl2.textContent = visibleCount + ' activities shown';
+  if (bounds.length > 0) window.activityMap.fitBounds(bounds, {padding: [30, 30], maxZoom: 12});
+}
+
+function applyFilters() {
+    const areaFilters = getCheckedValues('area');
+    const typeFilters = getCheckedValues('type');
+    const tomFilters = getCheckedValues('tom');
+    const teenFilters = getCheckedValues('teens');
+    const familyFilters = getCheckedValues('family');
+    const costFilters = getCheckedValues('cost');
+    const mustdoFilters = getCheckedValues('mustdo');
+
+    let visible = 0;
+    cards.forEach(card => {
+      let show = true;
+      if (areaFilters.length > 0 && !areaFilters.includes(card.dataset.area)) show = false;
+      if (typeFilters.length > 0 && !typeFilters.includes(card.dataset.type)) show = false;
+      if (tomFilters.length > 0 && card.dataset.tom !== 'yes') show = false;
+      if (teenFilters.length > 0 && card.dataset.teens !== 'love') show = false;
+      if (familyFilters.length > 0 && card.dataset.tom !== 'yes') show = false;
+      if (costFilters.length > 0 && !costFilters.includes(card.dataset.cost)) show = false;
+      if (mustdoFilters.length > 0 && card.dataset.mustdo !== 'true') show = false;
+
+      if (show) { card.classList.remove('hidden-by-filter'); visible++; }
+      else { card.classList.add('hidden-by-filter'); }
+    });
+
+    countEl.textContent = visible;
+
+    document.querySelectorAll('.section-header[data-section]').forEach(header => {
+      const sectionId = header.dataset.section;
+      const wrap = document.querySelector('[data-section-wrap="' + sectionId + '"]');
+      if (wrap) {
+        const visibleCards = wrap.querySelectorAll('.activity-card:not(.hidden-by-filter)');
+        header.classList.toggle('hidden-by-filter', visibleCards.length === 0);
+        wrap.style.display = visibleCards.length === 0 ? 'none' : '';
+      }
+    });
+
+    document.querySelectorAll('.category-header[data-cat-type]').forEach(catHeader => {
+      let sibling = catHeader.nextElementSibling;
+      let hasVisible = false;
+      while (sibling && !sibling.classList.contains('category-header') && !sibling.classList.contains('section-header')) {
+        if (sibling.classList.contains('activity-card') && !sibling.classList.contains('hidden-by-filter')) {
+          hasVisible = true; break;
+        }
+        sibling = sibling.nextElementSibling;
+      }
+      catHeader.classList.toggle('hidden-by-filter', !hasVisible);
+    });
+  updateMap();
+}
+
+  checkboxes.forEach(cb => cb.addEventListener('change', applyFilters));
+  window.clearFilters = function() { checkboxes.forEach(cb => cb.checked = false); applyFilters(); };
+  window.toggleFilters = function() {
+    document.getElementById('filterSidebar').classList.toggle('open');
+    document.getElementById('filterOverlay').classList.toggle('open');
+  };
+
+// Accommodation overlay
+window.accomMarkers = [];
+var accomData = [
+  [44.2200, 15.1650, "Zaton Holiday Resort (Eurocamp)", "Eurocamp", "https://www.eurocamp.co.uk/campsites/croatia/dalmatia/zaton-holiday-resort-campsite", "Mobile homes, full resort access, pools, beach. Eurocamp partner."],
+  [44.2200, 15.1655, "Zaton Holiday Resort (Roan)", "Roan", "https://www.roan.co.uk/camping/croatia/dalmatia/camping-zaton-holiday-resort", "Luxury mobile homes and safari tents, resort facilities included."],
+  [44.2200, 15.1660, "Zaton Holiday Resort (Direct)", "Direct", "https://www.zaton.hr/en/", "Apartments, mobile homes, glamping (new 2026), camping pitches."],
+  [44.2200, 15.1665, "Zaton Holiday Resort (Suncamp)", "Suncamp", "https://www.suncamp.co.uk/croatia/zadar/zaton/camping-zaton-holiday-resort-105237/", "Budget-friendly mobile homes and tents."],
+  [44.2200, 15.1670, "Zaton Holiday Resort (Homair)", "Homair", "https://www.homair.com/en/campsite/zaton-holiday-resort", "Quality mobile homes, family-focused."],
+  [44.1194, 15.2214, "Hotel Niko Zadar", "Hotel", "https://www.booking.com/hotel/hr/niko-zadar.html", "Waterfront hotel in Zadar, pool, near Sea Organ. Alternative to resort."]
+];
+var accomIcon = function(){ return L.divIcon({
+  className:'',
+  html:'<div style="background:#2d9a2d;color:#fff;width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;cursor:pointer;">&#127965;</div>',
+  iconSize:[30,30], iconAnchor:[15,15]
+}); };
+accomData.forEach(function(a){
+  var marker = L.marker([a[0],a[1]], {icon: accomIcon()})
+    .bindPopup('<div style="min-width:220px;"><b style="color:#2d9a2d;font-size:0.95rem;">&#127965; '+a[2]+'</b><br><span style="color:#888;font-size:0.8rem;">'+a[3]+'</span><br><span style="color:#555;font-size:0.85rem;">'+a[5]+'</span><br><a href="'+a[4]+'" target="_blank" style="color:#2d9a2d;font-size:0.85rem;">View on '+a[3]+' \u2192</a></div>');
+  marker.addTo(window.activityMap);
+  window.accomMarkers.push(marker);
+});
+})();
+
+document.addEventListener('click', function(e) {
+  var wrap = document.querySelector('.country-nav__dropdown-wrap');
+  if (wrap && !wrap.contains(e.target)) {
+    var btn = wrap.querySelector('.country-nav__toggle');
+    var menu = wrap.querySelector('.country-nav__menu');
+    if (btn) btn.classList.remove('open');
+    if (menu) menu.classList.remove('open');
+  }
+});
+</script>
+
+<script>
+(function(){
+  window.activityMap = L.map('mustdo-map', {scrollWheelZoom: false}).setView([44.15, 15.25], 9);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; CARTO &copy; OSM', maxZoom: 18
+  }).addTo(window.activityMap);
+  window.activityMarkers = [];
+  document.querySelectorAll('.activity-card').forEach(function(card) {
+    var lat = parseFloat(card.dataset.lat);
+    var lng = parseFloat(card.dataset.lng);
+    if (!lat || !lng) { window.activityMarkers.push(null); return; }
+    var num = card.dataset.num || '';
+    var isMustDo = card.dataset.mustdo === 'true';
+    var title = card.querySelector('h4') ? card.querySelector('h4').textContent.trim() : '';
+    var desc = card.querySelector('.activity-desc');
+    var descText = desc ? desc.textContent.trim().substring(0, 100) + '...' : '';
+    var size = isMustDo ? 28 : 22;
+    var bg = isMustDo ? '#FF6B35' : '#1B3C8F';
+    var fs = isMustDo ? '12px' : '10px';
+    var icon = L.divIcon({
+      className: '',
+      html: '<div style="background:'+bg+';color:#fff;width:'+size+'px;height:'+size+'px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:'+fs+';font-family:sans-serif;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;cursor:pointer;">'+num+'</div>',
+      iconSize: [size, size], iconAnchor: [size/2, size/2]
+    });
+    var marker = L.marker([lat, lng], {icon: icon})
+      .bindPopup('<div style="min-width:180px;"><b style="color:#0F2557;">' + (isMustDo ? '\u2b50 ' : '') + title + '</b><br><span style="color:#555;font-size:0.85rem;">' + descText + '</span></div>');
+    marker.addTo(window.activityMap);
+    window.activityMarkers.push(marker);
+  });
+  if (typeof updateMap === 'function') updateMap();
+})();
+</script>
+
+</body>
+</html>
