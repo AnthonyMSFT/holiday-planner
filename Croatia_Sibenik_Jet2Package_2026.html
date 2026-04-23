@@ -899,39 +899,6 @@
     <li>&#x1F37D;&#xFE0F; <strong>Konoba Dinner in &#x0160;ibenik</strong> &mdash; traditional Dalmatian grilled fish, octopus salad, local wine</li>
   </ol>
 </div>
-<script>
-(function(){
-  window.activityMap = L.map('mustdo-map', {scrollWheelZoom: false}).setView([43.72, 15.90], 10);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; CARTO &copy; OSM', maxZoom: 18
-  }).addTo(window.activityMap);
-  window.activityMarkers = [];
-  document.querySelectorAll('.activity-card').forEach(function(card) {
-    var lat = parseFloat(card.dataset.lat);
-    var lng = parseFloat(card.dataset.lng);
-    if (!lat || !lng) { window.activityMarkers.push(null); return; }
-    var num = card.dataset.num || '';
-    var isMustDo = card.dataset.mustdo === 'true';
-    var title = card.querySelector('h4') ? card.querySelector('h4').textContent.trim() : '';
-    var desc = card.querySelector('.activity-desc');
-    var descText = desc ? desc.textContent.trim().substring(0, 100) + '...' : '';
-    var size = isMustDo ? 28 : 22;
-    var bg = isMustDo ? '#FF6B35' : '#1B3C8F';
-    var fs = isMustDo ? '12px' : '10px';
-    var icon = L.divIcon({
-      className: '',
-      html: '<div style="background:'+bg+';color:#fff;width:'+size+'px;height:'+size+'px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:'+fs+';font-family:sans-serif;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;cursor:pointer;">'+num+'</div>',
-      iconSize: [size, size], iconAnchor: [size/2, size/2]
-    });
-    var marker = L.marker([lat, lng], {icon: icon})
-      .bindPopup('<div style="min-width:180px;"><b style="color:#0F2557;">' + (isMustDo ? '\u2b50 ' : '') + title + '</b><br><span style="color:#555;font-size:0.85rem;">' + descText + '</span></div>');
-    marker.addTo(window.activityMap);
-    window.activityMarkers.push(marker);
-  });
-  if (typeof updateMap === 'function') updateMap();
-})();
-</script>
-
 <!-- ═══ SECTION 1: ON-RESORT ═══ -->
 <div class="section-header verdon" data-section="resort">
   <div class="icon">&#x1F3D5;&#xFE0F;</div>
@@ -2263,6 +2230,39 @@ document.addEventListener('click', function(e) {
     if (menu) menu.classList.remove('open');
   }
 });
+</script>
+
+<script>
+(function(){
+  window.activityMap = L.map('mustdo-map', {scrollWheelZoom: false}).setView([43.72, 15.90], 10);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; CARTO &copy; OSM', maxZoom: 18
+  }).addTo(window.activityMap);
+  window.activityMarkers = [];
+  document.querySelectorAll('.activity-card').forEach(function(card) {
+    var lat = parseFloat(card.dataset.lat);
+    var lng = parseFloat(card.dataset.lng);
+    if (!lat || !lng) { window.activityMarkers.push(null); return; }
+    var num = card.dataset.num || '';
+    var isMustDo = card.dataset.mustdo === 'true';
+    var title = card.querySelector('h4') ? card.querySelector('h4').textContent.trim() : '';
+    var desc = card.querySelector('.activity-desc');
+    var descText = desc ? desc.textContent.trim().substring(0, 100) + '...' : '';
+    var size = isMustDo ? 28 : 22;
+    var bg = isMustDo ? '#FF6B35' : '#1B3C8F';
+    var fs = isMustDo ? '12px' : '10px';
+    var icon = L.divIcon({
+      className: '',
+      html: '<div style="background:'+bg+';color:#fff;width:'+size+'px;height:'+size+'px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:'+fs+';font-family:sans-serif;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;cursor:pointer;">'+num+'</div>',
+      iconSize: [size, size], iconAnchor: [size/2, size/2]
+    });
+    var marker = L.marker([lat, lng], {icon: icon})
+      .bindPopup('<div style="min-width:180px;"><b style="color:#0F2557;">' + (isMustDo ? '\u2b50 ' : '') + title + '</b><br><span style="color:#555;font-size:0.85rem;">' + descText + '</span></div>');
+    marker.addTo(window.activityMap);
+    window.activityMarkers.push(marker);
+  });
+  if (typeof updateMap === 'function') updateMap();
+})();
 </script>
 
 </body>
